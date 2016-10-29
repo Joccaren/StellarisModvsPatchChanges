@@ -1,0 +1,439 @@
+@base_moon_distance = 10
+
+### Abandoned Ringworlds
+##Two Living Sections
+abring_one_system = {
+	asteroids_distance = 150
+	usage = misc_system_init
+	usage_odds = 1
+	max_instances = 2
+
+	class = "sc_g"
+	
+	planet = {
+		class = star
+		orbit_distance = 0
+	}
+	
+	change_orbit = 45
+	
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Section I"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support I"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam"
+		name = "Link I"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_habitable_damaged"
+		name = "Section II"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes
+
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support II"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam"
+		name = "Link II"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Section III"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes			
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support III"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam_damaged"
+		name = "Link III"
+		orbit_angle = 30
+		orbit_distance = 0
+		
+		init_effect = {
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable_damaged"
+		name = "Section IV"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes
+
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support IV"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam"
+		name = "Link IV"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	
+	change_orbit = 105
+}
+
+##One Living Sections
+abring_two_system = {
+	asteroids_distance = 150
+	usage = misc_system_init
+	usage_odds = 1
+	max_instances = 3
+
+	class = "sc_g"
+	
+	planet = {
+		class = star
+		orbit_distance = 0
+	}
+	
+	change_orbit = 45
+	
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Section I"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support I"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam"
+		name = "Link I"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_habitable_damaged"
+		name = "Section II"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes
+
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support II"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam"
+		name = "Link II"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_habitable_damaged"
+		name = "Section III"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes
+
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support III"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam_damaged"
+		name = "Link III"
+		orbit_angle = 30
+		orbit_distance = 0
+		
+		init_effect = {
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable_damaged"
+		name = "Section IV"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes
+
+			create_ambient_object = {
+				type = "medium_debris_01_object"
+				location = THIS
+			}
+		}
+	}
+	planet = {
+		class = "pc_ringworld_tech"
+		name = "Support IV"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	planet = {
+		class = "pc_ringworld_seam"
+		name = "Link IV"
+		orbit_angle = 30
+		orbit_distance = 0
+	}
+	
+	change_orbit = 105
+}
+
+##Paradise
+abring_three_system = {
+	asteroids_distance = 150
+	usage = misc_system_init
+	usage_odds = 1
+	max_instances = 1
+	
+	name = "Paradise"
+
+	class = "sc_g"
+	
+	planet = {
+		class = star
+		orbit_distance = 0
+	}
+	
+	change_orbit = 45
+	
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Elysium"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Shangri-La"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Asgard"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Jannah"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Yalu"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Tlalocan"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Eden"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Arcadia"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Zion"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Nirvana"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Utopia"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	planet = {
+		class = "pc_ringworld_habitable"
+		name = "Cockaigne"
+		orbit_angle = 30
+		orbit_distance = 0
+		tile_blockers = none
+		modifiers = none
+		
+		init_effect = {
+			prevent_anomaly = yes		
+		}
+	}
+	
+	change_orbit = 105
+}
