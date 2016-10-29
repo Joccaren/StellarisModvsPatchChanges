@@ -127,115 +127,52 @@ special_init_02 = {
 						owner = last_created_country
 						species = last_created
 						ethos = owner
-					}				
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
+					while = {
+						count = 4
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
+						}	
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}					
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
+					while = {
+						count = 2
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_factory"
+							add_resource = {
+								resource = minerals
+								amount = 1
+								replace = yes
+							}						
+						}					
 					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}						
-					}					
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}						
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}						
-					}					
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}						
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}							
+					while = {
+						count = 3
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}						
+						}					
 					}
 					random_tile = {
 						limit = { has_building = "building_colony_shelter" }
@@ -263,29 +200,14 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = machine_age }
 							PREV = {
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
-								}
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
-								}
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
-								}
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
+								while = {
+									count = 4
+									create_army = {
+										name = "Industrial Army"
+										owner = last_created
+										species = last_created
+										type = "industrial_army"
+									}
 								}
 							}
 							break = yes
@@ -293,29 +215,14 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = atomic_age }
 							PREV = {
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
+								while = {
+									count = 4
+									create_army = {
+										name = "Post-Atomic Army"
+										owner = last_created
+										species = last_created
+										type = "postatomic_army"
+									}
 								}
 							}
 							break = yes
@@ -323,46 +230,25 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = early_space_age }
 							PREV = {
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
-								}
-								create_army = {
-									name = "Post-Atomic Army"
-									owner = last_created
-									species = last_created
-									type = "postatomic_army"
+								while = {
+									count = 5
+									create_army = {
+										name = "Post-Atomic Army"
+										owner = last_created
+										species = last_created
+										type = "postatomic_army"
+									}
 								}
 								create_fleet = {
 									name = "Space Station" 
-								}
-								last_created_fleet = {
-									set_owner = last_created_country
-									create_ship = {
-										name = "Space Station"
-										design = "Space Station"
+									effect = {
+										set_owner = last_created_country
+										create_ship = {
+											name = "Space Station"
+											design = "Space Station"
+										}
+										set_location = PREV
 									}
-									set_location = PREV
 								}
 							}
 							break = yes
@@ -432,68 +318,37 @@ special_init_02 = {
 						owner = last_created_country
 						species = last_created
 						ethos = owner
-					}					
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+					}
+					while = {
+						count = 2
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
 						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}					
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
+					while = {
+						count = 3
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}
 						}
 					}					
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
 					random_tile = {
 						limit = { has_building = "building_colony_shelter" }
 						remove_building = yes
@@ -514,17 +369,14 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = iron_age }
 							PREV = {
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
+								while = {
+									count = 2
+									create_army = {
+										name = "Primitive Army"
+										owner = last_created
+										species = last_created
+										type = "primitive_army"
+									}
 								}
 							}
 							break = yes
@@ -532,23 +384,14 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = late_medieval_age }
 							PREV = {
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
+								while = {
+									count = 3
+									create_army = {
+										name = "Primitive Army"
+										owner = last_created
+										species = last_created
+										type = "primitive_army"
+									}
 								}
 							}
 							break = yes
@@ -556,29 +399,14 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = renaissance_age }
 							PREV = {
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
+								while = {
+									count = 4
+									create_army = {
+										name = "Primitive Army"
+										owner = last_created
+										species = last_created
+										type = "primitive_army"
+									}
 								}
 							}
 							break = yes
@@ -586,29 +414,23 @@ special_init_02 = {
 						if = {
 							limit = { has_country_flag = steam_age }
 							PREV = {
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
+								while = {
+									count = 2
+									create_army = {
+										name = "Primitive Army"
+										owner = last_created
+										species = last_created
+										type = "primitive_army"
+									}
 								}
-								create_army = {
-									name = "Primitive Army"
-									owner = last_created
-									species = last_created
-									type = "primitive_army"
-								}
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
-								}
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
+								while = {
+									count = 2
+									create_army = {
+										name = "Industrial Army"
+										owner = last_created
+										species = last_created
+										type = "industrial_army"
+									}
 								}
 							}
 							break = yes
@@ -696,7 +518,7 @@ special_init_03 = {
 					create_species = {
 						name = Human
 						plural = Humans
-						class = "MAM"
+						class = "HUM"
 						portrait = "human"
 						homeworld = THIS
 						traits = {
@@ -776,159 +598,59 @@ special_init_03 = {
 					}
 					create_fleet = {
 						name = "ISS II" 
-					}
-					last_created_fleet = {
-						set_owner = last_created_country
-						create_ship = {
-							name = "ISS II"
-							design = "Space Station"
-						}
-						set_location = PREV
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+						effect = {
+							set_owner = last_created_country
+							create_ship = {
+								name = "ISS II"
+								design = "Space Station"
+							}
+							set_location = PREV
 						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+					while = {
+						count = 5
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
 						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+					while = {
+						count = 3
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_factory"
+							add_resource = {
+								resource = minerals
+								amount = 1
+								replace = yes
+							}	
 						}
 					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
+					while = {
+						count = 4
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}
 						}
 					}
 					random_tile = {
@@ -944,7 +666,7 @@ special_init_03 = {
 					create_species = {
 						name = Human
 						plural = Humans
-						class = "MAM"
+						class = "HUM"
 						portrait = "human"
 						traits = {
 							trait = "trait_quick_learners"
@@ -1024,174 +746,50 @@ special_init_03 = {
 						species = last_created
 						type = "industrial_army"
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+					while = {
+						count = 6
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
 						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+					while = {
+						count = 4
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_factory"
+							add_resource = {
+								resource = minerals
+								amount = 1
+								replace = yes
+							}	
 						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}	
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}							
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
+					while = {
+						count = 4
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}							
 						}
 					}
 					random_tile = {
@@ -1207,7 +805,7 @@ special_init_03 = {
 					create_species = {
 						name = Human
 						plural = Humans
-						class = "MAM"
+						class = "HUM"
 						portrait = "human"
 						homeworld = THIS
 						traits = {
@@ -1254,107 +852,43 @@ special_init_03 = {
 							ethic = "ethic_collectivist"
 						}
 					}
-					create_army = {
-						name = "Feudal Levies"
-						owner = last_created
-						species = last_created
-						type = "primitive_army"
-					}
-					create_army = {
-						name = "Feudal Levies"
-						owner = last_created
-						species = last_created
-						type = "primitive_army"
-					}
-					create_army = {
-						name = "Feudal Levies"
-						owner = last_created
-						species = last_created
-						type = "primitive_army"
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
+					while = {
+						count = 3
+						create_army = {
+							name = "Feudal Levies"
+							owner = last_created
 							species = last_created
-							ethos = owner
+							type = "primitive_army"
 						}
 					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}
-					random_tile = {
-						limit = {
-							has_blocker = no
-							has_grown_pop = no
-							has_growing_pop = no
-						}
-						create_pop = {
-							species = last_created
-							ethos = owner
+					while = {
+						count = 3
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
 						}
 					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
-						}
-					}
-					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
-						}
-						set_building = "building_primitive_farm"
-						add_resource = {
-							resource = food
-							amount = 1
-							replace = yes
+					while = {
+						count = 3
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}
 						}
 					}
 					random_tile = {
@@ -1686,7 +1220,7 @@ special_init_05 = {
 	class = "rl_standard_stars"
 	
 	usage = misc_system_init
-	usage_odds = 4
+	usage_odds = 2
 
 	flags = { stone_age_primitive_system }
 	
@@ -1757,7 +1291,7 @@ special_init_06 = {
 	asteroids_distance = 150
 	usage = misc_system_init
 	max_instances = 1
-	spawn_chance = 10
+	scaled_spawn_chance = 3	# scales by galaxy size (1000 stars = 10x base)
 	
 	flags = { guardians_of_zanaam hostile_system }
 	
@@ -1789,6 +1323,7 @@ special_init_06 = {
 		size = 25
 		
 		init_effect = {
+			save_event_target_as = zanaam_planet
 			random_tile = {
 				limit = { has_blocker = no has_building = no }
 				set_building = "building_zanaam_obelisk"
@@ -1799,107 +1334,109 @@ special_init_06 = {
 			}
 			last_created_country = {
 				set_country_flag = zanaam_country
-				create_fleet = { name = "Guardians of Zanaam" }
-				last_created_fleet = {
-					set_owner = PREV
-					set_fleet_flag = zanaam_fleet
-					create_ship = {
-						name = "Defensive Alpha"
-						design = "Guardian"
+				create_fleet = {
+					name = "Guardians of Zanaam"
+					effect = {
+						set_owner = PREV
+						set_fleet_flag = zanaam_fleet
+						create_ship = {
+							name = "Defensive Alpha"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Beta"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Gamma"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Delta"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Epsilon"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Zeta"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Eta"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Theta"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Iota"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Kappa"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Lambda"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Mu"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Nu"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Ksi"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Omicron"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Pi"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Rho"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Sigma"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Tau"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Upsilon"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Phi"
+							design = "Guardian"
+						}							
+						create_ship = {
+							name = "Defensive Chi"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Psi"
+							design = "Guardian"
+						}
+						create_ship = {
+							name = "Defensive Omega"
+							design = "Guardian"
+						}					
+						set_location = event_target:zanaam_planet
 					}
-					create_ship = {
-						name = "Defensive Beta"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Gamma"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Delta"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Epsilon"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Zeta"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Eta"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Theta"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Iota"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Kappa"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Lambda"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Mu"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Nu"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Ksi"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Omicron"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Pi"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Rho"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Sigma"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Tau"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Upsilon"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Phi"
-						design = "Guardian"
-					}							
-					create_ship = {
-						name = "Defensive Chi"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Psi"
-						design = "Guardian"
-					}
-					create_ship = {
-						name = "Defensive Omega"
-						design = "Guardian"
-					}					
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -1926,29 +1463,12 @@ special_init_06 = {
 	}
 	
 	init_effect = {
-		create_ambient_object = {
-			type = "abandoned_ship_2_object"
-			location = solar_system
-		}
-		create_ambient_object = {
-			type = "abandoned_ship_2_object"
-			location = solar_system
-		}
-		create_ambient_object = {
-			type = "abandoned_ship_2_object"
-			location = solar_system
-		}
-		create_ambient_object = {
-			type = "abandoned_ship_2_object"
-			location = solar_system
-		}
-		create_ambient_object = {
-			type = "abandoned_ship_2_object"
-			location = solar_system
-		}
-		create_ambient_object = {
-			type = "abandoned_ship_2_object"
-			location = solar_system
+		while = {
+			count = 6
+			create_ambient_object = {
+				type = "abandoned_ship_2_object"
+				location = solar_system
+			}
 		}
 	}
 }
@@ -1977,200 +1497,76 @@ special_init_07 = {
 				type = faction
 			}
 			last_created_country = {
-				create_fleet = { name = "Shards of Obsidian" }
-				last_created_fleet = {
-					set_owner = PREV
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 70
-						angle = 90
+				create_fleet = {
+					name = "Shards of Obsidian"
+					effect = {
+						set_owner = PREV
+						while = {
+							count = 10
+							create_ship = {
+								name = "Shardling"
+								design = "Small Crystal Entity Blue"
+							}
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 70
+							angle = 90
+						}
 					}
 				}
-				create_fleet = { name = "Shards of Diamond" }
-				last_created_fleet = {
-					set_owner = PREV
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 70
-						angle = 180
+				create_fleet = {
+					name = "Shards of Diamond"
+					effect = {
+						set_owner = PREV
+						while = {
+							count = 10
+							create_ship = {
+								name = "Shardling"
+								design = "Small Crystal Entity Blue"
+							}
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 70
+							angle = 180
+						}
 					}
 				}
-				create_fleet = { name = "Shards of Onyx" }
-				last_created_fleet = {
-					set_owner = PREV
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 70
-						angle = 270
+				create_fleet = {
+					name = "Shards of Onyx"
+					effect = {
+						set_owner = PREV
+						while = {
+							count = 10
+							create_ship = {
+								name = "Shardling"
+								design = "Small Crystal Entity Blue"
+							}
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 70
+							angle = 270
+						}
 					}
 				}
-				create_fleet = { name = "Shards of Sapphire" }
-				last_created_fleet = {
-					set_owner = PREV
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					create_ship = {
-						name = "Shardling"
-						design = "Small Crystal Entity Blue"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 70
-						angle = 0
+				create_fleet = {
+					name = "Shards of Sapphire"
+					effect = {
+						set_owner = PREV
+						while = {
+							count = 10
+							create_ship = {
+								name = "Shardling"
+								design = "Small Crystal Entity Blue"
+							}
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 70
+							angle = 0
+						}
 					}
 				}
 			}
@@ -2302,7 +1698,7 @@ sanctuary_system = {
 	usage_odds = 2000000
 	max_instances = 1
 	flags = { sanctuary_system }
-	spawn_chance = 70
+	scaled_spawn_chance = 2	# scales by galaxy size (1000 stars = 10x base)
 	
 	name = "Sanctuary"
 
@@ -2319,76 +1715,91 @@ sanctuary_system = {
 			}
 			last_created_country = {
 				save_event_target_as = sanctuary
-				create_fleet = { name = "Sanctuary Core" }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = "Administrator"
-						design = "Sanctuary Core"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 25
-						angle = random 
-					}
-					save_event_target_as = sanctuary_core
-					set_fleet_flag = sanctuary_core
-				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = event_target:sanctuary_core
-						distance = 8
-						angle = 90
+				create_fleet = {
+					name = "Sanctuary Core"
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = "Administrator"
+							design = "Sanctuary Core"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 25
+							angle = random 
+						}
+						add_modifier = {
+							modifier = sanctuary_power
+							days = -1
+						}						
+						save_event_target_as = sanctuary_core
+						set_fleet_flag = sanctuary_core
 					}
 				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = event_target:sanctuary_core
-						distance = 8
-						angle = 180
-					}
-				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = event_target:sanctuary_core
-						distance = 8
-						angle = 270
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = event_target:sanctuary_core
+							distance = 8
+							angle = 90
+						}
 					}
 				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = event_target:sanctuary_core
+							distance = 8
+							angle = 180
+						}
 					}
-					set_location = {
-						target = event_target:sanctuary_core
-						distance = 8
-						angle = 0
+				}
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = event_target:sanctuary_core
+							distance = 8
+							angle = 270
+						}
+					}
+				}
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = event_target:sanctuary_core
+							distance = 8
+							angle = 0
+						}
 					}
 				}
 			}
@@ -2409,18 +1820,20 @@ sanctuary_system = {
 			prevent_anomaly = yes
 			
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-1"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 1
-						angle = random 
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-1"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 1
+							angle = random 
+						}
 					}
 				}
 			}
@@ -2484,37 +1897,18 @@ sanctuary_system = {
 			}
 			set_owner = last_created_country
 			set_capital = yes
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
+			while = {
+				count = 3
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = last_created
+						ethos = owner
+					}
 				}
 			}
 			if = {
@@ -2641,70 +2035,21 @@ sanctuary_system = {
 					}						
 				}				
 			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}		
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
+			while = {
+				count = 5
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_farm"
+					add_resource = {
+						resource = food
+						amount = 1
+						replace = yes
+					}						
+				}		
 			}			
 		}
 	}
@@ -2716,15 +2061,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -2737,15 +2084,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -2762,18 +2111,20 @@ sanctuary_system = {
 			prevent_anomaly = yes
 			
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-1"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 1
-						angle = random 
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-1"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 1
+							angle = random 
+						}
 					}
 				}
 			}
@@ -2837,37 +2188,18 @@ sanctuary_system = {
 			}
 			set_owner = last_created_country
 			set_capital = yes
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
+			while = {
+				count = 3
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = last_created
+						ethos = owner
+					}
 				}
 			}
 			if = {
@@ -2966,99 +2298,40 @@ sanctuary_system = {
 						species = last_created
 						ethos = owner
 					}
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
+				}
+				while = {
+					count = 2
+					random_tile = {
+						limit = { 
+							has_blocker = no 
+							has_building = no 
+							has_grown_pop = yes
+						}
+						set_building = "building_primitive_factory"
+						add_resource = {
+							resource = minerals
+							amount = 1
+							replace = yes
+						}						
+					}	
 				}				
-			}			
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}			
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}				
+			}
+			while = {
+				count = 5
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_farm"
+					add_resource = {
+						resource = food
+						amount = 1
+						replace = yes
+					}						
+				}			
+			}						
 		}
 	}
 	planet = {
@@ -3069,15 +2342,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -3090,15 +2365,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -3115,18 +2392,20 @@ sanctuary_system = {
 			prevent_anomaly = yes
 			
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-1"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 1
-						angle = random 
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-1"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 1
+							angle = random 
+						}
 					}
 				}
 			}
@@ -3190,37 +2469,18 @@ sanctuary_system = {
 			}
 			set_owner = last_created_country
 			set_capital = yes
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
+			while = {
+				count = 3
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = last_created
+						ethos = owner
+					}
 				}
 			}
 			if = {
@@ -3298,119 +2558,52 @@ sanctuary_system = {
 						has_country_flag = steam_age
 					}					
 				}
-				random_tile = {
-					limit = {
-						has_blocker = no
-						has_grown_pop = no
-						has_growing_pop = no
-					}
-					create_pop = {
-						species = last_created
-						ethos = owner
-					}
-				}	
-				random_tile = {
-					limit = {
-						has_blocker = no
-						has_grown_pop = no
-						has_growing_pop = no
-					}
-					create_pop = {
-						species = last_created
-						ethos = owner
-					}
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
+				while = {
+					count = 2
+					random_tile = {
+						limit = {
+							has_blocker = no
+							has_grown_pop = no
+							has_growing_pop = no
+						}
+						create_pop = {
+							species = last_created
+							ethos = owner
+						}
+					}	
+				}
+				while = {
+					count = 2
+					random_tile = {
+						limit = { 
+							has_blocker = no 
+							has_building = no 
+							has_grown_pop = yes
+						}
+						set_building = "building_primitive_factory"
+						add_resource = {
+							resource = minerals
+							amount = 1
+							replace = yes
+						}						
+					}	
 				}				
-			}		
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}		
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
+			}
+			while = {
+				count = 5
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_farm"
+					add_resource = {
+						resource = food
+						amount = 1
+						replace = yes
+					}						
+				}		
 			}				
 		}
 	}
@@ -3422,15 +2615,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -3460,18 +2655,20 @@ sanctuary_system = {
 			prevent_anomaly = yes
 			
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-1"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREVPREV
-						distance = 1
-						angle = random 
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-1"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = {
+							target = PREVPREV
+							distance = 1
+							angle = random 
+						}
 					}
 				}
 			}
@@ -3535,37 +2732,18 @@ sanctuary_system = {
 			}
 			set_owner = last_created_country
 			set_capital = yes
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = last_created
-					ethos = owner
+			while = {
+				count = 3
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = last_created
+						ethos = owner
+					}
 				}
 			}
 			if = {
@@ -3643,120 +2821,53 @@ sanctuary_system = {
 						has_country_flag = steam_age
 					}					
 				}
-				random_tile = {
-					limit = {
-						has_blocker = no
-						has_grown_pop = no
-						has_growing_pop = no
-					}
-					create_pop = {
-						species = last_created
-						ethos = owner
-					}
-				}	
-				random_tile = {
-					limit = {
-						has_blocker = no
-						has_grown_pop = no
-						has_growing_pop = no
-					}
-					create_pop = {
-						species = last_created
-						ethos = owner
-					}
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
-				}	
+				while = {
+					count = 2
+					random_tile = {
+						limit = {
+							has_blocker = no
+							has_grown_pop = no
+							has_growing_pop = no
+						}
+						create_pop = {
+							species = last_created
+							ethos = owner
+						}
+					}	
+				}
+				while = {
+					count = 2
+					random_tile = {
+						limit = { 
+							has_blocker = no 
+							has_building = no 
+							has_grown_pop = yes
+						}
+						set_building = "building_primitive_factory"
+						add_resource = {
+							resource = minerals
+							amount = 1
+							replace = yes
+						}						
+					}	
+				}		
+			}
+			while = {
+				count = 5
 				random_tile = {
 					limit = { 
 						has_blocker = no 
 						has_building = no 
 						has_grown_pop = yes
 					}
-					set_building = "building_primitive_factory"
+					set_building = "building_primitive_farm"
 					add_resource = {
-						resource = minerals
+						resource = food
 						amount = 1
 						replace = yes
 					}						
-				}				
-			}			
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}			
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}	
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = yes
-				}
-				set_building = "building_primitive_farm"
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}						
-			}				
+				}			
+			}		
 		}
 	}
 	planet = {
@@ -3767,15 +2878,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -3788,15 +2901,17 @@ sanctuary_system = {
 		
 		init_effect = {
 			last_created_country = {
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = event_target:sanctuary
-					create_ship = {
-						name = random
-						design = "Defensive A-2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					settings = { spawn_debris = no }
+					effect = {
+						set_owner = event_target:sanctuary
+						create_ship = {
+							name = random
+							design = "Defensive A-2"
+							graphical_culture = "fallen_empire_03"
+						}
+						set_location = PREVPREV
 					}
-					set_location = PREVPREV
 				}
 			}
 		}
@@ -4034,27 +3149,22 @@ com_sol_system = {
 				limit = { has_blocker = no has_building = no }
 				set_blocker = "tb_decrepit_dwellings"
 				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}					
-			}
-			random_tile = {
-				limit = { has_blocker = no has_building = no }
-				set_blocker = "tb_decrepit_dwellings"
-				add_resource = {
 					resource = energy
 					amount = 1
 					replace = yes
 				}				
 			}
-			random_tile = {
-				limit = { has_blocker = no has_building = no }
-				add_resource = {
-					resource = food
-					amount = 1
-					replace = yes
-				}				
+			while = {
+				count = 2
+				random_tile = {
+					limit = { has_blocker = no has_building = no }
+					set_blocker = "tb_decrepit_dwellings"
+					add_resource = {
+						resource = food
+						amount = 1
+						replace = yes
+					}					
+				}
 			}			
 			random_country = {
 				limit = { has_country_flag = human_2 }
@@ -4064,7 +3174,7 @@ com_sol_system = {
 				name = "United Nations of Earth"
 				government = "indirect_democracy"
 				species = event_target:human_species
-				name_list = "Human"
+				name_list = "HUM3"
 				#ship_prefix = "UNS"
 				ethos = {
 					ethic = "ethic_xenophile"
@@ -4088,81 +3198,18 @@ com_sol_system = {
 				}
 				type = default
 			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
-				}
-			}
-			random_tile = {
-				limit = {
-					has_blocker = no
-					has_grown_pop = no
-					has_growing_pop = no
-				}
-				create_pop = {
-					species = event_target:human_species
-					ethos = owner
+			while = {
+				count = 7
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = event_target:human_species
+						ethos = owner
+					}
 				}
 			}
 			set_owner = last_created_country
@@ -4622,113 +3669,41 @@ sentinel_system = {
 				set_building = "building_capital_3"
 				create_pop = { species = last_created }
 			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
+			while = {
+				count = 4
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = no
+					}
+					set_building = "building_ancient_factory"
+					create_pop = { species = last_created }
 				}
-				set_building = "building_ancient_factory"
-				create_pop = { species = last_created }
 			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
+			while = {
+				count = 4
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = no
+					}
+					set_building = "building_hydroponics_farm_3"
+					create_pop = { species = last_created }
 				}
-				set_building = "building_ancient_factory"
-				create_pop = { species = last_created }
 			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
+			while = {
+				count = 4
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = no
+					}
+					set_building = "building_power_plant_3"
+					create_pop = { species = last_created }
 				}
-				set_building = "building_ancient_factory"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no
-					has_grown_pop = no					
-				}
-				set_building = "building_ancient_factory"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_hydroponics_farm_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_hydroponics_farm_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_hydroponics_farm_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_hydroponics_farm_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_power_plant_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_power_plant_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_power_plant_3"
-				create_pop = { species = last_created }
-			}
-			random_tile = {
-				limit = { 
-					has_blocker = no 
-					has_building = no 
-					has_grown_pop = no
-				}
-				set_building = "building_power_plant_3"
-				create_pop = { species = last_created }
 			}
 			set_name = "Sentinel Alpha"
 			create_army = {
@@ -4737,58 +3712,58 @@ sentinel_system = {
 				species = last_created_country
 				type = "psionic_army"
 			}
-			create_army = {
-				name = random
-				owner = last_created_country
-				species = last_created_country
-				type = "robotic_army"
-			}
-			create_army = {
-				name = random
-				owner = last_created_country
-				species = last_created_country
-				type = "robotic_army"
+			while = {
+				count = 2
+				create_army = {
+					name = random
+					owner = last_created_country
+					species = last_created_country
+					type = "robotic_army"
+				}
 			}
 			
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = "Sentinel Base"
-					design = "Vigil"
-				}
-				set_location = {
-					target = PREV
-					distance = 10
-					angle = 210
-				}
-			}
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = "Fortress G-12"
-					design = "Sentinel-1"
-					graphical_culture = "mammalian_01"
-				}
-				set_location = {
-					target = PREV
-					distance = 20
-					angle = 40
+			create_fleet = {
+				effect = {
+					set_owner = last_created_country
+					create_ship = {
+						name = "Sentinel Base"
+						design = "Vigil"
+					}
+					set_location = {
+						target = PREV
+						distance = 10
+						angle = 210
+					}
 				}
 			}
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = "Fortress A-59"
-					design = "Omega"
-					graphical_culture = "fallen_empire_01"
+			create_fleet = {
+				effect = {
+					set_owner = last_created_country
+					create_ship = {
+						name = "Fortress G-12"
+						design = "Sentinel-1"
+						graphical_culture = "mammalian_01"
+					}
+					set_location = {
+						target = PREV
+						distance = 20
+						angle = 40
+					}
 				}
-				set_location = {
-					target = PREV
-					distance = 10
-					angle = 340
+			}
+			create_fleet = {
+				effect = {
+					set_owner = last_created_country
+					create_ship = {
+						name = "Fortress A-59"
+						design = "Omega"
+						graphical_culture = "fallen_empire_01"
+					}
+					set_location = {
+						target = PREV
+						distance = 10
+						angle = 340
+					}
 				}
 			}
 			last_created_country = {
@@ -4802,136 +3777,71 @@ sentinel_system = {
 					}
 				}
 			}
-			create_fleet = { name = "Sentinel Battle Fleet" }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = random
-					design = "Judgment"
-					graphical_culture = "fallen_empire_01"
+			create_fleet = {
+				name = "Sentinel Battle Fleet"
+				effect = {
+					set_owner = last_created_country
+					create_ship_design = {
+						design = "Starfang"
+						ftl = root
+					}
+					while = {
+						count = 20
+						create_ship = {
+							name = random
+							design = last_created_design
+						}
+					}
+					create_ship_design = {
+						design = "Voidstalker"
+						ftl = root
+					}
+					while = {
+						count = 10
+						create_ship = {
+							name = random
+							design = last_created_design
+						}
+					}
+					create_ship_design = {
+						design = "Judgment"
+						ftl = root
+					}
+					while = {
+						count = 12
+						create_ship = {
+							name = random
+							design = last_created_design
+						}
+					}
+					set_location = {
+						target = PREV
+						distance = 25
+						angle = random 
+					}
+					
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = return_point
 				}
-				assign_leader = last_created_leader
-				create_ship = {
-					name = random
-					design = "Avatar"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Judgment"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Avatar"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Avatar"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Avatar"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Avatar"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Avatar"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Voidstalker"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Voidstalker"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Voidstalker"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Starfang"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Starfang"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eclipse"
-					graphical_culture = "fallen_empire_01"
-				}
-				set_location = {
-					target = PREV
-					distance = 25
-					angle = random 
-				}
-				
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = return_point
 			}
 		}
 		
 		random_system_planet = {
 			limit = { is_planet_class = pc_asteroid }
 			set_planet_flag = ast_1
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = "Early Warning X-34"
-					design = "Sentry"
-				}
-				set_location = {
-					target = PREV
-					distance = 10
-					angle = random
+			create_fleet = {
+				effect = {
+					set_owner = last_created_country
+					create_ship = {
+						name = "Early Warning X-34"
+						design = "Sentry"
+					}
+					set_location = {
+						target = PREV
+						distance = 10
+						angle = random
+					}
 				}
 			}
 		}
@@ -4941,52 +3851,55 @@ sentinel_system = {
 				is_planet_class = pc_asteroid
 				NOT = { has_planet_flag = ast_1 }
 			}
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = "Refugee Site Alpha"
-					design = "PR-417"
-					graphical_culture = "pirate_01"
-				}
-				set_location = {
-					target = PREV
-					distance = 5
-					angle = random
+			create_fleet = {
+				effect = {
+					set_owner = last_created_country
+					create_ship = {
+						name = "Refugee Site Alpha"
+						design = "PR-417"
+						graphical_culture = "pirate_01"
+					}
+					set_location = {
+						target = PREV
+						distance = 5
+						angle = random
+					}
 				}
 			}
-			create_fleet = { name = "Refugee Fleet" }
-			last_created_fleet = {
-				set_owner = last_created_country
-				create_ship = {
-					name = "Gray Moon"
-					design = "C1"
-				}
-				last_created_ship = { set_disabled = yes }
-				create_ship = {
-					name = "Princess Kolos"
-					design = "C1"
-				}
-				last_created_ship = { set_disabled = yes }
-				create_ship = {
-					name = "Kobyar Miru"
-					design = "C2"
-				}
-				last_created_ship = { set_disabled = yes }
-				create_ship = {
-					name = "Deep Eyes"
-					design = "C2"
-				}
-				last_created_ship = { set_disabled = yes }
-				create_ship = {
-					name = "Stellar Queen"
-					design = "C2"
-				}
-				last_created_ship = { set_disabled = yes }
-				set_location = {
-					target = PREV
-					distance = 10
-					angle = random
+			create_fleet = {
+				name = "Refugee Fleet"
+				effect = {
+					set_owner = last_created_country
+					create_ship = {
+						name = "Gray Moon"
+						design = "C1"
+						effect = { set_disabled = yes }
+					}
+					create_ship = {
+						name = "Princess Kolos"
+						design = "C1"
+						effect = { set_disabled = yes }
+					}
+					create_ship = {
+						name = "Kobyar Miru"
+						design = "C2"
+						effect = { set_disabled = yes }
+					}
+					create_ship = {
+						name = "Deep Eyes"
+						design = "C2"
+						effect = { set_disabled = yes }
+					}
+					create_ship = {
+						name = "Stellar Queen"
+						design = "C2"
+						effect = { set_disabled = yes }
+					}
+					set_location = {
+						target = PREV
+						distance = 10
+						angle = random
+					}
 				}
 			}
 		}
@@ -5055,729 +3968,4 @@ crystal_manufactory_system = {
 			add_anomaly = CRYSTAL_MANUFACTORY_CAT
 		}
 	}
-}
-
-## Space Nomads origin point, based on basic_init_02
-#space_nomads_01 = {
-#	class = "rl_standard_stars"
-#	asteroids_distance = 95
-#	
-#	usage = misc_system_init
-#	usage_odds = 9999
-#	max_instances = 1
-#	spawn_chance = 25
-#
-#	flags = { nomad01_system }
-#	
-#	planet = {
-#		count = 1
-#		class = star
-#		orbit_distance = 0
-#		orbit_angle = 1
-#		size = { min = 20 max = 30 }
-#		has_ring = no
-#	}
-#	
-#	change_orbit = 30
-#	
-#	planet = {
-#		count = 2
-#		orbit_distance = 20
-#		orbit_angle = { min = 90 max = 270 }
-#	}
-#	
-#	change_orbit = 25
-#	
-#	planet = {
-#		count = { min = 1 max = 4 }
-#		class = random_asteroid
-#		orbit_distance = 0
-#		orbit_angle = { min = 90 max = 270 }
-#	}
-#	
-#	planet = {
-#		count = { min = 2 max = 5 }
-#		orbit_distance = 25
-#		orbit_angle = { min = 90 max = 270 }
-#		
-#		change_orbit = @base_moon_distance
-#		
-#		moon = {
-#			count = { min = 0 max = 1 }
-#			orbit_angle = { min = 90 max = 270 }
-#			orbit_distance = 5
-#		}
-#	}
-#
-#	init_effect = {
-#		if = {
-#			limit = { NOT = { exists = event_target:nomad01_country } }
-#			create_species = {
-#				name = Nomad
-#				class = random
-#				portrait = random
-#				traits = random
-#				immortal = yes
-#			}
-#			create_country = {
-#				name = "Space Nomads"
-#				type = nomad
-#				species = last_created
-#				flag = {
-#					icon = {
-#						category = "pointy"
-#						file = "flag_pointy_15.dds"
-#					}
-#					background= {
-#						category = "backgrounds"
-#						file = "horizontal_stripe.dds"
-#					}
-#					colors={
-#						"grey"
-#						"dark_teal"
-#						"null"
-#						"null"
-#					}
-#				}
-#			}
-#			last_created_country = {
-#				set_country_flag = nomad01_country_flag
-#				save_global_event_target_as = nomad01_country
-#				#last_created_species = { save_event_target_as = nomad_leader_species }
-#			}
-#		}
-#		random_system_planet = { save_event_target_as = nomad_spawn }
-#		event_target:nomad01_country = {
-#			create_leader = {
-#				type = admiral
-#				species = owner_main_species
-#				name = random
-#				skill = 100
-#			}
-#			create_fleet = { name = "Nomadic Armada" }
-#			last_created_fleet = {
-#				set_owner = PREV
-#				set_fleet_stance = passive
-#				set_aggro_range_measure_from = self
-#				set_aggro_range = 0
-#				#create_ship_design = {
-#				#	design = Diaspora
-#				#	ftl = hyperdrive
-#				#}
-#				#create_ship = {
-#				#	name = "Home Five"
-#				#	design = "Diaspora"
-#				#}
-#				#create_ship = {
-#				#	name = "Home Six"
-#				#	design = "Diaspora"
-#				#}
-#				#create_ship_design = {
-#				#	design = Defender
-#				#	#graphical_culture = "pirate_01"
-#				#	ftl = hyperdrive
-#				#}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = "Defender"
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				create_ship = {
-#					name = "Protector"
-#					design = Defender
-#					graphical_culture = "pirate_01"
-#				}
-#				#create_ship_design = {
-#				#	design = Diaspora
-#				#	ftl = hyperdrive
-#				#}
-#				create_ship = {
-#					name = "Home One"
-#					design = Diaspora
-#				}
-#				create_ship = {
-#					name = "Home Two"
-#					design = Diaspora
-#				}
-#				create_ship = {
-#					name = "Home Three"
-#					design = Diaspora
-#				}
-#				create_ship = {
-#					name = "Home Four"
-#					design = Diaspora
-#				}
-#				#create_ship_design = {
-#				#	design = Guardian
-#				#	#graphical_culture = "pirate_01"
-#				#	ftl = hyperdrive
-#				#}
-#				#create_ship = {
-#				#	name = "Guardian"
-#				#	design = "Guardian"
-#				#	graphical_culture = "pirate_01"
-#				#}
-#				#create_ship = {
-#				#	name = "Guardian"
-#				#	design = "Guardian"
-#				#	graphical_culture = "pirate_01"
-#				#}
-#				#create_ship = {
-#				#	name = "Guardian"
-#				#	design = "Guardian"
-#				#	graphical_culture = "pirate_01"
-#				#}
-#				#create_ship = {
-#				#	name = "Guardian"
-#				#	design = "Guardian"
-#				#	graphical_culture = "pirate_01"
-#				#}
-#				assign_leader = last_created_leader
-#				set_location = event_target:nomad_spawn
-#				
-#				queue_actions = {
-#					repeat = {
-#						find_random_system = {
-#							trigger = {
-#								id = nomad.1.trigger.1
-#								NOT = { 
-#									has_star_flag = hostile_system 
-#								}
-#								#any_planet = {
-#								#	OR = {
-#								#		has_mining_station = yes
-#								#		has_research_station = yes
-#								#	}
-#								#	exists = controller
-#								#	controller = { is_same_value = event_target:pirate_target }
-#								#}
-#								distance = {
-#									source = PREV
-#									max_distance = 50
-#									min_distance = 5
-#								}
-#							}
-#							found_system = {
-#								move_to = this
-#							}	
-#						}
-#						find_closest_planet = {
-#							trigger = {
-#								id = nomad.1.trigger.2
-#								is_star = yes
-#							}
-#							found_planet = {
-#								orbit_planet = this
-#								wait = {
-#									duration = 20
-#								}
-#							}
-#						}
-#						find_random_system = {
-#							trigger = {
-#								id = nomad.1.trigger.3
-#								any_planet = {
-#									is_star = yes
-#								}
-#							}
-#							found_system = {
-#								move_to = this
-#							}	
-#						}
-#						find_closest_planet = {
-#							trigger = {
-#								id = nomad.1.trigger.4
-#								is_star = yes
-#							}
-#							found_planet = {
-#								orbit_planet = this
-#								wait = {
-#									duration = 20
-#									random = 10
-#								}
-#							}
-#						}
-#					}
-#				}
-#			}
-#		}
-#	}
-#}
-
-### Abandoned Ringworlds
-##Two Living Sections
-abring_one_system = {
-	asteroids_distance = 150
-	usage = misc_system_init
-	usage_odds = 1
-	max_instances = 2
-
-	class = "sc_g"
-	
-	planet = {
-		class = star
-		orbit_distance = 0
-	}
-	
-	change_orbit = 45
-	
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Section I"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support I"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam"
-		name = "Link I"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_habitable_damaged"
-		name = "Section II"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes
-
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support II"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam"
-		name = "Link II"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Section III"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes			
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support III"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam_damaged"
-		name = "Link III"
-		orbit_angle = 30
-		orbit_distance = 0
-		
-		init_effect = {
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable_damaged"
-		name = "Section IV"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes
-
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support IV"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam"
-		name = "Link IV"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	
-	change_orbit = 105
-}
-
-##One Living Sections
-abring_two_system = {
-	asteroids_distance = 150
-	usage = misc_system_init
-	usage_odds = 1
-	max_instances = 3
-
-	class = "sc_g"
-	
-	planet = {
-		class = star
-		orbit_distance = 0
-	}
-	
-	change_orbit = 45
-	
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Section I"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support I"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam"
-		name = "Link I"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_habitable_damaged"
-		name = "Section II"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes
-
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support II"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam"
-		name = "Link II"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_habitable_damaged"
-		name = "Section III"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes
-
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support III"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam_damaged"
-		name = "Link III"
-		orbit_angle = 30
-		orbit_distance = 0
-		
-		init_effect = {
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable_damaged"
-		name = "Section IV"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes
-
-			create_ambient_object = {
-				type = "medium_debris_01_object"
-				location = THIS
-			}
-		}
-	}
-	planet = {
-		class = "pc_ringworld_tech"
-		name = "Support IV"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	planet = {
-		class = "pc_ringworld_seam"
-		name = "Link IV"
-		orbit_angle = 30
-		orbit_distance = 0
-	}
-	
-	change_orbit = 105
-}
-
-##Paradise
-abring_three_system = {
-	asteroids_distance = 150
-	usage = misc_system_init
-	usage_odds = 1
-	max_instances = 1
-	
-	name = "Paradise"
-
-	class = "sc_g"
-	
-	planet = {
-		class = star
-		orbit_distance = 0
-	}
-	
-	change_orbit = 45
-	
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Elysium"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Shangri-La"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Asgard"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Jannah"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Yalu"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Tlalocan"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Eden"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Arcadia"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Zion"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Nirvana"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Utopia"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	planet = {
-		class = "pc_ringworld_habitable"
-		name = "Cockaigne"
-		orbit_angle = 30
-		orbit_distance = 0
-		tile_blockers = none
-		modifiers = none
-		
-		init_effect = {
-			prevent_anomaly = yes		
-		}
-	}
-	
-	change_orbit = 105
 }

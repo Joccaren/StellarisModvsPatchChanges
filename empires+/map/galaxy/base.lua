@@ -1,7 +1,7 @@
 -- BASE VALUES FOR GALAXY GENERATION
 
-core_radius_perc = 0.30				-- Core radius is 30% of the galaxy radius
-num_stars_core_perc = 0.15				-- Number of stars in core
+core_radius_perc = 0.25				-- Core radius is 30% of the galaxy radius
+num_stars_core_perc = 0				-- Number of stars in core
 stars_min_dist = 10.0				-- Min distance between stars
 
 countries = {

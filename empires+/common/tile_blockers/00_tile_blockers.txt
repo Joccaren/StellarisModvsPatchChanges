@@ -35,10 +35,6 @@ tb_mountain_range = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_minerals_add = 1
-	}
-	
 	prerequisites = { "tech_tb_mountain_range" }
 }
 
@@ -80,12 +76,6 @@ tb_active_volcano = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_minerals_add = 1
-		resource_food_add = 1
-		resource_energy_add = 1
-	}
-	
 	prerequisites = { "tech_tb_volcano" }
 }
 
@@ -125,10 +115,6 @@ tb_dangerous_wildlife = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-	}
-	
 	prerequisites = { "tech_tb_dangerous_wildlife" }
 }
 
@@ -158,11 +144,6 @@ tb_dense_jungle = {
 					has_modifier = "titanic_life"
 				}
 		}
-	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-		resource_food_add = 1
 	}
 	
 	prerequisites = { "tech_tb_dense_jungle" }
@@ -196,12 +177,6 @@ tb_quicksand_basin = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_food_add = -1
-		resource_minerals_add = -1
-		resource_energy_add = 1
-	}
-	
 	prerequisites = { "tech_tb_quicksand_basin" }
 }
 
@@ -231,11 +206,6 @@ tb_noxious_swamp = {
 					has_modifier = "titanic_life"
 				}
 		}
-	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-		resource_food_add = -1
 	}
 	
 	prerequisites = { "tech_tb_noxious_swamp" }
@@ -269,10 +239,6 @@ tb_massive_glacier = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_food_add = 1
-	}
-	
 	prerequisites = { "tech_tb_massive_glacier" }
 }
 
@@ -302,11 +268,6 @@ tb_toxic_kelp = {
 					has_modifier = "titanic_life"
 				}
 		}
-	}
-	
-	adjacency_bonus = {
-		resource_food_add = -1
-		resource_energy_add = 1
 	}
 	
 	prerequisites = { "tech_tb_toxic_kelp" }
@@ -340,23 +301,12 @@ tb_deep_sinkhole = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
-	
 	prerequisites = { "tech_tb_deep_sinkhole" }
 }
 
 ### SPECIAL
 
 tb_radioactive_wasteland = {
-	time = 100
-	cost = {
-		energy = 50
-		minerals = 50
-	}
-
 	spawn_chance = {
 		modifier = {
 			add = 30
@@ -367,18 +317,11 @@ tb_radioactive_wasteland = {
 	}
 	
 	adjacency_bonus = {
-		resource_society_research_add = 2
-		resource_physics_research_add = 2
+		resource_physics_research_add = 1
 	}
 }
 
 tb_city_ruins = {
-	time = 100
-	cost = {
-		energy = 50
-		minerals = 50
-	}
-
 	spawn_chance = {
 		modifier = {
 			add = 20
@@ -387,6 +330,10 @@ tb_city_ruins = {
 			}
 		}
 	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 1
+	}	
 }
 
 tb_infestation = {
@@ -456,7 +403,7 @@ tb_tribal_settlement = {
 	}
 
 	adjacency_bonus = {
-		resource_society_research_add = 3
+		resource_society_research_add = 1
 	}
 }
 
@@ -484,7 +431,7 @@ tb_wandering_forest_reserve = {
 	}
 
 	adjacency_bonus = {
-		resource_society_research_add = 5
+		resource_society_research_add = 3
 	}
 }
 
@@ -578,6 +525,33 @@ tb_bombarded_land = {
 		minerals = 75
 	}
 	
+	spawn_chance = {
+		modifier = {
+			add = 0
+		}
+	}
+}
+
+tb_xeno_preserve = {
+
+	# Can't be removed
+	cost = { 
+	}
+
+	spawn_chance = {
+		modifier = {
+			add = 0
+		}
+	}
+}
+
+tb_ancient_ruins = {
+	time = 180
+	cost = {
+		energy = 150
+		minerals = 150
+	}
+
 	spawn_chance = {
 		modifier = {
 			add = 0

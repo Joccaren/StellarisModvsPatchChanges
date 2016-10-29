@@ -4,43 +4,61 @@
 
 # Assault Armies
 assault_army = {
-	damage = 1.5
-	health = 1.0
-	morale = 1.0
+	damage = 1.15
+	health = 1.15
+	morale = 1.15
 	assault = yes
-	time = 30
-	maintenance = 0.5
+	time = 90
+	maintenance = 0.33
 	icon_frame = 2
 	cost = {
-		minerals = 90
+		minerals = 60
 	}
-	
 	prerequisites = { "tech_assault_armies" }
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Defense Armies
 defense_army = {
 	defensive = yes
-	time = 30
-	health = 1.25
+	time = 60
+	health = 1.0
 	damage = 1.0
-	morale = 1.5
 	icon_frame = 1
-	maintenance = 0.1
+	maintenance = 0.15
 	
 	cost = {
-		minerals = 60
+		minerals = 30
 	}
 	
 	prerequisites = { "tech_defense_army" }
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Garrison Armies
 garrison_army = {
 	garrison = yes
-	damage = 1.0
-	health = 1.0
-	morale = 1.0
+	damage = 0.50
+	health = 0.75
+	morale = 0.75
 	icon_frame = 5
 	
 	potential = {
@@ -51,9 +69,9 @@ garrison_army = {
 # Rebel Armies
 rebel_army = {
 	rebel = yes
-	damage = 1.33
-	health = 1.0
-	morale = 1.5
+	damage = 0.5
+	health = 0.5
+	morale = 1.0
 	icon_frame = 3
 	
 	potential = {
@@ -64,7 +82,7 @@ rebel_army = {
 # Rebel Slave Armies
 rebel_slave_defense_army = {
 	defensive = yes
-	time = 25
+	time = 60
 	health = 0.80
 	damage = 0.80
 	morale = 1.80
@@ -78,15 +96,15 @@ rebel_slave_defense_army = {
 
 # Slave Armies
 slave_army = {
-	damage = 1.0
-	health = 1.0
-	morale = 0.5
-	time = 15
-	maintenance = 0.0
+	damage = 1.15
+	health = 1.15
+	morale = 1.00
+	time = 60
+	maintenance = 0.25
 	icon_frame = 10
 	
 	cost = {
-		minerals = 30
+		minerals = 20
 	}
 	
 	prerequisites = { "tech_neural_implants" }
@@ -94,19 +112,29 @@ slave_army = {
 	allow = {
 		has_building = "building_slave_processing"
 	}
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Clone Armies
 clone_army = {
-	damage = 1.5
-	health = 1.5
-	morale = 1.5
+	damage = 1.25
+	health = 1.25
+	morale = 1.25
 	time = 30
-	maintenance = 0.5
+	maintenance = 0.33
 	icon_frame = 7
 	
 	cost = {
-		minerals = 90
+		minerals = 60
 	}
 	
 	prerequisites = { "tech_cloning" }
@@ -114,22 +142,31 @@ clone_army = {
 	allow = {
 		has_building = "building_clone_vats"
 	}
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Robotic Armies
 robotic_army = {
 	robotic = yes
-	damage = 1.80
-	health = 1.25
-	morale = 1.75
-	time = 45
-	maintenance = 1.0
+	damage = 1.10
+	health = 2.00
+	time = 90
+	maintenance = 0.50
 	icon_frame = 4
 	has_species = no
 	
 	cost = {
 		minerals = 100
-		energy = 20
+		energy = 15
 	}
 	
 	prerequisites = { "tech_droid_workers" }
@@ -139,16 +176,15 @@ robotic_army = {
 android_army = {
 	robotic = yes
 	damage = 2.00
-	health = 2.25
-	morale = 1.25
-	time = 60
+	health = 2.50
+	time = 120
 	maintenance = 1.00
 	icon_frame = 4
 	has_species = no
 	
 	cost = {
-		minerals = 120
-		energy = 30
+		minerals = 150
+		energy = 20
 	}
 	
 	prerequisites = { "tech_synthetic_workers" }
@@ -156,53 +192,85 @@ android_army = {
 
 # Psionic Armies
 psionic_army = {
-	damage = 1.5
-	health = 1.0
-	morale = 4.0
-	time = 60
-	maintenance = 1
+	damage = 1.75
+	morale_damage = 1.5
+	health = 1.25
+	morale = 3.0
+	time = 360
+	maintenance = 0.8
 	icon_frame = 9
 	
 	cost = {
-		minerals = 100
+		minerals = 250
 		energy = 50
 	}
 	
 	prerequisites = { "tech_telepathy" }
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Xenomorph Armies
 xenomorph_army = {
-	damage = 4.0
-	health = 0.75
-	morale = 0.75
-	time = 45
-	maintenance = 1
+	damage = 2.5
+	morale_damage = 1.15
+	health = 2
+	morale = 1.0
+	time = 360
+	maintenance = 0.75
 	icon_frame = 8
 	
 	cost = {
-		minerals = 100
-		energy = 20
+		minerals = 125
+		energy = 25
 	}
 	
 	prerequisites = { "tech_morphogenetic_field_mastery" }
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Gene Warrior Armies
 gene_warrior_army = {
 	damage = 3.0
-	health = 2.0
-	morale = 1.5
-	time = 75
+	health = 3.0
+	morale = 2.0
+	time = 360
 	maintenance = 1.0
 	icon_frame = 6
 	
 	cost = {
-		minerals = 150
-		energy = 30
+		minerals = 350
+		energy = 50
 	}
 	
 	prerequisites = { "tech_gene_seed_purification" }
+	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
+	}
 }
 
 # Primitive Armies
@@ -210,7 +278,7 @@ primitive_army = {
 	defensive = yes
 	damage = 0.1
 	health = 0.5
-	morale = 0.2
+	morale = 0.8
 	icon_frame = 5
 	
 	potential = {
@@ -222,7 +290,7 @@ primitive_army = {
 industrial_army = {
 	defensive = yes
 	damage = 0.4
-	health = 0.8
+	health = 0.5
 	morale = 0.8
 	icon_frame = 5
 	
@@ -234,7 +302,7 @@ industrial_army = {
 # Post-Atomic Armies
 postatomic_army = {
 	defensive = yes
-	damage = 0.8
+	damage = 0.6
 	health = 1
 	morale = 1
 	icon_frame = 5
@@ -247,8 +315,9 @@ postatomic_army = {
 # Mutant Horror Armies
 mutant_army = {
 	damage = 1.5
-	health = 1.5
-	morale = 1.5
+	morale_damage = 1.5
+	health = 2
+	morale = 1.0
 	icon_frame = 8
 	has_species = no
 	
@@ -276,15 +345,15 @@ swarm_army = {
 
 # Elite Guard Armies
 elite_guard_army = {
-	damage = 1.5
-	health = 1.5
-	morale = 2.00
+	damage = 1.75
+	health = 1.75
+	morale = 1.75
 	assault = yes
-	time = 45
-	maintenance = 0
+	time = 115
+	maintenance = 0.5
 	icon_frame = 2
 	cost = {
-		minerals = 75
+		minerals = 115
 		energy = 15
 	}
 
@@ -293,8 +362,8 @@ elite_guard_army = {
 	potential = {
 		owner = {
 			OR = {
-				has_government = military_dictatorship
-				has_government = martial_empire
+				has_government = despotic_hegemony
+				has_government = ai_overlordship
 			}
 			exists = ruler
 			ruler = {
@@ -341,16 +410,24 @@ titanic_assault_army = {
 	health = 5.0
 	morale = 2.0
 	time = 90
-	maintenance = 1.5
+	maintenance = 1.0
 	icon_frame = 8
 	assault = yes
 	
 	cost = {
-		minerals = 200
-		energy = 60
+		minerals = 350
+		energy = 50
 	}
 	
 	potential = {
+		from = {
+			NOR = {
+				is_species = "ROBOT_POP_SPECIES_1"
+				is_species = "ROBOT_POP_SPECIES_2"
+				is_species = "ROBOT_POP_SPECIES_3"
+				is_sentient = no
+			}
+		}
 		custom_tooltip = {
 			text = titanic_troop_limit_tooltip
 			planet = { has_planet_flag = titanic_life_can_build }
@@ -397,11 +474,11 @@ titanic_assault_army = {
 
 #Can't be built, is spawned on Titanic life planets after special project + event. Partly as reward, partly to ensure having this on multiple planets is always useful.
 titanic_guardian_army = {
-	damage = 1.5
+	damage = 2.0
 	health = 8.0
-	morale = 3.0
+	morale = 2.0
 	time = 5
-	maintenance = 1.5
+	maintenance = 1.0
 	icon_frame = 8
 
 	
