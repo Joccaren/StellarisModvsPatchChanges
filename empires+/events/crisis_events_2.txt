@@ -20,7 +20,6 @@ country_event = {
 		is_crises_allowed = yes
 		NOT = { 
 			has_global_flag = extradimensional_invasion_happened
-			has_global_flag = galactic_crisis_happened
 		}
 		#is_ai = no
 		is_country_type = default
@@ -1519,7 +1518,7 @@ country_event = {
 	trigger = {
 		is_country_type = extradimensional
 		NOT = { has_global_flag = extradimensional_second_portal }
-		galaxy_percentage > 0.20
+		galaxy_percentage > 0.15
 	}
 	
 	mean_time_to_happen = {
@@ -2297,7 +2296,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 280
+		months = 120
 	}
 	
 	immediate = {

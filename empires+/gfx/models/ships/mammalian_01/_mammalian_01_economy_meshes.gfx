@@ -1,0 +1,10 @@
+objectTypes = {
+	pdxmesh = {
+		name = "mammalian_01_econm_mesh"
+		file = "gfx/models/ships/mammaian_01/mammalian_01_terraforming_station.mesh"
+		scale = 1.5
+		meshsettings = {
+			shader = "PdxMeshShip"
+		}
+	}
+}

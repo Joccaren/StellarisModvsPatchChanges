@@ -2124,6 +2124,12 @@
  military_station_medium_plural:0 "Defense Stations"
  military_station_large:0 "Fortress"
  military_station_large_plural:0 "Fortresses"
+ econ_station_small:0 "Trading Post"
+ econ_station_small_plural:0 "Trading Posts"
+ econ_station_medium:0 "Industrial Platform"
+ econ_station_medium_plural:0 "Industrial Platforms"
+ econ_station_large:0 "Economic District"
+ econ_station_large_plural:0 "Economic Districts"
  orbital_station:0 "Spaceport"
  orbital_station_plural:0 "Spaceports"
  mining_station:0 "Mining Station"
@@ -2637,7 +2643,13 @@
  trait_robotic_2_desc:1 "§LDroids are a more complex variant of robot, often coming with pre-programmed personalities to better serve their masters as well as limited self-awareness.§!\n"
  trait_robotic_3:0 "Synthetic"
  trait_robotic_3_desc:1 "§LSynthetics are very complex machines that are superior to organics in most respects. Their positronic brains are capable of supporting a class-7 artificial intelligence, making them fully self-aware.§!\n"
-
+ trait_cybernetics:0 "Cybernetics"
+ trait_cybernetics_desc:0 "§LThis species has implanted mechanical parts into their body, increasing their survivability and skill, but requiring more energy to maintain their functionality§!\n"
+ trait_hive_mind:0 "Hive Mind"
+ trait_hive_mind_desc:0 "§LThis species boasts a shared collective consciousness, quickly training new members in their jobs, and ensuring obedience from the populace, but with fewer sources of original thought to drive technological development§!\n" 
+ trait_gastrolith:0 "Gastrolithic"
+ trait_gastrolith_desc:0 "§LThis species eats rocks and minerals instead of biological matter for food. This leaves them to survive better on many worlds, and grants them the ability to ignore biological 'food', but with the need to consume many of the minerals they harvest themselves§!\n"
+ 
  ####################################
  # Habitability Traits
  ####################################
@@ -2743,7 +2755,23 @@
  leader_trait_intellectual_desc:1 "This leader is naturally inclined towards the sciences, and seeks to foster a curiosity about the natural world in their subjects."
  leader_trait_environmental_engineer:0 "Environmental Engineer"
  leader_trait_environmental_engineer_desc:1 "This leader has a background in landscaping, eventually turning their attention towards larger projects."
-
+ leader_trait_puppet:0 "Puppet"
+ leader_trait_puppet_desc:1 "This leader is easily and visibly controlled by others, demoralising those under their care."
+ leader_trait_vacilating:0 "Vacilating"
+ leader_trait_vacilating_desc:1 "This leader is irresolute, wavering in their stance on key issues. This impacts their influence over their subjects."
+ leader_trait_traditionalist:0 "Traditionalist"
+ leader_trait_traditionalist_desc:1 "This leader promotes more conservative, traditional practices, slowing the spread of free thought in their territory."
+ leader_trait_autonomist:0 "Autonomist"
+ leader_trait_autonomist_desc:1 "This leader promotes self determination and free-thinking, increasing the spread of ideas in their territory."
+ leader_trait_corrupt:0 "Corrupt"
+ leader_trait_corrupt_desc:1 "This leader does not feel bound by laws and morales, and is more than happy to use their position to fill their own pockets."
+ leader_trait_orwellian:0 "Orwellian"
+ leader_trait_orwellian_desc:1 "This leader has launched a crusade against free thought in their territory with a reign of terror removing any non-conformists."
+ leader_trait_separatist:0 "Separatist"
+ leader_trait_separatist_desc:1 "This leader promotes ideals different to the main government, with the eventual goal of 'freeing' these non-conformists from its reign."
+ leader_trait_bureaucratic:0 "Bureaucratic"
+ leader_trait_bureaucratic_desc:1 "This leader is often more concerned with proper procedure to complete tasks, often at the cost of both efficiency and common sense."
+ 
  # Scientist
  leader_trait_careful:0 "Careful"
  leader_trait_careful_desc:1 "This leader is especially careful when approaching unknown elements."
@@ -2794,6 +2822,10 @@
  leader_trait_expertise_military_theory_desc:1 "This leader is, following years of study, considered an expert within the field of Military Theory."
  leader_trait_curator:0 "Curator"
  leader_trait_curator_desc:0 "This leader hails from the Curator enclave. His understanding of technology and exploration is unmatched."
+ leader_trait_confirmation_biases:0 "Confirmation Biases"
+ leader_trait_confirmation_biases_desc:1 "This leader firmly holds specific views about the nature of their research, and will tend to warp new discoveries to match these views rather than adapt their views to new evidence."
+ leader_trait_lab_rat:0 "Lab Rat"
+ leader_trait_lab_rat_desc:1 "This leader prefers to remain in a laboratory, often delegating or putting off any field work required of them."
  
  # Ruler
  trait_ruler_corvette_focus:0 "Corvette Focus"
@@ -2844,6 +2876,24 @@
  trait_ruler_space_miner_desc:1 "This leader recognizes just how vital the exploitation of offworld resources is for a star nation."
  trait_ruler_explorer:0 "Explorer"
  trait_ruler_explorer_desc:1 "This leader is known for their insatiable curiosity, valuing space exploration above all else."
+ trait_ruler_puppet:0 "Puppet"
+ trait_ruler_puppet_desc:1 "This leader is easily and visibly controlled by others, demoralising those under their care."
+ trait_ruler_vacilating:0 "Vacilating"
+ trait_ruler_vacilating_desc:1 "This leader is irresolute, wavering in their stance on key issues. This impacts their influence over their subjects."
+ trait_ruler_traditionalist:0 "Traditionalist"
+ trait_ruler_traditionalist_desc:1 "This leader promotes more conservative, traditional practices, slowing the spread of free thought in their territory."
+ trait_ruler_autonomist:0 "Autonomist"
+ trait_ruler_autonomist_desc:1 "This leader promotes self determination and free-thinking, increasing the spread of ideas in their territory."
+ trait_ruler_corrupt:0 "Corrupt"
+ trait_ruler_corrupt_desc:1 "This leader does not feel bound by laws and morales, and is more than happy to use their position to fill their own pockets."
+ trait_ruler_orwellian:0 "Orwellian"
+ trait_ruler_orwellian_desc:1 "This leader has launched a crusade against free thought in their territory with a reign of terror removing any non-conformists."
+ trait_ruler_sympathiser:0 "Sympathiser"
+ trait_ruler_sympathiser_desc:1 "This leader is sympathetic and understanding towards alien concerns, improving foreign relations but with priorities not matching their own citizen's."
+ trait_ruler_ethnocentric:0 "Ethnocentric"
+ trait_ruler_ethnocentric_desc:1 "This leader believes that their own kingdom's ethics and needs are more important than any others, hindering the growth of foreign relations but remaining popular with their citizens."
+ trait_ruler_bureaucratic:0 "Bureaucratic"
+ trait_ruler_bureaucratic_desc:1 "This leader is often more concerned with proper procedure to complete tasks, often at the cost of both efficiency and common sense."
 
  # Event Special
  leader_trait_sentinel:0 "Sentinel Training"
@@ -5459,6 +5509,10 @@
  building_royal_gardens_desc:0 "A huge recreational garden where the people may gather and rejoice in remembrance to a great ruler."
  building_royal_gardens_proper:0 "Royal Gardens of [GetRulerName]"
  building_royal_gardens_desc_proper:0 "A fantastic garden developed by the great [GetRulerName]."
+ building_seine_algorithm_facility:0 "Seine Algorithm Facility"
+ building_seine_algorithm_facility_desc:0 "The ultimate feat of computing by a great ruler, capable of optimising all processes on the planet and boosing research"
+ building_seine_algorithm_facility_proper:0 "Seine Algorithm Facility of [GetRulerName]"
+ building_seine_algorithm_facility_desc_proper:0 "The ultimate feat of computing developed by the great [GetRulerName]."
  building_galactic_stock_exchange:0 "Galactic Stock Exchange"
  building_galactic_stock_exchange_desc:0 "By engaging in free trade of goods and services we allow for a more specialized economy, where an individual can excel in a narrow field and trade for their needs."
  building_ministry_benevolence:0 "Ministry of Benevolence"
@@ -6166,6 +6220,8 @@
  MEDIUM_ARMOR_5:0 "Medium Neutronium Armor"
  LARGE_ARMOR_5:0 "Large Neutronium Armor"
 
+ EFFICIENCY_MODULE:0 "Sustainability Systems"
+ 
  BORDER_EXTRUSION_VALUE:0 "Border Projection: $VALUE|Y0$"
  BORDER_EXTRUDER_1:0 "Basic Border Beacon"
  BORDER_EXTRUDER_2:0 "Boosted Border Beacon"

@@ -52,7 +52,6 @@ country_event = {
 		is_crises_allowed = yes
 		NOT = {
 			has_global_flag = prethoryn_invasion_happened
-			has_global_flag = galactic_crisis_happened
 		}
 		#is_ai = no
 		is_country_type = default

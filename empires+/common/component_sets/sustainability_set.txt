@@ -1,0 +1,7 @@
+# Icons set here are the ones shown in component editor list.
+component_set = {
+	key = "EFFICIENCY_MODULE"
+	
+	icon = "GFX_solar_panel_network"
+	icon_frame = 1	
+}

@@ -1,0 +1,42 @@
+###################
+#economic stations#
+###################
+
+ship_section_template = {
+	key = "DEFAULT_ECONOMIC_STATION_SECTION_SMALL"
+	ship_size = econ_station_small
+	fits_on_slot = mid
+	entity = "econ_station_small_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	small_utility_slots = 2
+	medium_utility_slots = 1
+	large_utility_slots = 0
+	aux_utility_slots = 0
+}
+
+ship_section_template = {
+	key = "DEFAULT_ECONOMIC_STATION_SECTION_MEDIUM"
+	ship_size = econ_station_medium
+	fits_on_slot = mid
+	entity = "econ_station_small_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	small_utility_slots = 4
+	medium_utility_slots = 2
+	large_utility_slots = 0
+	aux_utility_slots = 0
+}
+
+ship_section_template = {
+	key = "DEFAULT_ECONOMIC_STATION_SECTION_LARGE"
+	ship_size = econ_station_large
+	fits_on_slot = mid
+	entity = "econ_station_small_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	small_utility_slots = 0
+	medium_utility_slots = 2
+	large_utility_slots = 3
+	aux_utility_slots = 0
+}

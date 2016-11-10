@@ -349,3 +349,128 @@ leader_trait_hive_mind = {
 	leader_class = { ruler }
 	initial = no
 }
+
+trait_ruler_puppet = {
+	cost = 0
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_trickster.dds"
+	modifier = {
+		pop_happiness = -0.1
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = {}
+}
+
+trait_ruler_vacilating = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_nonadaptive.dds"
+	modifier = {
+		influence_gain_add = -1
+		country_trust_growth = -0.25
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = {}
+}
+
+trait_ruler_traditionalist = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_stubborn.dds"
+	modifier = {
+		pop_ethic_shift = -0.10
+		all_technology_research_speed = -0.15
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = { "trait_ruler_autonomist" }
+}
+
+trait_ruler_autonomist = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_adaptable.dds"
+	modifier = {
+		pop_ethic_shift = 0.10
+		all_technology_research_speed = 0.05
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = { "trait_ruler_traditionalist" }
+}
+
+trait_ruler_corrupt = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_paranoid.dds"
+	modifier = {
+		tile_resource_energy_mult = -0.05
+		tile_resource_minerals_mult = -0.05
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = {}
+}
+
+trait_ruler_orwellian = {
+	cost = 0
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_paranoid.dds"
+	modifier = {
+		pop_ethic_shift = -0.15
+		pop_happiness = -0.1
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = {}
+}
+
+trait_ruler_sympathiser = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/ethics/ethic_fanatic_xenophile.dds"
+	modifier = {
+		influence_gain_add = -1
+		country_trust_growth = 0.25
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = { "trait_rule_ethnocentric" }
+}
+
+trait_ruler_ethnocentric = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/ethics/ethic_fanatic_xenophobe.dds"
+	modifier = {
+		influence_gain_add = 1
+		country_trust_growth = -0.25
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = { "trait_ruler_sympathiser" }
+}
+
+trait_ruler_bureaucratic = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/trait_slow_learners.dds"
+	modifier = {
+		building_time_mult = 0.10
+		spaceport_ship_build_speed_mult = -0.10
+	}
+	leader_trait = yes
+	leader_class = { ruler }
+	prerequisites = {}
+	opposites = {}
+}
