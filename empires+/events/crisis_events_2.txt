@@ -17,8 +17,10 @@ country_event = {
 	fire_only_once = yes
 	
 	trigger = {
+		is_crises_allowed = yes
 		NOT = { 
 			has_global_flag = extradimensional_invasion_happened
+			has_global_flag = galactic_crisis_happened
 		}
 		#is_ai = no
 		is_country_type = default
@@ -59,13 +61,36 @@ country_event = {
 	}
 	
 	immediate = {
+		random_list = {
+			70 = {
+				random_country = {
+					limit = { 
+						is_country_type = fallen_empire
+						OR = {
+							has_ethic = ethic_fanatic_xenophile
+							has_ethic = ethic_fanatic_materialist
+						}
+						fleet_power > 40000							
+					}
+					set_country_flag = guardians_of_the_galaxy	
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+				}
+			}
+			30 = {}
+		}	
+	
+		endgame_telemetry = extradimensional
 		set_global_flag = extradimensional_invasion_happened
 		set_global_flag = galactic_crisis_happened
 		random_system = {
 			limit = {
 				NOT = {
 					any_country = {
-						is_country_type = fallen_empire
+						OR = {
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire
+						}
 						any_system_within_border = {
 							is_same_value = prev
 						}
@@ -141,29 +166,30 @@ country_event = {
 					create_ship_design = { design = "Whisper Alpha" }
 					add_ship_design = last_created_design
 					save_event_target_as = extradimensionals
-					create_fleet = { name = "Dimensional Portal" }
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Dimensional Portal"
-							graphical_culture = "extra_dimensional_01"
+					create_fleet = {
+						name = "Dimensional Portal"
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Dimensional Portal"
+								graphical_culture = "extra_dimensional_01"
+							}
+							set_location = {
+								target = PREVPREV
+								distance = 40
+								angle = random
+							}
+							save_event_target_as = dimensional_portal
+							fleet_event = { id = crisis.1003 days = 60 } # Second Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 200 } # Third Fleet Arrives
+							fleet_event = { id = crisis.1003 days = 350 } # Fourth Fleet Arrives
+							fleet_event = { id = crisis.1006 days = 20 } # First Constructor Arrives
+							fleet_event = { id = crisis.1006 days = 25 } # Second Constructor Arrives
+							fleet_event = { id = crisis.1006 days = 60 } # Third Constructor Arrives
+							fleet_event = { id = crisis.1006 days = 210 } # Fourth Constructor Arrives
 						}
-						set_location = {
-							target = PREVPREV
-							distance = 40
-							angle = random
-						}
-						save_event_target_as = dimensional_portal
-						fleet_event = { id = crisis.1003 days = 60 } # Second Fleet Arrives
-						fleet_event = { id = crisis.1003 days = 200 } # Third Fleet Arrives
-						fleet_event = { id = crisis.1003 days = 350 } # Fourth Fleet Arrives
-						fleet_event = { id = crisis.1006 days = 20 } # First Constructor Arrives
-						fleet_event = { id = crisis.1006 days = 25 } # Second Constructor Arrives
-						fleet_event = { id = crisis.1006 days = 60 } # Third Constructor Arrives
-						fleet_event = { id = crisis.1006 days = 210 } # Fourth Constructor Arrives
 					}
-					create_fleet = { }
 					create_leader = {
 						type = admiral
 						species = event_target:extradimensional_species
@@ -173,202 +199,48 @@ country_event = {
 							trait = leader_trait_ethereal
 						}
 					}
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
+					create_fleet = {
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Revenant"
+								graphical_culture = "extra_dimensional_01"
+							}
+							assign_leader = last_created_leader
+							while = {
+								count = 7
+								create_ship = {
+									name = random
+									design = "Revenant"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 10
+								create_ship = {
+									name = random
+									design = "Phantom"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 19
+								create_ship = {
+									name = random
+									design = "Wraith"
+									graphical_culture = "extra_dimensional_01"
+								}	
+							}
+							set_location = {
+								target = event_target:dimensional_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
 						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Revenant"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Phantom"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Wraith"
-							graphical_culture = "extra_dimensional_01"
-						}
-						set_location = {
-							target = event_target:dimensional_portal
-							distance = 5
-							angle = random
-						}
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
 					}
 				}
 			}
@@ -409,7 +281,6 @@ fleet_event = {
 	
 	immediate = {
 		event_target:extradimensionals = {
-			create_fleet = { }
 			random_list = {
 				25 = {
 					create_leader = {
@@ -442,202 +313,48 @@ fleet_event = {
 					}
 				}
 			}
-			last_created_fleet = {
-				set_owner = PREV
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
+			create_fleet = {
+				effect = {
+					set_owner = PREV
+					create_ship = {
+						name = random
+						design = "Revenant"
+						graphical_culture = "extra_dimensional_01"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 7
+						create_ship = {
+							name = random
+							design = "Revenant"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 10
+						create_ship = {
+							name = random
+							design = "Phantom"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 19
+						create_ship = {
+							name = random
+							design = "Wraith"
+							graphical_culture = "extra_dimensional_01"
+						}	
+					}
+					set_location = {
+						target = ROOT
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
 				}
-				assign_leader = last_created_leader
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Revenant"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Phantom"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Wraith"
-					graphical_culture = "extra_dimensional_01"
-				}
-				set_location = {
-					target = ROOT
-					distance = 5
-					angle = random
-				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
 			}
 		}
 	}
@@ -652,18 +369,19 @@ fleet_event = {
 	
 	immediate = {
 		event_target:extradimensionals = {
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = PREV
-				create_ship = {
-					name = random
-					design = "Void Shaper"
-					graphical_culture = "extra_dimensional_01"
-				}
-				set_location = {
-					target = ROOT
-					distance = 5
-					angle = random
+			create_fleet = {
+				effect = {
+					set_owner = PREV
+					create_ship = {
+						name = random
+						design = "Void Shaper"
+						graphical_culture = "extra_dimensional_01"
+					}
+					set_location = {
+						target = ROOT
+						distance = 5
+						angle = random
+					}
 				}
 			}
 		}
@@ -1442,7 +1160,6 @@ country_event = {
 		
 			# Main Battle Fleet Arrives
 			50 = {
-				create_fleet = { }
 				random_list = {
 					25 = {
 						create_leader = {
@@ -1475,198 +1192,45 @@ country_event = {
 						}
 					}
 				}
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
+				create_fleet = {
+					effect = {
+						set_owner = ROOT
+						create_ship = {
+							name = random
+							design = "Revenant"
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 9
+							create_ship = {
+								name = random
+								design = "Revenant"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 25
+							create_ship = {
+								name = random
+								design = "Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
 					}
-					assign_leader = last_created_leader
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Revenant"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					set_location = {
-						target = event_target:dimensional_portal
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
 				}
 			}
 			
 			# Light Raiding Fleet Arrives
 			50 = {
-				create_fleet = { }
 				random_list = {
 					25 = {
 						create_leader = {
@@ -1699,97 +1263,40 @@ country_event = {
 						}
 					}
 				}
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Phantom"
-						graphical_culture = "extra_dimensional_01"
+				create_fleet = {
+					effect = {
+						set_owner = ROOT
+						create_ship = {
+							name = random
+							design = "Phantom"
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count =3
+							create_ship = {
+								name = random
+								design = "Phantom"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 12
+							create_ship = {
+								name = random
+								design = "Wraith"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
 					}
-					assign_leader = last_created_leader
-					create_ship = {
-						name = random
-						design = "Phantom"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Phantom"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Phantom"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Wraith"
-						graphical_culture = "extra_dimensional_01"
-					}
-					set_location = {
-						target = event_target:dimensional_portal
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
 				}
 			}
 		}
@@ -1814,7 +1321,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 24
 	}
 	
 	immediate = {
@@ -1822,18 +1329,19 @@ country_event = {
 			limit = { is_ship_size = dimensional_portal_ed }
 			save_event_target_as = dimensional_portal
 		}
-		create_fleet = { }
-		last_created_fleet = {
-			set_owner = ROOT
-			create_ship = {
-				name = random
-				design = "Void Shaper"
-				graphical_culture = "extra_dimensional_01"
-			}
-			set_location = {
-				target = event_target:dimensional_portal
-				distance = 5
-				angle = random
+		create_fleet = {
+			effect = {
+				set_owner = ROOT
+				create_ship = {
+					name = random
+					design = "Void Shaper"
+					graphical_culture = "extra_dimensional_01"
+				}
+				set_location = {
+					target = event_target:dimensional_portal
+					distance = 5
+					angle = random
+				}
 			}
 		}
 	}
@@ -2096,29 +1604,30 @@ country_event = {
 					add_ship_design = last_created_design
 					create_ship_design = { design = "Whisper Beta" }
 					add_ship_design = last_created_design
-					create_fleet = { name = "Dimensional Portal" }
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Orange Dimensional Portal"
-							graphical_culture = "extra_dimensional_01"
+					create_fleet = {
+						name = "Dimensional Portal"
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Orange Dimensional Portal"
+								graphical_culture = "extra_dimensional_01"
+							}
+							set_location = {
+								target = PREVPREV
+								distance = 40
+								angle = random
+							}
+							save_event_target_as = second_portal
+							fleet_event = { id = crisis.1103 days = 150 } # Second Fleet Arrives
+							fleet_event = { id = crisis.1103 days = 400 } # Third Fleet Arrives
+							fleet_event = { id = crisis.1103 days = 550 } # Fourth Fleet Arrives
+							fleet_event = { id = crisis.1106 days = 20 } # First Constructor Arrives
+							fleet_event = { id = crisis.1106 days = 170 } # Second Constructor Arrives
+							fleet_event = { id = crisis.1106 days = 420 } # Third Constructor Arrives
+							fleet_event = { id = crisis.1106 days = 570 } # Fourth Constructor Arrives
 						}
-						set_location = {
-							target = PREVPREV
-							distance = 40
-							angle = random
-						}
-						save_event_target_as = second_portal
-						fleet_event = { id = crisis.1103 days = 150 } # Second Fleet Arrives
-						fleet_event = { id = crisis.1103 days = 400 } # Third Fleet Arrives
-						fleet_event = { id = crisis.1103 days = 550 } # Fourth Fleet Arrives
-						fleet_event = { id = crisis.1106 days = 20 } # First Constructor Arrives
-						fleet_event = { id = crisis.1106 days = 170 } # Second Constructor Arrives
-						fleet_event = { id = crisis.1106 days = 420 } # Third Constructor Arrives
-						fleet_event = { id = crisis.1106 days = 570 } # Fourth Constructor Arrives
 					}
-					create_fleet = { }
 					random_list = {
 						25 = {
 							create_leader = {
@@ -2151,202 +1660,48 @@ country_event = {
 							}
 						}
 					}
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
+					create_fleet = {
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Huntress"
+								graphical_culture = "extra_dimensional_01"
+							}
+							assign_leader = last_created_leader
+							while = {
+								count = 7
+								create_ship = {
+									name = random
+									design = "Huntress"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 10
+								create_ship = {
+									name = random
+									design = "Assassin"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 20
+								create_ship = {
+									name = random
+									design = "Predator"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							set_location = {
+								target = event_target:second_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
 						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Huntress"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Assassin"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Predator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						set_location = {
-							target = event_target:second_portal
-							distance = 5
-							angle = random
-						}
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
 					}
 				}
 			}
@@ -2370,7 +1725,6 @@ fleet_event = {
 	
 	immediate = {
 		event_target:extradimensional_hunters = {
-			create_fleet = { }
 			random_list = {
 				25 = {
 					create_leader = {
@@ -2403,202 +1757,48 @@ fleet_event = {
 					}
 				}
 			}
-			last_created_fleet = {
-				set_owner = PREV
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
+			create_fleet = {
+				effect = {
+					set_owner = PREV
+					create_ship = {
+						name = random
+						design = "Huntress"
+						graphical_culture = "extra_dimensional_01"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 7
+						create_ship = {
+							name = random
+							design = "Huntress"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 10
+						create_ship = {
+							name = random
+							design = "Assassin"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 20
+						create_ship = {
+							name = random
+							design = "Predator"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					set_location = {
+						target = ROOT
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
 				}
-				assign_leader = last_created_leader
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Huntress"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Assassin"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Predator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				set_location = {
-					target = ROOT
-					distance = 5
-					angle = random
-				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
 			}
 		}
 	}
@@ -2613,18 +1813,19 @@ fleet_event = {
 	
 	immediate = {
 		event_target:extradimensional_hunters = {
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = PREV
-				create_ship = {
-					name = random
-					design = "Void Former"
-					graphical_culture = "extra_dimensional_01"
-				}
-				set_location = {
-					target = ROOT
-					distance = 5
-					angle = random
+			create_fleet = {
+				effect = {
+					set_owner = PREV
+					create_ship = {
+						name = random
+						design = "Void Former"
+						graphical_culture = "extra_dimensional_01"
+					}
+					set_location = {
+						target = ROOT
+						distance = 5
+						angle = random
+					}
 				}
 			}
 		}
@@ -2781,7 +1982,7 @@ country_event = {
 		}
 		if = {
 			limit = {
-				NOT = {
+				NOR = {
 					has_global_flag = extradimensional_first_portal_destroyed
 					has_global_flag = extradimensional_third_portal_destroyed
 				}
@@ -2886,7 +2087,6 @@ country_event = {
 		
 			# Main Battle Fleet Arrives
 			50 = {
-				create_fleet = { }
 				random_list = {
 					25 = {
 						create_leader = {
@@ -2919,198 +2119,53 @@ country_event = {
 						}
 					}
 				}
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
+				create_fleet = {
+					effect = {
+						set_owner = ROOT
+						create_ship = {
+							name = random
+							design = "Huntress"
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 9
+							create_ship = {
+								name = random
+								design = "Huntress"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 10
+							create_ship = {
+								name = random
+								design = "Assassin"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 15
+							create_ship = {
+								name = random
+								design = "Predator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
 					}
-					assign_leader = last_created_leader
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Huntress"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					set_location = {
-						target = event_target:dimensional_portal
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
 				}
 			}
 			
 			# Light Raiding Fleet Arrives
 			50 = {
-				create_fleet = { }
 				random_list = {
 					25 = {
 						create_leader = {
@@ -3143,100 +2198,42 @@ country_event = {
 						}
 					}
 				}
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
+				create_fleet = {
+					effect = {
+						set_owner = ROOT
+						create_ship = {
+							name = random
+							design = "Assassin"
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 3
+							create_ship = {
+								name = random
+								design = "Assassin"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 12
+							create_ship = {
+								name = random
+								design = "Predator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
 					}
-					assign_leader = last_created_leader
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Assassin"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					set_location = {
-						target = event_target:dimensional_portal
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
 				}
 			}
-			
 		}
 	}
 }
@@ -3259,7 +2256,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 24
 	}
 	
 	immediate = {
@@ -3267,18 +2264,19 @@ country_event = {
 			limit = { is_ship_size = dimensional_portal_ed }
 			save_event_target_as = dimensional_portal
 		}
-		create_fleet = { }
-		last_created_fleet = {
-			set_owner = ROOT
-			create_ship = {
-				name = random
-				design = "Void Former"
-				graphical_culture = "extra_dimensional_01"
-			}
-			set_location = {
-				target = event_target:dimensional_portal
-				distance = 5
-				angle = random
+		create_fleet = {
+			effect = {
+				set_owner = ROOT
+				create_ship = {
+					name = random
+					design = "Void Former"
+					graphical_culture = "extra_dimensional_01"
+				}
+				set_location = {
+					target = event_target:dimensional_portal
+					distance = 5
+					angle = random
+				}
 			}
 		}
 	}
@@ -3383,29 +2381,30 @@ country_event = {
 					add_ship_design = last_created_design
 					create_ship_design = { design = "Whisper Gamma" }
 					add_ship_design = last_created_design
-					create_fleet = { name = "Dimensional Portal" }
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Green Dimensional Portal"
-							graphical_culture = "extra_dimensional_01"
+					create_fleet = {
+						name = "Dimensional Portal"
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Green Dimensional Portal"
+								graphical_culture = "extra_dimensional_01"
+							}
+							set_location = {
+								target = PREVPREV
+								distance = 40
+								angle = random
+							}
+							save_event_target_as = third_portal
+							fleet_event = { id = crisis.1203 days = 150 } # Second Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 400 } # Third Fleet Arrives
+							fleet_event = { id = crisis.1203 days = 550 } # Fourth Fleet Arrives
+							fleet_event = { id = crisis.1206 days = 20 } # First Constructor Arrives
+							fleet_event = { id = crisis.1206 days = 170 } # Second Constructor Arrives
+							fleet_event = { id = crisis.1206 days = 420 } # Third Constructor Arrives
+							fleet_event = { id = crisis.1206 days = 570 } # Fourth Constructor Arrives
 						}
-						set_location = {
-							target = PREVPREV
-							distance = 40
-							angle = random
-						}
-						save_event_target_as = third_portal
-						fleet_event = { id = crisis.1203 days = 150 } # Second Fleet Arrives
-						fleet_event = { id = crisis.1203 days = 400 } # Third Fleet Arrives
-						fleet_event = { id = crisis.1203 days = 550 } # Fourth Fleet Arrives
-						fleet_event = { id = crisis.1206 days = 20 } # First Constructor Arrives
-						fleet_event = { id = crisis.1206 days = 170 } # Second Constructor Arrives
-						fleet_event = { id = crisis.1206 days = 420 } # Third Constructor Arrives
-						fleet_event = { id = crisis.1206 days = 570 } # Fourth Constructor Arrives
 					}
-					create_fleet = { }
 					random_list = {
 						25 = {
 							create_leader = {
@@ -3438,202 +2437,48 @@ country_event = {
 							}
 						}
 					}
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
+					create_fleet = {
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Eradicator"
+								graphical_culture = "extra_dimensional_01"
+							}
+							assign_leader = last_created_leader
+							while = {
+								count = 7
+								create_ship = {
+									name = random
+									design = "Eradicator"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 10
+								create_ship = {
+									name = random
+									design = "Annihilator"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							while = {
+								count = 20
+								create_ship = {
+									name = random
+									design = "Obliterator"
+									graphical_culture = "extra_dimensional_01"
+								}
+							}
+							set_location = {
+								target = event_target:third_portal
+								distance = 5
+								angle = random
+							}
+							set_fleet_stance = aggressive
+							set_aggro_range = 500
+							set_aggro_range_measure_from = self
 						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Eradicator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Annihilator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						create_ship = {
-							name = random
-							design = "Obliterator"
-							graphical_culture = "extra_dimensional_01"
-						}
-						set_location = {
-							target = event_target:third_portal
-							distance = 5
-							angle = random
-						}
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
 					}
 				}
 			}
@@ -3657,7 +2502,6 @@ fleet_event = {
 	
 	immediate = {
 		event_target:extradimensional_trespassers = {
-			create_fleet = { }
 			random_list = {
 				25 = {
 					create_leader = {
@@ -3690,202 +2534,48 @@ fleet_event = {
 					}
 				}
 			}
-			last_created_fleet = {
-				set_owner = PREV
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
+			create_fleet = {
+				effect = {
+					set_owner = PREV
+					create_ship = {
+						name = random
+						design = "Eradicator"
+						graphical_culture = "extra_dimensional_01"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 7
+						create_ship = {
+							name = random
+							design = "Eradicator"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 10
+						create_ship = {
+							name = random
+							design = "Annihilator"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					while = {
+						count = 20
+						create_ship = {
+							name = random
+							design = "Obliterator"
+							graphical_culture = "extra_dimensional_01"
+						}
+					}
+					set_location = {
+						target = ROOT
+						distance = 5
+						angle = random
+					}
+					set_fleet_stance = aggressive
+					set_aggro_range = 500
+					set_aggro_range_measure_from = self
 				}
-				assign_leader = last_created_leader
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Eradicator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Annihilator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				create_ship = {
-					name = random
-					design = "Obliterator"
-					graphical_culture = "extra_dimensional_01"
-				}
-				set_location = {
-					target = ROOT
-					distance = 5
-					angle = random
-				}
-				set_fleet_stance = aggressive
-				set_aggro_range = 500
-				set_aggro_range_measure_from = self
 			}
 		}
 	}
@@ -3900,18 +2590,19 @@ fleet_event = {
 	
 	immediate = {
 		event_target:extradimensional_trespassers = {
-			create_fleet = { }
-			last_created_fleet = {
-				set_owner = PREV
-				create_ship = {
-					name = random
-					design = "Void Weaver"
-					graphical_culture = "extra_dimensional_01"
-				}
-				set_location = {
-					target = ROOT
-					distance = 5
-					angle = random
+			create_fleet = {
+				effect = {
+					set_owner = PREV
+					create_ship = {
+						name = random
+						design = "Void Weaver"
+						graphical_culture = "extra_dimensional_01"
+					}
+					set_location = {
+						target = ROOT
+						distance = 5
+						angle = random
+					}
 				}
 			}
 		}
@@ -4123,7 +2814,6 @@ country_event = {
 		
 			# Main Battle Fleet Arrives
 			50 = {
-				create_fleet = { }
 				random_list = {
 					25 = {
 						create_leader = {
@@ -4156,198 +2846,58 @@ country_event = {
 						}
 					}
 				}
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
+				create_fleet = {
+					effect = {
+						set_owner = ROOT
+						create_ship = {
+							name = random
+							design = "Eradicator"
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 9
+							create_ship = {
+								name = random
+								design = "Eradicator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 10
+							create_ship = {
+								name = random
+								design = "Annihilator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						create_ship = {
+							name = random
+							design = "Predator"
+							graphical_culture = "extra_dimensional_01"
+						}
+						while = {
+							count = 14
+							create_ship = {
+								name = random
+								design = "Obliterator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
 					}
-					assign_leader = last_created_leader
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eradicator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Predator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					set_location = {
-						target = event_target:dimensional_portal
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
 				}
 			}
 			
 			# Light Raiding Fleet Arrives
 			50 = {
-				create_fleet = { }
 				random_list = {
 					25 = {
 						create_leader = {
@@ -4380,97 +2930,40 @@ country_event = {
 						}
 					}
 				}
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
+				create_fleet = {
+					effect = {
+						set_owner = ROOT
+						create_ship = {
+							name = random
+							design = "Annihilator"
+							graphical_culture = "extra_dimensional_01"
+						}
+						assign_leader = last_created_leader
+						while = {
+							count = 3
+							create_ship = {
+								name = random
+								design = "Annihilator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						while = {
+							count = 12
+							create_ship = {
+								name = random
+								design = "Obliterator"
+								graphical_culture = "extra_dimensional_01"
+							}
+						}
+						set_location = {
+							target = event_target:dimensional_portal
+							distance = 5
+							angle = random
+						}
+						set_fleet_stance = aggressive
+						set_aggro_range = 500
+						set_aggro_range_measure_from = self
 					}
-					assign_leader = last_created_leader
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Annihilator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					create_ship = {
-						name = random
-						design = "Obliterator"
-						graphical_culture = "extra_dimensional_01"
-					}
-					set_location = {
-						target = event_target:dimensional_portal
-						distance = 5
-						angle = random
-					}
-					set_fleet_stance = aggressive
-					set_aggro_range = 500
-					set_aggro_range_measure_from = self
 				}
 			}
 		}
@@ -4495,7 +2988,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 24
 	}
 	
 	immediate = {
@@ -4503,18 +2996,19 @@ country_event = {
 			limit = { is_ship_size = dimensional_portal_ed }
 			save_event_target_as = dimensional_portal
 		}
-		create_fleet = { }
-		last_created_fleet = {
-			set_owner = ROOT
-			create_ship = {
-				name = random
-				design = "Void Weaver"
-				graphical_culture = "extra_dimensional_01"
-			}
-			set_location = {
-				target = event_target:dimensional_portal
-				distance = 5
-				angle = random
+		create_fleet = {
+			effect = {
+				set_owner = ROOT
+				create_ship = {
+					name = random
+					design = "Void Weaver"
+					graphical_culture = "extra_dimensional_01"
+				}
+				set_location = {
+					target = event_target:dimensional_portal
+					distance = 5
+					angle = random
+				}
 			}
 		}
 	}

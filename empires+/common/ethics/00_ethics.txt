@@ -23,20 +23,17 @@ ethic_fanatic_collectivist = {
 	
 	slavery_ethos = yes
 	
-	pop_modifier = {
-		pop_slavery_tolerance = 0.5
-		pop_food_req_mult = -0.33
-		tile_resource_energy_mult = -0.10
-		tile_resource_minerals_mult = -0.10
+	country_modifier = {
+		faction_surpression_cost = -0.3
 	}
 	
-	country_modifier = {		
-		country_border_mult = 0.3
-		planet_colony_development_speed_mult = -0.15
+	pop_modifier = {
+		pop_slavery_tolerance = 1.0
+		pop_food_req_mult = -0.15
 	}
 	
 	random_weight = {
-		value = 100
+		value = 150
 	}
 }
 
@@ -47,16 +44,13 @@ ethic_collectivist = {
 	
 	slavery_ethos = yes
 	
-	pop_modifier = {
-		pop_slavery_tolerance = 0.25
-		pop_food_req_mult = -0.25
-		tile_resource_energy_mult = -0.03
-		tile_resource_minerals_mult = -0.03
-	}
+	country_modifier = {
+		faction_surpression_cost = -0.1
+	}	
 	
-	country_modifier = {		
-		country_border_mult = 0.1
-		planet_colony_development_speed_mult = -0.05
+	pop_modifier = {
+		pop_slavery_tolerance = 1.0
+		pop_food_req_mult = -0.05
 	}
 	
 	random_weight = {
@@ -69,23 +63,23 @@ ethic_fanatic_individualist = {
 	category = "col"
 	category_value = 4
 	
+	category_opposite = yes
+	
 	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
 	opposite_dislike = -0.2
 	
-	pop_modifier = {
-		tile_resource_energy_mult = 0.15
-		tile_resource_minerals_mult = 0.15
-		pop_slavery_tolerance = -0.5
-		pop_food_req_mult = 0.15
+	country_modifier = {
+		policy_happiness_impact = -0.6
+		planet_migration_all_pull = 0.3
 	}
 	
-	country_modifier = {		
-		country_border_mult = -0.15
-		planet_colony_development_speed_mult = 0.30
+	pop_modifier = {
+		tile_resource_energy_mult = 0.15
+		pop_slavery_tolerance = -1.0
 	}
 	
 	random_weight = {
-		value = 100
+		value = 150
 	}
 }
 
@@ -94,19 +88,19 @@ ethic_individualist = {
 	category = "col"
 	category_value = 3
 	
+	category_opposite = yes
+	
 	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
 	opposite_dislike = -0.1
 	
-	pop_modifier = {
-		tile_resource_energy_mult = 0.05
-		tile_resource_minerals_mult = 0.05
-		pop_slavery_tolerance = -0.25
-		pop_food_req_mult = 0.05
+	country_modifier = {
+		policy_happiness_impact = -0.2
+		planet_migration_all_pull = 0.1
 	}
 	
-	country_modifier = {		
-		country_border_mult = -0.05
-		planet_colony_development_speed_mult = 0.10
+	pop_modifier = {
+		tile_resource_energy_mult = 0.05
+		pop_slavery_tolerance = -0.33
 	}
 	
 	random_weight = {
@@ -124,16 +118,15 @@ ethic_fanatic_xenophobe = {
 	pop_modifier = {
 		pop_xenophobia = 0.15
 		pop_alien_slavery_tolerance = 1.0
-		pop_environment_tolerance = 0.15
 	}
 	
 	country_modifier = {		
-		rivalry_influence_gain = 0.50
-		diplomacy_influence_cost = 0.50
+		max_rivalries = 3
+		planet_border_mult = 0.3
 	}
 	
 	random_weight = {
-		value = 75
+		value = 150
 	}
 }
 
@@ -141,22 +134,21 @@ ethic_xenophobe = {
 	cost = 1
 	category = "xen"
 	category_value = 1
-	
+
 	slavery_ethos = yes
 	
 	pop_modifier = {
 		pop_xenophobia = 0.05
-		pop_alien_slavery_tolerance = 0.5
-		pop_environment_tolerance = 0.05
+		pop_alien_slavery_tolerance = 1.0
 	}
 	
-	country_modifier = {		
-		rivalry_influence_gain = 0.16
-		diplomacy_influence_cost = 0.16
+	country_modifier = {
+		max_rivalries = 1
+		planet_border_mult = 0.1
 	}
 	
 	random_weight = {
-		value = 75
+		value = 100
 	}
 }
 
@@ -165,18 +157,18 @@ ethic_fanatic_xenophile = {
 	category = "xen"
 	category_value = 4
 	
+	category_opposite = yes
+	
 	pop_modifier = {
 		pop_xenophobia = -0.15
-		tile_resource_society_research_mult = 0.20
 	}
 	
-	country_modifier = {		
-		rivalry_influence_gain = -0.50
-		diplomacy_influence_cost = -0.50
+	country_modifier = {
+		country_trust_growth = 0.75
 	}
 	
 	random_weight = {
-		value = 75
+		value = 150
 	}
 }
 
@@ -185,18 +177,18 @@ ethic_xenophile = {
 	category = "xen"
 	category_value = 3
 	
+	category_opposite = yes
+	
 	pop_modifier = {
 		pop_xenophobia = -0.05
-		tile_resource_society_research_mult = 0.06
 	}
 	
-	country_modifier = {		
-		rivalry_influence_gain = -0.16
-		diplomacy_influence_cost = -0.16
+	country_modifier = {
+		country_trust_growth = 0.25
 	}
 	
 	random_weight = {
-		value = 75
+		value = 100
 	}
 }
 
@@ -205,18 +197,20 @@ ethic_fanatic_militarist = {
 	category = "mil"
 	category_value = 0
 	
+	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
+	opposite_dislike = -0.1
+	
 	pop_modifier = {
-		pop_war_happiness = 0.15
-		pop_growth_req_mult = 0.15
+		pop_war_happiness = 0.10
 	}
 	
-	country_modifier = {		
-		max_rivalries = 3
-		country_trust_growth = -0.50
+	country_modifier = {
+		rivalry_influence_gain = 0.75
+		ship_weapon_damage = 0.1
 	}
 	
 	random_weight = {
-		value = 100
+		value = 150
 	}
 }
 
@@ -225,14 +219,16 @@ ethic_militarist = {
 	category = "mil"
 	category_value = 1
 	
+	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
+	opposite_dislike = -0.05
+	
 	pop_modifier = {
-		pop_war_happiness = 0.05
-		pop_growth_req_mult = 0.05
+		pop_war_happiness = 0.10
 	}
 	
-	country_modifier = {		
-		max_rivalries = 1
-		country_trust_growth = -0.16
+	country_modifier = {
+		rivalry_influence_gain = 0.25
+		ship_weapon_damage = 0.03
 	}
 	
 	random_weight = {
@@ -245,22 +241,23 @@ ethic_fanatic_pacifist = {
 	category = "mil"
 	category_value = 4
 	
-	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
-	opposite_dislike = -0.20
+	category_opposite = yes
 	
-	pop_modifier = {
-		pop_peace_happiness = 0.10
-		pop_war_happiness = -0.10
-		pop_growth_req_mult = -0.30
+	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
+	opposite_dislike = -0.10
+	
+	country_modifier = {
+		rivalry_influence_gain = -0.75
+		diplomacy_influence_cost = -0.75
 	}
 	
-	country_modifier = {		
-		max_rivalries = -3
-		country_trust_growth = 0.50
+	pop_modifier = {
+		pop_peace_happiness = 0.15
+		pop_war_happiness = -0.15
 	}
 	
 	random_weight = {
-		value = 25
+		value = 33 		# rare ethic
 	}
 }
 
@@ -269,22 +266,23 @@ ethic_pacifist = {
 	category = "mil"
 	category_value = 3
 	
-	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
-	opposite_dislike = -0.10
+	category_opposite = yes
 	
-	pop_modifier = {
-		pop_peace_happiness = 0.03
-		pop_war_happiness = -0.03
-		pop_growth_req_mult = -0.10
+	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
+	opposite_dislike = -0.05
+	
+	country_modifier = {
+		rivalry_influence_gain = -0.25
+		diplomacy_influence_cost = -0.25
 	}
 	
-	country_modifier = {		
-		max_rivalries = -1
-		country_trust_growth = 0.16
+	pop_modifier = {
+		pop_peace_happiness = 0.05
+		pop_war_happiness = -0.05
 	}
 	
 	random_weight = {
-		value = 50
+		value = 66	# uncommon ethic
 	}
 }
 
@@ -296,17 +294,16 @@ ethic_fanatic_spiritualist = {
 	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
 	opposite_dislike = -0.1
 	
-	pop_modifier = {
-		pop_slavery_tolerance = 0.5
-		pop_happiness = 0.06
+	country_modifier = {
+		pop_ethic_shift = -0.3
 	}
 	
-	country_modifier = {		
-		pop_ethic_shift = -0.15
+	pop_modifier = {
+		pop_growth_req_mult = -0.15
 	}
 	
 	random_weight = {
-		value = 100
+		value = 150
 	}
 }
 
@@ -318,13 +315,12 @@ ethic_spiritualist = {
 	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
 	opposite_dislike = -0.05
 	
-	pop_modifier = {
-		pop_slavery_tolerance = 0.25
-		pop_happiness = 0.02
+	country_modifier = {
+		pop_ethic_shift = -0.1
 	}
 	
-	country_modifier = {		
-		pop_ethic_shift = -0.05
+	pop_modifier = {
+		pop_growth_req_mult = -0.05
 	}
 	
 	random_weight = {
@@ -337,16 +333,19 @@ ethic_materialist = {
 	category = "spi"
 	category_value = 3
 	
+	category_opposite = yes
+	
 	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
 	opposite_dislike = -0.05
 	
-	pop_modifier = {
-		tile_resource_physics_research_mult = 0.06
-		tile_resource_engineering_research_mult = 0.06
-	}
+	country_modifier = {
+		planet_building_cost_mult = -0.05
+	}	
 	
-	country_modifier = {		
-		all_technology_research_speed = 0.05
+	pop_modifier = {
+		tile_resource_physics_research_mult = 0.05
+		tile_resource_society_research_mult = 0.05
+		tile_resource_engineering_research_mult = 0.05
 	}
 	
 	random_weight = {
@@ -359,19 +358,22 @@ ethic_fanatic_materialist = {
 	category = "spi"
 	category_value = 4
 	
+	category_opposite = yes
+	
 	# Pop happiness modifier vs opposing government ethic. Multiplied with 2 vs opposing Fanatic ethic.
 	opposite_dislike = -0.1
 	
-	pop_modifier = {
-		tile_resource_physics_research_mult = 0.20
-		tile_resource_engineering_research_mult = 0.20
+	country_modifier = {
+		planet_building_cost_mult = -0.15
 	}
 	
-	country_modifier = {		
-		all_technology_research_speed = 0.15
+	pop_modifier = {
+		tile_resource_physics_research_mult = 0.15
+		tile_resource_society_research_mult = 0.15
+		tile_resource_engineering_research_mult = 0.15
 	}
 	
 	random_weight = {
-		value = 100
+		value = 150
 	}
 }

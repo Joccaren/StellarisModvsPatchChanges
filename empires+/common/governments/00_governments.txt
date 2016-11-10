@@ -9,7 +9,12 @@
 # Military Democracy
 military_republic = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -22,19 +27,10 @@ military_republic = {
 	}
 	
 	modifier = {
-#		army_damage_mult = 0.1
-#		army_upkeep_mult = -0.2
-#		shipclass_military_station_build_cost_mult = -0.15
-#		shipclass_military_station_damage_mult = 0.1
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		pop_war_happiness = 0.05
-		navy_size_mult = 0.15
-		country_ship_upgrade_cost_mult = -0.25
-		pop_ethic_shift = 0.15
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		country_trust_growth = -0.50
+		army_damage_mult = 0.1
+		army_upkeep_mult = -0.2
+		shipclass_military_station_build_cost_mult = -0.15
+		shipclass_military_station_damage_mult = 0.1
 	}
 	
 	uses_mandates = yes
@@ -44,6 +40,37 @@ military_republic = {
 	
 	ruler_title = RT_CONSUL
 	upgrade = martial_demarchy
+
+	max_election_candidates = 4
+	election_candidates = {
+		modifier = {
+			add = 1000
+			OR = {
+				leader_class = ruler
+				AND = {
+					exists = pop_faction
+					pop_faction = {
+						is_scope_valid = yes
+						is_pop_faction_type = loyalist
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 100
+			OR = {
+				leader_class = admiral
+				leader_class = general
+				leader_class = governor
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				leader_class = scientist
+			}
+		}
+	}
 }
 
 # Advanced Military Democracy
@@ -51,7 +78,12 @@ martial_demarchy = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -64,15 +96,10 @@ martial_demarchy = {
 	}
 	
 	modifier = {
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		pop_war_happiness = 0.10
-		navy_size_mult = 0.30
-		country_ship_upgrade_cost_mult = -0.50
-		pop_ethic_shift = 0.15
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		country_trust_growth = -0.50
+		army_damage_mult = 0.2
+		army_upkeep_mult = -0.4
+		shipclass_military_station_build_cost_mult = -0.3
+		shipclass_military_station_damage_mult = 0.2
 	}
 	
 	uses_mandates = yes
@@ -89,7 +116,12 @@ martial_demarchy = {
 # Military Oligarchy
 military_junta = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -102,17 +134,9 @@ military_junta = {
 	}
 	
 	modifier = {
-#		ship_upkeep_mult = -0.05
-#		country_ship_upgrade_cost_mult = -0.25
-#		admiral_skill_levels = 1
-		leader_skill_levels = 1
-		leader_influence_cost = -0.20
-		pop_war_happiness = 0.15
-		spaceport_ship_build_cost_mult = -0.10
-		pop_peace_happiness = -0.05
-		ship_upkeep_mult = 0.15
-		country_trust_growth = -0.50
-		tile_resource_energy_mult = -0.10
+		ship_upkeep_mult = -0.05
+		country_ship_upgrade_cost_mult = -0.25
+		admiral_skill_levels = 1	
 	}
 	
 	election_term_years = 40
@@ -155,7 +179,12 @@ ordered_stratocracy = {
 	prerequisites = { "tech_galactic_administration" }
 
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -168,14 +197,9 @@ ordered_stratocracy = {
 	}
 	
 	modifier = {
-		leader_skill_levels = 2
-		leader_influence_cost = -0.40
-		pop_war_happiness = 0.20
-		spaceport_ship_build_cost_mult = -0.20
-		pop_peace_happiness = -0.05
-		ship_upkeep_mult = 0.15
-		country_trust_growth = -0.50
-		tile_resource_energy_mult = -0.10
+		ship_upkeep_mult = -0.10
+		country_ship_upgrade_cost_mult = -0.50
+		admiral_skill_levels = 2
 	}
 	
 	election_term_years = 40
@@ -219,7 +243,12 @@ military_dictatorship = {
 	icon = "gfx/interface/icons/governments/military_dictatorship.dds"
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -232,16 +261,9 @@ military_dictatorship = {
 	}
 	
 	modifier = {
-#		navy_size_mult = 0.10
-#		spaceport_ship_build_cost_mult = -0.10
-#		rivalry_influence_gain = 0.25
-		country_resettlement_cost_mult = -0.20
-		pop_war_happiness = 0.05
-		ship_upkeep_mult = -0.10
-		building_time_mult = -0.15
-		spaceport_ship_build_speed_mult = 0.15
-		country_trust_growth = -0.50
-		pop_happiness = -0.08
+		navy_size_mult = 0.10
+		spaceport_ship_build_cost_mult = -0.10
+		rivalry_influence_gain = 0.25
 	}
 	
 	election_type = oligarchic
@@ -279,7 +301,12 @@ martial_empire = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -292,13 +319,9 @@ martial_empire = {
 	}
 	
 	modifier = {
-		country_resettlement_cost_mult = -0.40
-		pop_war_happiness = 0.10
-		ship_upkeep_mult = -0.20
-		building_time_mult = -0.30
-		spaceport_ship_build_speed_mult = 0.30
-		country_trust_growth = -0.50
-		pop_happiness = -0.08
+		navy_size_mult = 0.20
+		spaceport_ship_build_cost_mult = -0.20
+		rivalry_influence_gain = 0.50	
 	}
 	
 	election_type = oligarchic
@@ -340,7 +363,12 @@ martial_empire = {
 # Spiritualist Democracy
 theocratic_republic = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -353,15 +381,8 @@ theocratic_republic = {
 	}
 	
 	modifier = {
-#		pop_happiness = 0.05
-#		pop_food_req_mult = -0.1
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		country_border_mult = 0.1
-		pop_ethic_shift = -0.02
-		num_tech_alternatives_add = -1
+		pop_happiness = 0.05
+		pop_food_req_mult = -0.1
 	}
 	
 	uses_mandates = yes
@@ -378,7 +399,12 @@ transcendent_republic = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -391,13 +417,8 @@ transcendent_republic = {
 	}
 	
 	modifier = {
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		country_border_mult = 0.2
-		pop_ethic_shift = -0.05
-		num_tech_alternatives_add = -1
+		pop_happiness = 0.1
+		pop_food_req_mult = -0.2
 	}
 	
 	uses_mandates = yes
@@ -414,7 +435,12 @@ transcendent_republic = {
 # Spiritualist Oligarchy
 theocratic_oligarchy = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -427,14 +453,8 @@ theocratic_oligarchy = {
 	}
 	
 	modifier = {
-		#country_resettlement_cost_mult = -0.15
-		#leader_age = 20
-		leader_skill_levels = 1
-		leader_influence_cost = -0.20
-		tile_resource_energy_mult = -0.10
-		pop_ethic_shift = -0.10
-		planet_colony_development_speed_mult = 0.33
-		num_tech_alternatives_add = -1
+		country_resettlement_cost_mult = -0.15
+		leader_age = 20
 	}
 	
 	election_term_years = 40
@@ -474,7 +494,12 @@ transcendent_oligarchy = {
 	prerequisites = { "tech_galactic_administration" }
 
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -487,12 +512,8 @@ transcendent_oligarchy = {
 	}
 	
 	modifier = {
-		leader_skill_levels = 2
-		leader_influence_cost = -0.40
-		tile_resource_energy_mult = -0.10
-		pop_ethic_shift = -0.20
-		planet_colony_development_speed_mult = 0.50
-		num_tech_alternatives_add = -1
+		country_resettlement_cost_mult = -0.30
+		leader_age = 40
 	}
 	
 	election_term_years = 40
@@ -536,7 +557,12 @@ divine_mandate = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -549,16 +575,9 @@ divine_mandate = {
 	}
 	
 	modifier = {
-#		edict_influence_cost = -0.15
-#		edict_length_mult = 0.15
-#		pop_ethic_shift = -0.1
-		country_resettlement_cost_mult = -0.20
-		building_time_mult = -0.15
-		spaceport_ship_build_speed_mult = 0.15
-		pop_happiness = -0.08
-		pop_ethic_shift = -0.10
-		pop_slavery_tolerance = 0.125
-		num_tech_alternatives_add = -1
+		edict_influence_cost = -0.15
+		edict_length_mult = 0.15
+		pop_ethic_shift = -0.1
 	}
 	
 	ruler_title = RT_ARCHPROPHET
@@ -576,7 +595,12 @@ transcendent_empire = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -589,13 +613,9 @@ transcendent_empire = {
 	}
 	
 	modifier = {
-		country_resettlement_cost_mult = -0.40
-		building_time_mult = -0.30
-		spaceport_ship_build_speed_mult = 0.30
-		pop_happiness = -0.08
-		pop_ethic_shift = -0.20
-		pop_slavery_tolerance = 0.25
-		num_tech_alternatives_add = -1
+		edict_influence_cost = -0.3
+		edict_length_mult = 0.3
+		pop_ethic_shift = -0.2
 	}
 	
 	ruler_title = RT_GOD_EMPEROR
@@ -612,7 +632,12 @@ transcendent_empire = {
 # Materialist Democracy
 direct_democracy = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -625,15 +650,8 @@ direct_democracy = {
 	}
 	
 	modifier = {
-#		pop_happiness = 0.05
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		pop_ethic_shift = 0.25
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		species_leader_exp_gain = 0.33
-#		tile_resource_energy_mult = 0.05
-#		tile_resource_minerals_mult = 0.05
+		pop_happiness = 0.05
+		species_leader_exp_gain = 0.15
 	}
 	
 	uses_mandates = yes
@@ -650,7 +668,12 @@ subconscious_consensus = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -663,14 +686,8 @@ subconscious_consensus = {
 	}
 	
 	modifier = {
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		pop_ethic_shift = 0.25
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		species_leader_exp_gain = 0.50
-#		tile_resource_energy_mult = 0.10
-#		tile_resource_minerals_mult = 0.10
+		pop_happiness = 0.1
+		species_leader_exp_gain = 0.30
 	}
 	
 	uses_mandates = yes
@@ -686,7 +703,12 @@ subconscious_consensus = {
 # Materialist Oligarchy
 science_directorate = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -699,13 +721,8 @@ science_directorate = {
 	}
 	
 	modifier = {
-#		num_tech_alternatives_add = 1
-#		country_leader_cap = 1
-		leader_skill_levels = 1
-		leader_influence_cost = -0.20
-		tile_resource_energy_mult = -0.10
 		num_tech_alternatives_add = 1
-		pop_ethic_shift = 0.10
+		country_leader_cap = 1
 	}
 	
 	election_term_years = 40
@@ -745,7 +762,12 @@ illuminated_technocracy = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -758,11 +780,8 @@ illuminated_technocracy = {
 	}
 	
 	modifier = {
-		leader_skill_levels = 2
-		leader_influence_cost = -0.40
-		tile_resource_energy_mult = -0.10
 		num_tech_alternatives_add = 2
-		pop_ethic_shift = 0.10
+		country_leader_cap = 2
 	}
 	
 	election_term_years = 40
@@ -806,7 +825,12 @@ despotic_hegemony = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -819,14 +843,8 @@ despotic_hegemony = {
 	}
 	
 	modifier = {
-#		all_technology_research_speed = 0.05
-#		shipsize_research_station_build_cost_mult = -0.25
-		country_resettlement_cost_mult = -0.20
-		building_time_mult = -0.15
-		spaceport_ship_build_speed_mult = 0.15
-		pop_happiness = -0.08
-		all_technology_research_speed = 0.15
-		pop_ethic_shift = 0.10
+		all_technology_research_speed = 0.05
+		shipsize_research_station_build_cost_mult = -0.25
 	}
 	
 	ruler_title = RT_OVERLORD
@@ -842,7 +860,12 @@ ai_overlordship = {
 	dynastic_last_names = yes
 		
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -855,12 +878,8 @@ ai_overlordship = {
 	}
 	
 	modifier = {
-		country_resettlement_cost_mult = -0.40
-		building_time_mult = -0.30
-		spaceport_ship_build_speed_mult = 0.30
-		pop_happiness = -0.08
-		all_technology_research_speed = 0.30
-		pop_ethic_shift = 0.10
+		all_technology_research_speed = 0.10
+		shipsize_research_station_build_cost_mult = -0.5
 	}
 	
 	ruler_title = RT_HIGH_TECHNICIAN
@@ -876,7 +895,12 @@ ai_overlordship = {
 # Pacifist Democracy
 moral_democracy = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -889,20 +913,9 @@ moral_democracy = {
 	}
 	
 	modifier = {
-#		country_leader_pool_size = 1
-#		country_leader_cap = 1	
-#		country_core_sector_system_cap = 2
 		country_leader_pool_size = 1
-		country_leader_cap = 2
-		pop_ethic_shift = 0.15
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		country_trust_growth = 1.0
-		pop_happiness = 0.10
-		edict_influence_cost = -0.66
-		influence_gain_mult = 0.2
-		edict_length_mult = -0.50
-		pop_war_happiness = -0.10
+		country_leader_cap = 1	
+		country_core_sector_system_cap = 2
 	}
 	
 	uses_mandates = yes
@@ -919,7 +932,12 @@ irenic_democracy = {
 	prerequisites = { "tech_galactic_administration" }
 
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -933,16 +951,8 @@ irenic_democracy = {
 	
 	modifier = {
 		country_leader_pool_size = 2
-		country_leader_cap = 4
-		pop_ethic_shift = 0.15
-		building_time_mult = 0.20
-		spaceport_ship_build_speed_mult = -0.20
-		country_trust_growth = 1.66
-		pop_happiness = 0.20
-		edict_influence_cost = -1.0
-		influence_gain_mult = 0.4
-		edict_length_mult = -0.50
-		pop_war_happiness = -0.10
+		country_leader_cap = 2	
+		country_core_sector_system_cap = 4
 	}
 	
 	uses_mandates = yes
@@ -958,7 +968,12 @@ irenic_democracy = {
 # Pacifist Oligarchy
 peaceful_bureaucracy = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -971,14 +986,7 @@ peaceful_bureaucracy = {
 	}
 	
 	modifier = {
-#		country_core_sector_system_cap = 5
-		leader_skill_levels = 1
-		leader_influence_cost = -0.20
-		tile_resource_energy_mult = -0.10
-		pop_happiness = 0.10
-		country_trust_growth = 1.0
-		edict_length_mult = 0.20
-		pop_war_happiness = -0.10
+		country_core_sector_system_cap = 5
 	}
 	
 	election_term_years = 40
@@ -1018,7 +1026,12 @@ irenic_protectorate = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1031,13 +1044,7 @@ irenic_protectorate = {
 	}
 	
 	modifier = {
-		leader_skill_levels = 2
-		leader_influence_cost = -0.40
-		tile_resource_energy_mult = -0.10
-		pop_happiness = 0.20
-		country_trust_growth = 1.66
-		edict_length_mult = 0.40
-		pop_war_happiness = -0.10
+		country_core_sector_system_cap = 10
 	}
 	
 	election_term_years = 40
@@ -1080,7 +1087,12 @@ enlightened_monarchy = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1093,16 +1105,9 @@ enlightened_monarchy = {
 	}
 	
 	modifier = {
-#		edict_influence_cost = -0.15
-#		edict_length_mult = 0.15
-#		country_core_sector_system_cap = 2
-		country_resettlement_cost_mult = -0.20
-		building_time_mult = -0.15
-		spaceport_ship_build_speed_mult = 0.15
-		pop_happiness = 0.02
-		country_trust_growth = 1.0
-		edict_influence_cost = -0.2
-		pop_war_happiness = -0.10
+		edict_influence_cost = -0.15
+		edict_length_mult = 0.15
+		country_core_sector_system_cap = 2
 	}
 	
 	ruler_title = RT_KING
@@ -1120,7 +1125,12 @@ irenic_monarchy = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1133,13 +1143,9 @@ irenic_monarchy = {
 	}
 	
 	modifier = {
-		country_resettlement_cost_mult = -0.40
-		building_time_mult = -0.30
-		spaceport_ship_build_speed_mult = 0.30
-		pop_happiness = 0.12
-		country_trust_growth = 1.66
-		edict_influence_cost = -0.4
-		pop_war_happiness = -0.10
+		edict_influence_cost = -0.3
+		edict_length_mult = 0.3
+		country_core_sector_system_cap = 4
 	}
 	
 	ruler_title = RT_HIGH_KING
@@ -1157,7 +1163,12 @@ irenic_monarchy = {
 # Generic Democracy
 indirect_democracy = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1166,13 +1177,8 @@ indirect_democracy = {
 	}
 	
 	modifier = {
-#		leader_skill_levels = 1
-		country_leader_pool_size = 2
-		country_leader_cap = 3
-		pop_ethic_shift = 0.10
-		building_time_mult = 0.15
-		spaceport_ship_build_speed_mult = -0.15
-		leader_influence_cost = -0.20
+		leader_skill_levels = 1
+		leader_influence_cost = -0.15
 	}
 	
 	uses_mandates = yes
@@ -1189,7 +1195,12 @@ democratic_utopia = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1198,12 +1209,8 @@ democratic_utopia = {
 	}
 	
 	modifier = {
-		country_leader_pool_size = 3
-		country_leader_cap = 6
-		pop_ethic_shift = 0.10
-		building_time_mult = 0.15
-		spaceport_ship_build_speed_mult = -0.15
-		leader_influence_cost = -0.40
+		leader_skill_levels = 2
+		leader_influence_cost = -0.3
 	}
 	
 	uses_mandates = yes
@@ -1219,7 +1226,12 @@ democratic_utopia = {
 # Generic Oligarchy
 plutocratic_oligarchy = {
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1228,8 +1240,6 @@ plutocratic_oligarchy = {
 	}
 	
 	modifier = {
-		leader_skill_levels = 2
-		leader_influence_cost = -0.30
 		tile_resource_energy_mult = 0.05
 		tile_resource_minerals_mult = 0.05
 		shipsize_mining_station_build_cost_mult = -0.25
@@ -1272,7 +1282,12 @@ mega_corporation = {
 	prerequisites = { "tech_galactic_administration" }
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1281,10 +1296,8 @@ mega_corporation = {
 	}
 	
 	modifier = {
-		leader_skill_levels = 3
-		leader_influence_cost = -0.60
-		tile_resource_energy_mult = 0.10
-		tile_resource_minerals_mult = 0.10
+		tile_resource_energy_mult = 0.1
+		tile_resource_minerals_mult = 0.1
 		shipsize_mining_station_build_cost_mult = -0.5
 	}
 	
@@ -1329,7 +1342,12 @@ despotic_empire = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1345,14 +1363,8 @@ despotic_empire = {
 	default_pop_factions = { loyalist }
 	
 	modifier = {
-#		planet_building_cost_mult = -0.15
-#		slave_production_output = 0.10
-#		slave_food_output = 0.10
-		country_resettlement_cost_mult = -0.30
-		building_time_mult = -0.20
-		spaceport_ship_build_speed_mult = 0.20
-		pop_happiness = -0.08
-		pop_slavery_tolerance = 0.25
+		colony_influence_cost = -0.15
+		planet_border_mult = 0.1
 	}
 	upgrade = star_empire
 }
@@ -1366,7 +1378,12 @@ star_empire = {
 	dynastic_last_names = yes
 	
 	potential = {
-		hidden_trigger = { NOT = { is_country_type = fallen_empire } }
+		hidden_trigger = { 
+			NOR = { 
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire 
+			} 		
+		}
 	}
 
 	ethics = {
@@ -1375,11 +1392,8 @@ star_empire = {
 	}
 	
 	modifier = {
-		country_resettlement_cost_mult = -0.60
-		building_time_mult = -0.40
-		spaceport_ship_build_speed_mult = 0.40
-		pop_happiness = -0.08
-		pop_slavery_tolerance = 0.50
+		colony_influence_cost = -0.3
+		planet_border_mult = 0.2
 	}
 	
 	ruler_title = RT_EMPEROR
@@ -1442,6 +1456,7 @@ pirate_codex = {
 
 ### Fallen Empire Government
 stagnated_ascendancy = {
+	has_heir = yes
 	potential = {
 		is_country_type = fallen_empire
 	}
@@ -1452,7 +1467,29 @@ stagnated_ascendancy = {
 	pickable_at_start = no
 	
 	ruler_title = RT_EMPEROR
+	ruler_title_female = RT_EMPRESS
+	heir_title = HT_CROWN_PRINCE
+	heir_title_female = HT_CROWN_PRINCESS
 }
+
+### Awakened Fallen Empire Government
+awakened_ascendancy = {
+	has_heir = yes
+	potential = {
+		is_country_type = awakened_fallen_empire
+	}
+	
+	modifier = {
+	}	
+	
+	pickable_at_start = no
+	
+	ruler_title = RT_EMPEROR
+	ruler_title_female = RT_EMPRESS
+	heir_title = HT_CROWN_PRINCE
+	heir_title_female = HT_CROWN_PRINCESS
+}
+
 
 ### Sentinels Government
 military_order = {
@@ -1487,5 +1524,50 @@ machine_consciousness = {
 	
 	pickable_at_start = no
 	
-	ruler_title = RT_CONSCIOUSNESS
+	ruler_title = RT_EMPEROR
+}
+
+### Curator Enclave Government
+curator_government = {
+	icon = "gfx/interface/icons/governments/science_directorate.dds"
+	potential = {
+		is_country_type = enclave
+	}
+	
+	modifier = {
+	}
+	
+	pickable_at_start = no
+	
+	ruler_title = RT_HIGH_CURATOR
+}
+
+### Trader Enclave Government
+trader_government = {
+	icon = "gfx/interface/icons/governments/plutocratic_oligarchy.dds"
+	potential = {
+		is_country_type = enclave
+	}
+	
+	modifier = {
+	}
+	
+	pickable_at_start = no
+	
+	ruler_title = RT_HIGH_TRADER
+}
+
+### Artist Enclave Government
+artist_government = {
+	icon = "gfx/interface/icons/governments/moral_democracy.dds"
+	potential = {
+		is_country_type = enclave
+	}
+	
+	modifier = {
+	}
+	
+	pickable_at_start = no
+	
+	ruler_title = RT_HIGH_ARTIST
 }

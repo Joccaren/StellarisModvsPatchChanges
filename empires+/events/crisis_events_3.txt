@@ -8,6 +8,16 @@
 
 namespace = crisis
 
+@tier1influencecontact = 7
+@tier1influencecontactxenophile = 8
+@tier1influencecontactmin = 20
+@tier1influencecontactmax = 80
+
+@tier2influencecontact = 10
+@tier2influencecontactxenophile = 12
+@tier2influencecontactmin = 40
+@tier2influencecontactmax = 100
+
 @tier1materialreward = 6
 @tier1materialmin = 100
 @tier1materialmax = 500
@@ -20,6 +30,9 @@ namespace = crisis
 @tier4materialreward = 24
 @tier4materialmin = 350
 @tier4materialmax = 2000
+@tier5materialreward = 48
+@tier5materialmin = 700
+@tier5materialmax = 4000
 
 @tier1influencereward = 6
 @tier1influencemin = 40
@@ -33,6 +46,12 @@ namespace = crisis
 @tier4influencereward = 24
 @tier4influencemin = 150
 @tier4influencemax = 300
+@tier5influencereward = 36
+@tier5influencemin = 250
+@tier5influencemax = 500
+@tier6influencereward = 48
+@tier6influencemin = 300
+@tier6influencemax = 600
 
 @tier1researchreward = 6
 @tier1researchmin = 60
@@ -46,6 +65,9 @@ namespace = crisis
 @tier4researchreward = 24
 @tier4researchmin = 150
 @tier4researchmax = 500
+@tier5researchreward = 48
+@tier5researchmin = 300
+@tier5researchmax = 1000
 
 # Countdown
 country_event = {
@@ -87,7 +109,7 @@ country_event = {
 			limit = { has_policy_flag = ai_servitude }
 			random_list = {
 				# AI Uprising
-				20 = {
+				10 = {
 					modifier = {
 						count_owned_pops = {
 							limit = { pop_has_trait = trait_robotic_3 }
@@ -112,28 +134,7 @@ country_event = {
 					country_event = { id = crisis.2000 }
 				}
 				# Servant AI Perfected
-				80 = {
-					modifier = {
-						OR{
-							has_government = direct_democracy
-							has_government = subconscious_consensus
-						}
-						factor = 1.50
-					}
-					modifier = {
-						OR{
-							has_government = science_directorate
-							has_government = illuminated_technocracy
-						}
-						factor = 1.625
-					}
-					modifier = {
-						OR{
-							has_government = despotic_hegemony
-							has_government = ai_overlordship
-						}
-						factor = 1.75
-					}
+				90 = {
 					modifier = {
 						count_owned_pops = {
 							limit = { pop_has_trait = trait_robotic_3 }
@@ -163,7 +164,7 @@ country_event = {
 					limit = { has_policy_flag = ai_full_rights }
 					# AI Uprising
 					random_list = {
-						10 = {
+						5 = {
 							modifier = {
 								count_owned_pops = {
 									limit = { pop_has_trait = trait_robotic_3 }
@@ -188,28 +189,7 @@ country_event = {
 							country_event = { id = crisis.2000 }
 						}
 						# Accord Reached
-						90 = {
-							modifier = {
-								OR{
-									has_government = direct_democracy
-									has_government = subconscious_consensus
-								}
-								factor = 1.75
-							}
-							modifier = {
-								OR{
-									has_government = science_directorate
-									has_government = illuminated_technocracy
-								}
-								factor = 1.625
-							}
-							modifier = {
-								OR{
-									has_government = despotic_hegemony
-									has_government = ai_overlordship
-								}
-								factor = 1.50
-							}
+						95 = {
 							modifier = {
 								count_owned_pops = {
 									limit = { pop_has_trait = trait_robotic_3 }
@@ -371,11 +351,13 @@ country_event = {
 	
 	trigger = {
 		#is_ai = no
+		is_crises_allowed = yes
 		is_country_type = default
 		exists = capital_scope
 		#capital_scope = { colony_age > 1200 }
 		NOT = {
 			has_global_flag = ai_revolt_happened
+			has_global_flag = galactic_crisis_happened
 			has_policy_flag = ai_full_rights
 		}
 		count_owned_pops = {
@@ -387,6 +369,35 @@ country_event = {
 	is_triggered_only = yes
 	
 	immediate = {
+		random_list = {
+			50 = {
+				random_country = {
+					limit = { 
+						is_country_type = fallen_empire
+						has_ethic = ethic_fanatic_materialist
+						fleet_power > 40000							
+					}
+					set_country_flag = guardians_of_the_galaxy	
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+				}			
+			}
+			25 = {
+				random_country = {
+					limit = { 
+						is_country_type = fallen_empire
+						has_ethic = ethic_fanatic_xenophile
+						fleet_power > 40000							
+					}
+					set_country_flag = guardians_of_the_galaxy	
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+				}
+			}			
+			25 = {}
+		}	
+	
+		endgame_telemetry = ai_revolt
 		set_global_flag = ai_revolt_happened
 		set_global_flag = galactic_crisis_happened
 		set_country_flag = ai_revolt_creators
@@ -513,101 +524,12 @@ country_event = {
 					species = owner_main_species
 					ethos = owner
 				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
-				}
-				create_pop = { 
-					species = owner_main_species
-					ethos = owner 
+				while = {
+					count = 24
+					create_pop = { 
+						species = owner_main_species
+						ethos = owner 
+					}
 				}
 				random_tile = {
 					limit = { has_building = "building_colony_shelter" }
@@ -677,53 +599,14 @@ country_event = {
 						add_deposit = d_vast_energy_deposit
 					}
 				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = last_created_country
-					species = owner_main_species
-					type = "robotic_army"
+				while = {
+					count = 8
+					create_army = {
+						name = random
+						owner = last_created_country
+						species = owner_main_species
+						type = "robotic_army"
+					}
 				}
 				create_spaceport = {
 					owner = last_created_country
@@ -741,56 +624,61 @@ country_event = {
 					create_ship_design = { design = "AI Constructor" }
 					add_ship_design = last_created_design
 				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = last_created_country
-					create_ship = {
-						name = random
-						design = "AI Constructor"
-						graphical_culture = "ai_01"
-					}
-					set_location = PREV
-				}
-				create_fleet = { name = "AI Core" }
-				last_created_fleet = {
-					set_owner = last_created_country
-					create_ship = {
-						name = random
-						design = "AI Core"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREV
-						distance = 20
-						angle = 270
+				create_fleet = {
+					effect = {
+						set_owner = last_created_country
+						create_ship = {
+							name = random
+							design = "AI Constructor"
+							graphical_culture = "ai_01"
+						}
+						set_location = PREV
 					}
 				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = last_created_country
-					create_ship = {
-						name = random
-						design = "AI_2"
-						graphical_culture = "ai_01"
-					}
-					set_location = {
-						target = PREV
-						distance = 10
-						angle = 180
+				create_fleet = {
+					name = "AI Core"
+					effect = {
+						set_owner = last_created_country
+						create_ship = {
+							name = random
+							design = "AI Core"
+							graphical_culture = "ai_01"
+						}
+						set_location = {
+							target = PREV
+							distance = 20
+							angle = 270
+						}
 					}
 				}
-				create_fleet = { }
-				last_created_fleet = {
-					set_owner = last_created_country
-					create_ship = {
-						name = random
-						design = "AI_2"
-						graphical_culture = "ai_01"
+				create_fleet = {
+					effect = {
+						set_owner = last_created_country
+						create_ship = {
+							name = random
+							design = "AI 2"
+							graphical_culture = "ai_01"
+						}
+						set_location = {
+							target = PREV
+							distance = 10
+							angle = 180
+						}
 					}
-					set_location = {
-						target = PREV
-						distance = 10
-						angle = 0
+				}
+				create_fleet = {
+					effect = {
+						set_owner = last_created_country
+						create_ship = {
+							name = random
+							design = "AI 2"
+							graphical_culture = "ai_01"
+						}
+						set_location = {
+							target = PREV
+							distance = 10
+							angle = 0
+						}
 					}
 				}
 				last_created_country = {
@@ -800,114 +688,31 @@ country_event = {
 						name = random
 						skill = 3400
 					}
-					create_fleet = { }
-					last_created_fleet = {
-						set_owner = last_created_country
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 45
-							angle = random 
+					create_fleet = {
+						effect = {
+							set_owner = last_created_country
+							while = {
+								count = 6
+								create_ship = {
+									name = random
+									design = "Euthanizer"
+									graphical_culture = "ai_01"
+								}
+							}
+							while = {
+								count = 12
+								create_ship = {
+									name = random
+									design = "Sterilizer"
+									graphical_culture = "ai_01"
+								}
+							}
+							assign_leader = last_created_leader
+							set_location = {
+								target = PREVPREV
+								distance = 45
+								angle = random 
+							}
 						}
 					}
 					create_leader = {
@@ -916,114 +721,31 @@ country_event = {
 						name = random
 						skill = 3400
 					}
-					create_fleet = { }
-					last_created_fleet = {
-						set_owner = last_created_country
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 45
-							angle = random 
+					create_fleet = {
+						effect = {
+							set_owner = last_created_country
+							while = {
+								count = 8
+								create_ship = {
+									name = random
+									design = "Euthanizer"
+									graphical_culture = "ai_01"
+								}
+							}
+							while = {
+								count = 12
+								create_ship = {
+									name = random
+									design = "Sterilizer"
+									graphical_culture = "ai_01"
+								}
+							}
+							assign_leader = last_created_leader
+							set_location = {
+								target = PREVPREV
+								distance = 45
+								angle = random 
+							}
 						}
 					}
 					create_leader = {
@@ -1032,114 +754,31 @@ country_event = {
 						name = random
 						skill = 3400
 					}
-					create_fleet = { }
-					last_created_fleet = {
-						set_owner = last_created_country
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Euthanizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						create_ship = {
-							name = random
-							design = "Sterilizer"
-							graphical_culture = "ai_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 45
-							angle = random 
+					create_fleet = {
+						effect = {
+							set_owner = last_created_country
+							while = {
+								count = 8
+								create_ship = {
+									name = random
+									design = "Euthanizer"
+									graphical_culture = "ai_01"
+								}
+							}
+							while = {
+								count = 12
+								create_ship = {
+									name = random
+									design = "Sterilizer"
+									graphical_culture = "ai_01"
+								}
+							}
+							assign_leader = last_created_leader
+							set_location = {
+								target = PREVPREV
+								distance = 45
+								angle = random 
+							}
 						}
 					}
 				}
@@ -1636,6 +1275,7 @@ pop_event = {
 	hide_window = yes
 	
 	trigger = {
+		has_global_flag = ai_revolt_happened
 		any_country = { is_country_type = ai_empire }
 		OR = {
 			is_species = ROBOT_POP_SPECIES_2
@@ -1851,6 +1491,7 @@ planet_event = {
 	trigger = {
 		any_pop = { is_species = ROBOT_POP_SPECIES_3 }
 		NOT = { has_global_flag = ai_revolt_happened }
+		exists = owner
 		owner = { 
 			has_policy_flag = ai_servitude
 			NOT = { has_country_flag = malfunct_synth }
@@ -1882,6 +1523,7 @@ planet_event = {
 	trigger = {
 		any_pop = { is_species = ROBOT_POP_SPECIES_3 }
 		NOT = { has_global_flag = ai_revolt_happened }
+		exists = owner
 		owner = { 
 			has_policy_flag = ai_servitude
 			NOT = { has_country_flag = missing_synths }
@@ -1913,6 +1555,7 @@ planet_event = {
 	trigger = {
 		any_pop = { is_species = ROBOT_POP_SPECIES_3 }
 		NOT = { has_global_flag = ai_revolt_happened }
+		exists = owner
 		owner = { 
 			has_policy_flag = ai_servitude
 			NOT = { has_country_flag = synth_ship }
@@ -1944,6 +1587,7 @@ planet_event = {
 	trigger = {
 		any_pop = { is_species = ROBOT_POP_SPECIES_3 }
 		NOT = { has_global_flag = ai_revolt_happened }
+		exists = owner
 		owner = { 
 			has_policy_flag = ai_servitude
 			NOT = { has_country_flag = rogue_synth }
@@ -2416,6 +2060,7 @@ planet_event = {
 			OR = {
 				is_country_type = default
 				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
 			}
 		}
 	}

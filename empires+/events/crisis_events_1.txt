@@ -49,8 +49,10 @@ country_event = {
 	fire_only_once = yes
 	
 	trigger = {
-		NOT = { 
+		is_crises_allowed = yes
+		NOT = {
 			has_global_flag = prethoryn_invasion_happened
+			has_global_flag = galactic_crisis_happened
 		}
 		#is_ai = no
 		is_country_type = default
@@ -64,6 +66,7 @@ country_event = {
 	#}
 	
 	immediate = {
+		endgame_telemetry = prethoryn
 		set_global_flag = prethoryn_subspace_echoes
 		set_global_flag = prethoryn_invasion_happened
 		set_global_flag = galactic_crisis_happened
@@ -129,8 +132,9 @@ country_event = {
 					AND = {
 						exists = space_owner
 						space_owner = {
-							NOT = {
+							NOR = {
 								is_country_type = fallen_empire
+								is_country_type = awakened_fallen_empire
 							}
 						}
 					}
@@ -139,8 +143,11 @@ country_event = {
 				NOT = {
 					any_neighbor_system = {
 						exists = space_owner
-						space_owner = {
-							is_country_type = fallen_empire
+						space_owner = {	
+							OR = {
+								is_country_type = fallen_empire
+								is_country_type = awakened_fallen_empire
+							}
 						}
 					}
 				}
@@ -350,6 +357,34 @@ country_event = {
 	}
 	
 	immediate = {
+		random_list = {
+			50 = {
+				random_country = {
+					limit = { 
+						is_country_type = fallen_empire
+						has_ethic = ethic_fanatic_xenophile
+						fleet_power > 40000							
+					}
+					set_country_flag = guardians_of_the_galaxy	
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+				}
+			}
+			25 = {
+				random_country = {
+					limit = { 
+						is_country_type = fallen_empire
+						has_ethic = ethic_fanatic_materialist
+						fleet_power > 40000							
+					}
+					set_country_flag = guardians_of_the_galaxy	
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy days = 1825 }
+					set_timed_country_flag = { flag = timed_guardians_of_the_galaxy_2 days = 3650 }
+				}			
+			}
+			25 = {}
+		}		
+	
 		remove_global_flag = prethoryn_approaching_rim
 		set_global_flag = prethoryn_arrival
 		every_country = {
@@ -410,6 +445,13 @@ country_event = {
 					}
 				}
 				last_created_country = {
+					
+					# Lets Swarm do Full Bombardment
+					set_policy = {
+						policy = orbital_bombardment
+						option = orbital_bombardment_full
+						cooldown = no
+					}
 
 					# Beef up Swarm depending on difficulty
 					if = {
@@ -418,6 +460,7 @@ country_event = {
 						}
 						add_modifier = {
 							modifier = swarm_strength_insane
+							days = -1
 						}
 						else = {
 							if = {
@@ -453,358 +496,23 @@ country_event = {
 					owner_species = { save_event_target_as = prethoryn_species }
 					
 					### FIRST SYSTEM
-					create_fleet = { name = "Prethoryn Vanguard" }
-					create_leader = {
-						type = admiral
-						species = last_created
-						name = random
-						skill = 500
-						set_age = 3452
-						traits = {
-							trait = leader_trait_void_swimmer
-						}
-					}
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						assign_leader = last_created_leader
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 35
-							angle = random 
-						}
-						
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
-					}
-					create_fleet = { name = "Prethoryn Vanguard" }
-					create_leader = {
-						type = admiral
-						species = last_created
-						name = random
-						skill = 500
-						set_age = 2967
-						traits = {
-							trait = leader_trait_void_swimmer
-						}
-					}
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 35
-							angle = random 
-						}
-						
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
-					}
-					create_fleet = { name = "Prethoryn Vanguard" }
-					create_leader = {
-						type = admiral
-						species = last_created
-						name = random
-						skill = 500
-						set_age = 4126
-						traits = {
-							trait = leader_trait_void_swimmer
-						}
-					}
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 35
-							angle = random 
-						}
-						
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
-					}
+
+					swarm_vanguard = yes
+					swarm_vanguard = yes
+					swarm_vanguard = yes
+
 					# Constructor
-					create_fleet = { name = "Prethoryn Constructor" }
-					last_created_fleet = {
-						set_owner = PREV
-						create_ship = {
-							name = random
-							design = "Swarm Constructor"
-							graphical_culture = "swarm_01"
+					create_fleet = {
+						name = "Prethoryn Constructor"
+						effect = {
+							set_owner = PREV
+							create_ship = {
+								name = random
+								design = "Swarm Constructor"
+								graphical_culture = "swarm_01"
+							}
+							set_location = PREVPREV
 						}
-						set_location = PREVPREV
 					}
 				}
 			}
@@ -821,358 +529,23 @@ country_event = {
 				set_star_flag = swarm_invasion_target_2
 				random_system_planet = {
 					last_created_country = {
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 756
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 1007
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 2510
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
+
+						swarm_vanguard = yes
+						swarm_vanguard = yes
+						swarm_vanguard = yes
+
 						# Constructor
-						create_fleet = { name = "Prethoryn Constructor" }
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Constructor"
-								graphical_culture = "swarm_01"
+						create_fleet = {
+							name = "Prethoryn Constructor"
+							effect = {
+								set_owner = PREV
+								create_ship = {
+									name = random
+									design = "Swarm Constructor"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
 							}
-							set_location = PREVPREV
 						}
 					}
 				}
@@ -1194,358 +567,23 @@ country_event = {
 				set_star_flag = swarm_invasion_target_3
 				random_system_planet = {
 					last_created_country = {
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 2211
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 4831
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 3367
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
+
+						swarm_vanguard = yes
+						swarm_vanguard = yes
+						swarm_vanguard = yes
+
 						# Constructor
-						create_fleet = { name = "Prethoryn Constructor" }
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Constructor"
-								graphical_culture = "swarm_01"
+						create_fleet = {
+							name = "Prethoryn Constructor"
+							effect = {
+								set_owner = PREV
+								create_ship = {
+									name = random
+									design = "Swarm Constructor"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
 							}
-							set_location = PREVPREV
 						}
 					}
 				}
@@ -1568,358 +606,23 @@ country_event = {
 				set_star_flag = swarm_invasion_target_4
 				random_system_planet = {
 					last_created_country = {
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 215
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 987
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						create_fleet = { name = "Prethoryn Vanguard" }
-						create_leader = {
-							type = admiral
-							species = last_created
-							name = random
-							skill = 500
-							set_age = 4517
-							traits = {
-								trait = leader_trait_void_swimmer
-							}
-						}
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
+
+						swarm_vanguard = yes
+						swarm_vanguard = yes
+						swarm_vanguard = yes
+						
 						# Constructor
-						create_fleet = { name = "Prethoryn Constructor" }
-						last_created_fleet = {
-							set_owner = PREV
-							create_ship = {
-								name = random
-								design = "Swarm Constructor"
-								graphical_culture = "swarm_01"
+						create_fleet = {
+							name = "Prethoryn Constructor"
+							effect = {
+								set_owner = PREV
+								create_ship = {
+									name = random
+									design = "Swarm Constructor"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
 							}
-							set_location = PREVPREV
 						}
 					}
 				}
@@ -2157,823 +860,58 @@ country_event = {
 				event_target:prethoryn = {
 					
 					### FIRST SYSTEM
-					create_fleet = { name = "Prethoryn Star Brood" }
-					random_list = {
-						75 = {
-							create_leader = {
-								type = admiral
-								species = event_target:prethoryn_species
-								name = random
-								skill = 500
-								set_age = 1125
-								traits = {
-									trait = leader_trait_hive_mind
-								}
-							}
-						}
-						25 = {
-							create_leader = {
-								type = admiral
-								species = event_target:prethoryn_species
-								name = random
-								skill = 500
-								set_age = 1125
-								traits = {
-									trait = leader_trait_hive_mind
-									trait = leader_trait_hive_affinity
-								}
-							}
-						}
-					}
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Queen"
-							graphical_culture = "swarm_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Carrier"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 35
-							angle = random 
-						}
-						
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
-					}
-					
-					create_fleet = { name = "Prethoryn Star Brood" }
-					random_list = {
-						75 = {
-							create_leader = {
-								type = admiral
-								species = event_target:prethoryn_species
-								name = random
-								skill = 500
-								set_age = 1125
-								traits = {
-									trait = leader_trait_hive_mind
-								}
-							}
-						}
-						25 = {
-							create_leader = {
-								type = admiral
-								species = event_target:prethoryn_species
-								name = random
-								skill = 500
-								set_age = 1125
-								traits = {
-									trait = leader_trait_hive_mind
-									trait = leader_trait_hive_affinity
-								}
-							}
-						}
-					}
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Queen"
-							graphical_culture = "swarm_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Carrier"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Carrier"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 35
-							angle = random 
-						}
-						
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
-					}
-					
-					create_fleet = { name = "Prethoryn Star Brood" }
-					random_list = {
-						75 = {
-							create_leader = {
-								type = admiral
-								species = event_target:prethoryn_species
-								name = random
-								skill = 500
-								set_age = 1125
-								traits = {
-									trait = leader_trait_hive_mind
-								}
-							}
-						}
-						25 = {
-							create_leader = {
-								type = admiral
-								species = event_target:prethoryn_species
-								name = random
-								skill = 500
-								set_age = 1125
-								traits = {
-									trait = leader_trait_hive_mind
-									trait = leader_trait_hive_affinity
-								}
-							}
-						}
-					}
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Queen"
-							graphical_culture = "swarm_01"
-						}
-						assign_leader = last_created_leader
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Large"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Large"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Carrier"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Carrier"
-							graphical_culture = "swarm_01"
-						}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Carrier"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						#create_ship = {
-						#	name = random
-						#	design = "Swarm Small"
-						#	graphical_culture = "swarm_01"
-						#}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						create_ship = {
-							name = random
-							design = "Swarm Small"
-							graphical_culture = "swarm_01"
-						}
-						set_location = {
-							target = PREVPREV
-							distance = 35
-							angle = random 
-						}
-						
-						set_fleet_stance = aggressive
-						set_aggro_range = 500
-						set_aggro_range_measure_from = self
-					}
+					swarm_brood = yes
+					swarm_brood = yes
+					swarm_brood = yes
 					
 					# Infestors
-					create_fleet = { name = "Prethoryn Infestor" }
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Colonizer"
-							graphical_culture = "swarm_01"
+					while = {
+						count = 3
+						create_fleet = {
+							name = "Prethoryn Infestor"
+							effect = {
+								set_owner = event_target:prethoryn
+								create_ship = {
+									name = random
+									design = "Swarm Colonizer"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
+							}
 						}
-						set_location = PREVPREV
-					}
-					create_fleet = { name = "Prethoryn Infestor" }
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Colonizer"
-							graphical_culture = "swarm_01"
-						}
-						set_location = PREVPREV
-					}
-					create_fleet = { name = "Prethoryn Infestor" }
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Colonizer"
-							graphical_culture = "swarm_01"
-						}
-						set_location = PREVPREV
 					}
 					
 					# Constructor
-					create_fleet = { name = "Prethoryn Constructor" }
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						create_ship = {
-							name = random
-							design = "Swarm Constructor"
-							graphical_culture = "swarm_01"
+					create_fleet = {
+						name = "Prethoryn Constructor"
+						effect = {
+							set_owner = event_target:prethoryn
+							create_ship = {
+								name = random
+								design = "Swarm Constructor"
+								graphical_culture = "swarm_01"
+							}
+							set_location = PREVPREV
 						}
-						set_location = PREVPREV
 					}
 					
 					# Army Transports
-					create_fleet = { name = "Prethoryn Armies" }
-					last_created_fleet = {
-						set_owner = event_target:prethoryn
-						#create_army_transport = {
-						#	ship_name = "Prethoryn Transport"
-						#	graphical_culture = "swarm_01"
-						#	army_name = "Prethoryn Invaders"
-						#	army_type = "swarm_army"
-						#	species = event_target:prethoryn_species
-						#}
-						#create_army_transport = {
-						#	ship_name = "Prethoryn Transport"
-						#	graphical_culture = "swarm_01"
-						#	army_name = "Prethoryn Invaders"
-						#	army_type = "swarm_army"
-						#	species = event_target:prethoryn_species
-						#}
-						#create_army_transport = {
-						#	ship_name = "Prethoryn Transport"
-						#	graphical_culture = "swarm_01"
-						#	army_name = "Prethoryn Invaders"
-						#	army_type = "swarm_army"
-						#	species = event_target:prethoryn_species
-						#}
-						create_army_transport = {
-							ship_name = "Prethoryn Transport"
-							graphical_culture = "swarm_01"
-							army_name = "Prethoryn Invaders"
-							army_type = "swarm_army"
-							species = event_target:prethoryn_species
+					create_fleet = {
+						name = "Prethoryn Armies"
+						effect = {
+							set_owner = event_target:prethoryn
+							while = {
+								count = 3
+								create_army_transport = {
+									ship_name = "Prethoryn Transport"
+									graphical_culture = "swarm_01"
+									army_name = "Prethoryn Invaders"
+									army_type = "swarm_army"
+									species = event_target:prethoryn_species
+								}
+							}
+							set_location = PREVPREV
 						}
-						create_army_transport = {
-							ship_name = "Prethoryn Transport"
-							graphical_culture = "swarm_01"
-							army_name = "Prethoryn Invaders"
-							army_type = "swarm_army"
-							species = event_target:prethoryn_species
-						}
-						create_army_transport = {
-							ship_name = "Prethoryn Transport"
-							graphical_culture = "swarm_01"
-							army_name = "Prethoryn Invaders"
-							army_type = "swarm_army"
-							species = event_target:prethoryn_species
-						}
-						set_location = PREVPREV
 					}
 				}
 			}
@@ -2983,823 +921,59 @@ country_event = {
 				limit = { has_star_flag = swarm_invasion_target_2 }
 				random_system_planet = {
 					event_target:prethoryn = {
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
 						
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
+						swarm_brood = yes
+						swarm_brood = yes
+						swarm_brood = yes
 					
 						# Infestors
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
+						while = {
+							count = 3
+							create_fleet = {
+								name = "Prethoryn Infestor"
+								effect = {
+									set_owner = event_target:prethoryn
+									create_ship = {
+										name = random
+										design = "Swarm Colonizer"
+										graphical_culture = "swarm_01"
+									}
+									set_location = PREVPREV
+								}
 							}
-							set_location = PREVPREV
-						}
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
-							}
-							set_location = PREVPREV
-						}
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
-							}
-							set_location = PREVPREV
 						}
 						
 						# Constructor
-						create_fleet = { name = "Prethoryn Constructor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Constructor"
-								graphical_culture = "swarm_01"
+						create_fleet = {
+							name = "Prethoryn Constructor"
+							effect = {
+								set_owner = event_target:prethoryn
+								create_ship = {
+									name = random
+									design = "Swarm Constructor"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
 							}
-							set_location = PREVPREV
 						}
 						
 						# Army Transports
-						create_fleet = { name = "Prethoryn Armies" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
+						create_fleet = {
+							name = "Prethoryn Armies"
+							effect = {
+								set_owner = event_target:prethoryn
+								while = {
+									count = 3
+									create_army_transport = {
+										ship_name = "Prethoryn Transport"
+										graphical_culture = "swarm_01"
+										army_name = "Prethoryn Invaders"
+										army_type = "swarm_army"
+										species = event_target:prethoryn_species
+									}
+								}
+								set_location = PREVPREV
 							}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
-							}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
-							}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							set_location = PREVPREV
 						}
 					}
 				}
@@ -3810,823 +984,59 @@ country_event = {
 				limit = { has_star_flag = swarm_invasion_target_3 }
 				random_system_planet = {
 					event_target:prethoryn = {
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
+
+						swarm_brood = yes
+						swarm_brood = yes
+						swarm_brood = yes
 					
 						# Infestors
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
+						while = {
+							count = 3
+							create_fleet = {
+								name = "Prethoryn Infestor"
+								effect = {
+									set_owner = event_target:prethoryn
+									create_ship = {
+										name = random
+										design = "Swarm Colonizer"
+										graphical_culture = "swarm_01"
+									}
+									set_location = PREVPREV
+								}
 							}
-							set_location = PREVPREV
-						}
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
-							}
-							set_location = PREVPREV
-						}
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
-							}
-							set_location = PREVPREV
 						}
 						
 						# Constructor
-						create_fleet = { name = "Prethoryn Constructor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Constructor"
-								graphical_culture = "swarm_01"
+						create_fleet = {
+							name = "Prethoryn Constructor"
+							effect = {
+								set_owner = event_target:prethoryn
+								create_ship = {
+									name = random
+									design = "Swarm Constructor"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
 							}
-							set_location = PREVPREV
 						}
 						
 						# Army Transports
-						create_fleet = { name = "Prethoryn Armies" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
+						create_fleet = {
+							name = "Prethoryn Armies"
+							effect = {
+								set_owner = event_target:prethoryn
+								while = {
+									count = 3
+									create_army_transport = {
+										ship_name = "Prethoryn Transport"
+										graphical_culture = "swarm_01"
+										army_name = "Prethoryn Invaders"
+										army_type = "swarm_army"
+										species = event_target:prethoryn_species
+									}
+								}
+								set_location = PREVPREV
 							}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
-							}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
-							}
-							set_location = PREVPREV
 						}
 					}
 				}
@@ -4637,823 +1047,58 @@ country_event = {
 				limit = { has_star_flag = swarm_invasion_target_4 }
 				random_system_planet = {
 					event_target:prethoryn = {
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
+						swarm_brood = yes
+						swarm_brood = yes
+						swarm_brood = yes
 						
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-						
-						create_fleet = { name = "Prethoryn Star Brood" }
-						random_list = {
-							75 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-									}
-								}
-							}
-							25 = {
-								create_leader = {
-									type = admiral
-									species = event_target:prethoryn_species
-									name = random
-									skill = 500
-									set_age = 1125
-									traits = {
-										trait = leader_trait_hive_mind
-										trait = leader_trait_hive_affinity
-									}
-								}
-							}
-						}
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Queen"
-								graphical_culture = "swarm_01"
-							}
-							assign_leader = last_created_leader
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Large"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Large"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Carrier"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Carrier"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							#create_ship = {
-							#	name = random
-							#	design = "Swarm Small"
-							#	graphical_culture = "swarm_01"
-							#}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							create_ship = {
-								name = random
-								design = "Swarm Small"
-								graphical_culture = "swarm_01"
-							}
-							set_location = {
-								target = PREVPREV
-								distance = 35
-								angle = random 
-							}
-							
-							set_fleet_stance = aggressive
-							set_aggro_range = 500
-							set_aggro_range_measure_from = self
-						}
-					
 						# Infestors
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
+						while = {
+							count = 3
+							create_fleet = {
+								name = "Prethoryn Infestor"
+								effect = {
+									set_owner = event_target:prethoryn
+									create_ship = {
+										name = random
+										design = "Swarm Colonizer"
+										graphical_culture = "swarm_01"
+									}
+									set_location = PREVPREV
+								}
 							}
-							set_location = PREVPREV
-						}
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
-							}
-							set_location = PREVPREV
-						}
-						create_fleet = { name = "Prethoryn Infestor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Colonizer"
-								graphical_culture = "swarm_01"
-							}
-							set_location = PREVPREV
 						}
 						
 						# Constructor
-						create_fleet = { name = "Prethoryn Constructor" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							create_ship = {
-								name = random
-								design = "Swarm Constructor"
-								graphical_culture = "swarm_01"
+						create_fleet = {
+							name = "Prethoryn Constructor"
+							effect = {
+								set_owner = event_target:prethoryn
+								create_ship = {
+									name = random
+									design = "Swarm Constructor"
+									graphical_culture = "swarm_01"
+								}
+								set_location = PREVPREV
 							}
-							set_location = PREVPREV
 						}
 						
 						# Army Transports
-						create_fleet = { name = "Prethoryn Armies" }
-						last_created_fleet = {
-							set_owner = event_target:prethoryn
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							#create_army_transport = {
-							#	ship_name = "Prethoryn Transport"
-							#	graphical_culture = "swarm_01"
-							#	army_name = "Prethoryn Invaders"
-							#	army_type = "swarm_army"
-							#	species = event_target:prethoryn_species
-							#}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
+						create_fleet = {
+							name = "Prethoryn Armies"
+							effect = {
+								set_owner = event_target:prethoryn
+								while = {
+									count = 3
+									create_army_transport = {
+										ship_name = "Prethoryn Transport"
+										graphical_culture = "swarm_01"
+										army_name = "Prethoryn Invaders"
+										army_type = "swarm_army"
+										species = event_target:prethoryn_species
+									}
+								}
+								set_location = PREVPREV
 							}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
-							}
-							create_army_transport = {
-								ship_name = "Prethoryn Transport"
-								graphical_culture = "swarm_01"
-								army_name = "Prethoryn Invaders"
-								army_type = "swarm_army"
-								species = event_target:prethoryn_species
-							}
-							set_location = PREVPREV
 						}
 					}
 				}
@@ -5590,13 +1235,12 @@ country_event = {
 	
 	immediate = {
 		set_global_flag = sentinels_founded
-		random_country = {
-			limit = { is_country_type = swarm }
-			save_event_target_as = swarm
-		}	
+		save_event_target_as = swarm
+	
 		random_system = {
 			limit = {
-				owner = {
+				exists = space_owner
+				space_owner = {
 					is_same_value = event_target:swarm
 					#NOT = { is_same_value = ROOT }
 				}
@@ -5807,228 +1451,87 @@ country_event = {
 		capital_scope = {
 			save_event_target_as = sentinel_home
 			solar_system = { save_event_target_as = sentinel_system }
-			create_fleet = { name = "Sentinel Battle Fleet" }
-			last_created_fleet = {
-				set_owner = ROOT
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "mammalian_01"
-				}
-				assign_leader = last_created_leader
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "avian_01"
-				}
-				set_location = {
-					target = PREV
-					distance = 45
-					angle = random 
-				}
-				
-				save_event_target_as = sentinel_fleet
-				set_aggro_range = 500
-				set_fleet_stance = aggressive
-				set_aggro_range_measure_from = self
-				
-				queue_actions = {
-					repeat = {
-						find_closest_system = {
-							trigger = {
-								id = "crisis.60.trigger.1"
-								any_planet = {
+			create_fleet = {
+				name = "Sentinel Battle Fleet"
+				effect = {
+					set_owner = ROOT
+					create_ship = {
+						name = random
+						design = "Spearhead"
+						graphical_culture = "mammalian_01"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 3
+						create_ship = {
+							name = random
+							design = "Spearhead"
+							graphical_culture = "reptilian_01"
+						}
+					}
+					while = {
+						count = 6
+						create_ship = {
+							name = random
+							design = "Death's Head"
+							graphical_culture = "mammalian_01"
+						}
+					}
+					while = {
+						count = 8
+						create_ship = {
+							name = random
+							design = "Bug Crusher"
+							graphical_culture = "avian_01"
+						}
+					}
+					while = {
+						count = 18
+						create_ship = {
+							name = random
+							design = "Blade"
+							graphical_culture = "reptilian_01"
+						}
+					}
+					set_location = {
+						target = PREV
+						distance = 45
+						angle = random 
+					}
+					
+					save_event_target_as = sentinel_fleet
+					set_aggro_range = 500
+					set_fleet_stance = aggressive
+					set_aggro_range_measure_from = self
+					
+					queue_actions = {
+						repeat = {
+							find_closest_system = {
+								trigger = {
+									id = "crisis.60.trigger.1"
+									any_planet = {
+										exists = owner
+										owner = { is_same_value = event_target:prethoryn }
+									}
+									NOT = {
+										any_ship_in_system = {
+											fleet = { is_same_value = event_target:sentinel_fleet }
+										}
+									}
+								}
+								found_system = {
+									move_to = THIS
+								}	
+							}
+							find_closest_planet = {
+								trigger = {
+									id = "crisis.60.trigger.2"
 									exists = owner
 									owner = { is_same_value = event_target:prethoryn }
 								}
-								NOT = {
-									any_ship_in_system = {
-										fleet = { is_same_value = event_target:sentinel_fleet }
-									}
+								found_planet = {
+									orbit_planet = THIS
 								}
-							}
-							found_system = {
-								move_to = THIS
-							}	
-						}
-						find_closest_planet = {
-							trigger = {
-								id = "crisis.60.trigger.2"
-								exists = owner
-								owner = { is_same_value = event_target:prethoryn }
-							}
-							found_planet = {
-								orbit_planet = THIS
 							}
 						}
 					}
@@ -6075,228 +1578,82 @@ country_event = {
 		}
 		capital_scope = {
 			save_event_target_as = sentinel_home
-			create_fleet = { name = "Sentinel Battle Fleet" }
-			last_created_fleet = {
-				set_owner = ROOT
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "mammalian_01"
-				}
-				assign_leader = last_created_leader
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Spearhead"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Death's Head"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Bug Crusher"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "reptilian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "mammalian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "molluscoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "arthropoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "fungoid_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "avian_01"
-				}
-				create_ship = {
-					name = random
-					design = "Blade"
-					graphical_culture = "avian_01"
-				}
-				set_location = {
-					target = PREV
-					distance = 45
-					angle = random 
-				}
-				
-				save_event_target_as = sentinel_fleet
-				set_aggro_range = 500
-				set_fleet_stance = aggressive
-				set_aggro_range_measure_from = self
-				
-				queue_actions = {
-					repeat = {
-						find_closest_system = {
-							trigger = {
-								id = "crisis.61.trigger.1"
-								any_planet = {
+			create_fleet = {
+				name = "Sentinel Battle Fleet"
+				effect = {
+					set_owner = ROOT
+					create_ship = {
+						name = random
+						design = "Spearhead"
+						graphical_culture = "mammalian_01"
+					}
+					assign_leader = last_created_leader
+					while = {
+						count = 3
+						create_ship = {
+							name = random
+							design = "Spearhead"
+							graphical_culture = "reptilian_01"
+						}
+					}
+					while = {
+						count = 6
+						create_ship = {
+							name = random
+							design = "Death's Head"
+							graphical_culture = "mammalian_01"
+						}
+					}
+					while = {
+						count = 8
+						create_ship = {
+							name = random
+							design = "Bug Crusher"
+							graphical_culture = "avian_01"
+						}
+					}
+					while = {
+						count = 18
+						create_ship = {
+							name = random
+							design = "Blade"
+							graphical_culture = "reptilian_01"
+						}
+					}
+					
+					save_event_target_as = sentinel_fleet
+					set_aggro_range = 500
+					set_fleet_stance = aggressive
+					set_aggro_range_measure_from = self
+					
+					queue_actions = {
+						repeat = {
+							find_closest_system = {
+								trigger = {
+									id = "crisis.61.trigger.1"
+									any_planet = {
+										exists = owner
+										owner = { is_same_value = event_target:prethoryn }
+									}
+									NOT = {
+										any_ship_in_system = {
+											fleet = { is_same_value = event_target:sentinel_fleet }
+										}
+									}
+								}
+								found_system = {
+									move_to = THIS
+								}	
+							}
+							find_closest_planet = {
+								trigger = {
+									id = "crisis.61.trigger.2"
 									exists = owner
 									owner = { is_same_value = event_target:prethoryn }
 								}
-								NOT = {
-									any_ship_in_system = {
-										fleet = { is_same_value = event_target:sentinel_fleet }
-									}
+								found_planet = {
+									orbit_planet = THIS
 								}
-							}
-							found_system = {
-								move_to = THIS
-							}	
-						}
-						find_closest_planet = {
-							trigger = {
-								id = "crisis.61.trigger.2"
-								exists = owner
-								owner = { is_same_value = event_target:prethoryn }
-							}
-							found_planet = {
-								orbit_planet = THIS
 							}
 						}
 					}
@@ -6377,114 +1734,49 @@ country_event = {
 		name = crisis.71.a
 		response_text = crisis.71.a.response
 		hidden_effect = {
-			create_fleet = { name = "Sentinel Auxiliary Fleet" }
 			capital_scope = {
-				last_created_fleet = {
-					set_owner = ROOT
-					create_ship = {
-						name = random
-						design = "Judgment"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Avatar"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Judgment"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Avatar"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Avatar"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Avatar"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Avatar"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Avatar"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Voidstalker"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Voidstalker"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Voidstalker"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Starfang"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Starfang"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					create_ship = {
-						name = random
-						design = "Eclipse"
-						graphical_culture = "fallen_empire_01"
-					}
-					set_location = {
-						target = PREV
-						distance = 45
-						angle = random 
+				create_fleet = {
+					name = "Sentinel Auxiliary Fleet"
+					effect = {
+						set_owner = ROOT
+						create_ship_design = {
+							design = "Starfang"
+							ftl = root
+						}
+						while = {
+							count = 10
+							create_ship = {
+								name = random
+								design = last_created_design
+							}
+						}
+						create_ship_design = {
+							design = "Voidstalker"
+							ftl = root
+						}
+						while = {
+							count = 5
+							create_ship = {
+								name = random
+								design = last_created_design
+							}
+						}
+						create_ship_design = {
+							design = "Judgment"
+							ftl = root
+						}
+						while = {
+							count = 6
+							create_ship = {
+								name = random
+								design = last_created_design
+							}
+						}
+						set_location = {
+							target = PREV
+							distance = 45
+							angle = random 
+						}
 					}
 				}
 			}
@@ -6653,7 +1945,6 @@ ship_event = {
 	
 	immediate = {
 		#destroy_ambient_object = event_target:injured_queen
-		destroy_ambient_object = fromfrom
 		owner = {
 			save_event_target_as = ship_owner
 			set_country_flag = queen_captured
@@ -6668,22 +1959,20 @@ ship_event = {
 				#is_ai = no
 				is_country_type = default
 				NOT = { is_same_value = event_target:ship_owner }
+				has_special_project = CAPTURE_QUEEN
+			}
+			abort_special_project = {
+				type = "CAPTURE_QUEEN"
+				location = fromfrom
 			}
 			country_event = { id = crisis.107 }
 		}
+		destroy_ambient_object = fromfrom
 	}
 	
 	option = {
 		name = crisis.105.a
 		hidden_effect = {
-			create_fleet = {
-				name = "Domesticated Prethoryn"
-				settings = { 
-					can_upgrade = no 
-					can_change_composition = no 
-					can_change_leader = no 
-				}
-			}
 			owner = {
 				create_leader = {
 					type = admiral
@@ -6692,16 +1981,24 @@ ship_event = {
 					skill = 50
 				}
 			}
-			last_created_fleet = {
-				set_fleet_flag = pet_queen
-				set_owner = event_target:ship_owner
-				create_ship = {
-					name = "Domesticated Queen"
-					design = "Swarm Queen"
-					graphical_culture = "swarm_01"
+			create_fleet = {
+				name = "Domesticated Prethoryn"
+				effect = {
+					set_fleet_flag = pet_queen
+					set_owner = event_target:ship_owner
+					create_ship = {
+						name = "Domesticated Queen"
+						design = "Swarm Queen"
+						graphical_culture = "swarm_01"
+					}
+					assign_leader = last_created_leader
+					set_location = ROOT
 				}
-				assign_leader = last_created_leader
-				set_location = ROOT
+				settings = { 
+					can_upgrade = no 
+					can_change_composition = no 
+					can_change_leader = no 
+				}
 			}
 			solar_system = {
 				every_system_ambient_object = {
@@ -6896,74 +2193,23 @@ event = {
 			random_owned_ship = {
 				save_event_target_as = infestor_respawn_system
 			}
-			create_fleet = { name = "Prethoryn Infestor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Colonizer"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:infestor_respawn_system
-					distance = 5
-					angle = random
-				}
-			}
-			create_fleet = { name = "Prethoryn Infestor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Colonizer"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:infestor_respawn_system
-					distance = 5
-					angle = random
-				}
-			}
-			create_fleet = { name = "Prethoryn Infestor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Colonizer"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:infestor_respawn_system
-					distance = 5
-					angle = random
-				}
-			}
-			create_fleet = { name = "Prethoryn Infestor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Colonizer"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:infestor_respawn_system
-					distance = 5
-					angle = random
-				}
-			}
-			create_fleet = { name = "Prethoryn Infestor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Colonizer"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:infestor_respawn_system
-					distance = 5
-					angle = random
+			while = {
+				count = 5
+				create_fleet = {
+					name = "Prethoryn Infestor"
+					effect = {
+						set_owner = event_target:prethoryn
+						create_ship = {
+							name = random
+							design = "Swarm Colonizer"
+							graphical_culture = "swarm_01"
+						}
+						set_location = {
+							target = event_target:infestor_respawn_system
+							distance = 5
+							angle = random
+						}
+					}
 				}
 			}
 		}
@@ -7002,46 +2248,23 @@ event = {
 			random_owned_ship = {
 				save_event_target_as = constructor_respawn_system
 			}
-			create_fleet = { name = "Prethoryn Constructor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Constructor"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:constructor_respawn_system
-					distance = 5
-					angle = random
-				}
-			}
-			create_fleet = { name = "Prethoryn Constructor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Constructor"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:constructor_respawn_system
-					distance = 5
-					angle = random
-				}
-			}
-			create_fleet = { name = "Prethoryn Constructor" }
-			last_created_fleet = {
-				set_owner = event_target:prethoryn
-				create_ship = {
-					name = random
-					design = "Swarm Constructor"
-					graphical_culture = "swarm_01"
-				}
-				set_location = {
-					target = event_target:constructor_respawn_system
-					distance = 5
-					angle = random
+			while = {
+				count = 3
+				create_fleet = {
+					name = "Prethoryn Constructor"
+					effect = {
+						set_owner = event_target:prethoryn
+						create_ship = {
+							name = random
+							design = "Swarm Constructor"
+							graphical_culture = "swarm_01"
+						}
+						set_location = {
+							target = event_target:constructor_respawn_system
+							distance = 5
+							angle = random
+						}
+					}
 				}
 			}
 		}
@@ -7061,7 +2284,6 @@ event = {
 				any_country = {
 					is_country_type = swarm
 					num_owned_planets > 0
-					any_owned_planet = { has_spaceport = yes }
 					num_ships < 4711
 					num_armies < 100
 				}
@@ -7086,7 +2308,6 @@ country_event = {
 	trigger = {
 		is_country_type = swarm
 		num_owned_planets > 0
-		any_owned_planet = { has_spaceport = yes }
 		num_ships < 4711
 		num_armies < 100
 	}
@@ -7097,527 +2318,74 @@ country_event = {
 		random_owned_planet = {
 			limit = { has_spaceport = yes }
 			save_event_target_as = spaceport_planet
-		}
-		create_fleet = { name = "Prethoryn Star Brood" }
-		random_list = {
-			75 = {
-				create_leader = {
-					type = admiral
-					species = event_target:prethoryn_species
-					name = random
-					skill = 500
-					set_age = 1125
-					traits = {
-						trait = leader_trait_hive_mind
-					}
-				}
-			}
-			25 = {
-				create_leader = {
-					type = admiral
-					species = event_target:prethoryn_species
-					name = random
-					skill = 500
-					set_age = 1125
-					traits = {
-						trait = leader_trait_hive_mind
-						trait = leader_trait_hive_affinity
-					}
-				}
-			}
-		}
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Queen"
-				graphical_culture = "swarm_01"
-			}
-			assign_leader = last_created_leader
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-			
-			set_fleet_stance = aggressive
-			set_aggro_range = 500
-			set_aggro_range_measure_from = self
-		}
+
+			event_target:prethoryn = {
 		
-		create_fleet = { name = "Prethoryn Star Brood" }
-		random_list = {
-			75 = {
-				create_leader = {
-					type = admiral
-					species = event_target:prethoryn_species
-					name = random
-					skill = 500
-					set_age = 1125
-					traits = {
-						trait = leader_trait_hive_mind
+				swarm_brood = yes
+				swarm_brood = yes
+				swarm_brood = yes
+				
+				# Infestors
+				while = {
+					count = 3
+					create_fleet = {
+						name = "Prethoryn Infestor"
+						effect = {
+							set_owner = event_target:prethoryn
+							create_ship = {
+								name = random
+								design = "Swarm Colonizer"
+								graphical_culture = "swarm_01"
+							}
+							set_location = {
+								target = event_target:spaceport_planet
+								distance = 35
+								angle = random 
+							}
+						}
 					}
 				}
-			}
-			25 = {
-				create_leader = {
-					type = admiral
-					species = event_target:prethoryn_species
-					name = random
-					skill = 500
-					set_age = 1125
-					traits = {
-						trait = leader_trait_hive_mind
-						trait = leader_trait_hive_affinity
+				
+				# Constructor
+				create_fleet = {
+					name = "Prethoryn Constructor"
+					effect = {
+						set_owner = event_target:prethoryn
+						create_ship = {
+							name = random
+							design = "Swarm Constructor"
+							graphical_culture = "swarm_01"
+						}
+						set_location = {
+							target = event_target:spaceport_planet
+							distance = 35
+							angle = random 
+						}
 					}
 				}
-			}
-		}
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Queen"
-				graphical_culture = "swarm_01"
-			}
-			assign_leader = last_created_leader
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-			
-			set_fleet_stance = aggressive
-			set_aggro_range = 500
-			set_aggro_range_measure_from = self
-		}
-		
-		create_fleet = { name = "Prethoryn Star Brood" }
-		random_list = {
-			75 = {
-				create_leader = {
-					type = admiral
-					species = event_target:prethoryn_species
-					name = random
-					skill = 500
-					set_age = 1125
-					traits = {
-						trait = leader_trait_hive_mind
-					}
-				}
-			}
-			25 = {
-				create_leader = {
-					type = admiral
-					species = event_target:prethoryn_species
-					name = random
-					skill = 500
-					set_age = 1125
-					traits = {
-						trait = leader_trait_hive_mind
-						trait = leader_trait_hive_affinity
-					}
-				}
-			}
-		}
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Queen"
-				graphical_culture = "swarm_01"
-			}
-			assign_leader = last_created_leader
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Large"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Carrier"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			create_ship = {
-				name = random
-				design = "Swarm Small"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-			
-			set_fleet_stance = aggressive
-			set_aggro_range = 500
-			set_aggro_range_measure_from = self
-		}
-		
-		# Infestors
-		create_fleet = { name = "Prethoryn Infestor" }
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Colonizer"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-		}
-		create_fleet = { name = "Prethoryn Infestor" }
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Colonizer"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-		}
-		create_fleet = { name = "Prethoryn Infestor" }
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Colonizer"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-		}
-		
-		# Constructor
-		create_fleet = { name = "Prethoryn Constructor" }
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_ship = {
-				name = random
-				design = "Swarm Constructor"
-				graphical_culture = "swarm_01"
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
-			}
-		}
-		
-		# Army Transports
-		create_fleet = { name = "Prethoryn Armies" }
-		last_created_fleet = {
-			set_owner = event_target:prethoryn
-			create_army_transport = {
-				ship_name = "Prethoryn Transport"
-				graphical_culture = "swarm_01"
-				army_name = "Prethoryn Invaders"
-				army_type = "swarm_army"
-				species = event_target:prethoryn_species
-			}
-			create_army_transport = {
-				ship_name = "Prethoryn Transport"
-				graphical_culture = "swarm_01"
-				army_name = "Prethoryn Invaders"
-				army_type = "swarm_army"
-				species = event_target:prethoryn_species
-			}
-			create_army_transport = {
-				ship_name = "Prethoryn Transport"
-				graphical_culture = "swarm_01"
-				army_name = "Prethoryn Invaders"
-				army_type = "swarm_army"
-				species = event_target:prethoryn_species
-			}
-			set_location = {
-				target = event_target:spaceport_planet
-				distance = 35
-				angle = random 
+
+				# Army Transports
+				#create_fleet = {
+				#	name = "Prethoryn Armies"
+				#	effect = {
+				#		set_owner = event_target:prethoryn
+				#		while = {
+				#			count = 3
+				#			create_army_transport = {
+				#				ship_name = "Prethoryn Transport"
+				#				graphical_culture = "swarm_01"
+				#				army_name = "Prethoryn Invaders"
+				#				army_type = "swarm_army"
+				#				species = event_target:prethoryn_species
+				#			}
+				#		}
+				#		set_location = {
+				#			target = event_target:spaceport_planet
+				#			distance = 35
+				#			angle = random 
+				#		}
+				#	}
+				#}
 			}
 		}
 	}

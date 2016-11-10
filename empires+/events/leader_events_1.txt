@@ -21,6 +21,10 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		free_leader_slots > 0
+		any_owned_leader = {
+			count < 3
+			leader_class = admiral
+		}
 	}
 	
 	immediate = {
@@ -649,1500 +653,131 @@ country_event = {
 			if = {
 				limit = {
 					leader_class = scientist
-					num_traits < 5
+					num_traits < 3
+					NOT = {
+						has_leader_flag = has_gained_level_trait
+						is_researching_area = society
+						is_researching_area = engineering
+						is_researching_area = physics
+					}
 				}
 				random_list = {
-					80 = { }
-					20 = {
+					90 = { }
+					10 = {
 						modifier = {
-							factor = 1.15
-							has_level = 2
+							factor = 1.5
+							OR = {
+								has_level = 3
+								has_level = 4
+							}
 						}
 						modifier = {
-							factor = 1.3
-							has_level = 3
-						}
-						modifier = {
-							factor = 1.45
-							has_level = 4
-						}
-						modifier = {
-							factor = 1.6
+							factor = 5
 							has_level = 5
 						}
-						modifier = {
-							factor = 1.75
-							has_level = 6
-						}
-						modifier = {
-							factor = 1.9
-							has_level = 7
-						}
-						modifier = {
-							factor = 2.05
-							has_level = 8
-						}
-						modifier = {
-							factor = 2.2
-							has_level = 9
-						}
-						modifier = {
-							factor = 2.35
-							has_level = 10
-						}
-						modifier = {
-							factor = 2.5
-							OR = {
-								has_level = 11
-								has_level = 12
-								has_level = 13
-								has_level = 14
-								has_level = 15
-							}
-						}
-						random_list = {
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_adaptable }
-									}
-									add_trait = leader_trait_adaptable
-									set_leader_flag = gained_leader_trait_adaptable
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_resilient }
-									}
-									add_trait = leader_trait_resilient
-									set_leader_flag = gained_leader_trait_resilient
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_stubborn }
-									}
-									add_trait = leader_trait_stubborn
-									set_leader_flag = gained_leader_trait_stubborn
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_substance_abuser }
-									}
-									add_trait = leader_trait_substance_abuser
-									set_leader_flag = gained_leader_trait_substance_abuser
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_arrested_development }
-									}
-									add_trait = leader_trait_arrested_development
-									set_leader_flag = gained_leader_trait_arrested_development
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_meticulous }
-									}
-									add_trait = leader_trait_meticulous
-									set_leader_flag = gained_leader_trait_meticulous
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_careful }
-									}
-									add_trait = leader_trait_careful
-									set_leader_flag = gained_leader_trait_careful
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_spark_of_genius }
-									}
-									add_trait = leader_trait_spark_of_genius
-									set_leader_flag = gained_leader_trait_spark_of_genius
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_carefree }
-									}
-									add_trait = leader_trait_carefree
-									set_leader_flag = gained_leader_trait_carefree
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_roamer }
-									}
-									add_trait = leader_trait_roamer
-									set_leader_flag = gained_leader_trait_roamer
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_archaeologist }
-									}
-									add_trait = leader_trait_archaeologist
-									set_leader_flag = gained_leader_trait_archaeologist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_maniacal }
-									}
-									add_trait = leader_trait_maniacal
-									set_leader_flag = gained_leader_trait_maniacal
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_custom_AI_assistant }
-									}
-									add_trait = leader_trait_custom_AI_assistant
-									set_leader_flag = gained_leader_trait_custom_AI_assistant
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_materials }
-									}
-									add_trait = leader_trait_expertise_materials
-									set_leader_flag = gained_leader_trait_expertise_materials
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_rocketry }
-									}
-									add_trait = leader_trait_expertise_rocketry
-									set_leader_flag = gained_leader_trait_expertise_rocketry
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_voidcraft }
-									}
-									add_trait = leader_trait_expertise_voidcraft
-									set_leader_flag = gained_leader_trait_expertise_voidcraft
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_industry }
-									}
-									add_trait = leader_trait_expertise_industry
-									set_leader_flag = gained_leader_trait_expertise_industry
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_field_manipulation }
-									}
-									add_trait = leader_trait_expertise_field_manipulation
-									set_leader_flag = gained_leader_trait_expertise_field_manipulation
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_particles }
-									}
-									add_trait = leader_trait_expertise_particles
-									set_leader_flag = gained_leader_trait_expertise_particles
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_computing }
-									}
-									add_trait = leader_trait_expertise_computing
-									set_leader_flag = gained_leader_trait_expertise_computing
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_psionics }
-									}
-									add_trait = leader_trait_expertise_psionics
-									set_leader_flag = gained_leader_trait_expertise_psionics
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_new_worlds }
-									}
-									add_trait = leader_trait_expertise_new_worlds
-									set_leader_flag = gained_leader_trait_expertise_new_worlds
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_statecraft }
-									}
-									add_trait = leader_trait_expertise_statecraft
-									set_leader_flag = gained_leader_trait_expertise_statecraft
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_biology }
-									}
-									add_trait = leader_trait_expertise_biology
-									set_leader_flag = gained_leader_trait_expertise_biology
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_expertise_military_theory }
-									}
-									add_trait = leader_trait_expertise_military_theory
-									set_leader_flag = gained_leader_trait_expertise_military_theory
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_paranoid }
-									}
-									add_trait = leader_trait_paranoid
-									set_leader_flag = gained_leader_trait_paranoid
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_confirmation_biases }
-									}
-									add_trait = leader_trait_confirmation_biases
-									set_leader_flag = gained_leader_trait_confirmation_biases
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_lab_rat }
-									}
-									add_trait = leader_trait_lab_rat
-									set_leader_flag = gained_leader_trait_lab_rat
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.21} }
-								}
-							}
-						}
+						add_random_leader_trait = yes
+						set_leader_flag = has_gained_level_trait
 					}
 				}
 			}
 			if = {
 				limit = {
 					leader_class = admiral
-					num_traits < 5
+					num_traits < 3
+					NOT = { has_leader_flag = has_gained_level_trait }
 				}
 				random_list = {
-					80 = { }
-					20 = {
+					90 = { }
+					10 = {
 						modifier = {
-							factor = 1.15
-							has_level = 2
+							factor = 1.5
+							OR = {
+								has_level = 3
+								has_level = 4
+							}
 						}
 						modifier = {
-							factor = 1.3
-							has_level = 3
-						}
-						modifier = {
-							factor = 1.45
-							has_level = 4
-						}
-						modifier = {
-							factor = 1.6
+							factor = 5
 							has_level = 5
 						}
-						modifier = {
-							factor = 1.75
-							has_level = 6
-						}
-						modifier = {
-							factor = 1.9
-							has_level = 7
-						}
-						modifier = {
-							factor = 2.05
-							has_level = 8
-						}
-						modifier = {
-							factor = 2.2
-							has_level = 9
-						}
-						modifier = {
-							factor = 2.35
-							has_level = 10
-						}
-						modifier = {
-							factor = 2.5
-							OR = {
-								has_level = 11
-								has_level = 12
-								has_level = 13
-								has_level = 14
-								has_level = 15
-							}
-						}
-						random_list = {
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_adaptable }
-									}
-									add_trait = leader_trait_adaptable
-									set_leader_flag = gained_leader_trait_adaptable
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_resilient }
-									}
-									add_trait = leader_trait_resilient
-									set_leader_flag = gained_leader_trait_resilient
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_stubborn }
-									}
-									add_trait = leader_trait_stubborn
-									set_leader_flag = gained_leader_trait_stubborn
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_substance_abuser }
-									}
-									add_trait = leader_trait_substance_abuser
-									set_leader_flag = gained_leader_trait_substance_abuser
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_arrested_development }
-									}
-									add_trait = leader_trait_arrested_development
-									set_leader_flag = gained_leader_trait_arrested_development
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_trickster }
-									}
-									add_trait = leader_trait_trickster
-									set_leader_flag = gained_leader_trait_trickster
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_fleet_logistician }
-									}
-									add_trait = leader_trait_fleet_logistician
-									set_leader_flag = gained_leader_trait_fleet_logistician
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_engineer }
-									}
-									add_trait = leader_trait_engineer
-									set_leader_flag = gained_leader_trait_engineer
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_aggressive }
-									}
-									add_trait = leader_trait_aggressive
-									set_leader_flag = gained_leader_trait_aggressive
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_cautious }
-									}
-									add_trait = leader_trait_cautious
-									set_leader_flag = gained_leader_trait_cautious
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_scout }
-									}
-									add_trait = leader_trait_scout
-									set_leader_flag = gained_leader_trait_scout
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_unyielding }
-									}
-									add_trait = leader_trait_unyielding
-									set_leader_flag = gained_leader_trait_unyielding
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_gale_speed }
-									}
-									add_trait = leader_trait_gale_speed
-									set_leader_flag = gained_leader_trait_gale_speed
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_lethargic }
-									}
-									add_trait = leader_trait_lethargic
-									set_leader_flag = gained_leader_trait_lethargic
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.22} }
-								}
-							}
-						}
+						add_random_leader_trait = yes
+						set_leader_flag = has_gained_level_trait
 					}
 				}
 			}
 			if = {
 				limit = {
 					leader_class = governor
-					num_traits < 5
+					num_traits < 3
+					NOT = { has_leader_flag = has_gained_level_trait }
+					exists = planet
 				}
 				random_list = {
 					80 = { }
 					20 = {
 						modifier = {
-							factor = 1.15
-							has_level = 2
+							factor = 1.5
+							OR = {
+								has_level = 3
+								has_level = 4
+							}
 						}
 						modifier = {
-							factor = 1.3
-							has_level = 3
-						}
-						modifier = {
-							factor = 1.45
-							has_level = 4
-						}
-						modifier = {
-							factor = 1.6
+							factor = 5
 							has_level = 5
 						}
-						modifier = {
-							factor = 1.75
-							has_level = 6
-						}
-						modifier = {
-							factor = 1.9
-							has_level = 7
-						}
-						modifier = {
-							factor = 2.05
-							has_level = 8
-						}
-						modifier = {
-							factor = 2.2
-							has_level = 9
-						}
-						modifier = {
-							factor = 2.35
-							has_level = 10
-						}
-						modifier = {
-							factor = 2.5
-							OR = {
-								has_level = 11
-								has_level = 12
-								has_level = 13
-								has_level = 14
-								has_level = 15
-							}
-						}
-						random_list = {
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_adaptable }
-									}
-									add_trait = leader_trait_adaptable
-									set_leader_flag = gained_leader_trait_adaptable
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_resilient }
-									}
-									add_trait = leader_trait_resilient
-									set_leader_flag = gained_leader_trait_resilient
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_stubborn }
-									}
-									add_trait = leader_trait_stubborn
-									set_leader_flag = gained_leader_trait_stubborn
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_substance_abuser }
-									}
-									add_trait = leader_trait_substance_abuser
-									set_leader_flag = gained_leader_trait_substance_abuser
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_arrested_development }
-									}
-									add_trait = leader_trait_arrested_development
-									set_leader_flag = gained_leader_trait_arrested_development
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_iron_fist }
-									}
-									add_trait = leader_trait_iron_fist
-									set_leader_flag = gained_leader_trait_iron_fist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_architectural_interest }
-									}
-									add_trait = leader_trait_architectural_interest
-									set_leader_flag = gained_leader_trait_architectural_interest
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_intellectual }
-									}
-									add_trait = leader_trait_intellectual
-									set_leader_flag = gained_leader_trait_intellectual
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_environmental_engineer }
-									}
-									add_trait = leader_trait_environmental_engineer
-									set_leader_flag = gained_leader_trait_environmental_engineer
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_puppet }
-									}
-									add_trait = leader_trait_puppet
-									set_leader_flag = gained_leader_trait_puppet
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_vacilating }
-									}
-									add_trait = leader_trait_vacilating
-									set_leader_flag = gained_leader_trait_vacilating
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_tradionalist }
-										NOT = { has_trait = leader_trait_autonomist }
-									}
-									add_trait = leader_trait_traditionalist
-									set_leader_flag = gained_leader_trait_traditionalist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_tradionalist }
-										NOT = { has_trait = leader_trait_autonomist }
-									}
-									add_trait = leader_trait_autonomist
-									set_leader_flag = gained_leader_trait_autonomist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_corrupt }
-									}
-									add_trait = leader_trait_corrupt
-									set_leader_flag = gained_leader_trait_corrupt
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_orwellian }
-									}
-									add_trait = leader_trait_orwellian
-									set_leader_flag = gained_leader_trait_orwellian
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_separatist }
-									}
-									add_trait = leader_trait_separatist
-									set_leader_flag = gained_leader_trait_separatist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_bureaucratic }
-									}
-									add_trait = leader_trait_bureaucratic
-									set_leader_flag = gained_leader_trait_bureaucratic
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.23} }
-								}
-							}
-						}
+						add_random_leader_trait = yes
+						set_leader_flag = has_gained_level_trait
 					}
 				}
 			}
 			if = {
 				limit = {
 					leader_class = general
-					num_traits < 5
+					num_traits < 3
+					NOT = { has_leader_flag = has_gained_level_trait }
 				}
 				random_list = {
 					80 = { }
 					20 = {
 						modifier = {
-							factor = 1.15
-							has_level = 2
+							factor = 1.5
+							OR = {
+								has_level = 3
+								has_level = 4
+							}
 						}
 						modifier = {
-							factor = 1.3
-							has_level = 3
-						}
-						modifier = {
-							factor = 1.45
-							has_level = 4
-						}
-						modifier = {
-							factor = 1.6
+							factor = 5
 							has_level = 5
 						}
-						modifier = {
-							factor = 1.75
-							has_level = 6
-						}
-						modifier = {
-							factor = 1.9
-							has_level = 7
-						}
-						modifier = {
-							factor = 2.05
-							has_level = 8
-						}
-						modifier = {
-							factor = 2.2
-							has_level = 9
-						}
-						modifier = {
-							factor = 2.35
-							has_level = 10
-						}
-						modifier = {
-							factor = 2.5
-							OR = {
-								has_level = 11
-								has_level = 12
-								has_level = 13
-								has_level = 14
-								has_level = 15
-							}
-						}
-						random_list = {
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_adaptable }
-									}
-									add_trait = leader_trait_adaptable
-									set_leader_flag = gained_leader_trait_adaptable
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_resilient }
-									}
-									add_trait = leader_trait_resilient
-									set_leader_flag = gained_leader_trait_resilient
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_stubborn }
-									}
-									add_trait = leader_trait_stubborn
-									set_leader_flag = gained_leader_trait_stubborn
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_substance_abuser }
-									}
-									add_trait = leader_trait_substance_abuser
-									set_leader_flag = gained_leader_trait_substance_abuser
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_arrested_development }
-									}
-									add_trait = leader_trait_arrested_development
-									set_leader_flag = gained_leader_trait_arrested_development
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_defender }
-									}
-									add_trait = leader_trait_defender
-									set_leader_flag = gained_leader_trait_defender
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_attacker }
-									}
-									add_trait = leader_trait_attacker
-									set_leader_flag = gained_leader_trait_attacker
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_charismatic }
-									}
-									add_trait = leader_trait_charismatic
-									set_leader_flag = gained_leader_trait_charismatic
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_butcher }
-									}
-									add_trait = leader_trait_butcher
-									set_leader_flag = gained_leader_trait_butcher
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_glory_seeker }
-									}
-									add_trait = leader_trait_glory_seeker
-									set_leader_flag = gained_leader_trait_glory_seeker
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_armchair_commander }
-									}
-									add_trait = leader_trait_armchair_commander
-									set_leader_flag = gained_leader_trait_armchair_commander
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_army_logistician }
-									}
-									add_trait = leader_trait_army_logistician
-									set_leader_flag = gained_leader_trait_army_logistician
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.24} }
-								}
-							}
-						}
+						add_random_leader_trait = yes
+						set_leader_flag = has_gained_level_trait
 					}
 				}
 			}
 			if = {
 				limit = {
 					leader_class = ruler
-					num_traits < 5
+					num_traits < 3
+					NOT = { has_leader_flag = has_gained_level_trait }
 				}
 				random_list = {
 					80 = { }
-					10 = {
+					20 = {
 						modifier = {
-							factor = 1.15
-							has_level = 2
+							factor = 1.5
+							OR = {
+								has_level = 3
+								has_level = 4
+							}
 						}
 						modifier = {
-							factor = 1.3
-							has_level = 3
-						}
-						modifier = {
-							factor = 1.45
-							has_level = 4
-						}
-						modifier = {
-							factor = 1.6
+							factor = 5
 							has_level = 5
 						}
-						modifier = {
-							factor = 1.75
-							has_level = 6
-						}
-						modifier = {
-							factor = 1.9
-							has_level = 7
-						}
-						modifier = {
-							factor = 2.05
-							has_level = 8
-						}
-						modifier = {
-							factor = 2.2
-							has_level = 9
-						}
-						modifier = {
-							factor = 2.35
-							has_level = 10
-						}
-						modifier = {
-							factor = 2.5
-							OR = {
-								has_level = 11
-								has_level = 12
-								has_level = 13
-								has_level = 14
-								has_level = 15
-							}
-						}
-						random_list = {
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_adaptable }
-									}
-									add_trait = leader_trait_adaptable
-									set_leader_flag = gained_leader_trait_adaptable
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_resilient }
-									}
-									add_trait = leader_trait_resilient
-									set_leader_flag = gained_leader_trait_resilient
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_stubborn }
-									}
-									add_trait = leader_trait_stubborn
-									set_leader_flag = gained_leader_trait_stubborn
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_substance_abuser }
-									}
-									add_trait = leader_trait_substance_abuser
-									set_leader_flag = gained_leader_trait_substance_abuser
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_arrested_development }
-									}
-									add_trait = leader_trait_arrested_development
-									set_leader_flag = gained_leader_trait_arrested_development
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_corvette_focus }
-									}
-									add_trait = trait_ruler_corvette_focus
-									set_leader_flag = gained_trait_ruler_corvette_focus
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_destroyer_focus }
-									}
-									add_trait = trait_ruler_destroyer_focus
-									set_leader_flag = gained_trait_ruler_destroyer_focus
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_cruiser_focus }
-									}
-									add_trait = trait_ruler_cruiser_focus
-									set_leader_flag = gained_trait_ruler_cruiser_focus
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_battleship_focus }
-									}
-									add_trait = trait_ruler_battleship_focus
-									set_leader_flag = gained_trait_ruler_battleship_focus
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_recruiter }
-									}
-									add_trait = trait_ruler_recruiter
-									set_leader_flag = gained_trait_ruler_recruiter
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_from_the_ranks }
-									}
-									add_trait = trait_ruler_from_the_ranks
-									set_leader_flag = gained_trait_ruler_from_the_ranks
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_fortifier }
-									}
-									add_trait = trait_ruler_fortifier
-									set_leader_flag = gained_trait_ruler_fortifier
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_logistic_understanding }
-									}
-									add_trait = trait_ruler_logistic_understanding
-									set_leader_flag = gained_trait_ruler_logistic_understanding
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_military_pioneer }
-									}
-									add_trait = trait_ruler_military_pioneer
-									set_leader_flag = gained_trait_ruler_military_pioneer
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_warlike }
-									}
-									add_trait = trait_ruler_warlike
-									set_leader_flag = gained_trait_ruler_warlike
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_architectural_sense }
-									}
-									add_trait = trait_ruler_architectural_sense
-									set_leader_flag = gained_trait_ruler_architectural_sense
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_frontier_spirit }
-									}
-									add_trait = trait_ruler_frontier_spirit
-									set_leader_flag = gained_trait_ruler_frontier_spirit
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_world_shaper }
-									}
-									add_trait = trait_ruler_world_shaper
-									set_leader_flag = gained_trait_ruler_world_shaper
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_home_in_the_sky }
-									}
-									add_trait = trait_ruler_home_in_the_sky
-									set_leader_flag = gained_trait_ruler_home_in_the_sky
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_industrialist }
-									}
-									add_trait = trait_ruler_industrialist
-									set_leader_flag = gained_trait_ruler_industrialist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							100 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_eye_for_talent }
-									}
-									add_trait = trait_ruler_eye_for_talent
-									set_leader_flag = gained_trait_ruler_eye_for_talent
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_deep_connections }
-									}
-									add_trait = trait_ruler_deep_connections
-									set_leader_flag = gained_trait_ruler_deep_connections
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_champion_of_the_people }
-									}
-									add_trait = trait_ruler_champion_of_the_people
-									set_leader_flag = gained_trait_ruler_champion_of_the_people
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_expansionist }
-									}
-									add_trait = trait_ruler_expansionist
-									set_leader_flag = gained_trait_ruler_expansionist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_fertility_preacher }
-									}
-									add_trait = trait_ruler_fertility_preacher
-									set_leader_flag = gained_trait_ruler_fertility_preacher
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_investor }
-									}
-									add_trait = trait_ruler_investor
-									set_leader_flag = gained_trait_ruler_investor
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_explorer }
-									}
-									add_trait = trait_ruler_explorer
-									set_leader_flag = gained_trait_ruler_explorer
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_fleet_organizer }
-									}
-									add_trait = leader_trait_fleet_organizer
-									set_leader_flag = gained_leader_trait_fleet_organizer
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = leader_trait_nervous }
-									}
-									add_trait = leader_trait_nervous
-									set_leader_flag = gained_leader_trait_nervous
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_puppet }
-									}
-									add_trait = trait_ruler_puppet
-									set_leader_flag = gained_trait_ruler_puppet
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_vacilating }
-									}
-									add_trait = trait_ruler_vacilating
-									set_leader_flag = gained_trait_ruler_vacilating
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_traditionalist }
-										NOT = { has_trait = trait_ruler_autonomist }
-									}
-									add_trait = trait_ruler_traditionalist
-									set_leader_flag = gained_trait_ruler_traditionalist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_traditionalist }
-										NOT = { has_trait = trait_ruler_autonomist }
-									}
-									add_trait = trait_ruler_autonomist
-									set_leader_flag = gained_trait_ruler_autonomist
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_sympathiser }
-										NOT = { has_trait = trait_ruler_ethnocentric }
-									}
-									add_trait = trait_ruler_sympathiser
-									set_leader_flag = gained_trait_ruler_sympathiser
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_sympathiser }
-										NOT = { has_trait = trait_ruler_ethnocentric }
-									}
-									add_trait = trait_ruler_ethnocentric
-									set_leader_flag = gained_trait_ruler_ethnocentric
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_corrupt }
-									}
-									add_trait = trait_ruler_corrupt
-									set_leader_flag = gained_trait_ruler_corrupt
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_orwellian }
-									}
-									add_trait = trait_ruler_orwellian
-									set_leader_flag = gained_trait_ruler_orwellian
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-							5 = {
-								if = {
-									limit = {
-										NOT = { has_trait = trait_ruler_bureaucratic }
-									}
-									add_trait = trait_ruler_bureaucratic
-									set_leader_flag = gained_trait_ruler_bureaucratic
-									set_leader_flag = has_gained_level_trait
-									owner = { country_event = { id = leader.25} }
-								}
-							}
-						}
+						add_random_leader_trait = yes
+						set_leader_flag = has_gained_level_trait
 					}
 				}
 			}
@@ -2185,8 +820,6 @@ country_event = {
 					gained_leader_trait_expertise_biology = { text = leader.21.desc.expertise_biology }
 					gained_leader_trait_expertise_military_theory = { text = leader.21.desc.expertise_military_theory }
 					gained_leader_trait_paranoid = { text = leader.21.desc.paranoid }
-					gained_leader_trait_confirmation_biases = { text = leader.21.desc.confirmation_biases }
-					gained_leader_trait_lab_rat = { text = leader.21.desc.lab_rat }
 					default = { text = "ERROR" }
 				}
 			}
@@ -2228,8 +861,6 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
-					has_leader_flag = gained_leader_trait_confirmation_biases
-					has_leader_flag = gained_leader_trait_lab_rat
 				}
 			}
 		}
@@ -2243,8 +874,6 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
-					has_leader_flag = gained_leader_trait_confirmation_biases
-					has_leader_flag = gained_leader_trait_lab_rat
 				}
 			}
 		}
@@ -2352,14 +981,6 @@ country_event = {
 					gained_leader_trait_architectural_interest = { text = leader.23.desc.architectural_interest }
 					gained_leader_trait_intellectual = { text = leader.23.desc.intellectual }
 					gained_leader_trait_environmental_engineer = { text = leader.23.desc.environmental_engineer }
-					gained_leader_trait_puppet = { text = leader.23.desc.puppet }
-					gained_leader_trait_vacilating = { text = leader.23.desc.vacilating }
-					gained_leader_trait_traditionalist = { text = leader.23.desc.traditionalist }
-					gained_leader_trait_autonomist = { text = leader.23.desc.autonomist }
-					gained_leader_trait_corrupt = { text = leader.23.desc.corrupt }
-					gained_leader_trait_orwellian = { text = leader.23.desc.orwellian }
-					gained_leader_trait_separatist = { text = leader.23.desc.separatist }
-					gained_leader_trait_bureaucratic = { text = leader.23.desc.bureaucratic }
 					default = { text = "ERROR" }
 				}
 			}
@@ -2385,12 +1006,6 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
-					has_leader_flag = gained_leader_trait_puppet
-					has_leader_flag = gained_leader_trait_vacilating
-					has_leader_flag = gained_leader_trait_corrupt
-					has_leader_flag = gained_leader_trait_orwellian
-					has_leader_flag = gained_leader_trait_separatist
-					has_leader_flag = gained_leader_trait_bureaucratic
 				}
 			}
 		}
@@ -2403,12 +1018,6 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
-					has_leader_flag = gained_leader_trait_puppet
-					has_leader_flag = gained_leader_trait_vacilating
-					has_leader_flag = gained_leader_trait_corrupt
-					has_leader_flag = gained_leader_trait_orwellian
-					has_leader_flag = gained_leader_trait_separatist
-					has_leader_flag = gained_leader_trait_bureaucratic
 				}
 			}
 		}
@@ -2535,15 +1144,6 @@ country_event = {
 					gained_trait_ruler_explorer = { text = leader.25.desc.explorer }
 					gained_leader_trait_fleet_organizer = { text = leader.25.desc.fleet_organizer }
 					gained_leader_trait_nervous = { text = leader.25.desc.nervous }
-					gained_trait_ruler_puppet = { text = leader.25.desc.puppet }
-					gained_trait_ruler_vacilating = { text = leader.25.desc.vacilating }
-					gained_trait_ruler_traditionalist = { text = leader.25.desc.traditionalist }
-					gained_trait_ruler_autonomist = { text = leader.25.desc.autonomist }
-					gained_trait_ruler_corrupt = { text = leader.25.desc.corrupt }
-					gained_trait_ruler_orwellian = { text = leader.25.desc.orwellian }
-					gained_trait_ruler_sympathiser = { text = leader.25.desc.sympathiser }
-					gained_trait_ruler_ethnocentric = { text = leader.25.desc.ethnocentric }
-					gained_trait_ruler_bureaucratic = { text = leader.25.desc.bureaucratic }
 					default = { text = "ERROR" }
 				}
 			}
@@ -2570,11 +1170,6 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
-					has_leader_flag = gained_trait_ruler_puppet
-					has_leader_flag = gained_trait_ruler_vacilating
-					has_leader_flag = gained_trait_ruler_corrupt
-					has_leader_flag = gained_trait_ruler_orwellian
-					has_leader_flag = gained_trait_ruler_bureaucratic
 				}
 			}
 		}
@@ -2588,11 +1183,6 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
-					has_leader_flag = gained_trait_ruler_puppet
-					has_leader_flag = gained_trait_ruler_vacilating
-					has_leader_flag = gained_trait_ruler_corrupt
-					has_leader_flag = gained_trait_ruler_orwellian
-					has_leader_flag = gained_trait_ruler_bureaucratic
 				}
 			}
 		}
