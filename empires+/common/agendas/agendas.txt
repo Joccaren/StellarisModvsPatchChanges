@@ -152,6 +152,39 @@ agenda_welfare = {
 	}
 }
 
+-genda_diplomatic_outreach = {
+ 	weight_modifier = {
+ 		weight = 100
+ 		modifier = {
+ 			factor = 2
+ 				from = {
+ 					has_ethic = ethic_pacifist
+ 				}
+ 		}
+ 		modifier = {
+ 			factor = 3
+ 				from = {
+ 					has_ethic = ethic_fanatic_pacifist
+ 			}
+ 		}
+ 		modifier = {
+ 			factor = 0
+ 			NOT = {
+ 				OR = {
+ 					has_government = peaceful_bureaucracy
+ 					has_government = irenic_protectorate
+ 				}
+ 			}
+ 		}
+ 		
+ 	}
+ 	
+ 	modifier = {
+ 		country_trust_growth = 0.5
+ 		influence_gain_mult = 0.2
+ 	}
+ }
+
 ## Null agenda, if all other options fail
 agenda_null = {
 	weight_modifier = {

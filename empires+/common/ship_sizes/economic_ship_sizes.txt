@@ -1,0 +1,66 @@
+##########
+#Stations#
+##########
+
+econ_station_small = {
+	max_speed = 0.0
+	acceleration = 0.0
+	rotation_speed = 0.0
+	modifier = {
+		ship_upkeep_mult = -1.25
+	}
+	max_hitpoints = 1000
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = yes
+	is_civilian = yes
+	build_block_radius = 30
+	cost = 1000
+	components_add_to_cost = no
+	prerequisites = {}
+	enable_default_design = yes
+	class = shipclass_military_station
+	is designable = yes
+}
+
+econ_station_medium = {
+	max_speed = 0.0
+	acceleration = 0.0
+	rotation_speed = 0.0
+	modifier = {
+		ship_upkeep_mult = -1.2083
+	}
+	max_hitpoints = 2500
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = yes
+	is_civilian = yes
+	build_block_radius = 50
+	cost = 4000
+	components_add_to_cost = no
+	prerequisites = {}
+	enable_default_design = yes
+	class = shipclass_military_station
+	is designable = yes
+}
+
+econ_station_large = {
+	max_speed = 0.0
+	acceleration = 0.0
+	rotation_speed = 0.0
+	modifier = {
+		ship_upkeep_mult = -1.1666
+	}
+	max_hitpoints = 6000
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = yes
+	is_civilian = yes
+	build_block_radius = 70
+	cost = 10000
+	components_add_to_cost = no
+	prerequisites = {}
+	enable_default_design = yes
+	class = shipclass_military_station
+	is designable = yes
+}

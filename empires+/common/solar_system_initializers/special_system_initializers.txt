@@ -1698,7 +1698,7 @@ sanctuary_system = {
 	usage_odds = 2000000
 	max_instances = 1
 	flags = { sanctuary_system }
-	scaled_spawn_chance = 2	# scales by galaxy size (1000 stars = 10x base)
+	scaled_spawn_chance = 8	# scales by galaxy size (1000 stars = 10x base)
 	
 	name = "Sanctuary"
 

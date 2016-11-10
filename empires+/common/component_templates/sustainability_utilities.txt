@@ -1,0 +1,44 @@
+
+#####################
+# Efficiency Module #
+#####################
+
+utility_component_template = {
+	key = "EFFICIENCY_MODULE"
+	size = aux
+	icon = "GFX_solar_panel_network"
+	icon_frame = 1
+	power = 0
+	cost = 150
+	
+#	prerequisites = { "tech_shield_rechargers_1" }
+	component_set = "EFFICIENCY_MODULE"
+	
+	modifier = {
+		ship_upkeep_mult = -0.075
+	}
+	
+	ai_weight = {
+		weight = 20
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ai_personality = evangelising_zealots
+				has_ai_personality = hive_mind
+				has_ai_personality = metalhead
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+		modifier = {
+			factor = 2.0
+			OR = {
+				has_ai_personality = erudite_explorers
+				has_ai_personality = decadent_hierarchy
+				has_ai_personality = xenophobic_isolationists
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
+			}
+		}
+	}
+}
