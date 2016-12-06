@@ -53,24 +53,24 @@
 #############
 
 @shield_S1 = 20
-@shield_M1 = 80
-@shield_L1 = 320
+@shield_M1 = 40
+@shield_L1 = 80
 
 @shield_S2 = 30
-@shield_M2 = 120
-@shield_L2 = 480
+@shield_M2 = 60
+@shield_L2 = 120
 
 @shield_S3 = 45
-@shield_M3 = 180
-@shield_L3 = 720
+@shield_M3 = 90
+@shield_L3 = 180
 
 @shield_S4 = 70
-@shield_M4 = 280
-@shield_L4 = 1120
+@shield_M4 = 140
+@shield_L4 = 280
 
 @shield_S5 = 105
-@shield_M5 = 420
-@shield_L5 = 1680
+@shield_M5 = 210
+@shield_L5 = 420
 
 #############
 # UTILITIES #

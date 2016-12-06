@@ -362,7 +362,7 @@ tech_kinetic_artillery_1 = {
 	tier = 3
 	category = { materials }
 	ai_update_type = military	
-	prerequisites = { "tech_mass_drivers_3" "tech_ship_armor_1" }
+	prerequisites = { "tech_mass_drivers_4" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -425,7 +425,7 @@ tech_kinetic_artillery_2 = {
 	tier = 3
 	category = { materials }
 	ai_update_type = military	
-	prerequisites = { "tech_kinetic_artillery_1" "tech_mass_drivers_5" }
+	prerequisites = { "tech_kinetic_artillery_1" }
 	weight = @tier3weight3
 	
 	weight_modifier = {
@@ -551,7 +551,7 @@ tech_mass_accelerator_2 = {
 	tier = 3
 	category = { materials }
 	ai_update_type = military
-	prerequisites = { "tech_mass_accelerator_1" "tech_engineering_lab_3" }
+	prerequisites = { "tech_mass_accelerator_1" }
 	weight = @tier3weight4
 	
 	weight_modifier = {
@@ -619,7 +619,7 @@ tech_autocannons_1 = {
 	tier = 2
 	category = { materials }	
 	ai_update_type = military
-	prerequisites = { "tech_shields_1" "tech_mass_drivers_1" }
+	prerequisites = { tech_mass_drivers_2 }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -688,7 +688,7 @@ tech_autocannons_2 = {
 	tier = 2
 	category = { materials }
 	ai_update_type = military	
-	prerequisites = { "tech_autocannons_1" "tech_mass_drivers_3" }
+	prerequisites = { "tech_autocannons_1" }
 	weight = @tier2weight3
 	
 	weight_modifier = {
@@ -735,7 +735,7 @@ tech_autocannons_3 = {
 	tier = 3
 	category = { materials }
 	ai_update_type = military
-	prerequisites = { "tech_autocannons_2" "tech_mass_drivers_5" }
+	prerequisites = { "tech_autocannons_2" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -798,7 +798,7 @@ tech_flak_batteries_1 = {
 	tier = 2
 	category = { materials }
 	ai_update_type = military	
-	prerequisites = { "tech_autocannons_1" }
+	prerequisites = { "tech_autocannons_2" }
 	weight = @tier2weight3
 	
 	weight_modifier = {
@@ -861,7 +861,7 @@ tech_flak_batteries_2 = {
 	tier = 3
 	category = { materials }
 	ai_update_type = military	
-	prerequisites = { "tech_flak_batteries_1" "tech_mass_drivers_5" }
+	prerequisites = { "tech_flak_batteries_1" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -1242,7 +1242,7 @@ tech_swarmer_missiles_1 = {
 	tier = 2
 	category = { rocketry }
 	ai_update_type = military
-	prerequisites = { "tech_missiles_3" "tech_pd_tracking_1" }
+	prerequisites = { "tech_missiles_4" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -1306,7 +1306,7 @@ tech_swarmer_missiles_2 = {
 	tier = 3
 	category = { rocketry }
 	ai_update_type = military
-	prerequisites = { "tech_swarmer_missiles_1" "tech_missiles_5" }
+	prerequisites = { "tech_swarmer_missiles_1" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -1374,7 +1374,7 @@ tech_torpedoes_1 = {
 	tier = 1
 	category = { rocketry }
 	ai_update_type = military
-	prerequisites = { "tech_missiles_1" "tech_ship_armor_1" }
+	prerequisites = { "tech_missiles_2" }
 	weight = @tier1weight2
 	
 	weight_modifier = {
@@ -1438,7 +1438,7 @@ tech_torpedoes_2 = {
 	tier = 2
 	category = { rocketry }
 	ai_update_type = military
-	prerequisites = { "tech_torpedoes_1"  "tech_missiles_3" }
+	prerequisites = { "tech_torpedoes_1" }
 	weight = @tier2weight2
 	
 	weight_modifier = {
@@ -1502,7 +1502,7 @@ tech_torpedoes_3 = {
 	tier = 3
 	category = { rocketry }
 	ai_update_type = military
-	prerequisites = { "tech_torpedoes_2" "tech_missiles_5" }
+	prerequisites = { "tech_torpedoes_2" }
 	weight = @tier3weight2
 	
 	weight_modifier = {

@@ -128,7 +128,7 @@ is_awakened_fallen_empire_xenophile = {
 is_valid_fallen_empire_for_task = {
 	is_country_type = fallen_empire
 	is_at_war = no
-	fleet_power > 20000
+	fleet_power > 40000
 	OR = {
 		has_ethic = ethic_fanatic_xenophile
 		has_ethic = ethic_fanatic_materialist

@@ -35,10 +35,6 @@ tb_mountain_range = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_minerals_add = 1
-	}
-	
 	prerequisites = { "tech_tb_mountain_range" }
 }
 
@@ -80,12 +76,6 @@ tb_active_volcano = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_minerals_add = 1
-		resource_food_add = 1
-		resource_energy_add = 1
-	}
-	
 	prerequisites = { "tech_tb_volcano" }
 }
 
@@ -125,10 +115,6 @@ tb_dangerous_wildlife = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-	}
-	
 	prerequisites = { "tech_tb_dangerous_wildlife" }
 }
 
@@ -158,11 +144,6 @@ tb_dense_jungle = {
 					has_modifier = "titanic_life"
 				}
 		}
-	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-		resource_food_add = 1
 	}
 	
 	prerequisites = { "tech_tb_dense_jungle" }
@@ -196,12 +177,6 @@ tb_quicksand_basin = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_minerals_add = -1
-		resource_food_add = -1
-		resource_energy_add = 1
-	}
-	
 	prerequisites = { "tech_tb_quicksand_basin" }
 }
 
@@ -231,11 +206,6 @@ tb_noxious_swamp = {
 					has_modifier = "titanic_life"
 				}
 		}
-	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-		resource_food_add = -1
 	}
 	
 	prerequisites = { "tech_tb_noxious_swamp" }
@@ -269,10 +239,6 @@ tb_massive_glacier = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_food_add = 1
-	}
-	
 	prerequisites = { "tech_tb_massive_glacier" }
 }
 
@@ -304,11 +270,6 @@ tb_toxic_kelp = {
 		}
 	}
 	
-	adjacency_bonus = {
-		resource_food_add = -1
-		resource_energy_add = 1
-	}
-	
 	prerequisites = { "tech_tb_toxic_kelp" }
 }
 
@@ -338,10 +299,6 @@ tb_deep_sinkhole = {
 					has_modifier = "titanic_life"
 				}
 		}
-	}
-	
-	adjacency_bonus = {
-		resource_minerals_add = 1
 	}
 	
 	prerequisites = { "tech_tb_deep_sinkhole" }
@@ -580,10 +537,6 @@ tb_xeno_preserve = {
 	# Can't be removed
 	cost = { 
 	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 3
-	}
 
 	spawn_chance = {
 		modifier = {
@@ -599,10 +552,6 @@ tb_ancient_ruins = {
 		minerals = 150
 	}
 
-	adjacency_bonus = {
-		resource_engineering_research_add = 1
-	}
-	
 	spawn_chance = {
 		modifier = {
 			add = 0

@@ -95,70 +95,6 @@ solar_panel_network = {
 	}
 }
 
-solar_panel_network_2 = {
-	icon = "GFX_solar_panel_network"
-	section = "ASSEMBLYYARD_SPACEPORT_SECTION"
-	construction_days = 210
-	prerequisites = { "tech_solar_panel_network" "sm_solar_panel_network" }
-	spaceport_level = 2
-	
-	cost = {
-		minerals = 100
-	}	
-	
-	produced_resources = {
-		energy = 3
-	}
-}
-
-solar_panel_network_3 = {
-	icon = "GFX_solar_panel_network"
-	section = "ASSEMBLYYARD_SPACEPORT_SECTION"
-	construction_days = 240
-	prerequisites = { "tech_solar_panel_network" "sm_solar_panel_network_2" }
-	spaceport_level = 3
-	
-	cost = {
-		minerals = 150
-	}	
-	
-	produced_resources = {
-		energy = 2
-	}
-}
-
-solar_panel_network_4 = {
-	icon = "GFX_solar_panel_network"
-	section = "ASSEMBLYYARD_SPACEPORT_SECTION"
-	construction_days = 300
-	prerequisites = { "tech_solar_panel_network" "sm_solar_panel_network_3" }
-	spaceport_level = 4
-	
-	cost = {
-		minerals = 200
-	}	
-	
-	produced_resources = {
-		energy = 2
-	}
-}
-
-solar_panel_network_5 = {
-	icon = "GFX_solar_panel_network"
-	section = "ASSEMBLYYARD_SPACEPORT_SECTION"
-	construction_days = 360
-	prerequisites = { "tech_solar_panel_network" "sm_solar_panel_network_4" }
-	spaceport_level = 5
-	
-	cost = {
-		minerals = 300
-	}	
-	
-	produced_resources = {
-		energy = 1
-	}
-}
-
 #dockyard = {
 #	icon = "GFX_spaceport_module_crew_quarters"
 #	section = "HANGARBAY_SPACEPORT_SECTION"
@@ -296,91 +232,11 @@ hydroponic_farms = {
 	}
 }
 
-hydroponic_farms_2 = {
-	icon = "GFX_spaceport_module_hydroponic_farms"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 210
-	prerequisites = { "tech_orbital_hydroponics" "sm_hydroponic_farms" }
-	spaceport_level = 2
-	
-	cost = {
-		minerals = 150
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	planet_modifier = {
-		planet_resource_food_add = 3
-	}
-}
-
-hydroponic_farms_3 = {
-	icon = "GFX_spaceport_module_hydroponic_farms"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 240
-	prerequisites = { "tech_orbital_hydroponics" "sm_hydroponic_farms_2" }
-	spaceport_level = 3
-	
-	cost = {
-		minerals = 300
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	planet_modifier = {
-		planet_resource_food_add = 2
-	}
-}
-
-hydroponic_farms_4 = {
-	icon = "GFX_spaceport_module_hydroponic_farms"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 300
-	prerequisites = { "tech_orbital_hydroponics" "sm_hydroponic_farms_3" }
-	spaceport_level = 4
-	
-	cost = {
-		minerals = 450
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	planet_modifier = {
-		planet_resource_food_add = 2
-	}
-}
-
-hydroponic_farms_5 = {
-	icon = "GFX_spaceport_module_hydroponic_farms"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 360
-	prerequisites = { "tech_orbital_hydroponics" "sm_hydroponic_farms_4" }
-	spaceport_level = 5
-	
-	cost = {
-		minerals = 600
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	planet_modifier = {
-		planet_resource_food_add = 1
-	}
-}
-
 synchronized_defenses = {
 	icon = "GFX_spaceport_synchronized_defenses"
 	section = "SCIENCE_SPACEPORT_SECTION"
 	construction_days = 180	
-	prerequisites = { "tech_synchronized_defences" }
+	prerequisites = { tech_synchronized_defences }
 	spaceport_level = 1
 	
 	cost = {
@@ -394,90 +250,6 @@ synchronized_defenses = {
 	station_modifier = {
 		ship_fire_rate_mult = 0.25
 		ship_weapon_damage = 0.25
-	}
-}
-
-synchronized_defenses_2 = {
-	icon = "GFX_spaceport_synchronized_defenses"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 210	
-	prerequisites = { "tech_synchronized_defences" "sm_synchronized_defenses" }
-	spaceport_level = 2
-	
-	cost = {
-		minerals = 300
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	station_modifier = {
-		ship_fire_rate_mult = 0.25
-		ship_weapon_damage = 0.25
-	}
-}
-
-synchronized_defenses_3 = {
-	icon = "GFX_spaceport_synchronized_defenses"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 240	
-	prerequisites = { "tech_synchronized_defences" "sm_synchronized_defenses_2" }
-	spaceport_level = 3
-	
-	cost = {
-		minerals = 450
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	station_modifier = {
-		ship_fire_rate_mult = 0.125
-		ship_weapon_damage = 0.125
-	}
-}
-
-synchronized_defenses_4 = {
-	icon = "GFX_spaceport_synchronized_defenses"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 300	
-	prerequisites = { "tech_synchronized_defences" "sm_synchronized_defenses_3" }
-	spaceport_level = 4
-	
-	cost = {
-		minerals = 600
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	station_modifier = {
-		ship_fire_rate_mult = 0.125
-		ship_weapon_damage = 0.125
-	}
-}
-
-synchronized_defenses_5 = {
-	icon = "GFX_spaceport_synchronized_defenses"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 360	
-	prerequisites = { "tech_synchronized_defences" "sm_synchronized_defenses_4" }
-	spaceport_level = 5
-	
-	cost = {
-		minerals = 800
-	}
-	
-	required_resources = {
-		energy = 1
-	}
-	
-	station_modifier = {
-		ship_fire_rate_mult = 0.1
-		ship_weapon_damage = 0.1
 	}
 }
 

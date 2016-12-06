@@ -128,8 +128,37 @@ special_init_02 = {
 						species = last_created
 						ethos = owner
 					}
+					random_tile = {
+						limit = { has_building = "building_colony_shelter" }
+						remove_building = yes
+					}
+					every_tile = {
+						limit = {
+							has_blocker = yes
+						}
+						remove_blocker = yes
+					}
 					while = {
-						count = 4
+						count = 3			
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+								has_grown_pop = no
+							}
+							set_blocker = tb_decrepit_dwellings
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+								has_grown_pop = no
+							}
+							set_blocker = tb_failing_infrastructure		
+						}				
+					}					
+					while = {
+						count = 5
 						random_tile = {
 							limit = {
 								has_blocker = no
@@ -142,6 +171,90 @@ special_init_02 = {
 							}
 						}	
 					}
+					if = {
+						limit = {
+							last_created_country = {
+								OR = {
+									has_country_flag = machine_age
+									has_country_flag = atomic_age
+									has_country_flag = early_space_age
+								}
+							}
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
+						}						
+					}	
+					if = {
+						limit = {
+							last_created_country = {
+								OR = {
+									has_country_flag = machine_age
+									has_country_flag = atomic_age
+									has_country_flag = early_space_age
+								}
+							}
+						}
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_factory"
+							add_resource = {
+								resource = minerals
+								amount = 1
+								replace = yes
+							}						
+						}						
+					}					
+					if = {
+						limit = {
+							last_created_country = {
+								has_country_flag = early_space_age
+							}
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
+						}						
+					}	
+					if = {
+						limit = {
+							last_created_country = {
+								has_country_flag = early_space_age
+							}
+						}
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_factory"
+							add_resource = {
+								resource = minerals
+								amount = 1
+								replace = yes
+							}						
+						}						
+					}						
 					while = {
 						count = 2
 						random_tile = {
@@ -159,7 +272,7 @@ special_init_02 = {
 						}					
 					}
 					while = {
-						count = 3
+						count = 4
 						random_tile = {
 							limit = { 
 								has_blocker = no 
@@ -174,25 +287,18 @@ special_init_02 = {
 							}						
 						}					
 					}
-					random_tile = {
-						limit = { has_building = "building_colony_shelter" }
-						remove_building = yes
-					}
 					last_created_country = {
 						if = {
 							limit = { has_country_flag = industrial_age }
 							PREV = {
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
-								}
-								create_army = {
-									name = "Industrial Army"
-									owner = last_created
-									species = last_created
-									type = "industrial_army"
+								while = {
+									count = 4
+									create_army = {
+										name = "Industrial Army"
+										owner = last_created
+										species = last_created
+										type = "industrial_army"
+									}
 								}
 							}
 							break = yes
@@ -201,7 +307,7 @@ special_init_02 = {
 							limit = { has_country_flag = machine_age }
 							PREV = {
 								while = {
-									count = 4
+									count = 5
 									create_army = {
 										name = "Industrial Army"
 										owner = last_created
@@ -319,8 +425,26 @@ special_init_02 = {
 						species = last_created
 						ethos = owner
 					}
-					while = {
-						count = 2
+					random_tile = {
+						limit = {
+							has_blocker = no
+							has_grown_pop = no
+							has_growing_pop = no
+						}
+						create_pop = {
+							species = last_created
+							ethos = owner
+						}
+					}
+					if = {
+						limit = {
+							last_created_country = {
+								OR = {
+									has_country_flag = steam_age
+									has_country_flag = renaissance_age
+								}
+							}
+						}
 						random_tile = {
 							limit = {
 								has_blocker = no
@@ -331,10 +455,14 @@ special_init_02 = {
 								species = last_created
 								ethos = owner
 							}
-						}
+						}						
 					}
+					random_tile = {
+						limit = { has_building = "building_colony_shelter" }
+						remove_building = yes
+					}					
 					while = {
-						count = 3
+						count = 2
 						random_tile = {
 							limit = { 
 								has_blocker = no 
@@ -348,11 +476,86 @@ special_init_02 = {
 								replace = yes
 							}
 						}
-					}					
-					random_tile = {
-						limit = { has_building = "building_colony_shelter" }
-						remove_building = yes
 					}
+					if = {
+						limit = {
+							last_created_country = {
+								OR = {
+									has_country_flag = iron_age 
+									has_country_flag = late_medieval_age 									
+									has_country_flag = renaissance_age
+									has_country_flag = steam_age
+								}
+							}
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_grown_pop = no
+								has_growing_pop = no
+							}
+							create_pop = {
+								species = last_created
+								ethos = owner
+							}
+						}						
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}
+						}						
+					}					
+					if = {
+						limit = {
+							last_created_country = {
+								OR = {
+									has_country_flag = steam_age
+									has_country_flag = renaissance_age
+								}
+							}
+						}
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_farm"
+							add_resource = {
+								resource = food
+								amount = 1
+								replace = yes
+							}
+						}						
+					}
+					if = {
+						limit = {
+							last_created_country = {
+								has_country_flag = steam_age
+							}
+						}
+						random_tile = {
+							limit = { 
+								has_blocker = no 
+								has_building = no 
+								has_grown_pop = yes
+							}
+							set_building = "building_primitive_factory"
+							add_resource = {
+								resource = minerals
+								amount = 1
+								replace = yes
+							}						
+						}						
+					}					
 					last_created_country = {
 						if = {
 							limit = { has_country_flag = bronze_age }
@@ -415,16 +618,7 @@ special_init_02 = {
 							limit = { has_country_flag = steam_age }
 							PREV = {
 								while = {
-									count = 2
-									create_army = {
-										name = "Primitive Army"
-										owner = last_created
-										species = last_created
-										type = "primitive_army"
-									}
-								}
-								while = {
-									count = 2
+									count = 3
 									create_army = {
 										name = "Industrial Army"
 										owner = last_created
@@ -566,6 +760,35 @@ special_init_03 = {
 							ethic = "ethic_fanatic_individualist"			
 						}
 					}
+					every_tile = {
+						limit = {
+							has_blocker = yes
+						}
+						remove_blocker = yes
+					}
+					random_tile = {
+						limit = { has_building = "building_colony_shelter" }
+						remove_building = yes
+					}
+					while = {
+						count = 3			
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+								has_grown_pop = no
+							}
+							set_blocker = tb_decrepit_dwellings
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+								has_grown_pop = no
+							}
+							set_blocker = tb_failing_infrastructure		
+						}				
+					}					
 					create_army = {
 						name = "US Armed Forces West"
 						owner = last_created
@@ -608,7 +831,7 @@ special_init_03 = {
 						}
 					}
 					while = {
-						count = 5
+						count = 7
 						random_tile = {
 							limit = {
 								has_blocker = no
@@ -622,7 +845,7 @@ special_init_03 = {
 						}
 					}
 					while = {
-						count = 3
+						count = 4
 						random_tile = {
 							limit = { 
 								has_blocker = no 
@@ -653,15 +876,11 @@ special_init_03 = {
 							}
 						}
 					}
-					random_tile = {
-						limit = { has_building = "building_colony_shelter" }
-						remove_building = yes
-					}
 					last_created_country = {
 						capital_scope = { set_name = "Sol III" }
 					}
 				}
-				# Industrial
+				# Machine Age
 				25 = {
 					create_species = {
 						name = Human
@@ -716,6 +935,31 @@ special_init_03 = {
 							ethic = "ethic_fanatic_militarist"
 						}
 					}
+					every_tile = {
+						limit = {
+							has_blocker = yes
+						}
+						remove_blocker = yes
+					}
+					while = {
+						count = 3			
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+								has_grown_pop = no
+							}
+							set_blocker = tb_decrepit_dwellings
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+								has_grown_pop = no
+							}
+							set_blocker = tb_failing_infrastructure		
+						}				
+					}					
 					create_army = {
 						name = "German Wehrmacht"
 						owner = last_created
@@ -760,8 +1004,12 @@ special_init_03 = {
 							}
 						}
 					}
+					random_tile = {
+						limit = { has_building = "building_colony_shelter" }
+						remove_building = yes
+					}				
 					while = {
-						count = 4
+						count = 3
 						random_tile = {
 							limit = { 
 								has_blocker = no 
@@ -791,10 +1039,6 @@ special_init_03 = {
 								replace = yes
 							}							
 						}
-					}
-					random_tile = {
-						limit = { has_building = "building_colony_shelter" }
-						remove_building = yes
 					}
 					last_created_country = {
 						capital_scope = { set_name = "Sol III" }
@@ -861,6 +1105,10 @@ special_init_03 = {
 							type = "primitive_army"
 						}
 					}
+					random_tile = {
+						limit = { has_building = "building_colony_shelter" }
+						remove_building = yes
+					}					
 					while = {
 						count = 3
 						random_tile = {
@@ -890,10 +1138,6 @@ special_init_03 = {
 								replace = yes
 							}
 						}
-					}
-					random_tile = {
-						limit = { has_building = "building_colony_shelter" }
-						remove_building = yes
 					}
 					last_created_country = {
 						capital_scope = { set_name = "Sol III" }
@@ -1251,6 +1495,7 @@ special_init_05 = {
 		flags = { stone_age_primitives }
 
 		init_effect = {
+			prevent_anomaly = yes
 			add_modifier = {
 				modifier = "stone_age_civilization"
 				days = -1
@@ -1698,7 +1943,7 @@ sanctuary_system = {
 	usage_odds = 2000000
 	max_instances = 1
 	flags = { sanctuary_system }
-	scaled_spawn_chance = 8	# scales by galaxy size (1000 stars = 10x base)
+	scaled_spawn_chance = 2	# scales by galaxy size (1000 stars = 10x base)
 	
 	name = "Sanctuary"
 
@@ -1886,19 +2131,15 @@ sanctuary_system = {
 						set_primitive_age = late_medieval_age
 					}
 					20 = { 
-						set_country_flag = renaissance_age 
-						set_primitive_age = renaissance_age
-					}
-					20 = { 
 						set_country_flag = steam_age 
 						set_primitive_age = steam_age
-					}
+					}	
 				}
 			}
 			set_owner = last_created_country
 			set_capital = yes
 			while = {
-				count = 3
+				count = 2
 				random_tile = {
 					limit = {
 						has_blocker = no
@@ -1915,7 +2156,8 @@ sanctuary_system = {
 				limit = {
 					last_created_country = {
 						OR = {
-							has_country_flag = late_medieval_age 
+							has_country_flag = iron_age 
+							has_country_flag = early_medieval_age 
 							has_country_flag = renaissance_age 
 							has_country_flag = steam_age
 						}
@@ -1945,7 +2187,7 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}
+			}			
 			if = {
 				limit = {
 					last_created_country = {
@@ -1979,7 +2221,7 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}								
+			}							
 			if = {
 				limit = {
 					last_created_country = {
@@ -1996,47 +2238,48 @@ sanctuary_system = {
 						species = last_created
 						ethos = owner
 					}
-				}	
+				}		
 				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_factory"
+					add_resource = {
+						resource = minerals
+						amount = 1
+						replace = yes
+					}						
+				}
+				every_tile = {
 					limit = {
-						has_blocker = no
-						has_grown_pop = no
-						has_growing_pop = no
+						has_blocker = yes
 					}
-					create_pop = {
-						species = last_created
-						ethos = owner
+					remove_blocker = yes
+				}
+				while = {
+					count = 3			
+					random_tile = {
+						limit = {
+							has_blocker = no
+							has_building = no
+							has_grown_pop = no
+						}
+						set_blocker = tb_decrepit_dwellings
 					}
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
-				}	
-				random_tile = {
-					limit = { 
-						has_blocker = no 
-						has_building = no 
-						has_grown_pop = yes
-					}
-					set_building = "building_primitive_factory"
-					add_resource = {
-						resource = minerals
-						amount = 1
-						replace = yes
-					}						
+					random_tile = {
+						limit = {
+							has_blocker = no
+							has_building = no
+							has_grown_pop = no
+						}
+						set_blocker = tb_failing_infrastructure		
+					}				
 				}				
-			}
+			}		
 			while = {
-				count = 5
+				count = 2
 				random_tile = {
 					limit = { 
 						has_blocker = no 
@@ -2050,6 +2293,80 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}		
+			}
+			last_created_country = {
+				if = {
+					limit = { has_country_flag = bronze_age }
+					PREV = {
+						create_army = {
+							name = "Primitive Army"
+							owner = last_created
+							species = last_created
+							type = "primitive_army"
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = iron_age }
+					PREV = {
+						while = {
+							count = 2
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = late_medieval_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = renaissance_age }
+					PREV = {
+						while = {
+							count = 4
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = steam_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Industrial Army"
+								owner = last_created
+								species = last_created
+								type = "industrial_army"
+							}
+						}
+					}
+					break = yes
+				}
 			}			
 		}
 	}
@@ -2189,7 +2506,7 @@ sanctuary_system = {
 			set_owner = last_created_country
 			set_capital = yes
 			while = {
-				count = 3
+				count = 2
 				random_tile = {
 					limit = {
 						has_blocker = no
@@ -2206,7 +2523,8 @@ sanctuary_system = {
 				limit = {
 					last_created_country = {
 						OR = {
-							has_country_flag = late_medieval_age 
+							has_country_flag = iron_age 
+							has_country_flag = early_medieval_age 
 							has_country_flag = renaissance_age 
 							has_country_flag = steam_age
 						}
@@ -2236,7 +2554,7 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}
+			}			
 			if = {
 				limit = {
 					last_created_country = {
@@ -2270,7 +2588,7 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}								
+			}							
 			if = {
 				limit = {
 					last_created_country = {
@@ -2287,37 +2605,48 @@ sanctuary_system = {
 						species = last_created
 						ethos = owner
 					}
-				}	
+				}		
 				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_factory"
+					add_resource = {
+						resource = minerals
+						amount = 1
+						replace = yes
+					}						
+				}
+				every_tile = {
 					limit = {
-						has_blocker = no
-						has_grown_pop = no
-						has_growing_pop = no
+						has_blocker = yes
 					}
-					create_pop = {
-						species = last_created
-						ethos = owner
-					}
+					remove_blocker = yes
 				}
 				while = {
-					count = 2
+					count = 3			
 					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
+						limit = {
+							has_blocker = no
+							has_building = no
+							has_grown_pop = no
 						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}						
-					}	
+						set_blocker = tb_decrepit_dwellings
+					}
+					random_tile = {
+						limit = {
+							has_blocker = no
+							has_building = no
+							has_grown_pop = no
+						}
+						set_blocker = tb_failing_infrastructure		
+					}				
 				}				
-			}
+			}		
 			while = {
-				count = 5
+				count = 2
 				random_tile = {
 					limit = { 
 						has_blocker = no 
@@ -2330,8 +2659,82 @@ sanctuary_system = {
 						amount = 1
 						replace = yes
 					}						
-				}			
-			}						
+				}		
+			}	
+			last_created_country = {
+				if = {
+					limit = { has_country_flag = bronze_age }
+					PREV = {
+						create_army = {
+							name = "Primitive Army"
+							owner = last_created
+							species = last_created
+							type = "primitive_army"
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = iron_age }
+					PREV = {
+						while = {
+							count = 2
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = late_medieval_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = renaissance_age }
+					PREV = {
+						while = {
+							count = 4
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = steam_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Industrial Army"
+								owner = last_created
+								species = last_created
+								type = "industrial_army"
+							}
+						}
+					}
+					break = yes
+				}
+			}			
 		}
 	}
 	planet = {
@@ -2464,13 +2867,13 @@ sanctuary_system = {
 					20 = { 
 						set_country_flag = steam_age 
 						set_primitive_age = steam_age
-					}
+					}	
 				}
 			}
 			set_owner = last_created_country
 			set_capital = yes
 			while = {
-				count = 3
+				count = 2
 				random_tile = {
 					limit = {
 						has_blocker = no
@@ -2487,7 +2890,8 @@ sanctuary_system = {
 				limit = {
 					last_created_country = {
 						OR = {
-							has_country_flag = late_medieval_age 
+							has_country_flag = iron_age 
+							has_country_flag = early_medieval_age 
 							has_country_flag = renaissance_age 
 							has_country_flag = steam_age
 						}
@@ -2517,7 +2921,7 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}
+			}			
 			if = {
 				limit = {
 					last_created_country = {
@@ -2551,46 +2955,65 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}								
+			}							
 			if = {
 				limit = {
 					last_created_country = {
 						has_country_flag = steam_age
 					}					
 				}
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = last_created
+						ethos = owner
+					}
+				}		
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_factory"
+					add_resource = {
+						resource = minerals
+						amount = 1
+						replace = yes
+					}						
+				}		
+				every_tile = {
+					limit = {
+						has_blocker = yes
+					}
+					remove_blocker = yes
+				}
 				while = {
-					count = 2
+					count = 3			
 					random_tile = {
 						limit = {
 							has_blocker = no
+							has_building = no
 							has_grown_pop = no
-							has_growing_pop = no
 						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}	
-				}
-				while = {
-					count = 2
+						set_blocker = tb_decrepit_dwellings
+					}
 					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
+						limit = {
+							has_blocker = no
+							has_building = no
+							has_grown_pop = no
 						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}						
-					}	
+						set_blocker = tb_failing_infrastructure		
+					}				
 				}				
-			}
+			}			
 			while = {
-				count = 5
+				count = 2
 				random_tile = {
 					limit = { 
 						has_blocker = no 
@@ -2604,7 +3027,81 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}		
-			}				
+			}
+			last_created_country = {
+				if = {
+					limit = { has_country_flag = bronze_age }
+					PREV = {
+						create_army = {
+							name = "Primitive Army"
+							owner = last_created
+							species = last_created
+							type = "primitive_army"
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = iron_age }
+					PREV = {
+						while = {
+							count = 2
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = late_medieval_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = renaissance_age }
+					PREV = {
+						while = {
+							count = 4
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = steam_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Industrial Army"
+								owner = last_created
+								species = last_created
+								type = "industrial_army"
+							}
+						}
+					}
+					break = yes
+				}
+			}						
 		}
 	}
 	planet = {
@@ -2727,13 +3224,13 @@ sanctuary_system = {
 					20 = { 
 						set_country_flag = steam_age 
 						set_primitive_age = steam_age
-					}
+					}				
 				}
 			}
 			set_owner = last_created_country
 			set_capital = yes
 			while = {
-				count = 3
+				count = 2
 				random_tile = {
 					limit = {
 						has_blocker = no
@@ -2750,7 +3247,8 @@ sanctuary_system = {
 				limit = {
 					last_created_country = {
 						OR = {
-							has_country_flag = late_medieval_age 
+							has_country_flag = iron_age 
+							has_country_flag = early_medieval_age 
 							has_country_flag = renaissance_age 
 							has_country_flag = steam_age
 						}
@@ -2780,7 +3278,7 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}
+			}			
 			if = {
 				limit = {
 					last_created_country = {
@@ -2814,46 +3312,65 @@ sanctuary_system = {
 						replace = yes
 					}						
 				}				
-			}								
+			}							
 			if = {
 				limit = {
 					last_created_country = {
 						has_country_flag = steam_age
 					}					
 				}
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_grown_pop = no
+						has_growing_pop = no
+					}
+					create_pop = {
+						species = last_created
+						ethos = owner
+					}
+				}		
+				random_tile = {
+					limit = { 
+						has_blocker = no 
+						has_building = no 
+						has_grown_pop = yes
+					}
+					set_building = "building_primitive_factory"
+					add_resource = {
+						resource = minerals
+						amount = 1
+						replace = yes
+					}						
+				}
+				every_tile = {
+					limit = {
+						has_blocker = yes
+					}
+					remove_blocker = yes
+				}
 				while = {
-					count = 2
+					count = 3			
 					random_tile = {
 						limit = {
 							has_blocker = no
+							has_building = no
 							has_grown_pop = no
-							has_growing_pop = no
 						}
-						create_pop = {
-							species = last_created
-							ethos = owner
-						}
-					}	
-				}
-				while = {
-					count = 2
+						set_blocker = tb_decrepit_dwellings
+					}
 					random_tile = {
-						limit = { 
-							has_blocker = no 
-							has_building = no 
-							has_grown_pop = yes
+						limit = {
+							has_blocker = no
+							has_building = no
+							has_grown_pop = no
 						}
-						set_building = "building_primitive_factory"
-						add_resource = {
-							resource = minerals
-							amount = 1
-							replace = yes
-						}						
-					}	
-				}		
-			}
+						set_blocker = tb_failing_infrastructure		
+					}				
+				}				
+			}		
 			while = {
-				count = 5
+				count = 2
 				random_tile = {
 					limit = { 
 						has_blocker = no 
@@ -2866,8 +3383,82 @@ sanctuary_system = {
 						amount = 1
 						replace = yes
 					}						
-				}			
-			}		
+				}		
+			}
+			last_created_country = {
+				if = {
+					limit = { has_country_flag = bronze_age }
+					PREV = {
+						create_army = {
+							name = "Primitive Army"
+							owner = last_created
+							species = last_created
+							type = "primitive_army"
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = iron_age }
+					PREV = {
+						while = {
+							count = 2
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = late_medieval_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = renaissance_age }
+					PREV = {
+						while = {
+							count = 4
+							create_army = {
+								name = "Primitive Army"
+								owner = last_created
+								species = last_created
+								type = "primitive_army"
+							}
+						}
+					}
+					break = yes
+				}
+				if = {
+					limit = { has_country_flag = steam_age }
+					PREV = {
+						while = {
+							count = 3
+							create_army = {
+								name = "Industrial Army"
+								owner = last_created
+								species = last_created
+								type = "industrial_army"
+							}
+						}
+					}
+					break = yes
+				}
+			}			
 		}
 	}
 	planet = {

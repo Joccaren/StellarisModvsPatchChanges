@@ -20,12 +20,12 @@ opinion_from_personality = {
 			NOT = { is_subspecies = FROM }			
 		}	
 		modifier = {
-			add = -25
+			add = -50
 			has_ai_personality = honorbound_warriors
 			FROM = { has_ethic = "ethic_pacifist" }
 		}
 		modifier = {
-			add = -25
+			add = -100
 			has_ai_personality = honorbound_warriors
 			FROM = { has_ethic = "ethic_fanatic_pacifist" }
 		}
@@ -138,7 +138,7 @@ opinion_desecrated_tomb_world = {
 					}
 					any_subject = {
 						any_owned_planet = {
-							is_planet_class = pc_nuked
+							has_modifier = "holy_planet"
 						}					
 					}					
 				}

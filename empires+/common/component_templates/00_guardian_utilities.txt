@@ -152,7 +152,7 @@ utility_component_template = {
 	power = -30
 	cost = 30
 	modifier = {
-		ship_shield_hp_add = 600
+		ship_shield_hp_add = 300
 		ship_shield_regen_add = 6.6 #Regeneration per day
 	}
 	prerequisites = { "tech_enigmatic_deflector" }
@@ -167,7 +167,7 @@ utility_component_template = {
 	power = -60
 	cost = 60
 	modifier = {
-		ship_shield_hp_add = 2400
+		ship_shield_hp_add = 600
 		ship_shield_regen_add = 8.6 #Regeneration per day
 	}
 	prerequisites = { "tech_enigmatic_deflector" }

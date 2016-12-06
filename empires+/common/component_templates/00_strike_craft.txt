@@ -1,8 +1,8 @@
-@attack_range = 10
+@attack_range = 8
 @launch_time = 1.5
-@fighter_speed = 7.0
-@bomber_speed = 5
-@count = 14
+@fighter_speed = 3.5
+@bomber_speed = 3
+@count = 8
 @regen = 0.13
 
 strike_craft_component_template = {
@@ -22,13 +22,13 @@ strike_craft_component_template = {
 	damage = { min = 1 max = 2 }
 	cooldown = 2.5
 	range = @attack_range
-	accuracy = 0.80
-	tracking = 0.20
+	accuracy = 0.70
+	tracking = 0.10
 	
-	health = 15
+	health = 4
 	armor = 0
 	shield = 0
-	evasion = 0.30
+	evasion = 0.10
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -63,13 +63,13 @@ strike_craft_component_template = {
 	damage = { min = 2 max = 3 }
 	cooldown = 2.5
 	range = @attack_range
-	accuracy = 0.80
+	accuracy = 0.70
 	tracking = 0.20
 	
-	health = 20
+	health = 5
 	armor = 0
 	shield = 0
-	evasion = 0.40
+	evasion = 0.20
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -106,13 +106,13 @@ strike_craft_component_template = {
 	damage = { min = 3 max = 4 }
 	cooldown = 2.5
 	range = @attack_range
-	accuracy = 0.80
+	accuracy = 0.70
 	tracking = 0.30
 	
-	health = 25
+	health = 7
 	armor = 0
 	shield = 0
-	evasion = 0.40
+	evasion = 0.30
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -149,10 +149,10 @@ strike_craft_component_template = {
 	damage = { min = 4 max = 5 }
 	cooldown = 2.5
 	range = @attack_range
-	accuracy = 0.80
+	accuracy = 0.70
 	tracking = 0.40
 	
-	health = 30
+	health = 9
 	armor = 0
 	shield = 0
 	evasion = 0.40
@@ -190,7 +190,7 @@ strike_craft_component_template = {
 	range = @attack_range
 	accuracy = 1.0
 	
-	health = 25
+	health = 6
 	armor = 0
 	shield = 0
 	evasion = 0.10
@@ -232,7 +232,7 @@ strike_craft_component_template = {
 	range = @attack_range
 	accuracy = 1.0
 	
-	health = 30
+	health = 8
 	armor = 0
 	shield = 0
 	evasion = 0.20
@@ -274,7 +274,7 @@ strike_craft_component_template = {
 	range = @attack_range
 	accuracy = 1.0
 	
-	health = 35
+	health = 10
 	armor = 0
 	shield = 0
 	evasion = 0.30
