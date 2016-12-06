@@ -425,7 +425,7 @@ tech_energy_lance_2 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military
-	prerequisites = { "tech_energy_lance_1" "tech_physics_lab_3"}
+	prerequisites = { "tech_energy_lance_1" }
 	weight = @tier3weight4
 	
 	weight_modifier = {
@@ -492,7 +492,6 @@ tech_plasma_1 = {
 	tier = 2
 	category = { particles }
 	ai_update_type = military
-	prerequisites = { "tech_ship_armor_1" "tech_lasers_1" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -561,7 +560,7 @@ tech_plasma_2 = {
 	tier = 2
 	category = { particles }
 	ai_update_type = military
-	prerequisites = { "tech_plasma_1" "tech_lasers_3" }
+	prerequisites = { "tech_plasma_1" }
 	weight = @tier2weight3
 	
 	weight_modifier = {
@@ -624,7 +623,7 @@ tech_plasma_3 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_plasma_2" "tech_lasers_5" }
+	prerequisites = { "tech_plasma_2" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -687,7 +686,7 @@ tech_arc_emitter_1 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_plasma_2" "tech_disruptor_2" "tech_spaceport_6" }
+	prerequisites = { "tech_plasma_3" "tech_spaceport_6" }
 	weight = @tier3weight2
 	
 	weight_modifier = {
@@ -756,7 +755,7 @@ tech_arc_emitter_2 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_arc_emitter_1" "tech_biolab_3" }
+	prerequisites = { "tech_arc_emitter_1" }
 	weight = @tier3weight4
 	
 	weight_modifier = {
@@ -823,7 +822,6 @@ tech_disruptors_1 = {
 	tier = 2
 	category = { particles }
 	ai_update_type = military
-	prerequisites = { "tech_shields_1" "tech_lasers_1" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -892,7 +890,7 @@ tech_disruptors_2 = {
 	tier = 2
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_disruptors_1" "tech_lasers_3" }
+	prerequisites = { "tech_disruptors_1" }
 	weight = @tier2weight3
 	
 	weight_modifier = {
@@ -955,7 +953,7 @@ tech_disruptors_3 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military
-	prerequisites = { "tech_disruptors_2" "tech_lasers_5" }
+	prerequisites = { "tech_disruptors_2" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -1022,7 +1020,7 @@ tech_energy_torpedoes_1 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_disruptors_2" "tech_torpedoes_1" }
+	prerequisites = { "tech_disruptors_1" }
 	weight = @tier2weight2
 	
 	weight_modifier = {
@@ -1091,7 +1089,7 @@ tech_energy_torpedoes_2 = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_energy_torpedoes_1" "tech_disruptors_3" }
+	prerequisites = { "tech_energy_torpedoes_1" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -1159,7 +1157,7 @@ tech_pd_tracking_1 = {
 	cost = @tier1cost2
 	category = { computing }		
 	ai_update_type = military
-	prerequisites = { "tech_administrative_ai" "tech_missiles_1" }
+	prerequisites = { "tech_administrative_ai" }
 	weight = @tier1weight2
 	
 	# unlocks point defence 1
@@ -1225,7 +1223,7 @@ tech_pd_tracking_3 = {
 	cost = @tier3cost3
 	category = { computing }
 	ai_update_type = military
-	prerequisites = { "tech_pd_tracking_2" "tech_self_aware_logic" }
+	prerequisites = { "tech_pd_tracking_2" }
 	weight = @tier3weight3
 	
 	# unlocks point defence 3

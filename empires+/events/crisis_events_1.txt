@@ -52,6 +52,7 @@ country_event = {
 		is_crises_allowed = yes
 		NOT = {
 			has_global_flag = prethoryn_invasion_happened
+			has_global_flag = galactic_crisis_happened
 		}
 		#is_ai = no
 		is_country_type = default
@@ -1245,8 +1246,8 @@ country_event = {
 				}
 			}
 			spawn_system = {
-				min_distance = 50
-				max_distance = 80
+				min_distance = 20
+				max_distance = 50
 				initializer = "sentinel_system"
 			}
 		}
@@ -2083,6 +2084,7 @@ planet_event = {
 			50 = { change_pc = pc_barren }
 			50 = { change_pc = pc_barren_cold }
 		}
+		planet_event = { id = crisis.216 }
 	}
 }
 
@@ -2137,6 +2139,7 @@ planet_event = {
 					change_pc = pc_ringworld_habitable_damaged
 				}
 			}
+			planet_event = { id = crisis.215 }
 		}
 	}
 }
@@ -2157,6 +2160,7 @@ planet_event = {
 		change_pc = pc_infested
 		set_planet_max_health = 8000
 		set_planet_health = 8000
+		planet_event = { id = crisis.215 }
 	}
 }
 
@@ -2433,6 +2437,294 @@ event = {
 					is_country_type = swarm
 				}
 				destroy_country = yes
+			}
+		}
+	}
+}
+
+# Prethoryn Defeated (HIDDEN)
+country_event = {
+	id = crisis.210
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = swarm
+	}
+	
+	immediate = {
+		every_country = {
+			limit = {
+				OR = {
+					is_country_type = default
+					is_country_type = fallen_empire
+				}
+			}
+			country_event = { id = crisis.211 }
+		}
+	}
+}
+
+# Prethoryn Defeated
+country_event = {
+	id = crisis.211
+	title = "crisis.211.name"
+	desc = "crisis.211.desc"
+	picture = GFX_evt_metropolis
+	show_sound = event_celebration
+	
+	is_triggered_only = yes
+	
+	option = { # Spiritualist Response
+		name = crisis.211.a
+		trigger = {
+			OR = {
+				has_government = theocratic_republic
+				has_government = transcendent_republic
+				has_government = theocratic_oligarchy
+				has_government = transcendent_oligarchy
+				has_government = divine_mandate
+				has_government = transcendent_empire
+			}
+			NOT = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Militarist Response
+		name = crisis.211.b
+		trigger = {
+			OR = {
+				has_government = military_dictatorship
+				has_government = martial_empire
+				has_government = military_junta
+				has_government = ordered_stratocracy
+				has_government = military_republic
+				has_government = martial_demarchy
+			}
+			NOT = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Materialist Response
+		name = crisis.211.c
+		trigger = {
+			OR = {
+				has_government = despotic_hegemony
+				has_government = ai_overlordship
+				has_government = science_directorate
+				has_government = illuminated_technocracy
+				has_government = direct_democracy
+				has_government = subconscious_consensus
+			}
+			NOT = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Pacifist Response
+		name = crisis.211.d
+		trigger = {
+			OR = {
+				has_government = moral_democracy
+				has_government = irenic_democracy
+				has_government = peaceful_bureaucracy
+				has_government = irenic_protectorate
+				has_government = enlightened_monarchy
+				has_government = irenic_monarchy
+			}
+			NOT = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Corporate Response
+		name = crisis.211.e
+		trigger = {
+			OR = {
+				has_government = plutocratic_oligarchy
+				has_government = mega_corporation
+			}
+			NOT = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Default Response
+		name = crisis.211.f
+		trigger = {
+			OR = {
+				has_government = despotic_empire
+				has_government = star_empire
+				has_government = indirect_democracy
+				has_government = democratic_utopia
+			}
+			NOT = {
+				has_ethic = "ethic_fanatic_xenophile"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Xenophobe Response
+		name = crisis.211.g
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+	option = { # Xenophile Response
+		name = crisis.211.h
+		trigger = {
+			has_ethic = "ethic_fanatic_xenophile"
+		}
+		add_modifier = {
+			modifier = "prethoryn_defeated"
+			days = 360
+		}
+		end_event_chain = "prethoryn_scourge_chain"
+	}
+}
+
+# World Infested (HIDDEN)
+planet_event = {
+	id = crisis.215
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_country = {
+			limit = { has_event_chain = "prethoryn_scourge_chain" }
+			add_event_chain_counter = {
+				event_chain = "prethoryn_scourge_chain"
+				counter = "infested_worlds"
+				amount = 1 
+			}
+		}
+	}
+}
+
+# Infested World Cleansed (HIDDEN)
+planet_event = {
+	id = crisis.216
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_country = {
+			limit = { has_event_chain = "prethoryn_scourge_chain" }
+			add_event_chain_counter = {
+				event_chain = "prethoryn_scourge_chain"
+				counter = "infested_worlds"
+				amount = -1 
+			}
+			add_event_chain_counter = {
+				event_chain = "prethoryn_scourge_chain"
+				counter = "infested_worlds_cleansed"
+				amount = 1 
+			}
+		}
+	}
+}
+
+# Extradimensional Kill Count (HIDDEN)
+country_event = {
+	id = crisis.217
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = swarm
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				FROM = { has_event_chain = "prethoryn_scourge_chain" }
+			}
+			FROM = {
+				add_event_chain_counter = { 
+					event_chain = "prethoryn_scourge_chain" 
+					counter = "prethoryn_kills_us" 
+					amount = 1 
+				}
+			}
+		}
+		every_country = {
+			limit = { 
+				has_event_chain = "prethoryn_scourge_chain" 
+				NOT = { is_same_value = FROM }
+			}
+			add_event_chain_counter = { 
+				event_chain = "prethoryn_scourge_chain" 
+				counter = "prethoryn_kills_others" 
+				amount = 1 
+			}
+		}
+	}
+}
+
+# Prethoryn Victims (HIDDEN)
+country_event = {
+	id = crisis.218
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		is_country_type = swarm
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { has_event_chain = "prethoryn_scourge_chain" }
+			add_event_chain_counter = { 
+				event_chain = "prethoryn_scourge_chain" 
+				counter = "prethoryn_victims" 
+				amount = 1 
 			}
 		}
 	}

@@ -180,11 +180,11 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = friendly_support_aura
-			priority = 30
+			priority = 20
 		}
 		
 		modifier = {
-			ship_auto_repair_add = 0.1
+			ship_auto_repair_add = 0.05
 		}
 		
 		graphics = {
@@ -221,11 +221,11 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = friendly_support_aura
-			priority = 40
+			priority = 20
 		}
 		
 		modifier = {
-			ship_auto_repair_add = 0.2
+			ship_auto_repair_add = 0.05
 		}
 		
 		graphics = {
@@ -347,11 +347,11 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = friendly_support_aura
-			priority = 2
+			priority = 1
 		}
 		
 		modifier = {
-			ship_shield_regen_add_perc = 0.4
+			ship_shield_regen_add_perc = 0.2
 		} 
 		
 		graphics = {
@@ -389,11 +389,11 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = friendly_support_aura
-			priority = 4
+			priority = 1
 		}
 		
 		modifier = {
-			ship_shield_regen_add_perc = 0.8
+			ship_shield_regen_add_perc = 0.2
 		} 
 		
 		graphics = {
@@ -523,12 +523,12 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_inhibitor_aura
-			priority = 2
+			priority = 1
 		}
 		
 		modifier = {
-			ship_shield_hp_mult = -0.4
-			ship_shield_regen_add_perc = -0.1
+			ship_shield_hp_mult = -0.25
+			ship_shield_regen_add_perc = -0.05
 		}
 		
 		graphics = {
@@ -569,12 +569,12 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_inhibitor_aura
-			priority = 4
+			priority = 1
 		}
 		
 		modifier = {
-			ship_shield_hp_mult = -0.8
-			ship_shield_regen_add_perc = -0.2
+			ship_shield_hp_mult = -0.25
+			ship_shield_regen_add_perc = -0.05
 		}
 		
 		graphics = {
@@ -700,11 +700,11 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_inhibitor_aura
-			priority = 20
+			priority = 10
 		}
 		
 		modifier = {
-			ship_fire_rate_mult = -0.30
+			ship_fire_rate_mult = -0.15
 		}
 		
 		graphics = {
@@ -742,11 +742,11 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_inhibitor_aura
-			priority = 40
+			priority = 10
 		}
 		
 		modifier = {
-			ship_fire_rate_mult = -0.60
+			ship_fire_rate_mult = -0.15
 		}
 		
 		graphics = {
@@ -830,7 +830,7 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_snare_aura
-			priority = 1
+			priority = 10
 		}
 		
 		modifier = {
@@ -876,13 +876,13 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_snare_aura
-			priority = 2
+			priority = 10
 		}
 		
 		modifier = {
-			ship_windup_mult = 8
-			ship_speed_mult = -0.75
-			fleet_emergency_ftl_min_days_mult = 2
+			ship_windup_mult = 4
+			ship_speed_mult = -0.5
+			fleet_emergency_ftl_min_days_mult = 1
 		}
 		
 		graphics = {
@@ -922,13 +922,13 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_snare_aura
-			priority = 5
+			priority = 10
 		}
 		
 		modifier = {
-			ship_windup_mult = 16
-			ship_speed_mult = -0.875
-			fleet_emergency_ftl_min_days_mult = 4
+			ship_windup_mult = 4
+			ship_speed_mult = -0.5
+			fleet_emergency_ftl_min_days_mult = 1
 		}
 		
 		graphics = {
@@ -970,7 +970,7 @@ utility_component_template = {
 		}
 		
 		damage_per_day = {
-			accuracy = 0.3
+			accuracy = 0.2
 			damage = { min = 5 max = 15 }
 			shield_damage = 1.0
 			shield_penetration = 0.0
@@ -1020,12 +1020,12 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_minefield_aura
-			priority = 2
+			priority = 1
 		}
 		
 		damage_per_day = {
-			accuracy = 0.3
-			damage = { min = 10 max = 30 }
+			accuracy = 0.2
+			damage = { min = 5 max = 15 }
 			shield_damage = 1.0
 			shield_penetration = 0.0
 			armor_penetration = 0.75
@@ -1074,12 +1074,12 @@ utility_component_template = {
 		
 		stack_info = {			#A ship can only be affected by one aura of a certain id. If multiple auras have the same ID the one with the highest priority will be applied.
 			id = hostile_minefield_aura
-			priority = 4
+			priority = 1
 		}
 		
 		damage_per_day = {
-			accuracy = 0.3
-			damage = { min = 20 max = 60 }
+			accuracy = 0.2
+			damage = { min = 5 max = 15 }
 			shield_damage = 1.0
 			shield_penetration = 0.0
 			armor_penetration = 0.75

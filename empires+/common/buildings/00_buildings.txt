@@ -84,11 +84,6 @@ building_basic_power_plant = {
 			}
 		}
 	}
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 building_power_plant_1 = {
@@ -121,11 +116,6 @@ building_power_plant_1 = {
 				}
 			}
 		}
-	}
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
 	}
 }
 
@@ -161,11 +151,6 @@ building_power_plant_2 = {
 	prerequisites = {
 		"tech_power_plant_2"
 	}		
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 building_power_plant_3 = {
@@ -199,11 +184,6 @@ building_power_plant_3 = {
 	prerequisites = {
 		"tech_power_plant_3"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 building_power_plant_4 = {
@@ -237,11 +217,6 @@ building_power_plant_4 = {
 	prerequisites = {
 		"tech_power_plant_4"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 building_power_plant_5 = {
@@ -276,11 +251,6 @@ building_power_plant_5 = {
 	prerequisites = {
 		"tech_power_plant_4"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 betharian_power_plant_1 = {
@@ -326,11 +296,6 @@ betharian_power_plant_1 = {
 			}
 		}
 	}
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 betharian_power_plant_2 = {
@@ -366,11 +331,6 @@ betharian_power_plant_2 = {
 	prerequisites = {
 			"tech_power_plant_2"
 	}
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 betharian_power_plant_3 = {
@@ -405,11 +365,6 @@ betharian_power_plant_3 = {
 	prerequisites = {
 			"tech_power_plant_3"
 	}
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 betharian_power_plant_4 = {
@@ -440,11 +395,6 @@ betharian_power_plant_4 = {
 	prerequisites = {
 			"tech_power_plant_4"
 	}
-	
-	adjacency bonus = {
-		resource_food_add = -1
-		resource_minerals_add = 1
-	}
 }
 
 building_power_hub_1 = {
@@ -463,6 +413,14 @@ building_power_hub_1 = {
 					has_building = "building_capital_1"
 					has_building = "building_capital_2"
 					has_building = "building_capital_3"
+				}
+			}
+		}
+		custom_tooltip_fail = {
+			text = "requires_power_hub_absence"
+			planet = {
+				NOT = {
+					has_building = "building_akx_worm_1"
 				}
 			}
 		}
@@ -504,6 +462,14 @@ building_power_hub_2 = {
 				}
 			}
 		}
+		custom_tooltip_fail = {
+			text = "requires_power_hub_absence"
+			planet = {
+				NOT = {
+					has_building = "building_akx_worm_1"
+				}
+			}
+		}
 	}
 	
 	produced_resources = {
@@ -524,6 +490,8 @@ building_power_hub_2 = {
 #
 
 building_basic_farm = {
+	tags = { hydroponics_farm }
+
 	base_buildtime = @b0time
 	
 	cost = {
@@ -550,14 +518,11 @@ building_basic_farm = {
 			}
 		}
 	}
-	
-	adjacency bonus = {
-		resource_minerals_add = -1
-		resource_energy_add = 1
-	}
 }
 
 building_hydroponics_farm_1 = {
+	tags = { hydroponics_farm }
+
 	base_buildtime = @b1time
 	
 	cost = {
@@ -592,14 +557,11 @@ building_hydroponics_farm_1 = {
 			}
 		}
 	}		
-	
-	adjacency bonus = {
-		resource_minerals_add = -1
-		resource_energy_add = 1
-	}
 }
 
 building_hydroponics_farm_2 = {
+	tags = { hydroponics_farm }
+
 	base_buildtime = @b2time
 	is_listed = no
 	
@@ -635,14 +597,11 @@ building_hydroponics_farm_2 = {
 	prerequisites = {
 		"tech_hydroponics"
 	}	
-	
-	adjacency bonus = {
-		resource_minerals_add = -1
-		resource_energy_add = 1
-	}
 }
 
 building_hydroponics_farm_3 = {
+	tags = { hydroponics_farm }
+
 	base_buildtime = @b3time
 	is_listed = no
 	
@@ -677,14 +636,11 @@ building_hydroponics_farm_3 = {
 	prerequisites = {
 		"tech_gene_crops"
 	}	
-	
-	adjacency bonus = {
-		resource_minerals_add = -1
-		resource_energy_add = 1
-	}
 }
 
 building_hydroponics_farm_4 = {
+	tags = { hydroponics_farm }
+
 	base_buildtime = @b4time
 	is_listed = no
 	
@@ -719,14 +675,11 @@ building_hydroponics_farm_4 = {
 	prerequisites = {
 		"tech_nano_vitality_crops"
 	}	
-	
-	adjacency bonus = {
-		resource_minerals_add = -1
-		resource_energy_add = 1
-	}
 }
 
 building_hydroponics_farm_5 = {
+	tags = { hydroponics_farm }
+
 	base_buildtime = @b5time
 	is_listed = no
 	
@@ -761,11 +714,6 @@ building_hydroponics_farm_5 = {
 	
 	prerequisites = {
 		"tech_nano_vitality_crops"
-	}	
-	
-	adjacency bonus = {
-		resource_minerals_add = -1
-		resource_energy_add = 1
 	}
 }
 
@@ -775,13 +723,14 @@ building_hydroponics_farm_5 = {
 
 building_mineral_silo_1 = {
 	base_buildtime = @b1time
+	planet_unique = yes
 	
 	cost = {
 		minerals = @b1cost
 	}
 	
 	country_modifier = {
-		max_minerals = 1000
+		max_minerals = 2000
 	}
 	
 	adjacency_bonus = {
@@ -796,6 +745,7 @@ building_mineral_silo_1 = {
 building_mineral_silo_2 = {
 	base_buildtime = @b2time
 	icon = "building_mineral_silo_1"
+	planet_unique = yes
 	
 	is_listed = no
 	
@@ -816,11 +766,8 @@ building_mineral_silo_2 = {
 		}
 	}
 	
-	required_resources = {
-	}
-	
 	country_modifier = {
-		max_minerals = 1500
+		max_minerals = 3000
 	}
 	
 	adjacency_bonus = {
@@ -839,12 +786,13 @@ building_mineral_silo_2 = {
 building_mineral_silo_3 = {
 	base_buildtime = @b3time
 	icon = "building_mineral_silo_1"
+	planet_unique = yes
 	
 	is_listed = no
 	
 	cost = {
 		minerals = @b3cost
-	}
+	}	
 	
 	allow = {
 		custom_tooltip = {
@@ -858,15 +806,12 @@ building_mineral_silo_3 = {
 		}
 	}
 	
-	required_resources = {
-	}
-	
 	country_modifier = {
-		max_minerals = 2000
+		max_minerals = 4000
 	}
 	
 	adjacency_bonus = {
-		resource_minerals_add = 2
+		resource_minerals_add = 1
 	}
 	
 	prerequisites = {
@@ -876,6 +821,8 @@ building_mineral_silo_3 = {
 
 
 building_basic_mine = {
+	tags = { mining_network }
+
 	base_buildtime = @b0time
 	
 	cost = {
@@ -902,14 +849,11 @@ building_basic_mine = {
 			}
 		}
 	}
-	
-	adjacency bonus = {
-		resource_food_add = 1
-		resource_energy_add = -1
-	}
 }
 
 building_mining_network_1 = {
+	tags = { mining_network }
+
 	base_buildtime = @b1time
 	
 	cost = {
@@ -944,14 +888,11 @@ building_mining_network_1 = {
 			}
 		}
 	}
-	
-	adjacency bonus = {
-		resource_food_add = 1
-		resource_energy_add = -1
-	}
 }
 
 building_mining_network_2 = {
+	tags = { mining_network }
+
 	base_buildtime = @b2time
 	is_listed = no
 	
@@ -987,14 +928,11 @@ building_mining_network_2 = {
 	prerequisites = {
 		"tech_mining_network_2"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = 1
-		resource_energy_add = -1
-	}
 }
 
 building_mining_network_3 = {
+	tags = { mining_network }
+
 	base_buildtime = @b3time
 	is_listed = no
 	
@@ -1029,14 +967,11 @@ building_mining_network_3 = {
 	prerequisites = {
 		"tech_mining_network_3"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = 1
-		resource_energy_add = -1
-	}
 }
 
 building_mining_network_4 = {
+	tags = { mining_network }
+
 	base_buildtime = @b4time
 	is_listed = no
 	
@@ -1071,14 +1006,11 @@ building_mining_network_4 = {
 	prerequisites = {
 		"tech_mining_network_4"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = 1
-		resource_energy_add = -1
-	}
 }
 
 building_mining_network_5 = {
+	tags = { mining_network }
+
 	base_buildtime = @b5time
 	is_listed = no
 	
@@ -1114,11 +1046,6 @@ building_mining_network_5 = {
 	prerequisites = {
 		"tech_mining_network_4"
 	}	
-	
-	adjacency bonus = {
-		resource_food_add = 1
-		resource_energy_add = -1
-	}
 }
 
 building_mineral_processing_plant_1 = {
@@ -1771,7 +1698,6 @@ building_capital_1 = {
 	
 	cost = {
 		minerals = 350
-		influence = 50
 	}
 	
 	planet_modifier = {
@@ -1799,7 +1725,6 @@ building_capital_1 = {
 	produced_resources = {
 		food = 3
 		minerals = 3
-		influence = 0.02
 	}
 	
 	adjacency_bonus = {
@@ -1826,7 +1751,6 @@ building_capital_2 = {
 	
 	cost = {
 		minerals = 500
-		influence = 100
 	}
 	
 	planet_modifier = {
@@ -1854,7 +1778,6 @@ building_capital_2 = {
 	produced_resources = {
 		food = 4
 		minerals = 4
-		influence 0.08
 	}
 	
 	adjacency_bonus = {
@@ -1881,7 +1804,6 @@ building_capital_3 = {
 	
 	cost = {
 		minerals = 1000
-		influence = 200
 	}
 	
 	planet_modifier = {
@@ -2065,8 +1987,8 @@ building_slave_processing = {
 	}
 	
 	planet_modifier = {
-		slave_production_output = 0.05
-		slave_food_output = 0.05
+		slave_production_output = 0.1
+		slave_food_output = 0.1
 	}	
 	
 	allow = {
@@ -2134,8 +2056,7 @@ building_grand_mausoleum = {
 	planet_unique = yes
 	
 	cost = { 
-		minerals = 250 
-		influence = 100
+		minerals = 200
 	}  
 	
 	planet_modifier = {
@@ -2211,15 +2132,10 @@ building_royal_gardens = {
 	
 	cost = { 
 		minerals = 200 
-		influence = 50 
 	}
 	
 	planet_modifier = {
 		pop_happiness = 0.10
-	}
-	
-	produced_resources = {
-		influence = 2
 	}
 	
 	potential = {
@@ -2400,7 +2316,7 @@ building_military_academy = {
 	planet_unique = yes
 	
 	cost = {
-		minerals = 150
+		minerals = 200
 	}
 	
 	allow = {
@@ -2463,8 +2379,7 @@ building_paradise_dome = {
 	planet_unique = yes
 	
 	cost = {
-		minerals = 300
-		influence = 10
+		minerals = 200
 	}
 	
 	required_resources = {
@@ -2516,7 +2431,7 @@ building_xeno_zoo = {
 	planet_unique = yes
 	
 	cost = {
-		minerals = 250
+		minerals = 200
 	}
 	
 	required_resources = {
@@ -2578,8 +2493,7 @@ building_hyper_entertainment_forum = {
 	planet_unique = yes
 	
 	cost = {
-		minerals = 550
-		influence = 25
+		minerals = 500
 	}
 	
 	required_resources = {
@@ -2588,6 +2502,7 @@ building_hyper_entertainment_forum = {
 	
 	planet_modifier = {
 		pop_happiness = 0.15
+		planet_migration_all_pull = 0.50
 	}
 	
 	allow = {
@@ -2625,8 +2540,7 @@ building_monument_purity = {
 	planet_unique = yes
 	
 	cost = {
-		minerals = 150
-		influence = 10
+		minerals = 200
 	}
 	
 	planet_modifier = {
@@ -2668,8 +2582,7 @@ building_virtual_combat_arena = {
 	planet_unique = yes
 	
 	cost = {
-		minerals = 350
-		influence = 10
+		minerals = 200
 	}
 	
 	required_resources = {
@@ -2801,8 +2714,8 @@ building_galactic_stock_exchange = {
 	empire_unique = yes
 	
 	cost = {
-		minerals = 450
-		influence = 35
+		minerals = 500
+		influence = 100
 	}
 	
 	required_resources = {
@@ -2812,6 +2725,14 @@ building_galactic_stock_exchange = {
 	produced_resources = {
 		energy = 1
 	}
+	
+	potential = {
+		planet = { is_capital = yes }
+	}
+
+	destroy_if = {
+		planet = { is_capital = no }
+	}	
 	
 	allow = {
 		custom_tooltip = {
@@ -2842,8 +2763,8 @@ building_ministry_benevolence = {
 	empire_unique = yes
 	
 	cost = {
-		minerals = 400
-		influence = 50
+		minerals = 500
+		influence = 100
 	}
 	
 	required_resources = {
@@ -2887,8 +2808,8 @@ building_institute = {
 	empire_unique = yes
 	
 	cost = {
-		minerals = 600
-		influence = 50
+		minerals = 500
+		influence = 100
 	}
 	
 	produced_resources = {
@@ -2904,6 +2825,14 @@ building_institute = {
 	country_modifier = {
 		all_technology_research_speed = 0.05
 	}
+	
+	potential = {
+		planet = { is_capital = yes }
+	}
+
+	destroy_if = {
+		planet = { is_capital = no }
+	}	
 	
 	allow = {
 		custom_tooltip = {
@@ -2927,88 +2856,3 @@ building_institute = {
 		weight = 7000	
 	}
 }
-
-#Seine Algorithm Facility
-building_seine_algorithm_facility = {
-	base_buildtime = 720
-	built_for_ruler = yes
-	planet_unique = yes
-	
-	icon = "building_seine_algorithm_facility"
-	
-	cost = {
-		minerals = 600
-		influence = 50
-	}
-	
-	potential = {
-		planet = {
-			exists = owner
-			owner = {
-				OR = {
-					has_government = despotic_hegemony
-					has_government = ai_overlordship
-				}
-			}
-		}
-	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 2
-		resource_engineering_research_add = 2
-		resource_physics_research_add = 2
-	}
-	
-	planet_modifier  = {
-		tile_resource_physics_research_mult = 0.15
-		tile_resource_society_research_mult = 0.15
-		tile_resource_engineering_research_mult = 0.15
-	}
-	
-	required_resources = {
-		energy = 10
-	}
-	
-	allow = {
-		custom_tooltip = {
-			text = building_grand_mausoleum_allowed_tooltip
-			exists = ruler
-			ruler = {
-				NOT = { has_leader_flag = built_monument }
-			}
-			planet = {
-				OR = {
-					has_building = "building_capital_1"
-					has_building = "building_capital_2"
-					has_building = "building_capital_3"
-				}
-			}
-		}
-	}
-		
-	on_queued = {
-		ruler = {
-			set_leader_flag = built_monument
-		}
-	}
-	
-	on_unqueued = {
-		ruler = {
-			remove_leader_flag = built_monument
-		}
-	}
-	
-	ai_special_building = yes
-	
-	ai_allow = {
-		has_any_resource = no
-	}
-
-  	ai_weight = {
-		factor = 1000
-		modifier = {
-			factor = 0
-			from = { sector_controlled = yes }
-		}	
-  	}
- }

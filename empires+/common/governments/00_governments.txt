@@ -27,17 +27,10 @@ military_republic = {
 	}
 	
 	modifier = {
-#		army_damage_mult = 0.1
-#		army_upkeep_mult = -0.2
-#		shipclass_military_station_build_cost_mult = -0.15
-#		shipclass_military_station_damage_mult = 0.1
-		pop_war_happiness = 0.05
-		navy_size_mult = 0.15
-		country_ship_upgrade_cost_mult = -0.25
-		country_trust_growth = -0.5
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		country_core_sector_system_cap = -2
+		army_damage_mult = 0.1
+		army_upkeep_mult = -0.2
+		shipclass_military_station_build_cost_mult = -0.15
+		shipclass_military_station_damage_mult = 0.1
 	}
 	
 	uses_mandates = yes
@@ -55,6 +48,7 @@ military_republic = {
 			OR = {
 				leader_class = ruler
 				AND = {
+					NOT = { leader_class = scientist }
 					exists = pop_faction
 					pop_faction = {
 						is_scope_valid = yes
@@ -73,9 +67,7 @@ military_republic = {
 		}
 		modifier = {
 			factor = 0
-			OR = {
-				leader_class = scientist
-			}
+			leader_class = scientist
 		}
 	}
 }
@@ -103,17 +95,10 @@ martial_demarchy = {
 	}
 	
 	modifier = {
-#		army_damage_mult = 0.2
-#		army_upkeep_mult = -0.4
-#		shipclass_military_station_build_cost_mult = -0.3
-#		shipclass_military_station_damage_mult = 0.2
-		pop_war_happiness = 0.05
-		navy_size_mult = 0.3
-		country_ship_upgrade_cost_mult = -0.5
-		country_trust_growth = -0.5
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		country_core_sector_system_cap = -2
+		army_damage_mult = 0.2
+		army_upkeep_mult = -0.4
+		shipclass_military_station_build_cost_mult = -0.3
+		shipclass_military_station_damage_mult = 0.2
 	}
 	
 	uses_mandates = yes
@@ -148,17 +133,9 @@ military_junta = {
 	}
 	
 	modifier = {
-#		ship_upkeep_mult = -0.05
-#		country_ship_upgrade_cost_mult = -0.25
-#		admiral_skill_levels = 1
-		leader_skill_levels = 1
-		leader_influence_cost = -0.2
-		tile_resource_energy_mult = -0.05
-		pop_war_happiness = 0.10
-		pop_peace_happiness = -0.05
-		spaceport_ship_build_cost_mult = -0.1
-		ship_upkeep_mult = 0.1
-		country_trust_growth = -0.5
+		ship_upkeep_mult = -0.05
+		country_ship_upgrade_cost_mult = -0.25
+		admiral_skill_levels = 1	
 	}
 	
 	election_term_years = 40
@@ -219,17 +196,9 @@ ordered_stratocracy = {
 	}
 	
 	modifier = {
-#		ship_upkeep_mult = -0.10
-#		country_ship_upgrade_cost_mult = -0.50
-#		admiral_skill_levels = 2
-		leader_skill_levels = 2
-		leader_influence_cost = -0.4
-		tile_resource_energy_mult = -0.05
-		pop_war_happiness = 0.10
-		pop_peace_happiness = -0.05
-		spaceport_ship_build_cost_mult = -0.2
-		ship_upkeep_mult = 0.1
-		country_trust_growth = -0.5
+		ship_upkeep_mult = -0.10
+		country_ship_upgrade_cost_mult = -0.50
+		admiral_skill_levels = 2
 	}
 	
 	election_term_years = 40
@@ -291,15 +260,9 @@ military_dictatorship = {
 	}
 	
 	modifier = {
-#		navy_size_mult = 0.10
-#		spaceport_ship_build_cost_mult = -0.10
-#		rivalry_influence_gain = 0.25
-		country_resettlement_cost_mult = -0.2
-		country_core_sector_system_cap = 2
-		pop_happiness = -0.05
-		ship_upkeep_mult = -0.1
-		pop_war_happiness = 0.05
-		country_trust_growth = -0.5
+		navy_size_mult = 0.10
+		spaceport_ship_build_cost_mult = -0.10
+		rivalry_influence_gain = 0.25
 	}
 	
 	election_type = oligarchic
@@ -309,12 +272,14 @@ military_dictatorship = {
 	election_candidates = {
 		modifier = {
 			add = 1000
-			leader_class = ruler
-			exists = pop_faction
-			pop_faction = {
+			OR = {
+				leader_class = ruler
 				AND = {
-					is_scope_valid = yes
-					is_pop_faction_type = loyalist
+					exists = pop_faction
+					pop_faction = {
+						is_scope_valid = yes
+						is_pop_faction_type = loyalist
+					}
 				}
 			}
 		}
@@ -355,15 +320,9 @@ martial_empire = {
 	}
 	
 	modifier = {
-#		navy_size_mult = 0.20
-#		spaceport_ship_build_cost_mult = -0.20
-#		rivalry_influence_gain = 0.50	
-		country_resettlement_cost_mult = -0.4
-		country_core_sector_system_cap = 4
-		pop_happiness = -0.05
-		ship_upkeep_mult = -0.2
-		pop_war_happiness = 0.05
-		country_trust_growth = -0.5
+		navy_size_mult = 0.20
+		spaceport_ship_build_cost_mult = -0.20
+		rivalry_influence_gain = 0.50	
 	}
 	
 	election_type = oligarchic
@@ -423,14 +382,8 @@ theocratic_republic = {
 	}
 	
 	modifier = {
-#		pop_happiness = 0.05
-#		pop_food_req_mult = -0.1
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		country_core_sector_system_cap = -2
-		pop_ethic_shift = -0.1
-		pop_growth_req_mult = -0.1
-		num_tech_alternatives_add = -1
+		pop_happiness = 0.05
+		pop_food_req_mult = -0.1
 	}
 	
 	uses_mandates = yes
@@ -465,14 +418,8 @@ transcendent_republic = {
 	}
 	
 	modifier = {
-#		pop_happiness = 0.1
-#		pop_food_req_mult = -0.2
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		country_core_sector_system_cap = -2
-		pop_ethic_shift = -0.2
-		pop_growth_req_mult = -0.2
-		num_tech_alternatives_add = -1
+		pop_happiness = 0.1
+		pop_food_req_mult = -0.2
 	}
 	
 	uses_mandates = yes
@@ -507,15 +454,8 @@ theocratic_oligarchy = {
 	}
 	
 	modifier = {
-#		country_resettlement_cost_mult = -0.15
-#		leader_age = 20
-		leader_skill_levels = 1
-		leader_influence_cost = -0.2
-		tile_resource_energy_mult = -0.05
-		pop_ethic_shift = -0.1
-		planet_colony_development_speed_mult = 0.2
-		leader_age = 10
-		num_tech_alternatives_add = -1
+		country_resettlement_cost_mult = -0.15
+		leader_age = 20
 	}
 	
 	election_term_years = 40
@@ -573,15 +513,8 @@ transcendent_oligarchy = {
 	}
 	
 	modifier = {
-#		country_resettlement_cost_mult = -0.30
-#		leader_age = 40
-		leader_skill_levels = 2
-		leader_influence_cost = -0.4
-		tile_resource_energy_mult = -0.05
-		pop_ethic_shift = -0.2
-		planet_colony_development_speed_mult = 0.4
-		leader_age = 20
-		num_tech_alternatives_add = -1
+		country_resettlement_cost_mult = -0.30
+		leader_age = 40
 	}
 	
 	election_term_years = 40
@@ -643,15 +576,9 @@ divine_mandate = {
 	}
 	
 	modifier = {
-#		edict_influence_cost = -0.15
-#		edict_length_mult = 0.15
-#		pop_ethic_shift = -0.1
-		country_resettlement_cost_mult = -0.2
-		country_core_sector_system_cap = 2
-		pop_happiness = -0.05
+		edict_influence_cost = -0.15
+		edict_length_mult = 0.15
 		pop_ethic_shift = -0.1
-		colony_influence_cost = -0.15
-		num_tech_alternatives_add = -1
 	}
 	
 	ruler_title = RT_ARCHPROPHET
@@ -687,15 +614,9 @@ transcendent_empire = {
 	}
 	
 	modifier = {
-#		edict_influence_cost = -0.3
-#		edict_length_mult = 0.3
-#		pop_ethic_shift = -0.2
-		country_resettlement_cost_mult = -0.4
-		country_core_sector_system_cap = 4
-		pop_happiness = -0.05
+		edict_influence_cost = -0.3
+		edict_length_mult = 0.3
 		pop_ethic_shift = -0.2
-		colony_influence_cost = -0.3
-		num_tech_alternatives_add = -1
 	}
 	
 	ruler_title = RT_GOD_EMPEROR
@@ -730,14 +651,8 @@ direct_democracy = {
 	}
 	
 	modifier = {
-#		pop_happiness = 0.05
-#		species_leader_exp_gain = 0.15
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		country_core_sector_system_cap = -2
-		num_tech_alternatives_add = 1
+		pop_happiness = 0.05
 		species_leader_exp_gain = 0.15
-		pop_ethic_shift = 0.1
 	}
 	
 	uses_mandates = yes
@@ -772,14 +687,8 @@ subconscious_consensus = {
 	}
 	
 	modifier = {
-#		pop_happiness = 0.1
-#		species_leader_exp_gain = 0.30
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		country_core_sector_system_cap = -2
-		num_tech_alternatives_add = 2
-		species_leader_exp_gain = 0.3
-		pop_ethic_shift = 0.1
+		pop_happiness = 0.1
+		species_leader_exp_gain = 0.30
 	}
 	
 	uses_mandates = yes
@@ -813,13 +722,8 @@ science_directorate = {
 	}
 	
 	modifier = {
-#		num_tech_alternatives_add = 1
-#		country_leader_cap = 1
-		leader_skill_levels = 1
-		leader_influence_cost = -0.2
-		tile_resource_energy_mult = -0.05
-		all_technology_research_speed = 0.05
-		pop_ethic_shift = 0.1
+		num_tech_alternatives_add = 1
+		country_leader_cap = 1
 	}
 	
 	election_term_years = 40
@@ -877,13 +781,8 @@ illuminated_technocracy = {
 	}
 	
 	modifier = {
-#		num_tech_alternatives_add = 2
-#		country_leader_cap = 2
-		leader_skill_levels = 2
-		leader_influence_cost = -0.4
-		tile_resource_energy_mult = -0.05
-		all_technology_research_speed = 0.1
-		pop_ethic_shift = 0.1
+		num_tech_alternatives_add = 2
+		country_leader_cap = 2
 	}
 	
 	election_term_years = 40
@@ -945,13 +844,8 @@ despotic_hegemony = {
 	}
 	
 	modifier = {
-#		all_technology_research_speed = 0.05
-#		shipsize_research_station_build_cost_mult = -0.25
-		country_resettlement_cost_mult = -0.2
-		country_core_sector_system_cap = 2
-		pop_happiness = -0.05
-		building_time_mult = 0.10
-		pop_ethic_shift = 0.1
+		all_technology_research_speed = 0.05
+		shipsize_research_station_build_cost_mult = -0.25
 	}
 	
 	ruler_title = RT_OVERLORD
@@ -985,13 +879,8 @@ ai_overlordship = {
 	}
 	
 	modifier = {
-#		all_technology_research_speed = 0.10
-#		shipsize_research_station_build_cost_mult = -0.5
-		country_resettlement_cost_mult = -0.4
-		country_core_sector_system_cap = 4
-		pop_happiness = -0.05
-		building_time_mult = 0.20
-		pop_ethic_shift = 0.1
+		all_technology_research_speed = 0.10
+		shipsize_research_station_build_cost_mult = -0.5
 	}
 	
 	ruler_title = RT_HIGH_TECHNICIAN
@@ -1025,18 +914,9 @@ moral_democracy = {
 	}
 	
 	modifier = {
-#		country_leader_pool_size = 1
-#		country_leader_cap = 1	
-#		country_core_sector_system_cap = 2
 		country_leader_pool_size = 1
-		country_leader_cap = 2
-		country_core_sector_system_cap = -2
-		pop_war_happiness = -0.10
-		pop_peace_happiness = 0.05
-		country_trust_growth = 1
-		edict_influence_cost = -0.66
-		influence_gain_mult = 0.1
-		edict_length_mult = -0.5
+		country_leader_cap = 1	
+		country_core_sector_system_cap = 2
 	}
 	
 	uses_mandates = yes
@@ -1071,18 +951,9 @@ irenic_democracy = {
 	}
 	
 	modifier = {
-#		country_leader_pool_size = 2
-#		country_leader_cap = 2	
-#		country_core_sector_system_cap = 4
 		country_leader_pool_size = 2
-		country_leader_cap = 4
-		country_core_sector_system_cap = -2
-		pop_war_happiness = -0.1
-		pop_peace_happiness = 0.1
-		country_trust_growth = 2
-		edict_influence_cost = -0.833
-		influence_gain_mult = 0.2
-		edict_length_mult = -0.5
+		country_leader_cap = 2	
+		country_core_sector_system_cap = 4
 	}
 	
 	uses_mandates = yes
@@ -1116,14 +987,7 @@ peaceful_bureaucracy = {
 	}
 	
 	modifier = {
-#		country_core_sector_system_cap = 5
-		leader_skill_levels = 1
-		leader_influence_cost = -0.2
-		tile_resource_energy_mult = -0.05
-		pop_war_happiness = -0.1
-		pop_peace_happiness = 0.05
-		country_trust_growth = 1
-		edict_length_mult = 0.2
+		country_core_sector_system_cap = 5
 	}
 	
 	election_term_years = 40
@@ -1181,14 +1045,7 @@ irenic_protectorate = {
 	}
 	
 	modifier = {
-#		country_core_sector_system_cap = 10
-		leader_skill_levels = 2
-		leader_influence_cost = -0.4
-		tile_resource_energy_mult = -0.05
-		pop_war_happiness = -0.1
-		pop_peace_happiness = 0.1
-		country_trust_growth = 2
-		edict_length_mult = 0.4
+		country_core_sector_system_cap = 10
 	}
 	
 	election_term_years = 40
@@ -1249,14 +1106,9 @@ enlightened_monarchy = {
 	}
 	
 	modifier = {
-#		edict_influence_cost = -0.15
-#		edict_length_mult = 0.15
-#		country_core_sector_system_cap = 2
-		country_resettlement_cost_mult = -0.2
+		edict_influence_cost = -0.15
+		edict_length_mult = 0.15
 		country_core_sector_system_cap = 2
-		country_trust_growth = 1
-		pop_war_happiness = -0.15
-		edict_influence_cost = -0.2
 	}
 	
 	ruler_title = RT_KING
@@ -1292,14 +1144,9 @@ irenic_monarchy = {
 	}
 	
 	modifier = {
-#		edict_influence_cost = -0.3
-#		edict_length_mult = 0.3
-#		country_core_sector_system_cap = 4
-		country_resettlement_cost_mult = -0.4
+		edict_influence_cost = -0.3
+		edict_length_mult = 0.3
 		country_core_sector_system_cap = 4
-		country_trust_growth = 2
-		pop_war_happiness = -0.15
-		edict_influence_cost = -0.4
 	}
 	
 	ruler_title = RT_HIGH_KING
@@ -1331,13 +1178,8 @@ indirect_democracy = {
 	}
 	
 	modifier = {
-#		leader_skill_levels = 1
-#		leader_influence_cost = -0.15
-		country_leader_pool_size = 1
-		country_leader_cap = 2
-		country_core_sector_system_cap = -2
-		species_leader_exp_gain = 0.1
-		leader_influence_cost = -0.1
+		leader_skill_levels = 1
+		leader_influence_cost = -0.15
 	}
 	
 	uses_mandates = yes
@@ -1368,13 +1210,8 @@ democratic_utopia = {
 	}
 	
 	modifier = {
-#		leader_skill_levels = 2
-#		leader_influence_cost = -0.3
-		country_leader_pool_size = 2
-		country_leader_cap = 4
-		country_core_sector_system_cap = -2
-		species_leader_exp_gain = 0.2
-		leader_influence_cost = -0.2
+		leader_skill_levels = 2
+		leader_influence_cost = -0.3
 	}
 	
 	uses_mandates = yes
@@ -1404,12 +1241,8 @@ plutocratic_oligarchy = {
 	}
 	
 	modifier = {
-#		tile_resource_energy_mult = 0.05
-#		tile_resource_minerals_mult = 0.05
-#		shipsize_mining_station_build_cost_mult = -0.25
-		leader_skill_levels = 1
-		leader_influence_cost = -0.2
-		tile_resource_energy_mult = -0.05
+		tile_resource_energy_mult = 0.05
+		tile_resource_minerals_mult = 0.05
 		shipsize_mining_station_build_cost_mult = -0.25
 	}
 	
@@ -1464,12 +1297,8 @@ mega_corporation = {
 	}
 	
 	modifier = {
-#		tile_resource_energy_mult = 0.1
-#		tile_resource_minerals_mult = 0.1
-#		shipsize_mining_station_build_cost_mult = -0.5
-		leader_skill_levels = 2
-		leader_influence_cost = -0.4
-		tile_resource_energy_mult = -0.05
+		tile_resource_energy_mult = 0.1
+		tile_resource_minerals_mult = 0.1
 		shipsize_mining_station_build_cost_mult = -0.5
 	}
 	
@@ -1535,13 +1364,8 @@ despotic_empire = {
 	default_pop_factions = { loyalist }
 	
 	modifier = {
-#		colony_influence_cost = -0.15
-#		planet_border_mult = 0.1
-		country_resettlement_cost_mult = -0.2
-		country_core_sector_system_cap = 2
-		pop_happiness = -0.05
-		edict_length_mult = 0.2
-		planet_building_cost_mult = -0.05
+		colony_influence_cost = -0.15
+		planet_border_mult = 0.1
 	}
 	upgrade = star_empire
 }
@@ -1569,13 +1393,8 @@ star_empire = {
 	}
 	
 	modifier = {
-#		colony_influence_cost = -0.3
-#		planet_border_mult = 0.2
-		country_resettlement_cost_mult = -0.4
-		country_core_sector_system_cap = 4
-		pop_happiness = -0.05
-		edict_length_mult = 0.4
-		planet_building_cost_mult = -0.1
+		colony_influence_cost = -0.3
+		planet_border_mult = 0.2
 	}
 	
 	ruler_title = RT_EMPEROR

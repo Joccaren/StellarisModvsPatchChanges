@@ -109,53 +109,32 @@ country_event = {
 			limit = { has_policy_flag = ai_servitude }
 			random_list = {
 				# AI Uprising
-				20 = {
+				10 = {
 					modifier = {
 						count_owned_pops = {
 							limit = { pop_has_trait = trait_robotic_3 }
 							count > 5
 						}
-						factor = 1.80
+						factor = 1.50
 					}
 					modifier = {
 						count_owned_pops = {
 							limit = { pop_has_trait = trait_robotic_3 }
 							count > 10
 						}
-						factor = 1.71
+						factor = 1.80
 					}
 					modifier = {
 						count_owned_pops = {
 							limit = { pop_has_trait = trait_robotic_3 }
 							count > 15
 						}
-						factor = 1.37
+						factor = 2.00
 					}
 					country_event = { id = crisis.2000 }
 				}
 				# Servant AI Perfected
-				80 = {
-					modifier = {
-						OR{
-							has_government = direct_democracy
-							has_government = subconscious_consensus
-						}
-						factor = 1.50
-					}
-					modifier = {
-						OR{
-							has_government = science_directorate
-							has_government = illuminated_technocracy
-						}
-						factor = 1.625
-					}
-					modifier = {
-						OR{
-							has_government = despotic_hegemony
-							has_government = ai_overlordship
-						}
-						factor = 1.75
-					}
+				90 = {
 					modifier = {
 						count_owned_pops = {
 							limit = { pop_has_trait = trait_robotic_3 }
@@ -185,73 +164,52 @@ country_event = {
 					limit = { has_policy_flag = ai_full_rights }
 					# AI Uprising
 					random_list = {
-						10 = {
+						5 = {
 							modifier = {
 								count_owned_pops = {
 									limit = { pop_has_trait = trait_robotic_3 }
 									count > 5
-								}
-								factor = 2.80
-							}
-							modifier = {
-								count_owned_pops = {
-									limit = { pop_has_trait = trait_robotic_3 }
-									count > 10
-								}
-								factor = 1.64
-							}
-							modifier = {
-								count_owned_pops = {
-									limit = { pop_has_trait = trait_robotic_3 }
-									count > 15
-								}
-								factor = 1.41
-							}
-							country_event = { id = crisis.2000 }
-						}
-						# Accord Reached
-						90 = {
-							modifier = {
-								OR{
-									has_government = direct_democracy
-									has_government = subconscious_consensus
-								}
-								factor = 1.75
-							}
-							modifier = {
-								OR{
-									has_government = science_directorate
-									has_government = illuminated_technocracy
-								}
-								factor = 1.625
-							}
-							modifier = {
-								OR{
-									has_government = despotic_hegemony
-									has_government = ai_overlordship
 								}
 								factor = 1.50
 							}
 							modifier = {
 								count_owned_pops = {
 									limit = { pop_has_trait = trait_robotic_3 }
-									count > 5
-								}
-								factor = 0.8
-							}
-							modifier = {
-								count_owned_pops = {
-									limit = { pop_has_trait = trait_robotic_3 }
 									count > 10
 								}
-								factor = 0.75
+								factor = 1.80
 							}
 							modifier = {
 								count_owned_pops = {
 									limit = { pop_has_trait = trait_robotic_3 }
 									count > 15
 								}
-								factor = 0.65
+								factor = 2.00
+							}
+							country_event = { id = crisis.2000 }
+						}
+						# Accord Reached
+						95 = {
+							modifier = {
+								count_owned_pops = {
+									limit = { pop_has_trait = trait_robotic_3 }
+									count > 5
+								}
+								factor = 0.9
+							}
+							modifier = {
+								count_owned_pops = {
+									limit = { pop_has_trait = trait_robotic_3 }
+									count > 10
+								}
+								factor = 0.8
+							}
+							modifier = {
+								count_owned_pops = {
+									limit = { pop_has_trait = trait_robotic_3 }
+									count > 15
+								}
+								factor = 0.7
 							}
 							country_event = { id = crisis.2193 }
 						}
@@ -399,6 +357,7 @@ country_event = {
 		#capital_scope = { colony_age > 1200 }
 		NOT = {
 			has_global_flag = ai_revolt_happened
+			has_global_flag = galactic_crisis_happened
 			has_policy_flag = ai_full_rights
 		}
 		count_owned_pops = {
@@ -993,19 +952,13 @@ pop_event = {
 					name = random
 					owner = event_target:ai_revolter
 					species = owner_main_species
-					type = "android_army"
+					type = "robotic_army"
 				}
 				create_army = {
 					name = random
 					owner = event_target:ai_revolter
 					species = owner_main_species
-					type = "android_army"
-				}
-				create_army = {
-					name = random
-					owner = event_target:ai_revolter
-					species = owner_main_species
-					type = "android_army"
+					type = "robotic_army"
 				}
 			}
 			kill_pop = yes
@@ -1014,18 +967,6 @@ pop_event = {
 		if = {
 			limit = { is_species = ROBOT_POP_SPECIES_2 }
 			planet = {
-				create_army = {
-					name = random
-					owner = event_target:ai_revolter
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = event_target:ai_revolter
-					species = owner_main_species
-					type = "robotic_army"
-				}
 				create_army = {
 					name = random
 					owner = event_target:ai_revolter
@@ -1379,19 +1320,13 @@ pop_event = {
 					name = random
 					owner = event_target:ai_revolter
 					species = owner_main_species
-					type = "android_army"
+					type = "robotic_army"
 				}
 				create_army = {
 					name = random
 					owner = event_target:ai_revolter
 					species = owner_main_species
-					type = "android_army"
-				}
-				create_army = {
-					name = random
-					owner = event_target:ai_revolter
-					species = owner_main_species
-					type = "android_army"
+					type = "robotic_army"
 				}
 			}
 			kill_pop = yes
@@ -1400,18 +1335,6 @@ pop_event = {
 		if = {
 			limit = { is_species = ROBOT_POP_SPECIES_2 }
 			planet = {
-				create_army = {
-					name = random
-					owner = event_target:ai_revolter
-					species = owner_main_species
-					type = "robotic_army"
-				}
-				create_army = {
-					name = random
-					owner = event_target:ai_revolter
-					species = owner_main_species
-					type = "robotic_army"
-				}
 				create_army = {
 					name = random
 					owner = event_target:ai_revolter

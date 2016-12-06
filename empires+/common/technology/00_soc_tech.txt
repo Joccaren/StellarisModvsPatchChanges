@@ -121,7 +121,7 @@ tech_hydroponics = {
 	area = society
 	tier = 1
 	category = { biology }
-	prerequisites = { "tech_eco_simulation" "tech_biolab_1" }
+	prerequisites = { "tech_eco_simulation" }
 	weight = @tier1weight1
 	
 	# unlocks farms level 2
@@ -170,7 +170,7 @@ tech_gene_crops = {
 	area = society
 	tier = 2
 	category = { biology }
-	prerequisites = { "tech_hydroponics" "tech_colonial_centralization" "tech_biolab_2" }
+	prerequisites = { "tech_hydroponics" "tech_colonial_centralization"}
 	weight = @tier2weight1
 	
 	# unlocks farms level 3
@@ -219,7 +219,7 @@ tech_nano_vitality_crops = {
 	area = society
 	tier = 2
 	category = { biology }	
-	prerequisites = { "tech_gene_crops" "tech_galactic_administration" "tech_biolab_3" }
+	prerequisites = { "tech_gene_crops" "tech_galactic_administration"}
 	weight = @tier2weight4
 	
 	# unlocks farms level 4
@@ -418,7 +418,7 @@ tech_biolab_3 = {
 	area = society
 	tier = 3
 	category = { biology }	
-	prerequisites = { "tech_biolab_2" "tech_galactic_administration" "tech_self_aware_logic" }
+	prerequisites = { "tech_biolab_2" "tech_galactic_administration" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -465,7 +465,6 @@ tech_alien_life_studies = {
 	area = society
 	tier = 1
 	category = { biology }
-	prerequisites = { "tech_biolab_1" }
 	weight = @tier1weight2
 	
 	weight_modifier = {
@@ -562,6 +561,7 @@ tech_colonization_2 = {
 	}
 	
 	ai_weight = {
+		factor = 1.5
 		modifier = {
 			factor = 1.25
 			research_leader = {
@@ -591,6 +591,115 @@ tech_colonization_3 = {
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 1.5
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+}
+
+tech_colonization_4 = {
+	cost = @tier3cost2
+	area = society
+	tier = 3
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_3" }
+	weight = @tier3weight2
+	
+	modifier = {
+		pop_environment_tolerance = 0.05
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 1.5
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+}
+
+tech_colonization_5 = {
+	cost = @tier3cost4
+	area = society
+	tier = 3
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_4" }
+	weight = @tier3weight4
+	
+	modifier = {
+		pop_environment_tolerance = 0.05
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 1.5
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_new_worlds"
+			}
+		}
+	}
+}
+
+tech_tomb_world_adaption = {
+	cost = @tier2cost3
+	area = society
+	tier = 2
+	category = { new_worlds }
+	prerequisites = { "tech_colonization_2" }
+	weight = @tier2weight3
+	is_rare = yes
+	
+	modifier = {
+		pc_nuked_habitability = 0.4
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0.10
+			NOR = {
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_expertise_new_worlds"
+				}
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_curator"
+				}
 			}
 		}
 	}
@@ -633,7 +742,7 @@ tech_frontier_hospital = {
 	area = society
 	tier = 2
 	category = { biology }
-	prerequisites = { "tech_frontier_health" "tech_biolab_2" }
+	prerequisites = { "tech_frontier_health" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -1837,7 +1946,7 @@ tech_epigenetic_triggers = {
 	area = society
 	tier = 2
 	category = { biology }
-	prerequisites = { "tech_genome_mapping" "tech_alien_life_studies" "tech_biolab_2" }
+	prerequisites = { "tech_genome_mapping" "tech_alien_life_studies" }
 	weight = @tier1weight4
 	
 	feature_flags = {
@@ -2002,7 +2111,7 @@ tech_gene_seed_purification = {
 	category = { biology }
 	tier = 3
 	is_rare = yes
-	prerequisites = { "tech_gene_expressions" "tech_gene_banks" }
+	prerequisites = { "tech_gene_tailoring" }
 	weight = @tier3weight2
 	
 	# unlocks gene-warrior armies
@@ -2096,7 +2205,7 @@ tech_morphogenetic_field_mastery = {
 	category = { biology }
 	tier = 2
 	is_rare = yes
-	prerequisites = { "tech_gene_tailoring" }
+	prerequisites = { "tech_epigenetic_triggers" }
 	weight = @tier2weight3
 	
 	# unlocks xeno-armies
@@ -2197,7 +2306,7 @@ tech_gene_tailoring = {
 	area = society
 	tier = 2
 	category = { biology }	
-	prerequisites = { "tech_epigenetic_triggers" }
+	prerequisites = { "tech_cloning" }
 	weight = @tier2weight4
 	
 	gateway = biological
@@ -2239,7 +2348,7 @@ tech_gene_expressions = {
 	category = { biology }
 	tier = 3
 	is_rare = yes
-	prerequisites = { "tech_gene_tailoring" "tech_biolab_3" }
+	prerequisites = { "tech_gene_tailoring" }
 	weight = @tier3weight2
 	
 	modifier = {
@@ -2367,7 +2476,7 @@ tech_capacity_boosters = {
 	category = { biology }
 	tier = 3
 	is_rare = yes
-	prerequisites = { "tech_selected_lineages" "tech_gene_tailoring" }
+	prerequisites = { "tech_selected_lineages" }
 	weight = @tier3weight2
 	
 	# Modifiers from this tech is added through a policy-option
@@ -3374,7 +3483,7 @@ tech_precognition_interface = {
 	tier = 3
 	category = { psionics }
 	is_rare = yes
-	prerequisites = { "tech_telepathy" "tech_combat_computers_2" }
+	prerequisites = { "tech_telepathy" }
 	weight = @tier3weight1
 	
 	# unlocks precognitive interface-component, combat-computer granting evasion to ships
@@ -3465,7 +3574,7 @@ tech_psi_jump_drive_1 = {
 	ai_update_type = all
 	is_rare = yes
 	is_dangerous = yes
-	prerequisites = { "tech_precognition_interface" "tech_jump_drive_1" }
+	prerequisites = { "tech_precognition_interface" }
 	weight = @tier3weight4
 	is_dangerous = yes
 	
@@ -3671,7 +3780,6 @@ tech_xeno_diplomacy = {
 	cost = @tier2cost1
 	area = society
 	category = { statecraft }
-	prerequisites = {"tech_xeno_integration" "tech_galactic_administration" }
 	tier = 2	
 	weight = @tier2weight1
 	
@@ -3814,7 +3922,6 @@ tech_galactic_ambitions = {
 	area = society
 	category = { statecraft }
 	tier = 1	
-	prerequisites = { "tech_colonial_centralization" }
 	weight = @tier1weight4
 	
 	modifier = {

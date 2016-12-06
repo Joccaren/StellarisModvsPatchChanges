@@ -322,7 +322,7 @@ tech_physics_lab_3 = {
 	area = physics
 	tier = 3
 	category = { computing }
-	prerequisites = { "tech_physics_lab_2" "tech_galactic_administration" "tech_self_aware_logic" }
+	prerequisites = { "tech_physics_lab_2" "tech_galactic_ambitions"}
 	weight = @tier3weight1
 		
 	# # unlock physics lab lvl 3
@@ -499,7 +499,7 @@ tech_self_aware_logic = {
 	tier = 2
 	cost = @tier2cost1
 	category = { computing }
-	prerequisites = { "tech_administrative_ai" "tech_robotic_workers" }
+	prerequisites = { "tech_administrative_ai" }
 	weight = @tier2weight1
 	
 	modifier = {
@@ -611,7 +611,7 @@ tech_sentient_ai = {
 	category = { computing }
 	is_rare = yes
 	is_dangerous = yes
-	prerequisites = { "tech_self_aware_logic" "tech_droid_workers" }
+	prerequisites = { "tech_self_aware_logic" }
 	weight = @tier2weight4
 	
 	modifier = {
@@ -949,7 +949,7 @@ tech_cold_fusion_power = {
 	tier = 2
 	category = { particles }
 	ai_update_type = military
-	prerequisites = { "tech_fusion_power" "tech_power_plant_2" }
+	prerequisites = { "tech_fusion_power" }
 	weight = @tier2weight1
 	
 	modifier = {
@@ -1037,7 +1037,7 @@ tech_zero_point_power = {
 	tier = 3
 	category = { particles }
 	ai_update_type = military	
-	prerequisites = { "tech_antimatter_power" "tech_power_plant_4" }
+	prerequisites = { "tech_antimatter_power" }
 	weight = @tier3weight4
 	
 	modifier = {
@@ -1081,7 +1081,6 @@ tech_shields_1 = {
 	tier = 1
 	category = { field_manipulation }
 	ai_update_type = all
-		prerequisites = { "tech_lasers_1" }
 	weight = @tier1weight1
 	
 	modifier = {
@@ -1117,7 +1116,7 @@ tech_shields_2 = {
 	tier = 1
 	category = { field_manipulation }
 	ai_update_type = all
-	prerequisites = { "tech_shields_1" "tech_physics_lab_1" }
+	prerequisites = { "tech_shields_1" }
 	weight = @tier1weight3
 	
 	modifier = {
@@ -1153,7 +1152,7 @@ tech_shields_3 = {
 	tier = 2
 	category = { field_manipulation }
 	ai_update_type = all
-	prerequisites = { "tech_shields_2"}
+	prerequisites = { "tech_shields_2" }
 	weight = @tier2weight1
 	
 	modifier = {
@@ -1189,7 +1188,7 @@ tech_shields_4 = {
 	tier = 2
 	category = { field_manipulation }
 	ai_update_type = all
-	prerequisites = { "tech_shields_3" "tech_physics_lab_2" }
+	prerequisites = { "tech_shields_3" }
 	weight = @tier2weight3
 	
 	modifier = {
@@ -1225,7 +1224,7 @@ tech_shields_5 = {
 	tier = 3
 	category = { field_manipulation }
 	ai_update_type = all
-	prerequisites = { "tech_shields_4" "tech_lythuric_gas"}
+	prerequisites = { "tech_shields_4" }
 	weight = @tier3weight2
 	
 	modifier = {
@@ -1293,7 +1292,7 @@ tech_shield_recharge_aura_1 = {
 	category = { field_manipulation }
 	ai_update_type = all	
 	is_rare = yes
-	prerequisites = { "tech_shields_3" }
+	prerequisites = { "tech_shields_4" }
 	weight = @tier2weight4
 	
 	weight_modifier = {
@@ -1644,7 +1643,7 @@ tech_power_plant_4 = {
 	area = physics
 	tier = 2
 	category = { industry }
-	prerequisites = { "tech_power_plant_3" "tech_galactic_administration" "tech_physics_lab_3" }
+	prerequisites = { "tech_power_plant_3" "tech_galactic_administration"}
 	weight = @tier2weight3
 		
 	## unlock power plant lvl 4
@@ -1707,7 +1706,7 @@ tech_power_hub_1 = {
 	area = physics
 	tier = 1
 	category = { industry }	
-	prerequisites = { "tech_power_plant_1" "tech_administrative_ai" }
+	prerequisites = { "tech_power_plant_1" }
 	weight = @tier1weight1
 		
 	# unlock power hub 1
@@ -1742,7 +1741,7 @@ tech_power_hub_2 = {
 	area = physics
 	tier = 2
 	category = { industry }	
-	prerequisites = { "tech_power_hub_1" "tech_colonial_centralization" "tech_physics_lab_3" }
+	prerequisites = { "tech_power_hub_1" "tech_colonial_centralization"}
 	weight = @tier2weight1
 		
 	# unlock power hub 2
@@ -1810,7 +1809,7 @@ tech_wormhole_generation_2  = {
 	category = { field_manipulation }
 	ai_update_type = all
 	is_reverse_engineerable = no
-	prerequisites = { "tech_wormhole_generation_1" "tech_thrusters_2" }
+	prerequisites = { "tech_wormhole_generation_1" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -1847,7 +1846,7 @@ tech_wormhole_generation_3  = {
 	category = { field_manipulation }
 	ai_update_type = all
 	is_reverse_engineerable = no	
-	prerequisites = { "tech_wormhole_generation_2" "tech_thrusters_3" }
+	prerequisites = { "tech_wormhole_generation_2" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -1915,7 +1914,7 @@ tech_hyper_drive_2 = {
 	category = { particles }
 	ai_update_type = all
 	is_reverse_engineerable = no
-	prerequisites = { "tech_hyper_drive_1" "tech_thrusters_2" }
+	prerequisites = { "tech_hyper_drive_1" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -1954,7 +1953,7 @@ tech_hyper_drive_3 = {
 	category = { particles }
 	ai_update_type = all
 	is_reverse_engineerable = no
-	prerequisites = { "tech_hyper_drive_2" "tech_thrusters_3" }
+	prerequisites = { "tech_hyper_drive_2" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -2060,7 +2059,7 @@ tech_warp_drive_2 = {
 	category = { field_manipulation }
 	ai_update_type = all
 	is_reverse_engineerable = no	
-	prerequisites = { "tech_warp_drive_1" "tech_thrusters_2" }
+	prerequisites = { "tech_warp_drive_1" }
 	weight = @tier2weight1
 	
 	weight_modifier = {
@@ -2099,7 +2098,7 @@ tech_warp_drive_3 = {
 	category = { field_manipulation }
 	ai_update_type = all
 	is_reverse_engineerable = no	
-	prerequisites = { "tech_warp_drive_2" "tech_thrusters_3" }
+	prerequisites = { "tech_warp_drive_2" }
 	weight = @tier3weight1
 	
 	weight_modifier = {
@@ -2141,7 +2140,7 @@ tech_jump_drive_1 = {
 	is_rare = yes
 	is_dangerous = yes
 	weight = @tier3weight1
-	prerequisites = { "tech_zero_point_power" "tech_sensors_4" "tech_thrusters_4" "tech_physics_lab_3" }
+	prerequisites = { "tech_zero_point_power" }
 	
 	weight_modifier = {
 		factor = 0.1

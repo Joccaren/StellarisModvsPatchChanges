@@ -170,7 +170,6 @@ trait_nomadic = {
 	modifier = {
 		pop_migration_speed = 0.5
 		pop_resettlement_cost_mult = -0.33
-		pop_xenophobia = -0.02
 	}
 }
 
@@ -181,7 +180,6 @@ trait_sedentary = {
 	modifier = {
 		pop_migration_speed = -0.5
 		pop_resettlement_cost_mult = 0.33
-		pop_xenophobia = 0.02
 	}
 }
 
@@ -271,7 +269,6 @@ trait_resilient = {
 	modifier = {
 		garrison_health = 1.0
 		pop_fortification_defense = 0.5
-		pop_environment_tolerance = 0.05
 	}
 }
 
@@ -417,56 +414,4 @@ trait_presentient_irradiated = {
 		pc_nuked_habitability = 1
 		leader_age = 30
 	}
-}
-
-###############################
-# Special Traits #
-###############################
-
-trait_cybernetics = {
-	cost = 1
-	
-	initial = yes
-	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_computing.dds"
-	
-	modifier = {
-		pop_environment_tolerance = 0.10
-		leader_age = 15
-		leader_skill_levels = 1
-		tile_resource_energy_mult = -0.50
-	}
-	opposites = { "trait_hive_mind" "trait_gastrolith" }
-}
-
-trait_hive_mind = {
-	cost = 1
-	
-	initial = yes
-	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_psionics.dds"
-	
-	modifier = {
-		species_leader_exp_gain = 2.0
-		pop_ethic_shift = -1.0
-		tile_resource_engineering_research_mult = -0.3
-		tile_resource_physics_research_mult = -0.3
-		tile_resource_society_research_mult = -0.3
-	}
-	opposites = { "trait_cybernetics" "trait_gastrolith" }
-}
-
-trait_gastrolith = {
-	cost = 1
-	
-	initial = yes
-	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_materials.dds"
-	
-	modifier = {
-		pop_environment_tolerance = 0.10
-		pop_food_req_mult = -1.0
-		tile_resource_minerals_add = -0.50
-	}
-	opposites = { "trait_cybernetics" "trait_hive_mind" }
 }
