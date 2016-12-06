@@ -1,0 +1,48 @@
+buildable_robot_pop_4 = {
+		
+	prerequisites = {
+		"tech_synthetic_workers"
+	}
+	cost = {
+		minerals = 100
+		energy = 300
+	}
+	
+	allow = {
+		has_policy_flag = ai_full_rights
+		OR = {
+			has_ethic = ethic_fanatic_materialist
+			has_ethic = ethic_materialist
+		}
+	}
+	
+	potential = {
+		always = yes
+	}
+	
+	species = {
+		name = "ROBOT_POP_SPECIES_4"
+		class = "ROBOT"
+		portrait = "robot3"
+		traits = {
+			trait = "trait_mechanical"
+		}
+		
+		new_pop_resource_requirement = {
+			type = robot_food
+			value = 30.0
+		}
+		pops_auto_growth = 1.0
+		
+		pops_can_be_colonizers = yes
+		pops_can_migrate = yes
+		pops_can_reproduce = no
+		pops_can_join_factions = yes
+		pop_maintenance = 1
+		can_generate_leaders = yes
+		pops_can_be_slaves = yes
+		can_be_modified = no
+		pops_have_happiness = yes
+		pop_ethics = random	#can also be pop_ethics = { some_ethic some_other_ethic etc }
+	}
+}

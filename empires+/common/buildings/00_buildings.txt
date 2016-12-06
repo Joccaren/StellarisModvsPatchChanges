@@ -2005,6 +2005,7 @@ building_clone_vats = {
 						}
 					}
 				}
+				NOT = { has_building = building_clone_vats }
 			}
 		}
 	}
@@ -2120,6 +2121,7 @@ building_slave_processing = {
 						}
 					}
 				}
+				NOT = { has_building = building_slave_processing }
 			}
 		}	
 	}
@@ -2195,6 +2197,7 @@ building_grand_mausoleum = {
 			weight = 0
 			from = {
 				ethos > 0.95
+				NOT = { has_building = building_grand_mausoleum }
 			}
 		}
 	}
@@ -2263,6 +2266,7 @@ building_royal_gardens = {
 			weight = 0
 			from = {
 				happiness_planet > 0.70
+				NOT = { has_building = building_royal_gardens }
 			}
 		}	
 	}
@@ -2316,7 +2320,7 @@ building_clinic = {
 	}
 	
 	ai_weight = {
-		weight = 10
+		weight = 2
 		modifier = {
 			weight = 0
 			from = {
@@ -2334,6 +2338,7 @@ building_clinic = {
 building_hospital = {
 	base_buildtime = 180
 	planet_unique = yes
+	is_listed = no
 	
 	cost = {
 		minerals = 200
@@ -2500,6 +2505,7 @@ building_paradise_dome = {
 			weight = 0
 			from = {
 				happiness_planet > 0.90
+				NOT = { has_building = building_paradise_dome }
 			}
 		}	
 	}
@@ -2561,6 +2567,7 @@ building_xeno_zoo = {
 			weight = 0
 			from = {
 				happiness_planet > 0.90
+				NOT = { has_building = building_xeno_zoo }
 			}
 		}	
 	}

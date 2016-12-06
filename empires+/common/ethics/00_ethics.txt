@@ -160,6 +160,10 @@ ethic_xenophobe = {
 		diplomacy_influence_cost = 0.16
 		planet_border_mult = 0.1
 	}
+	random_weight = {
+		value = 100
+	}
+}
 
 ethic_fanatic_xenophile = {
 	cost = 2
@@ -265,7 +269,7 @@ ethic_fanatic_pacifist = {
 	
 	country_modifier = {
 		max_rivalries = -3
-		country_trust_growth = -0.75
+		country_trust_growth = 0.75
 	}
 	
 	pop_modifier = {
@@ -291,7 +295,7 @@ ethic_pacifist = {
 	
 	country_modifier = {
 		max_rivalries = -1
-		country_trust_growth = -0.25
+		country_trust_growth = 0.25
 	}
 	
 	pop_modifier = {
