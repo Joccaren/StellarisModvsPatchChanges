@@ -55,14 +55,6 @@ tech_mass_drivers_1 = {
 	weight_modifier = {
 		factor = 0.50
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -81,14 +73,6 @@ tech_mass_drivers_1 = {
 	
 	ai_weight = {
 		factor = 0.25
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -112,14 +96,6 @@ tech_mass_drivers_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -138,14 +114,6 @@ tech_mass_drivers_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -176,14 +144,6 @@ tech_mass_drivers_3 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -202,14 +162,6 @@ tech_mass_drivers_3 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -240,14 +192,6 @@ tech_mass_drivers_4 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -266,14 +210,6 @@ tech_mass_drivers_4 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -304,14 +240,6 @@ tech_mass_drivers_5 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -330,14 +258,6 @@ tech_mass_drivers_5 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -367,14 +287,6 @@ tech_kinetic_artillery_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -393,14 +305,6 @@ tech_kinetic_artillery_1 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -430,14 +334,6 @@ tech_kinetic_artillery_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -456,14 +352,6 @@ tech_kinetic_artillery_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -493,14 +381,6 @@ tech_mass_accelerator_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -519,14 +399,6 @@ tech_mass_accelerator_1 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -556,14 +428,6 @@ tech_mass_accelerator_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -582,14 +446,6 @@ tech_mass_accelerator_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -624,14 +480,6 @@ tech_autocannons_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -656,14 +504,6 @@ tech_autocannons_1 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -692,14 +532,6 @@ tech_autocannons_2 = {
 	weight = @tier2weight3
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -740,14 +572,6 @@ tech_autocannons_3 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -766,14 +590,6 @@ tech_autocannons_3 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -803,14 +619,6 @@ tech_flak_batteries_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -829,14 +637,6 @@ tech_flak_batteries_1 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -866,14 +666,6 @@ tech_flak_batteries_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -892,14 +684,6 @@ tech_flak_batteries_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -934,14 +718,6 @@ tech_missiles_1 = {
 	weight_modifier = {
 		factor = 0.50
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -960,14 +736,6 @@ tech_missiles_1 = {
 	
 	ai_weight = {
 		factor = 0.25
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -991,14 +759,6 @@ tech_missiles_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1017,14 +777,6 @@ tech_missiles_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1055,14 +807,6 @@ tech_missiles_3 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1081,14 +825,6 @@ tech_missiles_3 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1119,14 +855,6 @@ tech_missiles_4 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1145,14 +873,6 @@ tech_missiles_4 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1183,14 +903,6 @@ tech_missiles_5 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1209,14 +921,6 @@ tech_missiles_5 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1247,14 +951,6 @@ tech_swarmer_missiles_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1273,14 +969,6 @@ tech_swarmer_missiles_1 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1311,14 +999,6 @@ tech_swarmer_missiles_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1337,14 +1017,6 @@ tech_swarmer_missiles_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1379,14 +1051,6 @@ tech_torpedoes_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1405,14 +1069,6 @@ tech_torpedoes_1 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1443,14 +1099,6 @@ tech_torpedoes_2 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1469,14 +1117,6 @@ tech_torpedoes_2 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
@@ -1507,14 +1147,6 @@ tech_torpedoes_3 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist
 		}
@@ -1533,14 +1165,6 @@ tech_torpedoes_3 = {
 	
 	ai_weight = {
 		factor = 2		#weapons are good
-		modifier = {
-			factor = 0.65
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 0.8
-			has_ethic = ethic_pacifist
-		}
 		modifier = {
 			factor = 1.25
 			has_ethic = ethic_militarist

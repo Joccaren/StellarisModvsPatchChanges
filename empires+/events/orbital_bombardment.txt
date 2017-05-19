@@ -22,17 +22,14 @@ planet_event = {
 	
 	immediate = {
 		# Kill a pop
-		random_list = {
+		random_list = {	
 			2 = {
 				if = {
 					limit = {
 						or = {
 							orbital_bombardment = limited
 							orbital_bombardment = full
-							AND = {
-								orbital_bombardment = soft
-								fortification_health > 1  # don't kill any Pop if set to Light and fortification is at 1% or lower
-							}
+							orbital_bombardment = armageddon
 						}
 					}
 					if = {
@@ -80,56 +77,8 @@ planet_event = {
 				if = {
 					limit = {
 						or = {
-							orbital_bombardment = limited
 							orbital_bombardment = full
-						}
-					}
-					if = {
-						limit = {
-							count_pops = {
-								count > 1
-								limit = {
-									is_sentient = yes
-									owner = { NOT = { is_country_type = "primitive" } }
-								}
-							}
-						}
-						FROM = {
-							country_event = { id = action.23 }
-						}						
-						random_pop = {
-							limit = {
-								is_sentient = yes
-								owner = { NOT = { is_country_type = "primitive" } }
-							}
-							kill_pop = yes
-						}
-						else = {
-							if = {
-								limit = {
-									count_pops = {
-										count = all
-										limit = {
-											OR = {
-												is_sentient = no
-												owner = { is_country_type = "primitive" }
-											}
-										}
-									}
-								}
-								random_pop = {
-									kill_pop = yes
-								}
-							}
-						}
-					}
-				}
-			}
-			2 = {
-				if = {
-					limit = {
-						or = {
-							orbital_bombardment = full
+							orbital_bombardment = armageddon
 						}
 					}
 					if = {
@@ -173,6 +122,52 @@ planet_event = {
 					}
 				}
 			}
+			2 = {
+				if = {
+					limit = {
+						orbital_bombardment = armageddon
+					}
+					if = {
+						limit = {	
+							count_pops = {
+								count > 1
+								limit = {
+									is_sentient = yes
+									owner = { NOT = { is_country_type = "primitive" } }
+								}
+							}
+						}
+						FROM = {
+							country_event = { id = action.23 }
+						}							
+						random_pop = {
+							limit = {
+								is_sentient = yes
+								owner = { NOT = { is_country_type = "primitive" } }
+							}
+							kill_pop = yes
+						}
+						else = {
+							if = {
+								limit = {
+									count_pops = {
+										count = all
+										limit = {
+											OR = {
+												is_sentient = no
+												owner = { is_country_type = "primitive" }
+											}
+										}
+									}
+								}
+								random_pop = {
+									kill_pop = yes
+								}
+							}
+						}
+					}
+				}
+			}			
 			94 = {
 			}
 		}
@@ -185,6 +180,7 @@ planet_event = {
 						or = {
 							orbital_bombardment = limited
 							orbital_bombardment = full
+							orbital_bombardment = armageddon
 						}
 					}
 					random_tile = {
@@ -201,6 +197,7 @@ planet_event = {
 					limit = {
 						or = {
 							orbital_bombardment = full
+							orbital_bombardment = armageddon
 						}
 					}
 					random_tile = {
@@ -212,16 +209,33 @@ planet_event = {
 					}
 				}
 			}
-			90 = {
+			5 = {
+				if = {
+					limit = {
+						orbital_bombardment = armageddon
+					}
+					random_tile = {
+						limit = {
+							has_building = yes
+							is_ruined = no
+						}
+						set_ruined = yes
+					}
+				}
+			}			
+			85 = {
 			}
 		}
 
 		# Create tile blocker
 		random_list = {
-			5 = {
+			3 = {
 				if = {
 					limit = {
-						orbital_bombardment = full
+						or = {
+							orbital_bombardment = full
+							orbital_bombardment = armageddon
+						}
 					}
 					if = {
 						limit = {
@@ -274,7 +288,63 @@ planet_event = {
 					}
 				}
 			}
-			95 = {
+			3 = {
+				if = {
+					limit = {
+						orbital_bombardment = armageddon
+					}
+					if = {
+						limit = {
+							planet = {
+								OR = {
+									count_pops = {
+										count > 1
+										limit = {
+											is_sentient = yes
+											owner = { NOT = { is_country_type = "primitive" } }
+										}
+									}
+									count_pops = {
+										count = all
+										limit = {
+											OR = {
+												is_sentient = no
+												owner = { is_country_type = "primitive" }
+											}
+										}
+									}
+								}
+							}
+						}
+						random_tile = {
+							limit = {
+								has_blocker = no
+								has_building = no
+							}
+							set_blocker = "tb_bombarded_land"
+						}
+						else = {
+							random_tile = {
+								limit = {
+									has_blocker = no
+									has_building = no
+									OR = {
+										NOT = { exists = pop }
+										pop = {
+											OR = {
+												is_sentient = no
+												owner = { is_country_type = "primitive" }
+											}
+										}
+									}
+								}
+								set_blocker = "tb_bombarded_land"
+							}
+						}
+					}
+				}
+			}			
+			94 = {
 			}
 		}
 	}

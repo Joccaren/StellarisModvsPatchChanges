@@ -21,6 +21,12 @@ tb_mountain_range = {
 			}
 		}
 		modifier = {
+			add = 20
+			planet = {
+				is_planet_class = pc_alpine
+			}
+		}			
+		modifier = {
 			add = 13.5
 			planet = {
 				is_colonizable = yes
@@ -166,6 +172,12 @@ tb_quicksand_basin = {
 		modifier = {
 			add = 20
 			planet = {
+				is_planet_class = pc_savannah
+			}
+		}			
+		modifier = {
+			add = 20
+			planet = {
 				is_planet_class = pc_arid
 			}
 		}
@@ -232,6 +244,12 @@ tb_massive_glacier = {
 			}
 		}
 		modifier = {
+			add = 35
+			planet = {
+				is_planet_class = pc_alpine
+			}
+		}		
+		modifier = {
 				factor = 0.25
 				planet = {
 					has_modifier = "titanic_life"
@@ -290,6 +308,12 @@ tb_deep_sinkhole = {
 		modifier = {
 			add = 18
 			planet = {
+				is_planet_class = pc_savannah
+			}
+		}			
+		modifier = {
+			add = 18
+			planet = {
 				is_planet_class = pc_desert
 			}
 		}
@@ -307,6 +331,13 @@ tb_deep_sinkhole = {
 ### SPECIAL
 
 tb_radioactive_wasteland = {
+	time = 200
+	cost = {
+		energy = 200
+		minerals = 200
+	}
+
+
 	spawn_chance = {
 		modifier = {
 			add = 30
@@ -315,13 +346,15 @@ tb_radioactive_wasteland = {
 			}
 		}
 	}
-	
-	adjacency_bonus = {
-		resource_physics_research_add = 1
-	}
 }
 
 tb_city_ruins = {
+	time = 200
+	cost = {
+		energy = 200
+		minerals = 200
+	}
+
 	spawn_chance = {
 		modifier = {
 			add = 20
@@ -330,10 +363,6 @@ tb_city_ruins = {
 			}
 		}
 	}
-	
-	adjacency_bonus = {
-		resource_society_research_add = 1
-	}	
 }
 
 tb_infestation = {
@@ -403,7 +432,7 @@ tb_tribal_settlement = {
 	}
 
 	adjacency_bonus = {
-		resource_society_research_add = 1
+		tile_building_resource_society_research_add = 1
 	}
 }
 
@@ -431,7 +460,7 @@ tb_wandering_forest_reserve = {
 	}
 
 	adjacency_bonus = {
-		resource_society_research_add = 3
+		tile_building_resource_society_research_add = 3
 	}
 }
 

@@ -20,6 +20,12 @@ leader_trait_adaptable = {
 	self_modifier = {
 		species_leader_exp_gain = 0.15
 	}
+	potential = {
+		OR = {
+			NOT = { leader_class = ruler}
+			NOT = { from = { has_ethic = "ethic_hive_mind" } }
+		}
+	}
 	leader_class = { admiral scientist general governor }
 	opposites = { "leader_trait_stubborn" }
 	leader_trait = yes
@@ -43,10 +49,17 @@ leader_trait_stubborn = {
 	self_modifier = {
 		species_leader_exp_gain = -0.15
 	}
+	potential = {
+		OR = {
+			NOT = { leader_class = ruler}
+			NOT = { from = { has_ethic = "ethic_hive_mind" } }
+		}
+	}
 	leader_class = { admiral scientist general governor }
 	opposites = { "leader_trait_adaptable" }
 	leader_trait = yes
 	initial = no
+	randomized = no
 }
 
 leader_trait_resilient = {
@@ -55,6 +68,12 @@ leader_trait_resilient = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_resilient.dds"
 	self_modifier = {
 		leader_age = 25
+	}
+	potential = {
+		OR = {
+			NOT = { leader_class = ruler}
+			NOT = { from = { has_ethic = "ethic_hive_mind" } }
+		}
 	}
 	leader_trait = yes
 	opposites = { "leader_trait_substance_abuser" }
@@ -78,9 +97,16 @@ leader_trait_substance_abuser = {
 	self_modifier = {
 		leader_age = -20
 	}
+	potential = {
+		OR = {
+			NOT = { leader_class = ruler}
+			NOT = { from = { has_ethic = "ethic_hive_mind" } }
+		}
+	}
 	leader_trait = yes
 	opposites = { "leader_trait_resilient" }
 	initial = no
+	randomized = no
 }
 
 leader_trait_eager = {
@@ -89,6 +115,12 @@ leader_trait_eager = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_eager.dds"
 	self_modifier = {
 		leader_influence_cost = -0.33
+	}
+	potential = {
+		OR = {
+			NOT = { leader_class = ruler}
+			NOT = { from = { has_ethic = "ethic_hive_mind" } }
+		}
 	}
 	leader_class = { admiral scientist general governor }
 	leader_trait = yes
@@ -101,7 +133,26 @@ leader_trait_arrested_development = {
 	self_modifier = {
 		species_leader_exp_gain = -1
 	}
+	potential = {
+		OR = {
+			NOT = { leader_class = ruler}
+			NOT = { from = { has_ethic = "ethic_hive_mind" } }
+		}
+	}
 	leader_class = { admiral scientist general governor }
 	leader_trait = yes
 	initial = no
+	randomized = no
+}
+
+leader_trait_shroud_age = {
+	cost = 0
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_resilient.dds"
+	self_modifier = {
+		leader_age = 40
+	}
+	leader_trait = yes
+	initial = no
+	randomized = no
 }

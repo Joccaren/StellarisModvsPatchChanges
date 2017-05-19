@@ -171,6 +171,23 @@ robotic_army = {
 	
 	prerequisites = { "tech_droid_workers" }
 }
+robotic_defense_army = {
+	robotic = yes
+	defensive = yes
+	damage = 0.96
+	health = 1.70
+	time = 60
+	maintenance = 0.23
+	icon_frame = 4
+	has_species = no
+	
+	cost = {
+		minerals = 50
+		energy = 8
+	}
+	
+	prerequisites = { "tech_droid_workers" }
+}
 
 # Synthetic Armies
 android_army = {
@@ -190,14 +207,31 @@ android_army = {
 	prerequisites = { "tech_synthetic_workers" }
 }
 
+android_defense_army = {
+	robotic = yes
+	damage = 1.70
+	health = 2.17
+	time = 80
+	maintenance = 0.45
+	icon_frame = 4
+	has_species = no
+	
+	cost = {
+		minerals = 75
+		energy = 10
+	}
+	
+	prerequisites = { "tech_synthetic_workers" }
+}
+
 # Psionic Armies
 psionic_army = {
-	damage = 1.75
+	damage = 2.0
 	morale_damage = 1.5
-	health = 1.25
+	health = 1.75
 	morale = 3.0
 	time = 360
-	maintenance = 0.8
+	maintenance = 1.0
 	icon_frame = 9
 	
 	cost = {
@@ -208,6 +242,13 @@ psionic_army = {
 	prerequisites = { "tech_telepathy" }
 	potential = {
 		from = {
+			OR = {
+				NOT = { host_has_dlc = "Utopia" }
+				OR = {
+					has_trait = trait_latent_psionic
+					has_trait = trait_psionic
+				}
+			}
 			NOR = {
 				is_species = "ROBOT_POP_SPECIES_1"
 				is_species = "ROBOT_POP_SPECIES_2"
@@ -227,6 +268,7 @@ xenomorph_army = {
 	time = 360
 	maintenance = 0.75
 	icon_frame = 8
+	has_species = no
 	
 	cost = {
 		minerals = 125
@@ -234,29 +276,20 @@ xenomorph_army = {
 	}
 	
 	prerequisites = { "tech_morphogenetic_field_mastery" }
-	potential = {
-		from = {
-			NOR = {
-				is_species = "ROBOT_POP_SPECIES_1"
-				is_species = "ROBOT_POP_SPECIES_2"
-				is_species = "ROBOT_POP_SPECIES_3"
-				is_sentient = no
-			}
-		}
-	}
 }
 
 # Gene Warrior Armies
 gene_warrior_army = {
-	damage = 3.0
-	health = 3.0
+	damage = 2.0
+	health = 2.0
 	morale = 2.0
+	morale_damage = 1.0
 	time = 360
 	maintenance = 1.0
 	icon_frame = 6
 	
 	cost = {
-		minerals = 350
+		minerals = 250
 		energy = 50
 	}
 	
@@ -362,8 +395,8 @@ elite_guard_army = {
 	potential = {
 		owner = {
 			OR = {
-				has_government = despotic_hegemony
-				has_government = ai_overlordship
+				has_government = gov_despotic_hegemony
+				has_government = gov_illuminated_autocracy
 			}
 			exists = ruler
 			ruler = {
@@ -413,21 +446,14 @@ titanic_assault_army = {
 	maintenance = 1.0
 	icon_frame = 8
 	assault = yes
+	has_species = no
 	
 	cost = {
-		minerals = 350
+		minerals = 250
 		energy = 50
 	}
 	
 	potential = {
-		from = {
-			NOR = {
-				is_species = "ROBOT_POP_SPECIES_1"
-				is_species = "ROBOT_POP_SPECIES_2"
-				is_species = "ROBOT_POP_SPECIES_3"
-				is_sentient = no
-			}
-		}
 		custom_tooltip = {
 			text = titanic_troop_limit_tooltip
 			planet = { has_planet_flag = titanic_life_can_build }
@@ -480,7 +506,22 @@ titanic_guardian_army = {
 	time = 5
 	maintenance = 1.0
 	icon_frame = 8
+	has_species = no
+	
+	potential = {
+		always = no
+	}
+}
 
+# Given as a reward from the Shroud
+shroud_army = {
+	damage = 2.0
+	health = 7.0
+	morale = 4.0
+	time = 5
+	maintenance = -1
+	icon_frame = 9
+	has_species = no
 	
 	potential = {
 		always = no
