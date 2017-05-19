@@ -1,0 +1,2627 @@
+# Do not remove or rename this
+
+# Possible Variables for Buildings:
+# strategic_resource: strategic resource, deprecated, strategic resource used by the building.
+# allow: trigger to check for allowing construction of building.
+# prerequisites: Tech requirements for building.
+# empire_unique: boolean, can only build one if set to true.
+# cost: resource table, cost of building.
+# is_orbital: boolean, can only be built in orbital station.
+# modifier: modifier, deprecated, applies a modifier to planet.
+# base_buildtime: int, number of days for construction.
+# requires_pop, boolean, building will require a pop for production.
+# required_resources, resource table, required resources for production.
+# produced_resources, resource table, produced resources in production.
+# upgrades, buildings list, buildings this building can upgrade into.
+# is_listed, boolean, toggles if this building is shown in the non-upgrade buildable list.
+# planet_unique, toggles if one can build multiple of this type on a single planet.
+# ai_weight, weight for AI, default is set to one, weight set to 0 means that AI will never build it
+
+#
+# BALANCE
+# can change the time and cost of all common buildings with these variables below
+
+@b0time = 120
+@b0cost = 30
+@b0effect = 1
+@b0upkeep = 0.5
+
+@b1time = 210
+@b1cost = 60
+@b1effect = 2
+@b1upkeep = 1
+
+@b2time = 180
+@b2cost = 90
+@b2effect = 3
+@b2upkeep = 1.5
+
+@b3time = 180
+@b3cost = 120
+@b3effect = 4
+@b3upkeep = 2
+
+@b4time = 180
+@b4cost = 150
+@b4effect = 5
+@b4upkeep = 2.5
+
+@b5time = 180
+@b5cost = 180
+@b5effect = 8
+@b5upkeep = 3
+
+@science1 = 1
+@science2 = 2
+@science3 = 3
+@science4 = 4
+@science5 = 6
+
+#Seine Algorithm Facility
+building_seine_algorithm_facility = {
+	base_buildtime = 720
+	built_for_ruler = yes
+	planet_unique = yes
+	
+	icon = "building_seine_algorithm_facility"
+	
+	cost = {
+		minerals = 600
+		influence = 50
+	}
+	
+	potential = {
+		planet = {
+			exists = owner
+			owner = {
+				OR = {
+					has_government = despotic_hegemony
+					has_government = ai_overlordship
+				}
+			}
+		}
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 2
+		resource_engineering_research_add = 2
+		resource_physics_research_add = 2
+	}
+	
+	planet_modifier  = {
+		tile_resource_physics_research_mult = 0.15
+		tile_resource_society_research_mult = 0.15
+		tile_resource_engineering_research_mult = 0.15
+	}
+	
+	required_resources = {
+		energy = 10
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = building_grand_mausoleum_allowed_tooltip
+			exists = ruler
+			ruler = {
+				NOT = { has_leader_flag = built_monument }
+			}
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+		
+	on_queued = {
+		ruler = {
+			set_leader_flag = built_monument
+		}
+	}
+	
+	on_unqueued = {
+		ruler = {
+			remove_leader_flag = built_monument
+		}
+	}
+	
+	ai_special_building = yes
+	
+	ai_allow = {
+		has_any_resource = no
+	}
+
+  	ai_weight = {
+		factor = 1000
+		modifier = {
+			factor = 0
+			from = { sector_controlled = yes }
+		}	
+  	}
+}
+ 
+#Trade Centre
+building_trade_centre_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_visitor_center"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_minerals_add = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		energy = 4
+	}
+	
+	upgrades = {
+		building_trade_centre_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_trade_centre_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_visitor_center"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_minerals_add = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		energy = 6
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+#Biogenesis District
+building_biogenesis_district_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_xeno_zoo"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		food = 4
+	}
+	
+	upgrades = {
+		building_biogenesis_district_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_biogenesis_district_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_xeno_zoo"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		food = 6
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+#Reclaimation Facilities
+building_reclaimation_facilities_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_primitive_factory"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_food_add = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		minerals = 4
+	}
+	
+	upgrades = {
+		building_reclaimation_facilities_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_reclaimation_facilities_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_primitive_factory"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_food_add = 4
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		minerals = 6
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+#Automated Industrial Precinct
+building_automated_industrial_precinct_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_ancient_factory"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	planet_modifier  = {
+		spaceport_ship_build_speed_mult = 0.15
+		building_time_mult = -0.15
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		engineering_research = 4
+	}
+	
+	upgrades = {
+		building_automated_industrial_precinct_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_automated_industrial_precinct_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_ancient_factory"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	planet_modifier  = {
+		spaceport_ship_build_speed_mult = 0.3
+		building_time_mult = -0.3
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		engineering_research = 8
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+#Civilian Arcology
+building_civilian_arcology_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_paradise_dome"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	planet_modifier  = {
+		pop_growth_req_mult = -0.2
+		pop_environment_tolerance = 0.05
+	}
+	
+	produced_resources = {
+		society_research = 4
+	}
+	
+	upgrades = {
+		building_civilian_arcology_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_civilian_arcology_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_paradise_dome"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	planet_modifier  = {
+		pop_growth_req_mult = -0.4
+		pop_environment_tolerance = 0.1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		society_research = 8
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+#Quantum Communications Facility
+building_quantum_communications_facility_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_institute"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	country_modifier  = {
+		navy_size_add = 8
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		physics_research = 4
+	}
+	
+	upgrades = {
+		building_quantum_communications_facility_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_quantum_communications_facility_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_institute"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	country_modifier  = {
+		navy_size_add = 16
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		physics_research = 8
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+#Redoubt
+building_redoubt_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_ministry_benevolence"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	planet_modifier  = {
+		planet_army_build_speed_mult = 0.5
+		army_defense_damage_mult = 1.0
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_1"
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_redoubt_2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+ 
+building_redoubt_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_ministry_benevolence"
+	
+	cost = {
+		minerals = 360
+		influence = 5
+	}
+	
+	planet_modifier  = {
+		planet_army_build_speed_mult = 1.0
+		army_defense_damage_mult = 3.0
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+#Continental Quarry
+building_continental_quarry = {
+	base_buildtime = 720
+	planet_unique = yes
+	
+	icon = "building_mining_network_5"
+	
+	cost = {
+		minerals = 720
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_food_add = -4
+		resource_energy_add = -4
+		resource_minerals_add = 4
+	}
+	
+	required_resources = {
+		energy = 4
+		influence = 0.5
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		minerals = 10
+		engineering_research = 4
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+#Kugelblitz Generator
+building_kugelblitz_generator = {
+	base_buildtime = 720
+	planet_unique = yes
+	
+	icon = "building_dark_matter_power_plant"
+	
+	cost = {
+		minerals = 720
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_food_add = -4
+		resource_energy_add = 4
+		resource_minerals_add = -4
+	}
+	
+	required_resources = {
+		minerals = 5
+		influence = 0.5
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		energy = 12
+		physics_research = 4
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 1000	
+  	}
+}
+
+############################
+## Ecumenopolis Buildings ##
+############################
+
+###Ecuminopolis Prereq Buildings###
+
+#Planetary Superconductive Network
+building_ecumen_base_1 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_dark_matter_power_plant"
+	
+	cost = {
+		minerals = 700
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 2
+		resource_physics_research_add = 2
+	}
+	
+	required_resources = {
+		minerals = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_2"
+					has_building = "building_ecumen_base_2_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_2"
+					has_building = "building_ecumen_base_2_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_base_1_2
+	}
+	
+	produced_resources = {
+		physics_research = 3
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		tile_resource_energy_mult = 0.10
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Planetary Superconductive Network 2
+building_ecumen_base_1_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_plan_sup_con_2"
+	
+	cost = {
+		minerals = 500
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 3
+		resource_physics_research_add = 3
+	}
+	
+	required_resources = {
+		minerals = 3
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				has_building = "building_ecumen_base_2_2"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				has_building = "building_ecumen_base_2_2"
+			}
+		}
+	}
+	
+	produced_resources = {
+		physics_research = 5
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		tile_resource_energy_mult = 0.20
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Global Biosphere Reconciliation
+building_ecumen_base_2 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_glob_bio_rec_1"
+	
+	cost = {
+		minerals = 700
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 2
+		resource_society_research_add = 2
+	}
+	
+	required_resources = {
+		minerals = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_4"
+					has_building = "building_ecumen_base_4_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_4"
+					has_building = "building_ecumen_base_4_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_base_2_2
+	}
+	
+	produced_resources = {
+		society_research = 3
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		pop_environment_tolerance = 0.10
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Global Biosphere Reconciliation 2
+building_ecumen_base_2_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_glob_bio_rec_2"
+	
+	cost = {
+		minerals = 500
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 3
+		resource_society_research_add = 3
+	}
+	
+	required_resources = {
+		minerals = 3
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				has_building = "building_ecumen_base_4_2"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				has_building = "building_ecumen_base_4_2"
+			}
+		}
+	}
+	
+	produced_resources = {
+		society_research = 5
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		pop_environment_tolerance = 0.20
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Universal Superstructure
+building_ecumen_base_3 = {
+	base_buildtime = 480
+	planet_unique = yes
+	
+	icon = "building_universal_superstructure_2"
+	
+	cost = {
+		minerals = 1000
+		influence = 15
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 2
+		resource_physics_research_add = 2
+	}
+	
+	required_resources = {
+		minerals = 2
+		energy = 2
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					OR = {
+						has_building = "building_capital_2"
+						has_building = "building_capital_3"
+					}
+				}
+			}
+			NOT = {
+				planet = {
+					is_planet_class = pc_nuked
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_base_3_2
+	}
+	
+	produced_resources = {
+		engineering_research = 3
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 2.0
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Universal Superstructure 2
+building_ecumen_base_3_2 = {
+	base_buildtime = 480
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_universal_superstructure_1"
+	
+	cost = {
+		minerals = 750
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 3
+		resource_physics_research_add = 3
+	}
+	
+	required_resources = {
+		minerals = 3
+		energy = 3
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_capital_2"
+					has_building = "building_capital_3"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		engineering_research = 5
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 3.0
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Geothermal Venting Management
+building_ecumen_base_4 = {
+	base_buildtime = 360
+	planet_unique = yes
+	
+	icon = "building_geo_vent_man_1"
+	
+	cost = {
+		minerals = 700
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 2
+		resource_society_research_add = 2
+		resource_energy_add = 2
+	}
+	
+	required_resources = {
+		minerals = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_3"
+					has_building = "building_ecumen_base_3_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_3"
+					has_building = "building_ecumen_base_3_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_base_4_2
+	}
+	
+	produced_resources = {
+		engineering_research = 2
+		physics_research = 2
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		all_technology_research_speed = 0.10
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Geothermal Venting Management 2
+building_ecumen_base_4_2 = {
+	base_buildtime = 360
+	is_listed = no
+	planet_unique = yes
+	
+	icon = "building_geo_vent_man_2"
+	
+	cost = {
+		minerals = 500
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 3
+		resource_society_research_add = 3
+		resource_energy_add = 3
+	}
+	
+	required_resources = {
+		minerals = 3
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				has_building = "building_ecumen_base_3_2"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				has_building = "building_ecumen_base_3_2"
+			}
+		}
+	}
+	
+	produced_resources = {
+		engineering_research = 4
+		physics_research = 4
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		all_technology_research_speed = 0.20
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+###Basic Ecumenopolis Buildings###
+
+#Civilian Living Zone
+building_ecumen_civil_1 = {
+	base_buildtime = 360
+	
+	icon = "building_ecumen_civil_1"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 2
+		resource_physics_research_add = 2
+		resource_energy_add = 2
+	}
+	
+	required_resources = {
+		minerals = 2
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_civil_2
+	}
+	
+	produced_resources = {
+		society_research = 3
+		sr_pop_density = 2
+		food = -1
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		pop_growth_req_mult = -0.05
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Civilian Living Zone 2
+building_ecumen_civil_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_civil_2"
+	
+	cost = {
+		minerals = 300
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 3
+		resource_physics_research_add = 3
+		resource_energy_add = 3
+	}
+	
+	required_resources = {
+		minerals = 3
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				has_building = "building_ecumen_base_1_2"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				has_building = "building_ecumen_base_1_2"
+			}
+		}
+	}
+	
+	produced_resources = {
+		society_research = 5
+		sr_pop_density = 3
+		food = -1.5
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		pop_growth_req_mult = -0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Manufacturing District
+building_ecumen_manu_1 = {
+	base_buildtime = 360
+	
+	icon = "building_ecumen_manu_1"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_physics_research_add = 2
+		resource_society_research_add = 2
+	}
+	
+	required_resources = {
+		minerals = 2
+		energy = 2
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_manu_2
+	}
+	
+	produced_resources = {
+		engineering_research = 3
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		building_time_mult = -0.025
+		spaceport_ship_build_speed_mult = 0.20
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Manufacturing Discrict 2
+building_ecumen_manu_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_manu_2"
+	
+	cost = {
+		minerals = 300
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_physics_research_add = 3
+		resource_society_research_add = 3
+	}
+	
+	required_resources = {
+		minerals = 3
+		energy = 3
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				has_building = "building_ecumen_base_1_2"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				has_building = "building_ecumen_base_1_2"
+			}
+		}
+	}
+	
+	produced_resources = {
+		engineering_research = 5
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		building_time_mult = -0.05
+		spaceport_ship_build_speed_mult = 0.30
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Financial District
+building_ecumen_finance_1 = {
+	base_buildtime = 360
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 2
+		resource_society_research_add = 2
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_finance_2
+	}
+	
+	produced_resources = {
+		energy = 4
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		tile_resource_energy_mult = 0.05
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Financial Discrict 2
+building_ecumen_finance_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 300
+		influence = 5
+	}
+	
+	adjacency_bonus = {
+		resource_engineering_research_add = 3
+		resource_society_research_add = 3
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				has_building = "building_ecumen_base_1_2"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				has_building = "building_ecumen_base_1_2"
+			}
+		}
+	}
+	
+	produced_resources = {
+		energy = 6
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		tile_resource_energy_mult = 0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+
+###Unique Ecumenopolis Districts###
+
+#Political District
+building_ecumen_politic_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 50
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 3
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_politic_2
+	}
+	
+	produced_resources = {
+		influence = 1
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Political Discrict 2
+building_ecumen_politic_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 25
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 5
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_pacifist"
+				has_ethic = "ethic_fanatic_pacifist"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_pacifist"
+					has_ethic = "ethic_fanatic_pacifist"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		influence = 2
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Military District
+building_ecumen_military_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 20
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 3
+	}
+	
+	country_modifier  = {
+		navy_size_add = 24
+	}
+	
+	army_modifier = {
+		army_health_mult = 0.50
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_military_2
+	}
+	
+	produced_resources = {
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 3.0
+		planet_army_build_speed_mult = 0.5
+		army_defense_damage_mult = 1.0
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Military Discrict 2
+building_ecumen_military_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 5
+	}
+	
+	country_modifier  = {
+		navy_size_add = 40
+	}
+	
+	army_modifier = {
+		army_health_mult = 0.75
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_militarist"
+				has_ethic = "ethic_fanatic_militarist"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_militarist"
+					has_ethic = "ethic_fanatic_militarist"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 5.0
+		planet_army_build_speed_mult = 0.75
+		army_defense_damage_mult = 2.0
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Research District
+building_ecumen_sci_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 20
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 1
+		resource_physics_research_add = 1
+		resource_engineering_research_add = 1
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_sci_2
+	}
+	
+	produced_resources = {
+		society_research = 2
+		physics_research = 2
+		engineering_research = 2
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		tile_resource_physics_research_mult = 0.1
+		tile_resource_society_research_mult = 0.1
+		tile_resource_engineering_research_mult = 0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Research Discrict 2
+building_ecumen_sci_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 2
+		resource_physics_research_add = 2
+		resource_engineering_research_add = 2
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_militarist"
+				has_ethic = "ethic_fanatic_militarist"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_militarist"
+					has_ethic = "ethic_fanatic_militarist"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		society_research = 4
+		physics_research = 4
+		engineering_research = 4
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		tile_resource_physics_research_mult = 0.2
+		tile_resource_society_research_mult = 0.2
+		tile_resource_engineering_research_mult = 0.2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Ceremonial District
+building_ecumen_spir_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 20
+	}
+	
+	adjacency_bonus = {
+		resource_influence_add = 0.5
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_spir_2
+	}
+	
+	produced_resources = {
+		society_research = 4
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		pop_ethic_shift = -0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Ceremonial Discrict 2
+building_ecumen_spir_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_influence_add = 1
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_spiritualist"
+				has_ethic = "ethic_fanatic_spiritualist"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_spiritualist"
+					has_ethic = "ethic_fanatic_spiritualist"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		society_research = 6
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		pop_ethic_shift = -0.2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Entertainment District
+building_ecumen_ind_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 20
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 2
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_ind_2
+	}
+	
+	produced_resources = {
+		energy = 3
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		pop_happiness = 0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Entertainment Discrict 2
+building_ecumen_ind_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_society_research_add = 3
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_individualist"
+				has_ethic = "ethic_fanatic_individualist"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_individualist"
+					has_ethic = "ethic_fanatic_individualist"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		energy = 6
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		pop_happiness = 0.2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Security District
+building_ecumen_col_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 20
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 2
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_col_2
+	}
+	
+	produced_resources = {
+		society_research = 4
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		planet_building_cost_mult = -0.10
+		tile_resource_energy_mult = 0.05
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Security Discrict 2
+building_ecumen_col_2 = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 3
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_collectivist"
+				has_ethic = "ethic_fanatic_collectivist"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_collectivist"
+					has_ethic = "ethic_fanatic_collectivist"
+				}
+			}
+		}
+	}
+	
+	produced_resources = {
+		society_research = 6
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		planet_building_cost_mult = -0.20
+		tile_resource_energy_mult = 0.10
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Media District
+building_ecumen_media_1 = {
+	base_buildtime = 720
+	
+	icon = "building_ecumen_financial_1"
+	
+	cost = {
+		minerals = 1000
+		influence = 20
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 3
+		resource_society_research_add = 3
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		custom_tooltip = {
+			text = "requires_building_capital_1"
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			planet = {
+				OR = {
+					has_building = "building_ecumen_base_1"
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+		}
+	}
+	
+	upgrades = {
+		building_ecumen_media_2_phi
+		building_ecumen_media_2_pho
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.0
+		planet_border_mult = 0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Media Discrict 2 Xenophobe
+building_ecumen_media_2_pho = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 4
+		resource_society_research_add = 4
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_xenophobe"
+				has_ethic = "ethic_fanatic_xenophobe"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_xenophobe"
+					has_ethic = "ethic_fanatic_xenophobe"
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		planet_border_mult = 0.3
+		pop_xenophobia = 0.10
+		pop_ethic_shift = -0.1
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}
+
+#Media Discrict 2 Xenophile
+building_ecumen_media_2_phi = {
+	base_buildtime = 360
+	is_listed = no
+	
+	icon = "building_ecumen_financial_2"
+	
+	cost = {
+		minerals = 500
+		influence = 10
+	}
+	
+	adjacency_bonus = {
+		resource_energy_add = 4
+		resource_society_research_add = 4
+	}
+	
+	required_resources = {
+		sr_pop_density = 1
+	}
+	
+	allow = {
+		AND = {
+			custom_tooltip = {
+				text = "requires_building_capital_1"
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+			}
+			OR = {
+				has_ethic = "ethic_xenophile"
+				has_ethic = "ethic_fanatic_xenophile"
+			}
+		}
+	}
+	
+	destroy_if = {
+		NOT = {
+			AND = {
+				planet = {
+					has_building = "building_ecumen_base_1_2"
+				}
+				OR = {
+					has_ethic = "ethic_xenophile"
+					has_ethic = "ethic_fanatic_xenophile"
+				}
+			}
+		}
+	}
+	
+	planet_modifier = {
+		planet_fortification_strength = 1.5
+		planet_border_mult = 0.2
+		pop_xenophobia = -0.15
+		tile_resource_society_research_mult = 0.2
+	}
+	
+	ai_special_building = yes
+
+  	ai_weight = {
+		factor = 0	
+  	}
+}

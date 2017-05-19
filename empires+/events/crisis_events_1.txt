@@ -8,22 +8,6 @@
 
 namespace = crisis
 
-@tier1unityreward = 6
-@tier1unitymin = 100
-@tier1unitymax = 500
-@tier2unityreward = 12
-@tier2unitymin = 150
-@tier2unitymax = 1000
-@tier3unityreward = 18
-@tier3unitymin = 250
-@tier3unitymax = 1500
-@tier4unityreward = 24
-@tier4unitymin = 350
-@tier4unitymax = 2000
-@tier5unityreward = 48
-@tier5unitymin = 700
-@tier5unitymax = 4000
-
 ### PRETHORYN SCOURGE
 
 ### Triggering Event
@@ -68,7 +52,6 @@ country_event = {
 		is_crises_allowed = yes
 		NOT = {
 			has_global_flag = prethoryn_invasion_happened
-			has_global_flag = galactic_crisis_happened
 		}
 		#is_ai = no
 		is_country_type = default
@@ -342,19 +325,6 @@ country_event = {
 	id = crisis.16
 	title = "TRANSMISSION"
 	desc = "crisis.16.desc"
-
-	desc = {
-		text = "crisis.16.desc"
-		trigger = {
-			NOT = { owner_species = { has_trait = trait_psionic } }
-		}
-	}
-	desc = {
-		text = "crisis.16.b.desc"
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-	}
 	
 	diplomatic = yes
 	
@@ -427,14 +397,14 @@ country_event = {
 			limit = { has_star_flag = swarm_invasion_target_1 }
 			random_system_planet = {
 				create_species = {
-					name = "NAME_Prethoryn"
+					name = "Prethoryn"
 					class = SWARM
 					portrait = random
 					traits = random
 					immortal = yes
 				}
 				create_country = {
-					name = "NAME_Prethoryn_Scourge"
+					name = "Prethoryn Scourge"
 					type = "swarm"
 					species = last_created
 					name_list = "Prethoryn"
@@ -474,15 +444,51 @@ country_event = {
 					}
 				}
 				last_created_country = {
-					create_ship_design = { design = "NAME_Swarm_Transport" }
+					
+					# Lets Swarm do Full Bombardment
+					set_policy = {
+						policy = orbital_bombardment
+						option = orbital_bombardment_full
+						cooldown = no
+					}
+
+					# Beef up Swarm depending on difficulty
+					if = {
+						limit = {
+							is_difficulty = 2
+						}
+						add_modifier = {
+							modifier = swarm_strength_insane
+							days = -1
+						}
+						else = {
+							if = {
+								limit = {
+									is_difficulty = 1
+								}
+								add_modifier = {
+									modifier = swarm_strength_hard
+									days = -1
+								}
+								else = {
+									add_modifier = {
+										modifier = swarm_strength
+										days = -1
+									}	
+								}
+							}
+						}
+					}
+
+					create_ship_design = { design = "Swarm Transport" }
 					add_ship_design = last_created_design
-					create_ship_design = { design = "NAME_Swarm_Colonizer" }
+					create_ship_design = { design = "Swarm Colonizer" }
 					add_ship_design = last_created_design
-					create_ship_design = { design = "NAME_Swarm_Constructor" }
+					create_ship_design = { design = "Swarm Constructor" }
 					add_ship_design = last_created_design
-					create_ship_design = { design = "NAME_Swarm_Small_Station" }
+					create_ship_design = { design = "Swarm Small Station" }
 					add_ship_design = last_created_design
-					create_ship_design = { design = "NAME_Swarm_Large_Station" }
+					create_ship_design = { design = "Swarm Large Station" }
 					add_ship_design = last_created_design
 					
 					save_event_target_as = prethoryn
@@ -496,12 +502,12 @@ country_event = {
 
 					# Constructor
 					create_fleet = {
-						name = "NAME_Prethoryn_Constructor"
+						name = "Prethoryn Constructor"
 						effect = {
 							set_owner = PREV
 							create_ship = {
 								name = random
-								design = "NAME_Swarm_Constructor"
+								design = "Swarm Constructor"
 								graphical_culture = "swarm_01"
 							}
 							set_location = PREVPREV
@@ -529,12 +535,12 @@ country_event = {
 
 						# Constructor
 						create_fleet = {
-							name = "NAME_Prethoryn_Constructor"
+							name = "Prethoryn Constructor"
 							effect = {
 								set_owner = PREV
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Constructor"
+									design = "Swarm Constructor"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -567,12 +573,12 @@ country_event = {
 
 						# Constructor
 						create_fleet = {
-							name = "NAME_Prethoryn_Constructor"
+							name = "Prethoryn Constructor"
 							effect = {
 								set_owner = PREV
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Constructor"
+									design = "Swarm Constructor"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -606,12 +612,12 @@ country_event = {
 						
 						# Constructor
 						create_fleet = {
-							name = "NAME_Prethoryn_Constructor"
+							name = "Prethoryn Constructor"
 							effect = {
 								set_owner = PREV
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Constructor"
+									design = "Swarm Constructor"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -649,10 +655,17 @@ country_event = {
 	option = {
 		name = crisis.18.a
 		trigger = {
-			has_spiritualist_government = yes
+			OR = {
+				has_government = theocratic_republic
+				has_government = transcendent_republic
+				has_government = theocratic_oligarchy
+				has_government = transcendent_oligarchy
+				has_government = divine_mandate
+				has_government = transcendent_empire
+			}
 			NOT = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_individualist"
+				has_ethic = "ethic_fanatic_collectivist"
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
@@ -666,10 +679,17 @@ country_event = {
 	option = {
 		name = crisis.18.b
 		trigger = {
-			has_militarist_government = yes
+			OR = {
+				has_government = military_dictatorship
+				has_government = martial_empire
+				has_government = military_junta
+				has_government = ordered_stratocracy
+				has_government = military_republic
+				has_government = martial_demarchy
+			}
 			NOT = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_individualist"
+				has_ethic = "ethic_fanatic_collectivist"
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
@@ -683,10 +703,17 @@ country_event = {
 	option = {
 		name = crisis.18.c
 		trigger = {
-			has_materialist_government = yes
+			OR = {
+				has_government = despotic_hegemony
+				has_government = ai_overlordship
+				has_government = science_directorate
+				has_government = illuminated_technocracy
+				has_government = direct_democracy
+				has_government = subconscious_consensus
+			}
 			NOT = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_individualist"
+				has_ethic = "ethic_fanatic_collectivist"
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
@@ -700,10 +727,17 @@ country_event = {
 	option = {
 		name = crisis.18.d
 		trigger = {
-			has_pacifist_government = yes
+			OR = {
+				has_government = moral_democracy
+				has_government = irenic_democracy
+				has_government = peaceful_bureaucracy
+				has_government = irenic_protectorate
+				has_government = enlightened_monarchy
+				has_government = irenic_monarchy
+			}
 			NOT = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_individualist"
+				has_ethic = "ethic_fanatic_collectivist"
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
@@ -717,10 +751,13 @@ country_event = {
 	option = {
 		name = crisis.18.e
 		trigger = {
-			has_government = gov_megacorporation
+			OR = {
+				has_government = plutocratic_oligarchy
+				has_government = mega_corporation
+			}
 			NOT = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_individualist"
+				has_ethic = "ethic_fanatic_collectivist"
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
@@ -735,14 +772,14 @@ country_event = {
 		name = crisis.18.f
 		trigger = {
 			OR = {
-				has_generic_government = yes
-				has_government = gov_enlightened_monarchy
-				has_government = gov_enlightened_dictatorship
-				has_government = gov_hive_mind
+				has_government = despotic_empire
+				has_government = star_empire
+				has_government = indirect_democracy
+				has_government = democratic_utopia
 			}
 			NOT = {
-				has_ethic = "ethic_fanatic_egalitarian"
-				has_ethic = "ethic_fanatic_authoritarian"
+				has_ethic = "ethic_fanatic_individualist"
+				has_ethic = "ethic_fanatic_collectivist"
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
@@ -778,7 +815,7 @@ country_event = {
 	option = {
 		name = crisis.18.i
 		trigger = {
-			has_ethic = "ethic_fanatic_authoritarian"
+			has_ethic = "ethic_fanatic_collectivist"
 		}
 		end_event_chain = "coming_storm_chain"
 		begin_event_chain = {
@@ -789,7 +826,7 @@ country_event = {
 	option = {
 		name = crisis.18.j
 		trigger = {
-			has_ethic = "ethic_fanatic_egalitarian"
+			has_ethic = "ethic_fanatic_individualist"
 		}
 		end_event_chain = "coming_storm_chain"
 		begin_event_chain = {
@@ -830,12 +867,12 @@ country_event = {
 					while = {
 						count = 3
 						create_fleet = {
-							name = "NAME_Prethoryn_Infestor"
+							name = "Prethoryn Infestor"
 							effect = {
 								set_owner = event_target:prethoryn
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Colonizer"
+									design = "Swarm Colonizer"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -845,12 +882,12 @@ country_event = {
 					
 					# Constructor
 					create_fleet = {
-						name = "NAME_Prethoryn_Constructor"
+						name = "Prethoryn Constructor"
 						effect = {
 							set_owner = event_target:prethoryn
 							create_ship = {
 								name = random
-								design = "NAME_Swarm_Constructor"
+								design = "Swarm Constructor"
 								graphical_culture = "swarm_01"
 							}
 							set_location = PREVPREV
@@ -858,9 +895,23 @@ country_event = {
 					}
 					
 					# Army Transports
-					swarm_armies = yes
-					swarm_armies = yes
-					swarm_armies = yes
+					create_fleet = {
+						name = "Prethoryn Armies"
+						effect = {
+							set_owner = event_target:prethoryn
+							while = {
+								count = 3
+								create_army_transport = {
+									ship_name = "Prethoryn Transport"
+									graphical_culture = "swarm_01"
+									army_name = "Prethoryn Invaders"
+									army_type = "swarm_army"
+									species = event_target:prethoryn_species
+								}
+							}
+							set_location = PREVPREV
+						}
+					}
 				}
 			}
 			
@@ -878,12 +929,12 @@ country_event = {
 						while = {
 							count = 3
 							create_fleet = {
-								name = "NAME_Prethoryn_Infestor"
+								name = "Prethoryn Infestor"
 								effect = {
 									set_owner = event_target:prethoryn
 									create_ship = {
 										name = random
-										design = "NAME_Swarm_Colonizer"
+										design = "Swarm Colonizer"
 										graphical_culture = "swarm_01"
 									}
 									set_location = PREVPREV
@@ -893,12 +944,12 @@ country_event = {
 						
 						# Constructor
 						create_fleet = {
-							name = "NAME_Prethoryn_Constructor"
+							name = "Prethoryn Constructor"
 							effect = {
 								set_owner = event_target:prethoryn
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Constructor"
+									design = "Swarm Constructor"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -906,9 +957,23 @@ country_event = {
 						}
 						
 						# Army Transports
-						swarm_armies = yes
-						swarm_armies = yes
-						swarm_armies = yes
+						create_fleet = {
+							name = "Prethoryn Armies"
+							effect = {
+								set_owner = event_target:prethoryn
+								while = {
+									count = 3
+									create_army_transport = {
+										ship_name = "Prethoryn Transport"
+										graphical_culture = "swarm_01"
+										army_name = "Prethoryn Invaders"
+										army_type = "swarm_army"
+										species = event_target:prethoryn_species
+									}
+								}
+								set_location = PREVPREV
+							}
+						}
 					}
 				}
 			}
@@ -927,12 +992,12 @@ country_event = {
 						while = {
 							count = 3
 							create_fleet = {
-								name = "NAME_Prethoryn_Infestor"
+								name = "Prethoryn Infestor"
 								effect = {
 									set_owner = event_target:prethoryn
 									create_ship = {
 										name = random
-										design = "NAME_Swarm_Colonizer"
+										design = "Swarm Colonizer"
 										graphical_culture = "swarm_01"
 									}
 									set_location = PREVPREV
@@ -942,12 +1007,12 @@ country_event = {
 						
 						# Constructor
 						create_fleet = {
-							name = "NAME_Prethoryn_Constructor"
+							name = "Prethoryn Constructor"
 							effect = {
 								set_owner = event_target:prethoryn
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Constructor"
+									design = "Swarm Constructor"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -956,15 +1021,15 @@ country_event = {
 						
 						# Army Transports
 						create_fleet = {
-							name = "NAME_Prethoryn_Armies"
+							name = "Prethoryn Armies"
 							effect = {
 								set_owner = event_target:prethoryn
 								while = {
 									count = 3
 									create_army_transport = {
-										ship_name = "NAME_Prethoryn_Transport"
+										ship_name = "Prethoryn Transport"
 										graphical_culture = "swarm_01"
-										army_name = "NAME_Prethoryn_Invaders"
+										army_name = "Prethoryn Invaders"
 										army_type = "swarm_army"
 										species = event_target:prethoryn_species
 									}
@@ -972,9 +1037,6 @@ country_event = {
 								set_location = PREVPREV
 							}
 						}
-						swarm_armies = yes
-						swarm_armies = yes
-						swarm_armies = yes
 					}
 				}
 			}
@@ -992,12 +1054,12 @@ country_event = {
 						while = {
 							count = 3
 							create_fleet = {
-								name = "NAME_Prethoryn_Infestor"
+								name = "Prethoryn Infestor"
 								effect = {
 									set_owner = event_target:prethoryn
 									create_ship = {
 										name = random
-										design = "NAME_Swarm_Colonizer"
+										design = "Swarm Colonizer"
 										graphical_culture = "swarm_01"
 									}
 									set_location = PREVPREV
@@ -1007,12 +1069,12 @@ country_event = {
 						
 						# Constructor
 						create_fleet = {
-							name = "NAME_Prethoryn_Constructor"
+							name = "Prethoryn Constructor"
 							effect = {
 								set_owner = event_target:prethoryn
 								create_ship = {
 									name = random
-									design = "NAME_Swarm_Constructor"
+									design = "Swarm Constructor"
 									graphical_culture = "swarm_01"
 								}
 								set_location = PREVPREV
@@ -1020,9 +1082,23 @@ country_event = {
 						}
 						
 						# Army Transports
-						swarm_armies = yes
-						swarm_armies = yes
-						swarm_armies = yes
+						create_fleet = {
+							name = "Prethoryn Armies"
+							effect = {
+								set_owner = event_target:prethoryn
+								while = {
+									count = 3
+									create_army_transport = {
+										ship_name = "Prethoryn Transport"
+										graphical_culture = "swarm_01"
+										army_name = "Prethoryn Invaders"
+										army_type = "swarm_army"
+										species = event_target:prethoryn_species
+									}
+								}
+								set_location = PREVPREV
+							}
+						}
 					}
 				}
 			}
@@ -1060,39 +1136,12 @@ country_event = {
 	
 	desc = {
 		text = crisis.30.desc_01
-		trigger = {
-			NOT = { owner_species = { has_trait = trait_psionic } }
-		}
 	}
 	desc = {
 		text = crisis.30.desc_02
-		trigger = {
-			NOT = { owner_species = { has_trait = trait_psionic } }
-		}
 	}
 	desc = {
 		text = crisis.30.desc_03
-		trigger = {
-			NOT = { owner_species = { has_trait = trait_psionic } }
-		}
-	}
-	desc = {
-		text = crisis.30.desc_04
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-	}
-	desc = {
-		text = crisis.30.desc_05
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-	}
-	desc = {
-		text = crisis.30.desc_06
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
 	}
 	
 	diplomatic = yes
@@ -1112,9 +1161,6 @@ country_event = {
 	
 	option = {
 		name = crisis.30.a
-		trigger = {
-			NOT = { owner_species = { has_trait = trait_psionic } }
-		}
 		response_text = crisis.30.a.response
 	}
 	option = {
@@ -1124,7 +1170,6 @@ country_event = {
 				has_ethic = "ethic_pacifist"
 				has_ethic = "ethic_fanatic_pacifist"
 			}
-			NOT = { owner_species = { has_trait = trait_psionic } }
 		}
 		response_text = crisis.30.b.response
 	}
@@ -1135,7 +1180,6 @@ country_event = {
 				has_ethic = "ethic_militarist"
 				has_ethic = "ethic_fanatic_militarist"
 			}
-			NOT = { owner_species = { has_trait = trait_psionic } }
 		}
 		response_text = crisis.30.c.response
 	}
@@ -1146,7 +1190,6 @@ country_event = {
 				has_ethic = "ethic_xenophobe"
 				has_ethic = "ethic_fanatic_xenophobe"
 			}
-			NOT = { owner_species = { has_trait = trait_psionic } }
 		}
 		response_text = crisis.30.d.response
 	}
@@ -1157,7 +1200,6 @@ country_event = {
 				has_ethic = "ethic_xenophile"
 				has_ethic = "ethic_fanatic_xenophile"
 			}
-			NOT = { owner_species = { has_trait = trait_psionic } }
 		}
 		response_text = crisis.30.e.response
 	}
@@ -1168,48 +1210,8 @@ country_event = {
 				has_ethic = "ethic_spiritualist"
 				has_ethic = "ethic_fanatic_spiritualist"
 			}
-			NOT = { owner_species = { has_trait = trait_psionic } }
 		}
 		response_text = crisis.30.f.response
-	}
-	option = {
-		name = crisis.30.g
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-		response_text = crisis.30.g.response
-		is_dialog_only = yes
-	}
-	option = {
-		name = crisis.30.h
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-		response_text = crisis.30.h.response
-		is_dialog_only = yes
-	}
-	option = {
-		name = crisis.30.i
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-		response_text = crisis.30.i.response
-		is_dialog_only = yes
-	}
-	option = {
-		name = crisis.30.j
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-		response_text = crisis.30.j.response
-		is_dialog_only = yes
-	}
-	option = {
-		name = crisis.30.a
-		trigger = {
-			owner_species = { has_trait = trait_psionic }
-		}
-		response_text = crisis.30.k.response
 	}
 }
 
@@ -1449,12 +1451,12 @@ country_event = {
 			save_event_target_as = sentinel_home
 			solar_system = { save_event_target_as = sentinel_system }
 			create_fleet = {
-				name = "NAME_Sentinel_Battle_Fleet"
+				name = "Sentinel Battle Fleet"
 				effect = {
 					set_owner = ROOT
 					create_ship = {
 						name = random
-						design = "NAME_Spearhead"
+						design = "Spearhead"
 						graphical_culture = "mammalian_01"
 					}
 					assign_leader = last_created_leader
@@ -1462,7 +1464,7 @@ country_event = {
 						count = 3
 						create_ship = {
 							name = random
-							design = "NAME_Spearhead"
+							design = "Spearhead"
 							graphical_culture = "reptilian_01"
 						}
 					}
@@ -1470,7 +1472,7 @@ country_event = {
 						count = 6
 						create_ship = {
 							name = random
-							design = "NAME_Deaths_Head"
+							design = "Death's Head"
 							graphical_culture = "mammalian_01"
 						}
 					}
@@ -1478,7 +1480,7 @@ country_event = {
 						count = 8
 						create_ship = {
 							name = random
-							design = "NAME_Bug_Crusher"
+							design = "Bug Crusher"
 							graphical_culture = "avian_01"
 						}
 					}
@@ -1486,7 +1488,7 @@ country_event = {
 						count = 18
 						create_ship = {
 							name = random
-							design = "NAME_Blade"
+							design = "Blade"
 							graphical_culture = "reptilian_01"
 						}
 					}
@@ -1576,12 +1578,12 @@ country_event = {
 		capital_scope = {
 			save_event_target_as = sentinel_home
 			create_fleet = {
-				name = "NAME_Sentinel_Battle_Fleet"
+				name = "Sentinel Battle Fleet"
 				effect = {
 					set_owner = ROOT
 					create_ship = {
 						name = random
-						design = "NAME_Spearhead"
+						design = "Spearhead"
 						graphical_culture = "mammalian_01"
 					}
 					assign_leader = last_created_leader
@@ -1589,7 +1591,7 @@ country_event = {
 						count = 3
 						create_ship = {
 							name = random
-							design = "NAME_Spearhead"
+							design = "Spearhead"
 							graphical_culture = "reptilian_01"
 						}
 					}
@@ -1597,7 +1599,7 @@ country_event = {
 						count = 6
 						create_ship = {
 							name = random
-							design = "NAME_Deaths_Head"
+							design = "Death's Head"
 							graphical_culture = "mammalian_01"
 						}
 					}
@@ -1605,7 +1607,7 @@ country_event = {
 						count = 8
 						create_ship = {
 							name = random
-							design = "NAME_Bug_Crusher"
+							design = "Bug Crusher"
 							graphical_culture = "avian_01"
 						}
 					}
@@ -1613,7 +1615,7 @@ country_event = {
 						count = 18
 						create_ship = {
 							name = random
-							design = "NAME_Blade"
+							design = "Blade"
 							graphical_culture = "reptilian_01"
 						}
 					}
@@ -1733,11 +1735,11 @@ country_event = {
 		hidden_effect = {
 			capital_scope = {
 				create_fleet = {
-					name = "NAME_Sentinel_Auxiliary_Fleet"
+					name = "Sentinel Auxiliary Fleet"
 					effect = {
 						set_owner = ROOT
 						create_ship_design = {
-							design = "NAME_Starfang"
+							design = "Starfang"
 							ftl = root
 						}
 						while = {
@@ -1748,7 +1750,7 @@ country_event = {
 							}
 						}
 						create_ship_design = {
-							design = "NAME_Voidstalker"
+							design = "Voidstalker"
 							ftl = root
 						}
 						while = {
@@ -1759,7 +1761,7 @@ country_event = {
 							}
 						}
 						create_ship_design = {
-							design = "NAME_Judgment"
+							design = "Judgment"
 							ftl = root
 						}
 						while = {
@@ -1974,20 +1976,19 @@ ship_event = {
 				create_leader = {
 					type = admiral
 					species = event_target:swarm_species
-					name = "NAME_Fleet_Consciousness"
+					name = "Fleet Consciousness"
 					skill = 50
 				}
 			}
 			create_fleet = {
-				name = "NAME_Domesticated_Prethoryn"
+				name = "Domesticated Prethoryn"
 				effect = {
 					set_fleet_flag = pet_queen
 					set_owner = event_target:ship_owner
 					create_ship = {
-						name = "NAME_Domesticated_Queen"
-						design = "NAME_Swarm_Queen"
+						name = "Domesticated Queen"
+						design = "Swarm Queen"
 						graphical_culture = "swarm_01"
-						upgradable = no
 					}
 					assign_leader = last_created_leader
 					set_location = ROOT
@@ -2027,18 +2028,16 @@ fleet_event = {
 		random_list = {
 			50 = {
 				create_ship = {
-					name = "NAME_Domesticated_Warrior"
-					design = "NAME_Swarm_Large"
+					name = "Domesticated Warrior"
+					design = "Swarm Large"
 					graphical_culture = "swarm_01"
-					upgradable = no
 				}
 			}
 			50 = {
 				create_ship = {
-					name = "NAME_Domesticated_Swarmling"
-					design = "NAME_Swarm_Small"
+					name = "Domesticated Swarmling"
+					design = "Swarm Small"
 					graphical_culture = "swarm_01"
-					upgradable = no
 				}
 			}
 		}
@@ -2078,13 +2077,12 @@ planet_event = {
 	}
 	
 	immediate = {
-		destroy_colony = { keep_buildings = no }
+		destroy_colony = yes
 		set_planet_max_health = 0
 		random_list = {
 			50 = { change_pc = pc_barren }
 			50 = { change_pc = pc_barren_cold }
 		}
-		add_modifier = { modifier = "terraforming_candidate" days = -1 }
 		planet_event = { id = crisis.216 }
 	}
 }
@@ -2123,14 +2121,11 @@ planet_event = {
 	immediate = {
 		add_threat = {
 			who = controller
-			amount = 1 # scales to pops
+			amount = 10 # scales to pops
 		}	
 		if = {
 			limit = {
-				NOR = {
-					is_planet_class = pc_ringworld_habitable
-					is_planet_class = pc_habitat # habitats are currently uninfestable
-				}
+				NOT = { is_planet_class = pc_ringworld_habitable }
 			}
 			change_pc = pc_infested
 			set_planet_max_health = 8000
@@ -2139,7 +2134,7 @@ planet_event = {
 			else = {
 				if = { # Habitable Ring Worlds can't be infested... they are destroyed instead
 					limit = { is_planet_class = pc_ringworld_habitable }
-					destroy_colony = { keep_buildings = no }
+					destroy_colony = yes
 					change_pc = pc_ringworld_habitable_damaged
 				}
 			}
@@ -2161,28 +2156,10 @@ planet_event = {
 	
 	immediate = {
 		every_owned_pop = { kill_pop = yes }
-		if = {
-			limit = {
-				NOR = {
-					is_planet_class = pc_ringworld_habitable
-					is_planet_class = pc_habitat # habitats are currently uninfestable
-				}
-			}
-			change_pc = pc_infested
-			set_planet_max_health = 8000
-			set_planet_health = 8000
-			else = {
-				if = { # Habitable Ring Worlds can't be infested... they are destroyed instead
-					limit = { is_planet_class = pc_ringworld_habitable }
-					change_pc = pc_ringworld_habitable_damaged
-				}
-				if = {
-					limit = { is_planet_class = pc_habitat }
-					remove_planet = yes
-				}
-			}
-			planet_event = { id = crisis.215 }
-		}
+		change_pc = pc_infested
+		set_planet_max_health = 8000
+		set_planet_health = 8000
+		planet_event = { id = crisis.215 }
 	}
 }
 
@@ -2221,12 +2198,12 @@ event = {
 			while = {
 				count = 5
 				create_fleet = {
-					name = "NAME_Prethoryn_Infestor"
+					name = "Prethoryn Infestor"
 					effect = {
 						set_owner = event_target:prethoryn
 						create_ship = {
 							name = random
-							design = "NAME_Swarm_Colonizer"
+							design = "Swarm Colonizer"
 							graphical_culture = "swarm_01"
 						}
 						set_location = {
@@ -2276,12 +2253,12 @@ event = {
 			while = {
 				count = 3
 				create_fleet = {
-					name = "NAME_Prethoryn_Constructor"
+					name = "Prethoryn Constructor"
 					effect = {
 						set_owner = event_target:prethoryn
 						create_ship = {
 							name = random
-							design = "NAME_Swarm_Constructor"
+							design = "Swarm Constructor"
 							graphical_culture = "swarm_01"
 						}
 						set_location = {
@@ -2354,12 +2331,12 @@ country_event = {
 				while = {
 					count = 3
 					create_fleet = {
-						name = "NAME_Prethoryn_Infestor"
+						name = "Prethoryn Infestor"
 						effect = {
 							set_owner = event_target:prethoryn
 							create_ship = {
 								name = random
-								design = "NAME_Swarm_Colonizer"
+								design = "Swarm Colonizer"
 								graphical_culture = "swarm_01"
 							}
 							set_location = {
@@ -2373,12 +2350,12 @@ country_event = {
 				
 				# Constructor
 				create_fleet = {
-					name = "NAME_Prethoryn_Constructor"
+					name = "Prethoryn Constructor"
 					effect = {
 						set_owner = event_target:prethoryn
 						create_ship = {
 							name = random
-							design = "NAME_Swarm_Constructor"
+							design = "Swarm Constructor"
 							graphical_culture = "swarm_01"
 						}
 						set_location = {
@@ -2391,7 +2368,7 @@ country_event = {
 
 				# Army Transports
 				#create_fleet = {
-				#	name = "NAME_Prethoryn_Armies"
+				#	name = "Prethoryn Armies"
 				#	effect = {
 				#		set_owner = event_target:prethoryn
 				#		while = {
@@ -2501,7 +2478,14 @@ country_event = {
 	option = { # Spiritualist Response
 		name = crisis.211.a
 		trigger = {
-			has_spiritualist_government = yes
+			OR = {
+				has_government = theocratic_republic
+				has_government = transcendent_republic
+				has_government = theocratic_oligarchy
+				has_government = transcendent_oligarchy
+				has_government = divine_mandate
+				has_government = transcendent_empire
+			}
 			NOT = {
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
@@ -2510,17 +2494,20 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
 	option = { # Militarist Response
 		name = crisis.211.b
 		trigger = {
-			has_militarist_government = yes
+			OR = {
+				has_government = military_dictatorship
+				has_government = martial_empire
+				has_government = military_junta
+				has_government = ordered_stratocracy
+				has_government = military_republic
+				has_government = martial_demarchy
+			}
 			NOT = {
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
@@ -2529,17 +2516,20 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
 	option = { # Materialist Response
 		name = crisis.211.c
 		trigger = {
-			has_materialist_government = yes
+			OR = {
+				has_government = despotic_hegemony
+				has_government = ai_overlordship
+				has_government = science_directorate
+				has_government = illuminated_technocracy
+				has_government = direct_democracy
+				has_government = subconscious_consensus
+			}
 			NOT = {
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
@@ -2548,17 +2538,20 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
 	option = { # Pacifist Response
 		name = crisis.211.d
 		trigger = {
-			has_pacifist_government = yes
+			OR = {
+				has_government = moral_democracy
+				has_government = irenic_democracy
+				has_government = peaceful_bureaucracy
+				has_government = irenic_protectorate
+				has_government = enlightened_monarchy
+				has_government = irenic_monarchy
+			}
 			NOT = {
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
@@ -2567,17 +2560,16 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
 	option = { # Corporate Response
 		name = crisis.211.e
 		trigger = {
-			has_government = gov_megacorporation
+			OR = {
+				has_government = plutocratic_oligarchy
+				has_government = mega_corporation
+			}
 			NOT = {
 				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_fanatic_xenophobe"
@@ -2586,10 +2578,6 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
@@ -2597,10 +2585,10 @@ country_event = {
 		name = crisis.211.f
 		trigger = {
 			OR = {
-				has_generic_government = yes
-				has_government = gov_enlightened_monarchy
-				has_government = gov_enlightened_dictatorship
-				has_government = gov_hive_mind
+				has_government = despotic_empire
+				has_government = star_empire
+				has_government = indirect_democracy
+				has_government = democratic_utopia
 			}
 			NOT = {
 				has_ethic = "ethic_fanatic_xenophile"
@@ -2610,10 +2598,6 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
@@ -2626,10 +2610,6 @@ country_event = {
 			modifier = "prethoryn_defeated"
 			days = 360
 		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
-		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}
 	option = { # Xenophile Response
@@ -2640,10 +2620,6 @@ country_event = {
 		add_modifier = {
 			modifier = "prethoryn_defeated"
 			days = 360
-		}
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @tier5unityreward
 		}
 		end_event_chain = "prethoryn_scourge_chain"
 	}

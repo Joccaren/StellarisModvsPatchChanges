@@ -126,7 +126,7 @@ leader_trait_archaeologist = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_archaeologist.dds"
 	custom_tooltip = leader_trait_archaeologist_tooltip
 		self_modifier = {
-			
+		
 			# Every Precursor anomaly category needs to be listed here
 			vultaum_1_cat_research_speed_mult = 0.5
 			vultaum_1_cat_research_fail_risk_add = -0.25
@@ -253,6 +253,8 @@ leader_trait_archaeologist = {
 			FEN_HABBANIS_research_fail_risk_add = -0.25
 			IRASSIA_research_speed_mult = 0.5
 			IRASSIA_research_fail_risk_add = -0.25
+			CYBREX_research_speed_mult = 0.5
+			CYBREX_research_fail_risk_add = -0.25
 		}
 	leader_trait = yes
 	leader_class = { scientist }
@@ -277,7 +279,6 @@ leader_trait_paranoid = {
 	leader_trait = yes
 	leader_class = { scientist }
 	initial = no
-	randomized = no
 	# increased chance to discover rare techs (weighted in tech-script)
 }
 
@@ -763,7 +764,6 @@ leader_trait_curator = {
 		ship_anomaly_fail_risk = -0.15
 	}
 	initial = no
-	randomized = no
 	leader_trait = yes
 	leader_class = { scientist }
 	# increased chance to discover rare techs (weighted in tech-script)
@@ -780,127 +780,44 @@ leader_trait_curator = {
 	}
 }
 
-leader_trait_scientist_cyborg = {
-	cost = 1
+leader_trait_confirmation_biases = {
+	cost = 0
 	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_cyborg.dds"
-	self_modifier = {
-		leader_age = 40
-	}
+	icon = "gfx/interface/icons/traits/trait_nonadaptive.dds"
 	modifier = {
-		all_technology_research_speed = 0.05
+		num_tech_alternatives_add = -1
 	}
+	
 	leader_trait = yes
 	leader_class = { scientist }
-	initial = no
-	randomized = no
-	
+	opposites = {}
 	ai_categories = {
-		physics
-		society
-		engineering
 		survey
 	}
 	
 	ai_weight = {
-		weight = 100
+		weight = 1
 	}
 }
 
-leader_trait_scientist_synthetic = {
+leader_trait_lab_rat = {
 	cost = 0
 	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_synthetic.dds"
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_adaptable.dds"
 	modifier = {
-		all_technology_research_speed = 0.10
-		science_ship_survey_speed = 0.25
+		ship_anomaly_fail_risk = -0.10
+		science_ship_survey_speed = -0.25
+		ship_anomaly_research_speed_mult = -0.25
+		ship_anomaly_generation_chance_mult = -0.25
 	}
 	leader_trait = yes
 	leader_class = { scientist }
-	initial = no
-	randomized = no
-	
-	ai_categories = {
-		survey
-		physics
-		society
-		engineering
-	}
-	
-	ai_weight = {
-		weight = 100
-	}
-}
-
-leader_trait_scientist_psionic = {
-	cost = 0
-	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_psionic_leader.dds"
-	modifier = {
-		all_technology_research_speed = 0.10
-		science_ship_survey_speed = 0.25
-	}
-	leader_trait = yes
-	leader_class = { scientist }
-	initial = no
-	randomized = no
-	
-	ai_categories = {
-		survey
-		physics
-		society
-		engineering
-	}
-	
-	ai_weight = {
-		weight = 100
-	}
-}
-
-leader_trait_scientist_chosen = {
-	cost = 0
-	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_psionic_chosen_one.dds"
-	immortal_leaders = yes
-	modifier = {
-		all_technology_research_speed = 0.20
-		science_ship_survey_speed = 0.3
-	}
-	leader_trait = yes
-	leader_class = { scientist }
-	initial = no
-	randomized = no
-	
-	ai_categories = {
-		survey
-		physics
-		society
-		engineering
-	}
-	
-	ai_weight = {
-		weight = 100
-	}
-}
-
-leader_trait_towel = {
-	cost = 0
-	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_scroll.dds"
-	modifier = {
-		science_ship_survey_speed = 0.25
-		ship_anomaly_fail_risk = -0.50
-	}
-	leader_trait = yes
-	leader_class = { scientist }
-	initial = no
-	randomized = no
-	
-	ai_categories = {
+	opposites = {}
+ 	ai_categories = {
 		survey
 	}
 	
 	ai_weight = {
-		weight = 100
+		weight = 1
 	}
 }

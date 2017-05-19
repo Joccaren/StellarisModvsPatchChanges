@@ -53,24 +53,24 @@
 #############
 
 @shield_S1 = 20
-@shield_M1 = 40
-@shield_L1 = 80
+@shield_M1 = 80
+@shield_L1 = 320
 
 @shield_S2 = 30
-@shield_M2 = 60
-@shield_L2 = 120
+@shield_M2 = 120
+@shield_L2 = 480
 
 @shield_S3 = 45
-@shield_M3 = 90
-@shield_L3 = 180
+@shield_M3 = 180
+@shield_L3 = 720
 
 @shield_S4 = 70
-@shield_M4 = 140
-@shield_L4 = 280
+@shield_M4 = 280
+@shield_L4 = 1120
 
 @shield_S5 = 105
-@shield_M5 = 210
-@shield_L5 = 420
+@shield_M5 = 420
+@shield_L5 = 1680
 
 #############
 # UTILITIES #
@@ -319,53 +319,4 @@ utility_component_template = {
 	prerequisites = { "tech_shields_5" }
 	upgrades_to = "LARGE_ENIGMATIC_SHIELD"
 	component_set = "SHIELD_5"
-}
-
-####################
-# Psionic Shields
-####################
-
-utility_component_template = {
-	key = "SMALL_PSI_SHIELD"
-	size = small
-	icon = "GFX_ship_part_psi_shield"
-	icon_frame = 1
-	power = -15
-	cost = 15
-	modifier = {
-		ship_shield_hp_add = 150
-		ship_shield_regen_add = 4.6 #Regeneration per day
-	}
-	prerequisites = { "tech_psionic_shield" }
-	component_set = "PSI_SHIELD"
-}
-
-utility_component_template = {
-	key = "MEDIUM_PSI_SHIELD"
-	size = medium
-	icon = "GFX_ship_part_psi_shield"
-	icon_frame = 1
-	power = -30
-	cost = 30
-	modifier = {
-		ship_shield_hp_add = 300
-		ship_shield_regen_add = 6.6 #Regeneration per day
-	}
-	prerequisites = { "tech_psionic_shield" }
-	component_set = "PSI_SHIELD"
-}
-
-utility_component_template = {
-	key = "LARGE_PSI_SHIELD"
-	size = large
-	icon = "GFX_ship_part_psi_shield"
-	icon_frame = 1
-	power = -60
-	cost = 60
-	modifier = {
-		ship_shield_hp_add = 600
-		ship_shield_regen_add = 8.6 #Regeneration per day
-	}
-	prerequisites = { "tech_psionic_shield" }
-	component_set = "PSI_SHIELD"
 }

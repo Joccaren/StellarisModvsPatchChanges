@@ -1,8 +1,8 @@
-@attack_range = 8
+@attack_range = 10
 @launch_time = 1.5
-@fighter_speed = 3.5
-@bomber_speed = 3
-@count = 8
+@fighter_speed = 7.0
+@bomber_speed = 5
+@count = 14
 @regen = 0.13
 
 strike_craft_component_template = {
@@ -13,22 +13,22 @@ strike_craft_component_template = {
 	weapon_type = point_defence
 	projectile_gfx = "scout_laser_1"
 	power = -20
-	cost = 20
+	cost = 14
 	
-	count = @count
+	count =16
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 1 max = 2 }
-	cooldown = 2.5
+	damage = { min = 3 max = 5 }
+	cooldown = 2.0
 	range = @attack_range
-	accuracy = 0.70
-	tracking = 0.10
+	accuracy = 1.0
+	tracking = 0.73
 	
-	health = 4
+	health = 15
 	armor = 0
 	shield = 0
-	evasion = 0.10
+	evasion = 0.65
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -54,22 +54,22 @@ strike_craft_component_template = {
 	weapon_type = point_defence
 	projectile_gfx = "strike_craft_laser_1"
 	power = -30
-	cost = 30
+	cost = 19.6
 	
-	count = @count
+	count = 14
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 2 max = 3 }
-	cooldown = 2.5
+	damage = { min = 5 max = 7 }
+	cooldown = 1.875
 	range = @attack_range
-	accuracy = 0.70
-	tracking = 0.20
+	accuracy = 1.00
+	tracking = 0.73
 	
-	health = 5
+	health = 17
 	armor = 0
 	shield = 0
-	evasion = 0.20
+	evasion = 0.70
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -97,22 +97,22 @@ strike_craft_component_template = {
 	weapon_type = point_defence
 	projectile_gfx = "strike_craft_laser_2"
 	power = -40
-	cost = 40
+	cost = 27.44
 	
-	count = @count
+	count = 13
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 3 max = 4 }
-	cooldown = 2.5
+	damage = { min = 8 max = 9 }
+	cooldown = 1.75
 	range = @attack_range
-	accuracy = 0.70
-	tracking = 0.30
+	accuracy = 1.0
+	tracking = 0.73
 	
-	health = 7
+	health = 18
 	armor = 0
 	shield = 0
-	evasion = 0.30
+	evasion = 0.75
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -140,22 +140,22 @@ strike_craft_component_template = {
 	weapon_type = point_defence
 	projectile_gfx = "strike_craft_laser_3"
 	power = -50
-	cost = 50
+	cost = 38.416
 	
-	count = @count
+	count = 12
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 4 max = 5 }
-	cooldown = 2.5
+	damage = { min = 11 max = 13 }
+	cooldown = 1.64
 	range = @attack_range
-	accuracy = 0.70
-	tracking = 0.40
+	accuracy = 1.00
+	tracking = 0.73
 	
-	health = 9
+	health = 20
 	armor = 0
 	shield = 0
-	evasion = 0.40
+	evasion = 0.80
 	
 	speed = @fighter_speed
 	rotation_speed = 0.1
@@ -179,29 +179,30 @@ strike_craft_component_template = {
 	size = LARGE
 	entity = "bomber_entity"
 	power = -30
-	cost = 30
+	cost = 19.6
 		
-	count = @count
+	count = 14
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 16 max = 24 }
-	cooldown = 10
+	damage = { min = 24 max = 28 }
+	cooldown = 8.125
 	range = @attack_range
 	accuracy = 1.0
+	tracking = 0.0
 	
-	health = 6
+	health = 23
 	armor = 0
 	shield = 0
-	evasion = 0.10
+	evasion = 0.6
 	
 	speed = @bomber_speed
 	rotation_speed = 0.1
 	acceleration = 0.5
 	
-	shield_damage = 1.0
-	shield_penetration = 1
-	armor_penetration = 0.5
+	shield_damage = 2.0
+	shield_penetration = 0
+	armor_penetration = 0.33
 	
 	ship_behavior = "bombers_behavior"
 	
@@ -221,29 +222,29 @@ strike_craft_component_template = {
 	size = LARGE
 	entity = "bomber_entity"
 	power = -40
-	cost = 40
+	cost = 27.44
 		
-	count = @count
+	count = 13
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 20 max = 30 }
-	cooldown = 10
+	damage = { min = 38 max = 40 }
+	cooldown = 7.92
 	range = @attack_range
 	accuracy = 1.0
 	
-	health = 8
+	health = 26
 	armor = 0
 	shield = 0
-	evasion = 0.20
+	evasion = 0.65
 	
 	speed = @bomber_speed
 	rotation_speed = 0.1
-	acceleration = 0.5
+	acceleration = 0.6
 	
-	shield_damage = 1.0
-	shield_penetration = 1
-	armor_penetration = 0.5
+	shield_damage = 2.0
+	shield_penetration = 0
+	armor_penetration = 0.33
 	
 	ship_behavior = "bombers_behavior"
 	
@@ -263,29 +264,29 @@ strike_craft_component_template = {
 	size = LARGE
 	entity = "bomber_entity"
 	power = -50
-	cost = 50
+	cost = 38.416
 		
-	count = @count
+	count = 12
 	regeneration_per_day = @regen
 	launch_time = @launch_time
 	
-	damage = { min = 24 max = 36 }
-	cooldown = 10
+	damage = { min = 56 max = 60 }
+	cooldown = 7.95
 	range = @attack_range
 	accuracy = 1.0
 	
-	health = 10
+	health = 30
 	armor = 0
 	shield = 0
-	evasion = 0.30
+	evasion = 0.70
 	
 	speed = @bomber_speed
 	rotation_speed = 0.1
 	acceleration = 0.5
 	
-	shield_damage = 1.0
-	shield_penetration = 1
-	armor_penetration = 0.5
+	shield_damage = 2.0
+	shield_penetration = 0
+	armor_penetration = 0.33
 	
 	ship_behavior = "bombers_behavior"
 	

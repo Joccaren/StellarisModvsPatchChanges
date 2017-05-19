@@ -653,27 +653,57 @@ country_event = {
 			if = {
 				limit = {
 					leader_class = scientist
-					num_traits < 3
-					NOT = {
-						has_leader_flag = has_gained_level_trait
-						is_researching_area = society
-						is_researching_area = engineering
-						is_researching_area = physics
-					}
+					num_traits < 4
+
 				}
 				random_list = {
-					90 = { }
-					10 = {
+					80 = { }
+					20 = {
 						modifier = {
-							factor = 1.5
-							OR = {
-								has_level = 3
-								has_level = 4
-							}
+							factor = 1.15
+							has_level = 2
 						}
 						modifier = {
-							factor = 5
+							factor = 1.3
+							has_level = 3
+						}
+						modifier = {
+							factor = 1.45
+							has_level = 4
+						}
+						modifier = {
+							factor = 1.6
 							has_level = 5
+						}
+						modifier = {
+							factor = 1.75
+							has_level = 6
+						}
+						modifier = {
+							factor = 1.9
+							has_level = 7
+						}
+						modifier = {
+							factor = 2.05
+							has_level = 8
+						}
+						modifier = {
+							factor = 2.2
+							has_level = 9
+						}
+						modifier = {
+							factor = 2.35
+							has_level = 10
+						}
+						modifier = {
+							factor = 2.5
+							OR = {
+								has_level = 11
+								has_level = 12
+								has_level = 13
+								has_level = 14
+								has_level = 15
+							}
 						}
 						add_random_leader_trait = yes
 						set_leader_flag = has_gained_level_trait
@@ -683,22 +713,57 @@ country_event = {
 			if = {
 				limit = {
 					leader_class = admiral
-					num_traits < 3
+					num_traits < 4
 					NOT = { has_leader_flag = has_gained_level_trait }
 				}
 				random_list = {
-					90 = { }
-					10 = {
+					80 = { }
+					20 = {
 						modifier = {
-							factor = 1.5
-							OR = {
-								has_level = 3
-								has_level = 4
-							}
+							factor = 1.15
+							has_level = 2
 						}
 						modifier = {
-							factor = 5
+							factor = 1.3
+							has_level = 3
+						}
+						modifier = {
+							factor = 1.45
+							has_level = 4
+						}
+						modifier = {
+							factor = 1.6
 							has_level = 5
+						}
+						modifier = {
+							factor = 1.75
+							has_level = 6
+						}
+						modifier = {
+							factor = 1.9
+							has_level = 7
+						}
+						modifier = {
+							factor = 2.05
+							has_level = 8
+						}
+						modifier = {
+							factor = 2.2
+							has_level = 9
+						}
+						modifier = {
+							factor = 2.35
+							has_level = 10
+						}
+						modifier = {
+							factor = 2.5
+							OR = {
+								has_level = 11
+								has_level = 12
+								has_level = 13
+								has_level = 14
+								has_level = 15
+							}
 						}
 						add_random_leader_trait = yes
 						set_leader_flag = has_gained_level_trait
@@ -708,7 +773,7 @@ country_event = {
 			if = {
 				limit = {
 					leader_class = governor
-					num_traits < 3
+					num_traits < 5
 					NOT = { has_leader_flag = has_gained_level_trait }
 					exists = planet
 				}
@@ -716,15 +781,50 @@ country_event = {
 					80 = { }
 					20 = {
 						modifier = {
-							factor = 1.5
-							OR = {
-								has_level = 3
-								has_level = 4
-							}
+							factor = 1.15
+							has_level = 2
 						}
 						modifier = {
-							factor = 5
+							factor = 1.3
+							has_level = 3
+						}
+						modifier = {
+							factor = 1.45
+							has_level = 4
+						}
+						modifier = {
+							factor = 1.6
 							has_level = 5
+						}
+						modifier = {
+							factor = 1.75
+							has_level = 6
+						}
+						modifier = {
+							factor = 1.9
+							has_level = 7
+						}
+						modifier = {
+							factor = 2.05
+							has_level = 8
+						}
+						modifier = {
+							factor = 2.2
+							has_level = 9
+						}
+						modifier = {
+							factor = 2.35
+							has_level = 10
+						}
+						modifier = {
+							factor = 2.5
+							OR = {
+								has_level = 11
+								has_level = 12
+								has_level = 13
+								has_level = 14
+								has_level = 15
+							}
 						}
 						add_random_leader_trait = yes
 						set_leader_flag = has_gained_level_trait
@@ -734,22 +834,57 @@ country_event = {
 			if = {
 				limit = {
 					leader_class = general
-					num_traits < 3
+					num_traits < 4
 					NOT = { has_leader_flag = has_gained_level_trait }
 				}
 				random_list = {
 					80 = { }
 					20 = {
 						modifier = {
-							factor = 1.5
-							OR = {
-								has_level = 3
-								has_level = 4
-							}
+							factor = 1.15
+							has_level = 2
 						}
 						modifier = {
-							factor = 5
+							factor = 1.3
+							has_level = 3
+						}
+						modifier = {
+							factor = 1.45
+							has_level = 4
+						}
+						modifier = {
+							factor = 1.6
 							has_level = 5
+						}
+						modifier = {
+							factor = 1.75
+							has_level = 6
+						}
+						modifier = {
+							factor = 1.9
+							has_level = 7
+						}
+						modifier = {
+							factor = 2.05
+							has_level = 8
+						}
+						modifier = {
+							factor = 2.2
+							has_level = 9
+						}
+						modifier = {
+							factor = 2.35
+							has_level = 10
+						}
+						modifier = {
+							factor = 2.5
+							OR = {
+								has_level = 11
+								has_level = 12
+								has_level = 13
+								has_level = 14
+								has_level = 15
+							}
 						}
 						add_random_leader_trait = yes
 						set_leader_flag = has_gained_level_trait
@@ -759,22 +894,57 @@ country_event = {
 			if = {
 				limit = {
 					leader_class = ruler
-					num_traits < 3
+					num_traits < 4
 					NOT = { has_leader_flag = has_gained_level_trait }
 				}
 				random_list = {
 					80 = { }
 					20 = {
 						modifier = {
-							factor = 1.5
-							OR = {
-								has_level = 3
-								has_level = 4
-							}
+							factor = 1.15
+							has_level = 2
 						}
 						modifier = {
-							factor = 5
+							factor = 1.3
+							has_level = 3
+						}
+						modifier = {
+							factor = 1.45
+							has_level = 4
+						}
+						modifier = {
+							factor = 1.6
 							has_level = 5
+						}
+						modifier = {
+							factor = 1.75
+							has_level = 6
+						}
+						modifier = {
+							factor = 1.9
+							has_level = 7
+						}
+						modifier = {
+							factor = 2.05
+							has_level = 8
+						}
+						modifier = {
+							factor = 2.2
+							has_level = 9
+						}
+						modifier = {
+							factor = 2.35
+							has_level = 10
+						}
+						modifier = {
+							factor = 2.5
+							OR = {
+								has_level = 11
+								has_level = 12
+								has_level = 13
+								has_level = 14
+								has_level = 15
+							}
 						}
 						add_random_leader_trait = yes
 						set_leader_flag = has_gained_level_trait
@@ -820,7 +990,9 @@ country_event = {
 					gained_leader_trait_expertise_biology = { text = leader.21.desc.expertise_biology }
 					gained_leader_trait_expertise_military_theory = { text = leader.21.desc.expertise_military_theory }
 					gained_leader_trait_paranoid = { text = leader.21.desc.paranoid }
-					default = { text = "leader.21.fallback" }
+					gained_leader_trait_confirmation_biases = { text = leader.21.desc.confirmation_biases }
+					gained_leader_trait_lab_rat = { text = leader.21.desc.lab_rat }
+					default = { text = "ERROR" }
 				}
 			}
 		}
@@ -861,6 +1033,8 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
+					has_leader_flag = gained_leader_trait_confirmation_biases
+					has_leader_flag = gained_leader_trait_lab_rat
 				}
 			}
 		}
@@ -874,6 +1048,8 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
+					has_leader_flag = gained_leader_trait_confirmation_biases
+					has_leader_flag = gained_leader_trait_lab_rat
 				}
 			}
 		}
@@ -903,7 +1079,7 @@ country_event = {
 					gained_leader_trait_unyielding = { text = leader.22.desc.unyielding }
 					gained_leader_trait_gale_speed = { text = leader.22.desc.gale_speed }
 					gained_leader_trait_lethargic = { text = leader.22.desc.lethargic }
-					default = { text = "leader.21.fallback" }
+					default = { text = "ERROR" }
 				}
 			}
 		}
@@ -981,7 +1157,15 @@ country_event = {
 					gained_leader_trait_architectural_interest = { text = leader.23.desc.architectural_interest }
 					gained_leader_trait_intellectual = { text = leader.23.desc.intellectual }
 					gained_leader_trait_environmental_engineer = { text = leader.23.desc.environmental_engineer }
-					default = { text = "leader.21.fallback" }
+					gained_leader_trait_puppet = { text = leader.23.desc.puppet }
+					gained_leader_trait_vacilating = { text = leader.23.desc.vacilating }
+					gained_leader_trait_traditionalist = { text = leader.23.desc.traditionalist }
+					gained_leader_trait_autonomist = { text = leader.23.desc.autonomist }
+					gained_leader_trait_corrupt = { text = leader.23.desc.corrupt }
+					gained_leader_trait_orwellian = { text = leader.23.desc.orwellian }
+					gained_leader_trait_separatist = { text = leader.23.desc.separatist }
+					gained_leader_trait_bureaucratic = { text = leader.23.desc.bureaucratic }
+					default = { text = "ERROR" }
 				}
 			}
 		}
@@ -1006,6 +1190,12 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
+					has_leader_flag = gained_leader_trait_puppet
+					has_leader_flag = gained_leader_trait_vacilating
+					has_leader_flag = gained_leader_trait_corrupt
+					has_leader_flag = gained_leader_trait_orwellian
+					has_leader_flag = gained_leader_trait_separatist
+					has_leader_flag = gained_leader_trait_bureaucratic
 				}
 			}
 		}
@@ -1018,6 +1208,12 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
+					has_leader_flag = gained_leader_trait_puppet
+					has_leader_flag = gained_leader_trait_vacilating
+					has_leader_flag = gained_leader_trait_corrupt
+					has_leader_flag = gained_leader_trait_orwellian
+					has_leader_flag = gained_leader_trait_separatist
+					has_leader_flag = gained_leader_trait_bureaucratic
 				}
 			}
 		}
@@ -1045,7 +1241,7 @@ country_event = {
 					gained_leader_trait_glory_seeker = { text = leader.24.desc.glory_seeker }
 					gained_leader_trait_army_logistician = { text = leader.24.desc.army_logistician }
 					gained_leader_trait_armchair_commander = { text = leader.24.desc.armchair_commander }
-					default = { text = "leader.21.fallback" }
+					default = { text = "ERROR" }
 				}
 			}
 		}
@@ -1124,7 +1320,7 @@ country_event = {
 					gained_trait_ruler_cruiser_focus = { text = leader.25.desc.cruiser_focus }
 					gained_trait_ruler_battleship_focus = { text = leader.25.desc.battleship_focus }
 					gained_trait_ruler_recruiter = { text = leader.25.desc.recruiter }
-					#gained_trait_ruler_from_the_ranks = { text = leader.25.desc.from_the_ranks }
+					gained_trait_ruler_from_the_ranks = { text = leader.25.desc.from_the_ranks }
 					gained_trait_ruler_fortifier = { text = leader.25.desc.fortifier }
 					gained_trait_ruler_logistic_understanding = { text = leader.25.desc.logistic_understanding }
 					gained_trait_ruler_military_pioneer = { text = leader.25.desc.military_pioneer }
@@ -1144,7 +1340,16 @@ country_event = {
 					gained_trait_ruler_explorer = { text = leader.25.desc.explorer }
 					gained_leader_trait_fleet_organizer = { text = leader.25.desc.fleet_organizer }
 					gained_leader_trait_nervous = { text = leader.25.desc.nervous }
-					default = { text = "leader.21.fallback" }
+					gained_trait_ruler_puppet = { text = leader.25.desc.puppet }
+					gained_trait_ruler_vacilating = { text = leader.25.desc.vacilating }
+					gained_trait_ruler_traditionalist = { text = leader.25.desc.traditionalist }
+					gained_trait_ruler_autonomist = { text = leader.25.desc.autonomist }
+					gained_trait_ruler_corrupt = { text = leader.25.desc.corrupt }
+					gained_trait_ruler_orwellian = { text = leader.25.desc.orwellian }
+					gained_trait_ruler_sympathiser = { text = leader.25.desc.sympathiser }
+					gained_trait_ruler_ethnocentric = { text = leader.25.desc.ethnocentric }
+					gained_trait_ruler_bureaucratic = { text = leader.25.desc.bureaucratic }
+					default = { text = "ERROR" }
 				}
 			}
 		}
@@ -1153,29 +1358,28 @@ country_event = {
 	picture = GFX_evt_archaeological_dig
 	is_triggered_only = yes
 
-	trigger = {
-		exists = capital_scope
-	}
-
 	immediate = {
-		#fromfrom = {
-		#	planet = {
-			capital_scope = {
+		fromfrom = {
+			planet = {
 				save_event_target_as = current_planet
 			}
-			#}
-		#}
+		}
 	}
 
 	option = {
 		name = leader.21.a.positive
 		trigger = {
 			fromfrom = {
-				NOR = {
+				NOT = {
 					has_leader_flag = gained_leader_trait_nervous
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
+					has_leader_flag = gained_trait_ruler_puppet
+					has_leader_flag = gained_trait_ruler_vacilating
+					has_leader_flag = gained_trait_ruler_corrupt
+					has_leader_flag = gained_trait_ruler_orwellian
+					has_leader_flag = gained_trait_ruler_bureaucratic
 				}
 			}
 		}
@@ -1189,6 +1393,11 @@ country_event = {
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
 					has_leader_flag = gained_leader_trait_arrested_development
+					has_leader_flag = gained_trait_ruler_puppet
+					has_leader_flag = gained_trait_ruler_vacilating
+					has_leader_flag = gained_trait_ruler_corrupt
+					has_leader_flag = gained_trait_ruler_orwellian
+					has_leader_flag = gained_trait_ruler_bureaucratic
 				}
 			}
 		}
