@@ -33,6 +33,8 @@ agenda_defensive_focus = {
 	
 	modifier = {
 		shipclass_military_station_build_cost_mult = -0.15
+		shipclass_military_station_damage_mult = 0.25
+		shipclass_military_station_hit_points_mult = 0.25
 	}
 }
 
@@ -70,9 +72,7 @@ agenda_industrial = {
 	}
 	
 	modifier = {
-		shipsize_constructor_build_cost_mult = -0.15
-		shipsize_mining_station_build_cost_mult = -0.15
-		mining_network_build_cost_mult = -0.15
+		tile_resource_minerals_mult = 0.10
 	}
 }
 
@@ -148,8 +148,228 @@ agenda_welfare = {
 	}
 	
 	modifier = {
-		pop_growth_req_mult = -0.25
+		pop_growth_speed = 0.10
+		pop_happiness = 0.05
 	}
+}
+
+## Faction-related agendas
+#agenda_expansionist_overtures = {
+#	weight_modifier = {
+#		weight = 100
+#		modifier = {
+#			factor = 1.5
+#			from = {
+#				has_ethic = ethic_fanatic_militarist
+#			}
+#		}
+#		modifier = {
+#			factor = 2
+#			exists = pop_faction
+#			pop_faction = { is_pop_faction_type = imperialist }
+#		}
+#	}
+#
+#	modifier = {
+#		# Cheaper conquest war demands
+#	}
+#}
+
+agenda_national_purity = { # Reduced immigration attraction, influence bonus
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = isolationist }
+		}
+	}
+
+	modifier = {
+		planet_migration_xeno_pull = -0.10
+		country_resource_influence_mult = 0.10
+	}
+}
+
+agenda_public_debates = {
+# Reduced species rights cooldown instead?
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_egalitarian
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = progressive }
+		}
+	}
+
+	modifier = {
+		pop_ethics_shift_speed_mult = 0.10
+	}
+}
+
+agenda_import_export = {
+# Food bonus, trust growth bonus
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_pacifist
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = prosperity }
+		}
+	}
+
+	modifier = {
+		tile_resource_food_mult = 0.10
+		country_trade_attractiveness = 0.10
+		#country_trust_growth = 0.10
+	}
+}
+
+agenda_native_privilege = {
+# Xenophobe ethics attraction, reduced unrest
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_pacifist
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = supremacist }
+		}
+	}
+
+	modifier = {
+		pop_ethic_xenophobe_attraction_mult = 0.10
+		country_unrest_unhappy_pop_effect_mult = -0.10
+	}
+}
+
+agenda_skill_development = {
+	# leader skill gain
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = technologist }
+		}
+	}
+
+	modifier = {
+		species_leader_exp_gain = 0.10
+	}
+}
+
+agenda_slave_optimization = {
+	# Slave output bonus
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = totalitarian }
+		}
+	}
+
+	modifier = {
+		slave_production_output = 0.10
+	}
+}
+
+agenda_selective_nostalgia = { # Unity production modifier
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			exists = pop_faction
+			pop_faction = { is_pop_faction_type = traditionalist }
+		}
+	}
+
+	modifier = {
+		tile_resource_unity_mult = 0.10
+	}
+}
+
+
+agenda_xeno_outreach = { # Xenophile ethics attraction, immigration attraction?
+    weight_modifier = {
+        weight = 100
+        modifier = {
+            factor = 1.5
+            from = {
+                OR = {
+                    has_ethic = ethic_fanatic_xenophile
+                    has_ethic = ethic_xenophile
+                }
+            }
+        }
+        modifier = {
+            factor = 2
+            exists = pop_faction
+            pop_faction = { is_pop_faction_type = xenoist }
+        }
+        modifier = {
+            factor = 0.5
+            from = {
+                OR = {
+                    has_ethic = ethic_xenophobe
+                    has_ethic = ethic_fanatic_xenophobe
+                }
+            }
+        }
+        modifier = {
+            factor = 0
+            from = {
+                num_communications < 3
+            }
+        }
+    }
+
+    modifier = {
+        pop_ethic_xenophile_attraction_mult = 0.10
+        tradition_cost_num_xenos_mult = -0.10
+    }
 }
 
 ## Null agenda, if all other options fail
@@ -159,6 +379,6 @@ agenda_null = {
 	}
 	
 	modifier = {
-		pop_other_species_happiness = 0.01
+		pop_other_species_happiness = 0.05
 	}
 }

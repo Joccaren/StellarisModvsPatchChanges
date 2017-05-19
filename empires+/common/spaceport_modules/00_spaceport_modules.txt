@@ -178,7 +178,7 @@ observatory = {
 
 engineering_bay = {
 	icon = "GFX_spaceport_module_engineering_bay"
-	section = "HANGARBAY_SPACEPORT_SECTION"
+	section = "REFINERY_SPACEPORT_SECTION"
 	construction_days = 180	
 	prerequisites = { "tech_doctrine_fleet_support" }
 	spaceport_level = 1
@@ -192,8 +192,7 @@ engineering_bay = {
 	}
 	
 	orbit_modifier = {
-		ship_reparation_speed_mult = 0.25
-		ship_reparation_cost_mult = -0.25
+		ship_reparation_speed_mult = 0.5
 	}
 	
 	ship_modifier = {
@@ -289,43 +288,6 @@ corvette_assembly_yards = {
 	}
 }
 
-pioneering_terminal = {
-	icon = "GFX_spaceport_module_pioneering_terminal"
-	section = "SCIENCE_SPACEPORT_SECTION"
-	construction_days = 360
-	prerequisites = { "tech_frontier_traditions" }	
-	spaceport_level = 2
-	
-	cost = {
-		minerals = 300
-		influence = 25
-	}
-	
-	required_resources = {
-		energy = 2
-	}
-	
-	modifier = {
-		shipsize_colonizer_construction_speed_mult = 0.25
-		shipsize_colonizer_build_cost_mult = -0.25
-	}
-	
-	planet_modifier = {
-		pop_migration_speed = 0.25
-	}
-	
-	ai_weight = {
-		modifier = {
-			factor = 0
-			from = { sector_controlled = yes }
-		}
-		modifier = {
-			factor = 0
-			from = { NOT = { has_spaceport_module = solar_panel_network } }
-		}
-	}
-}
-
 #################
 #### LEVEL 3 ####
 #################
@@ -371,7 +333,6 @@ fleet_academy = {
 	
 	cost = {
 		minerals = 400
-		influence = 100
 	}
 	
 	required_resources = {
@@ -417,7 +378,8 @@ orbital_mind_control_laser = {
 	}
 	
 	planet_modifier = {
-		pop_ethic_shift = -0.30
+		pop_government_ethic_attraction = 0.5
+		planet_unrest_add = -25
 	}	
 }
 

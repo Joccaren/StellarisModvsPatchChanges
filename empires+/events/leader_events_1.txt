@@ -820,7 +820,7 @@ country_event = {
 					gained_leader_trait_expertise_biology = { text = leader.21.desc.expertise_biology }
 					gained_leader_trait_expertise_military_theory = { text = leader.21.desc.expertise_military_theory }
 					gained_leader_trait_paranoid = { text = leader.21.desc.paranoid }
-					default = { text = "ERROR" }
+					default = { text = "leader.21.fallback" }
 				}
 			}
 		}
@@ -903,7 +903,7 @@ country_event = {
 					gained_leader_trait_unyielding = { text = leader.22.desc.unyielding }
 					gained_leader_trait_gale_speed = { text = leader.22.desc.gale_speed }
 					gained_leader_trait_lethargic = { text = leader.22.desc.lethargic }
-					default = { text = "ERROR" }
+					default = { text = "leader.21.fallback" }
 				}
 			}
 		}
@@ -981,7 +981,7 @@ country_event = {
 					gained_leader_trait_architectural_interest = { text = leader.23.desc.architectural_interest }
 					gained_leader_trait_intellectual = { text = leader.23.desc.intellectual }
 					gained_leader_trait_environmental_engineer = { text = leader.23.desc.environmental_engineer }
-					default = { text = "ERROR" }
+					default = { text = "leader.21.fallback" }
 				}
 			}
 		}
@@ -1045,7 +1045,7 @@ country_event = {
 					gained_leader_trait_glory_seeker = { text = leader.24.desc.glory_seeker }
 					gained_leader_trait_army_logistician = { text = leader.24.desc.army_logistician }
 					gained_leader_trait_armchair_commander = { text = leader.24.desc.armchair_commander }
-					default = { text = "ERROR" }
+					default = { text = "leader.21.fallback" }
 				}
 			}
 		}
@@ -1124,7 +1124,7 @@ country_event = {
 					gained_trait_ruler_cruiser_focus = { text = leader.25.desc.cruiser_focus }
 					gained_trait_ruler_battleship_focus = { text = leader.25.desc.battleship_focus }
 					gained_trait_ruler_recruiter = { text = leader.25.desc.recruiter }
-					gained_trait_ruler_from_the_ranks = { text = leader.25.desc.from_the_ranks }
+					#gained_trait_ruler_from_the_ranks = { text = leader.25.desc.from_the_ranks }
 					gained_trait_ruler_fortifier = { text = leader.25.desc.fortifier }
 					gained_trait_ruler_logistic_understanding = { text = leader.25.desc.logistic_understanding }
 					gained_trait_ruler_military_pioneer = { text = leader.25.desc.military_pioneer }
@@ -1144,7 +1144,7 @@ country_event = {
 					gained_trait_ruler_explorer = { text = leader.25.desc.explorer }
 					gained_leader_trait_fleet_organizer = { text = leader.25.desc.fleet_organizer }
 					gained_leader_trait_nervous = { text = leader.25.desc.nervous }
-					default = { text = "ERROR" }
+					default = { text = "leader.21.fallback" }
 				}
 			}
 		}
@@ -1153,19 +1153,25 @@ country_event = {
 	picture = GFX_evt_archaeological_dig
 	is_triggered_only = yes
 
+	trigger = {
+		exists = capital_scope
+	}
+
 	immediate = {
-		fromfrom = {
-			planet = {
+		#fromfrom = {
+		#	planet = {
+			capital_scope = {
 				save_event_target_as = current_planet
 			}
-		}
+			#}
+		#}
 	}
 
 	option = {
 		name = leader.21.a.positive
 		trigger = {
 			fromfrom = {
-				NOT = {
+				NOR = {
 					has_leader_flag = gained_leader_trait_nervous
 					has_leader_flag = gained_leader_trait_stubborn
 					has_leader_flag = gained_leader_trait_substance_abuser
