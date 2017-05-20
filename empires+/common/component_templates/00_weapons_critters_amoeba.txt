@@ -50,7 +50,7 @@ strike_craft_component_template = {
 	power = -30
 	cost = 30
 
-	count = 4
+	count = 16
 	regeneration_per_day = @regen
 	launch_time = 1.5
 	
@@ -59,7 +59,7 @@ strike_craft_component_template = {
 	range = 20
 	accuracy = 0.70
 	
-	health = 10
+	health = 20
 	armor = 0
 	shield = 0
 	evasion = 0.15

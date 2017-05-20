@@ -2,29 +2,31 @@
 # This file is where you start when you want to configure something new, then go to sections
 
 @civilian_ships_combat_speed = 0.5
-@corvette_combat_speed = 1.75 	# assault ships
+@corvette_combat_speed = 3.00 	# assault ships
 @corvette_combat_rotation = 0.08
 @corvette_collision_radius = 2.0
 @corvette_formation_priority = 3
 
-@destroyer_combat_speed = 1.25	 # picket ships
+@destroyer_combat_speed = 1.8	 # picket ships
 @destroyer_combat_rotation = 0.05
 @destroyer_collision_radius = 2.5
 @destroyer_formation_priority = 2
 
-@cruiser_combat_speed = 1.25	 # picket/assault ships
+@cruiser_combat_speed = 1.05	 # picket/assault ships
 @cruiser_combat_rotation = 0.035
 @cruiser_collision_radius = 3
 @cruiser_formation_priority = 1
 
-@battleship_combat_speed = 0.75	
+@battleship_combat_speed = 0.3
 @battleship_combat_rotation = 0.025
 @battleship_collision_radius = 3
 @battleship_formation_priority = 4
 
 @build_block_radius_none = 0
-@build_block_radius_civilian = 20
-@build_block_radius_military = 200
+@build_block_radius_tiny = 10
+@build_block_radius_small = 50
+@build_block_radius_medium = 70
+@build_block_radius_large = 90
 
 ############
 # STANDARD #
@@ -32,14 +34,14 @@
 
 corvette = {
 	formation_priority = @corvette_formation_priority
-	max_speed = 5.25
+	max_speed = 6.00
 	acceleration = 0.35
 	rotation_speed = 0.1
 	combat_max_speed = @corvette_combat_speed
 	combat_rotation_speed = @corvette_combat_rotation
 	collision_radius = @corvette_collision_radius
 	modifier = {
-		ship_armor_add = 2
+		ship_armor_add = 5
 		ship_evasion_add = 60
 	}
 	max_hitpoints = 300
@@ -64,15 +66,15 @@ corvette = {
 
 destroyer = {
 	formation_priority = @destroyer_formation_priority
-	max_speed = 4.5
-	acceleration = 0.3
-	rotation_speed = 0.2
+	max_speed = 3.6
+	acceleration = 0.15
+	rotation_speed = 0.125
 	combat_max_speed = @destroyer_combat_speed
 	combat_rotation_speed = @destroyer_combat_rotation
 	collision_radius = @destroyer_collision_radius
 	modifier = {
-		ship_armor_add = 12
-		ship_evasion_add = 25
+		ship_armor_add = 15
+		ship_evasion_add = 45
 	}
 	max_hitpoints = 600
 	size_multiplier = 2
@@ -97,17 +99,17 @@ destroyer = {
 
 cruiser = {
 	formation_priority = @cruiser_formation_priority
-	max_speed = 3.75
-	acceleration = 0.25
+	max_speed = 2.1
+	acceleration = 0.225
 	rotation_speed = 0.175
 	combat_max_speed = @cruiser_combat_speed
 	combat_rotation_speed = @cruiser_combat_rotation
 	collision_radius = @cruiser_collision_radius
 	modifier = {
 		ship_armor_add = 30
-		ship_evasion_add = 10
+		ship_evasion_add = 15
 	}
-	max_hitpoints = 1600
+	max_hitpoints = 1800
 	size_multiplier = 4
 	fleet_slot_size = 3
 	section_slots = { "bow" = { locator = "part1" } "mid" = { locator = "part2" } "stern" = { locator = "part3" } }
@@ -130,17 +132,17 @@ cruiser = {
 
 battleship = {
 	formation_priority = @battleship_formation_priority
-	max_speed = 3
-	acceleration = 0.2
-	rotation_speed = 0.15
+	max_speed = 0.6
+	acceleration = 0.033
+	rotation_speed = 0.025
 	combat_max_speed = @battleship_combat_speed
 	combat_rotation_speed = @battleship_combat_rotation
 	collision_radius = @battleship_collision_radius
 	modifier = {
-		ship_armor_add = 80
-		ship_evasion_add = 5
+		ship_armor_add = 45
+		ship_evasion_add = 0
 	}
-	max_hitpoints = 2400
+	max_hitpoints = 3600
 	size_multiplier = 8
 	fleet_slot_size = 4
 	section_slots = { "bow" = { locator = "part1" } "mid" = { locator = "part2" } "stern" = { locator = "part3" } }
@@ -178,7 +180,7 @@ constructor = {
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
 	is_space_station = no
-	icon_frame = 9
+	icon_frame = 7
 	base_buildtime = 60
 
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -207,7 +209,7 @@ colonizer = {
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
 	is_space_station = no
-	icon_frame = 10
+	icon_frame = 8
 	base_buildtime = 360
 
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -237,7 +239,7 @@ science = {
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
 	is_space_station = no
-	icon_frame = 8
+	icon_frame = 6
 	base_buildtime = 60	
 	
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -268,7 +270,7 @@ transport = {
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
 	is_space_station = no
-	icon_frame = 11
+	icon_frame = 9
 
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
 	is_designable = yes
@@ -289,12 +291,11 @@ military_station_small = {
 	rotation_speed = 0.0
 	modifier = {
 		ship_evasion_mult = -1
-		ship_armor_add = 15
-		ship_weapon_range_mult = 0.20	
-		ship_fire_rate_mult = 1
-		ship_shield_hp_mult = 1
+		ship_armor_add = 30
+		ship_weapon_range_mult = 0.40
+		ship_fire_rate_mult = 0.45
 	}
-	max_hitpoints = 5000
+	max_hitpoints = 4000
 	size_multiplier = 4
 	fleet_slot_size = 2
 	section_slots = { 
@@ -311,7 +312,7 @@ military_station_small = {
 	required_component_set = "station_sensor_components"
 	required_component_set = "station_small_aura_components"
 	
-	build_block_radius = @build_block_radius_military
+	build_block_radius = @build_block_radius_small
 }
 
 military_station_medium = {
@@ -320,12 +321,11 @@ military_station_medium = {
 	rotation_speed = 0.0
 	modifier = {
 		ship_evasion_mult = -1
-		ship_armor_add = 30
-		ship_weapon_range_mult = 0.20
-		ship_fire_rate_mult = 1
-		ship_shield_hp_mult = 1
+		ship_armor_add = 60
+		ship_weapon_range_mult = 0.40
+		ship_fire_rate_mult = 0.60
 	}
-	max_hitpoints = 10000
+	max_hitpoints = 8000
 	size_multiplier = 8
 	fleet_slot_size = 4
 	section_slots = { 
@@ -343,7 +343,7 @@ military_station_medium = {
 	required_component_set = "station_sensor_components"
 	required_component_set = "station_medium_aura_components"
 	
-	build_block_radius = @build_block_radius_military
+	build_block_radius = @build_block_radius_medium
 }
 
 military_station_large = {
@@ -352,12 +352,11 @@ military_station_large = {
 	rotation_speed = 0.0
 	modifier = {
 		ship_evasion_mult = -1
-		ship_armor_add = 44
-		ship_weapon_range_mult = 0.20
-		ship_fire_rate_mult = 1
-		ship_shield_hp_mult = 1
+		ship_armor_add = 100
+		ship_weapon_range_mult = 0.40
+		ship_fire_rate_mult = 0.75
 	}
-	max_hitpoints = 15000
+	max_hitpoints = 16000
 	size_multiplier = 16
 	fleet_slot_size = 8
 	section_slots = { 
@@ -376,7 +375,7 @@ military_station_large = {
 	required_component_set = "station_large_aura_components"
 	required_component_set = "station_large_aura_components"
 	
-	build_block_radius = @build_block_radius_military
+	build_block_radius = @build_block_radius_large
 }
 
 ################
@@ -405,7 +404,7 @@ orbital_station = {
 	}
 	num_target_locators = 0
 	is_space_station = yes
-	build_block_radius = @build_block_radius_civilian
+	build_block_radius = @build_block_radius_tiny
 	cost = 360
 	
 	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
@@ -426,7 +425,7 @@ mining_station = {
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 0
 	is_space_station = yes
-	build_block_radius = @build_block_radius_civilian
+	build_block_radius = @build_block_radius_tiny
 	is_civilian = no
 	cost = 90
 	components_add_to_cost = no
@@ -450,7 +449,7 @@ research_station = {
 	section_slots = { "mid" = { locator = "part1" } }
 	num_target_locators = 1
 	is_space_station = yes
-	build_block_radius = @build_block_radius_civilian
+	build_block_radius = @build_block_radius_tiny
 	is_civilian = no
 	cost = 90
 	components_add_to_cost = no
@@ -472,7 +471,7 @@ wormhole_station = {
 	max_hitpoints = 2000
 	num_target_locators = 0
 	is_space_station = yes
-	build_block_radius = @build_block_radius_civilian
+	build_block_radius = @build_block_radius_tiny
 	is_civilian = yes
 	cost = 75
 	components_add_to_cost = no
@@ -491,7 +490,7 @@ wormhole_station = {
 #	max_hitpoints = 2000
 #	num_target_locators = 0
 #	is_space_station = yes
-#	build_block_radius = @build_block_radius_civilian
+#	build_block_radius = @build_block_radius_tiny
 #	is_civilian = yes
 #	cost = 150
 #	components_add_to_cost = no
@@ -511,7 +510,7 @@ observation_station = {
 	max_hitpoints = 2000
 	num_target_locators = 0
 	is_space_station = yes
-	build_block_radius = @build_block_radius_civilian
+	build_block_radius = @build_block_radius_tiny
 	is_civilian = yes
 	cost = 50
 	components_add_to_cost = no
@@ -529,9 +528,8 @@ outpost_station = {
 		ship_evasion_mult = -1
 		ship_armor_add = 10
 		ship_weapon_range_mult = 0.20
-		ship_fire_rate_mult = 0.5
 	}
-	max_hitpoints = 5000
+	max_hitpoints = 2000
 	size_multiplier = 4
 	fleet_slot_size = 2
 	section_slots = { "mid" = { locator = "part1" } }
@@ -546,7 +544,7 @@ outpost_station = {
 	class = shipclass_outpost_station
 	required_component_set = "border_extruders"
 	
-	build_block_radius = @build_block_radius_civilian
+	build_block_radius = @build_block_radius_tiny
 }
 
 

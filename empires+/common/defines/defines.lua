@@ -1,7 +1,7 @@
 NDefines.NGameplay.TRUCE_YEARS = 5
 NDefines.NGameplay.ETHOS_MAX_POINTS = 4
 NDefines.NGameplay.LEADER_SKILL_CAP = 15
-NDefines.NGameplay.MISSILE_SUBLIGHT_SPEED_MULT = 6
+NDefines.NGameplay.MISSILE_SUBLIGHT_SPEED_MULT = 8
 NDefines.NGameplay.FALLEN_CUSTOM_EMPIRE_SPAWN_CHANCE = 333
 NDefines.NGameplay.DOCKED_FLEET_MAINTENANCE_REDUCTION = 0.75
 NDefines.NGameplay.BORDERING_DISTANCE = 25
@@ -11,6 +11,17 @@ NDefines.NGameplay.WORMHOLE_OPEN_SPEED = 1.2
 NDefines.NGameplay.FTL_RANGE_WARP = 30					-- Base warp range
 NDefines.NGameplay.FTL_RANGE_WORMHOLE = 44				-- Wormhole range
 NDefines.NGameplay.FTL_RANGE_JUMPDRIVE = 67				-- Jumpdrive range
+
+NDefines.NGraphics.MISSILE_ROTATION_RATE = 24.0
+NDefines.NGraphics.MISSILE_RANDOM_OFFSET_MIN_RADIUS = 3.0		-- random spread of missiles
+NDefines.NGraphics.MISSILE_RANDOM_OFFSET_MAX_RADIUS = 7.0
+NDefines.NGraphics.MAX_GFX_PROJECTILES = 200
+NDefines.NGraphics.MAX_GFX_MISSILES = 200
+NDefines.NGraphics.TRAILS_MISSILE_ALPHA_FADE			= 3 -- Controls of quick we alpha fade-out missile trails
+
+NDefines.NCombat.MISSILE_HIGH_CONTROL_DISTANCE				= 10.0 -- if the missile is closer to the target than MISSILE_HIGH_CONTROL_DISTANCE it will turn sharply
+NDefines.NCombat.MISSILE_HIGH_CONTROL_INTERPOLATION_RANGE	= 4.0 -- how long the missile will interpolate between "smooth controls" and "full control"
+NDefines.NCombat.MISSILE_BASE_ROTATION_SPEED					= 0.003
 
 NDefines.NSpecies.MAX_ETHIC_POINTS = 4
 NDefines.NSpecies.MAX_TRAIT_POINTS_LEADER = 2
@@ -23,7 +34,8 @@ NDefines.NPop.FOOD_SURPLUS_EXTRA_GROWTH = 0.2
 NDefines.NShip.ENERGY_MAINTENANCE_MUL = 0.012		-- Ship Maintenance Multiplier, Percentage of the cost of the ship, default = 0.004
 NDefines.NShip.MINERAL_MAINTENANCE_MUL = 0.002		-- Default = 0.004
 NDefines.NShip.MILITARY_POWER_EXPONENT = 0.60
-NDefines.NShip.MILITARY_POWER_SHIELD_DAMAGE_WEIGHT = 0.08
+NDefines.NShip.MILITARY_POWER_SHIELD_DAMAGE_WEIGHT = 0.07
+NDefines.NShip.MILITARY_POWER_MISSILE_MULT = 0.66
 
 NDefines.NAI.ARMY_BUDGET_FRACTION = 0.01   				-- AI will spend this fraction of their income on armies
 NDefines.NAI.NAVY_BUDGET_FRACTION = 0.19 				-- AI will spend this fraction of their income on ships
